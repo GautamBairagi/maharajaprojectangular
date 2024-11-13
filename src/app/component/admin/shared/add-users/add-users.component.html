@@ -1,0 +1,16 @@
+
+<form [formGroup]="loginForm">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <label for="">Email</label>
+                <input type="email" class="form-control" placeholder="Email" formControlName="email">
+                <label>Password</label>
+                <input type="password" class="form-control" placeholder="password" formControlName="password">
+                <label>User Name</label>
+                <input type="text" class="form-control" placeholder="username" formControlName="username">
+                <button (click)="addusers()" type="button" class="btn btn-success">Save</button>
+            </div>
+        </div>
+    </div>
+</form>

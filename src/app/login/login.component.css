@@ -1,0 +1,45 @@
+
+.login-brand img {
+    max-width: 100%;
+    height: auto;
+}
+
+.login-card {
+    max-width: 400px;
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    padding: 20px;
+    margin: 20px;
+}
+
+.simple-footer {
+    text-align: center;
+    font-size: 14px;
+    color: #6c757d;
+    margin-top: 20px;
+}
+
+.btn-login {
+    background-color: #b8036c;
+    color: white;
+    border: none;
+    padding: 10px 0;
+    font-size: 16px;
+    width: 100%;
+    border-radius: 5px;
+}
+
+.btn-login:hover {
+    background-color: #9e005d;
+}
+
+.text-small {
+    font-size: 0.9em;
+    color: #6777ef;
+}
+
+.text-small:hover {
+    text-decoration: underline;
+}
