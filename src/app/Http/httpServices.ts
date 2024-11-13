@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable, catchError,throwError } from "rxjs";
 import { Injectable } from "@angular/core";
-
+import {  delay } from 'rxjs/operators';
 @Injectable({
     providedIn: 'root'
 })
@@ -10,24 +10,44 @@ export class HttpService {
     token:any;
 
     constructor(public http:HttpClient){
-        this.token = sessionStorage.getItem('token');
-        
+        this.token = localStorage.getItem('token');
+        console.log("https token get", this.token)
     }
 
-    get(url: string): Observable<any> {
-         const val = new HttpHeaders({
-            'Content-type': 'application/json',
-            authkey: `${this.token}`,
-          });
-        return this.http.get<any>(url,{
-            headers:val
-        }).pipe(catchError(this.errorHandle))
-    }
+
+    // get(url: string): Observable<any> {
+    //     const val = new HttpHeaders({
+    //       'Content-type': 'application/json',
+    //       Authorization: `${this.token}`,
+    //     });
+      
+    //     return this.http.get<any>(url, {
+    //       headers: val
+    //     }).pipe(
+    //       delay(2000), // delay by 1 second (1000 milliseconds)
+    //       catchError(this.errorHandle)
+    //     );
+    //   }
+
+
+    
+
+
+
+    // get(url: string): Observable<any> {
+    //      const val = new HttpHeaders({
+    //         'Content-type': 'application/json',
+    //         Authorization: `${this.token}`,
+    //       });
+    //     return this.http.get<any>(url,{
+    //         headers:val
+    //     }).pipe(catchError(this.errorHandle))
+    // }
 
     post(url: string, payload?:any): Observable<any> {
         const opt = new HttpHeaders({
             'Content-type': 'application/json',
-            authkey: `${this.token}`,
+            Authorization: `${this.token}`,
           });
         return this.http.post<any>(url,payload,{
             headers:opt
@@ -37,7 +57,7 @@ export class HttpService {
     put(url: string, payload?:any): Observable<any> {
         const opt = new HttpHeaders({
             'Content-type': 'application/json',
-            authkey: `${this.token}`,
+            Authorization: `${this.token}`,
           });
         return this.http.put<any>(url,payload,{
             headers:opt
@@ -49,7 +69,7 @@ export class HttpService {
     patch(url: string, payload?:any): Observable<any> {
         const opt = new HttpHeaders({
             'Content-type': 'application/json',
-            authkey: `${this.token}`,
+            Authorization: `${this.token}`,
           });
         return this.http.patch<any>(url,payload,{
             headers:opt
@@ -59,7 +79,7 @@ export class HttpService {
     delete(url: string): Observable<any> {
         const val = new HttpHeaders({
            'Content-type': 'application/json',
-           authkey: `${this.token}`,
+           Authorization: `${this.token}`,
          });
        return this.http.delete<any>(url,{
            headers:val
@@ -69,10 +89,8 @@ export class HttpService {
     errorHandle(error: any) {
         let errorMessage = '';
         if (error.error instanceof ErrorEvent) {
-            // Get client-side error
             errorMessage = error.error.message;
         } else {
-            // Get server-side error
             errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
         }
         console.log(errorMessage);

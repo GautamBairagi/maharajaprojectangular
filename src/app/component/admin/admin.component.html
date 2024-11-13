@@ -188,11 +188,28 @@
             </div>
 
             <hr style="margin-top: 25%;">
-            <!-- <a (click)="logouts()"><i class="sidecolour fa-solid fa-right-from-bracket"></i> <span>Logout</span></a> -->
         </div>
         <div id="main" #main style="background-color: #f4f7fa;">
         </div>
     </div>
+
+
+    <!-- <div class="sidebar">
+        <img src="../../../../../assets/maharaja.png" class="img-fluid" alt="">
+
+        <div id="mySidebar" #mySidebar class="sidebar">
+            <ng-container *ngFor="let item of sidebarItems">
+                <a *ngIf="item.position === 1" style="text-decoration: none;color: #333;margin-left: 8%;"
+                    routerLink="/Admin/home">
+                    <i class="fa-solid fa-right-from-bracket"></i> {{ item.side_name }}
+                </a>
+
+            </ng-container>
+        </div>
+
+        <div id="main" #main style="background-color: #f4f7fa;"></div>
+    </div> -->
+
 
 
 
@@ -228,9 +245,9 @@
         <router-outlet></router-outlet>
 
     </div>
+       
 
 
-    
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>

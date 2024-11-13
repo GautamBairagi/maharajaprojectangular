@@ -19,7 +19,7 @@ export class AllService extends HttpService {
     return this.post(superAdminEndPoints.createusers,data)
    }
   getsidebarmenu(){
-    return this.get(superAdminEndPoints.getsidebar)
+    return this.http.get(superAdminEndPoints.getsidebar)
    }
 
   //  private apiUrl = superAdminEndPoints.getsidebar;
@@ -29,10 +29,4 @@ export class AllService extends HttpService {
   //  getsidebarmenu(): Observable<SidebarItem[]> {
   //    return this.http.get<SidebarItem[]>(this.apiUrl);
   //  }
-
-
-
-
-
-
 }
