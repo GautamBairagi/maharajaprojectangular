@@ -12,24 +12,9 @@ const routes: Routes = [
     path:'',
     component:LoginComponent
   },
-  {
-    path:'home',
-    component:HomeComponent
-  },
-  {
-    path:'viewusers',
-    component:UsersComponent
-  },
-  {
-    path:'addusers',
-    component:AddUsersComponent
-  },
-  
   
   { path: 'Admin', loadChildren: () => import('./component/admin/admin.module').then(a=>a.AdminModule) },
-  // { path: 'Admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule) },
-  // { path: 'nurse', loadChildren: () => import('./nurse/nurse.module').then(m => m.NurseModule) }, 
-  // { path: 'patient', loadChildren: () => import('./patient/patient.module').then(m => m.PatientModule) }
+
 
 
 ];
