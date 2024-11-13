@@ -10,13 +10,14 @@ export class HttpService {
     token:any;
 
     constructor(public http:HttpClient){
-        this.token = localStorage.getItem('token');
+        this.token = sessionStorage.getItem('token');
+        
     }
 
     get(url: string): Observable<any> {
          const val = new HttpHeaders({
             'Content-type': 'application/json',
-            Authorization: `${this.token}`,
+            authkey: `${this.token}`,
           });
         return this.http.get<any>(url,{
             headers:val
@@ -26,7 +27,7 @@ export class HttpService {
     post(url: string, payload?:any): Observable<any> {
         const opt = new HttpHeaders({
             'Content-type': 'application/json',
-            Authorization: `${this.token}`,
+            authkey: `${this.token}`,
           });
         return this.http.post<any>(url,payload,{
             headers:opt
@@ -36,7 +37,7 @@ export class HttpService {
     put(url: string, payload?:any): Observable<any> {
         const opt = new HttpHeaders({
             'Content-type': 'application/json',
-            Authorization: `${this.token}`,
+            authkey: `${this.token}`,
           });
         return this.http.put<any>(url,payload,{
             headers:opt
@@ -48,7 +49,7 @@ export class HttpService {
     patch(url: string, payload?:any): Observable<any> {
         const opt = new HttpHeaders({
             'Content-type': 'application/json',
-            Authorization: `${this.token}`,
+            authkey: `${this.token}`,
           });
         return this.http.patch<any>(url,payload,{
             headers:opt
@@ -58,7 +59,7 @@ export class HttpService {
     delete(url: string): Observable<any> {
         const val = new HttpHeaders({
            'Content-type': 'application/json',
-           Authorization: `${this.token}`,
+           authkey: `${this.token}`,
          });
        return this.http.delete<any>(url,{
            headers:val

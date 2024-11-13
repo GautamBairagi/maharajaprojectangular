@@ -16,15 +16,11 @@ export class AdminComponent implements OnInit {
     private fb: FormBuilder,
     private service:AllService,
     private swet :SweetalertssService,
-   
-  ){
-   
-  }
-
+  ){}
   ck: boolean = false;
- 
 
   ngOnInit(): void {
+    this.getsidebarsdata();
     this.loginForm = this.fb.group({
         email: ['', Validators.required],
         username: ['', Validators.required],
@@ -67,6 +63,22 @@ addusers() {
     sessionStorage.removeItem('token');
     this.router.navigateByUrl("/", { replaceUrl: true })
 }
+
+
+
+
+getsidebarsdata(){
+      this.service.getsidebarmenu().subscribe({
+          next: (res) => {
+              console.log("res sidebar data",res)
+          },
+          error: (err) => {
+              console.log(err);
+          }
+      });
+
+}
+
 
 
 }

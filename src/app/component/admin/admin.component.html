@@ -133,8 +133,9 @@
     <div class="sidebar">
         <img src="../../../../../assets/maharaja.png" class="img-fluid" alt="">
         <div id="mySidebar" #mySidebar class="sidebar">
-            <a style="text-decoration: none;color: #333;margin-left: 8%;" routerLink="/Admin/home" ><i class=" fa-solid fa-right-from-bracket"></i> Dashboard</a>
-          
+            <a style="text-decoration: none;color: #333;margin-left: 8%;" routerLink="/Admin/home"><i
+                    class=" fa-solid fa-right-from-bracket"></i> Dashboard</a>
+
             <div class="accordion accordion-flush mt-2" style="background-color: white  !important;"
                 id="accordionFlushExample">
                 <div class="accordion-item" style="border: 0 !important;background-color: white ;">
@@ -158,14 +159,43 @@
                     </div>
                 </div>
             </div>
-           
-           
+
+
+            <div class="accordion accordion-flush mt-2" style="background-color: white  !important;"
+                id="accordionFlushExampleone">
+                <div class="accordion-item" style="border: 0 !important;background-color: white ;">
+                    <h2 class="accordion-header" style="background-color: white ;" id="flush-headingOne">
+                        <button class="accordion-button collapsed custom-accordion-button"
+                            style="margin-left: 5px !important;background-color: white ;" type="button"
+                            data-bs-toggle="collapse" data-bs-target="#flush-setting" aria-expanded="false"
+                            aria-controls="flush-setting">
+                            <i class="fa fa-cog" aria-hidden="true"></i> <span
+                                style="margin-left: 30px !important;">Setting</span>
+                        </button>
+                    </h2>
+                    <div id="flush-setting" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
+                        data-bs-parent="#accordionFlushExampleone">
+                        <div class="accordion-body">
+                            <ul class="dropulli" style="width: auto; height: auto !important;">
+                                <li><a class="dropdown-item custom-link" >Settings</a></li>
+                                <li><a class="dropdown-item custom-link" >Email Templates</a></li>
+                                <li><a class="dropdown-item custom-link" >User Group Permission</a></li>
+                                <li><a class="dropdown-item custom-link" >Signature</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <hr style="margin-top: 25%;">
             <!-- <a (click)="logouts()"><i class="sidecolour fa-solid fa-right-from-bracket"></i> <span>Logout</span></a> -->
         </div>
         <div id="main" #main style="background-color: #f4f7fa;">
         </div>
     </div>
+
+
+
     <div class="content">
         <div class="header">
             <div class="search-bar">
@@ -193,11 +223,14 @@
                 </div>
             </div>
         </div>
-       
+
 
         <router-outlet></router-outlet>
 
     </div>
+
+
+    
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>

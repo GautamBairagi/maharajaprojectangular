@@ -122,25 +122,32 @@ export class LoginComponent implements OnInit {
     //     }
     // }
 
-    // onChanges(data: string) {
-    //     if (data === 'superadmin') {
-    //         this.loginForm.controls['email'].setValue('superadmin@gmail.com');
-    //         this.loginForm.controls['password'].setValue('superadmin');
-    //     } else if (data === 'doctor') {
-    //         this.loginForm.controls['email'].setValue('mayank@gmail.com');
-    //         this.loginForm.controls['password'].setValue('mayank@123');
-    //     }
-    //     else if (data === 'nurse') {
-    //         // this.form.controls['mobileNumber'].setValue('+919644605330');
-    //         this.loginForm.controls['email'].setValue('nurse@gmail.com');
-    //         this.loginForm.controls['password'].setValue('nurse');
-    //     }
-    //     else if (data === 'patient') {
-    //         // this.form.controls['mobileNumber'].setValue('+919644605330');
-    //         this.loginForm.controls['email'].setValue('patient@gmail.com');
-    //         this.loginForm.controls['password'].setValue('patient');
-    //     }
-    // }
+    onChanges(data: string) {
+        if (data === 'superadmin') {
+            this.loginForm.controls['email'].setValue('superadmin@gmail.com');
+            this.loginForm.controls['password'].setValue('superadmin');
+        } else if (data === 'doctor') {
+            this.loginForm.controls['email'].setValue('mayank@gmail.com');
+            this.loginForm.controls['password'].setValue('mayank@123');
+        }
+        else if (data === 'nurse') {
+            // this.form.controls['mobileNumber'].setValue('+919644605330');
+            this.loginForm.controls['email'].setValue('nurse@gmail.com');
+            this.loginForm.controls['password'].setValue('nurse');
+        }
+        else if (data === 'patient') {
+            // this.form.controls['mobileNumber'].setValue('+919644605330');
+            this.loginForm.controls['email'].setValue('patient@gmail.com');
+            this.loginForm.controls['password'].setValue('patient');
+        }
+    }
+
+
+    onChangess() {
+            this.loginForm.controls['email'].setValue('mr_rehan@gmail.com');
+            this.loginForm.controls['password'].setValue('123');
+    }
+
     showPassword: boolean = false;
     togglePasswordVisibility() {
         this.showPassword = !this.showPassword;
