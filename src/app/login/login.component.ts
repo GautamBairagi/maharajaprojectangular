@@ -88,7 +88,7 @@ export class LoginComponent implements OnInit {
                         sessionStorage.setItem('token', res.response.token);
                         sessionStorage.setItem('username', res.response.username);
                         this.swet.SucessToast(`${res.response.first_name} ${res.response.last_name} ${res.message}`);
-                        this.router.navigate(['home'])
+                        this.router.navigate(['Admin'])
                     }
                     // window.location.reload()
                 },
@@ -147,6 +147,3 @@ export class LoginComponent implements OnInit {
     }
 
 }
-
-
-
