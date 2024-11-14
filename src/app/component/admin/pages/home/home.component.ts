@@ -57,14 +57,14 @@ addusers() {
 
 
   logouts() {
-    sessionStorage.removeItem('userId');
-    sessionStorage.removeItem('group_id');
-    sessionStorage.removeItem('group_name');
-    sessionStorage.removeItem('first_name');
-    sessionStorage.removeItem('last_name');
-    sessionStorage.removeItem('token');
-    sessionStorage.removeItem('username');
-    sessionStorage.removeItem('token');
+    localStorage.removeItem('userId');
+    localStorage.removeItem('group_id');
+    localStorage.removeItem('group_name');
+    localStorage.removeItem('first_name');
+    localStorage.removeItem('last_name');
+    localStorage.removeItem('token');
+    localStorage.removeItem('username');
+
     this.router.navigateByUrl("/", { replaceUrl: true })
 }
 
