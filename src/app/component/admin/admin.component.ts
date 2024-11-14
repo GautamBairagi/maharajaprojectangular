@@ -21,7 +21,7 @@ export class AdminComponent implements OnInit {
 
   ngOnInit(): void {
     this.getsidebarsdata();
-  
+  this.getSubMenus()
 }
 
 
@@ -52,7 +52,22 @@ getsidebarsdata(){
               console.log(err);
           }
       });
+}
 
+subMenuData:any[]=[];
+getSubMenus() {
+  this.service.getsubmenu().subscribe({
+    next: (res: any) => {
+      this.subMenuData = res;
+    },
+    error: (err) => {
+      console.log(err);
+    },
+  });
+}
+
+getFilteredSubMenus(parentId: number) {
+  return this.subMenuData.filter(sub => sub.parent_id === parentId);
 }
 
 }

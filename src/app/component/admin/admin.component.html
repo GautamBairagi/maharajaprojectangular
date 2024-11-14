@@ -184,48 +184,71 @@
                       </button> -->
 
 
-<div  *ngFor="let side of sideData">
+<!-- <div  *ngFor="let side of sideData">
 
                       <button *ngIf="side.visibility === 1" class="accordion-button collapsed mt-3 mb-3" 
         type="button" aria-controls="flush-collapsePayroll" 
         style="margin-left: 19px !important;">
     <i class="fas fa-bars"></i> 
     <span style="margin-left: 15px !important;">
-        <a *ngIf="side.position === 1" href="./Expenses.html" class="dropdown-item sidebar-link"></a>
+        <a *ngIf="side.position === 1" class="dropdown-item sidebar-link"></a>
         {{ side.side_name }}
     </span>
 </button>
-</div>
+</div> -->
 
                     </h2>
                     </div>
      
 
-    <!-- <div class="accordion accordion-flush" id="accordionFlushExample">
-      <div class="accordion-item">
-        <h2 class="accordion-header" id="flush-headingCases">
-          <button class="accordion-button collapsed" type="button"
-            data-bs-toggle="collapse" data-bs-target="#flush-collapseCases" aria-expanded="false"
-            aria-controls="flush-collapseCases">
-            <i class="far fa-file-alt text-info"></i> <span style="margin-left: 15px !important;">Cases</span>
-          </button>
-        </h2>
-        <div id="flush-collapseCases" class="accordion-collapse collapse" aria-labelledby="flush-headingCases"
-          data-bs-parent="#accordionFlushExample">
-          <div class="accordion-body">
-            <ul class="dropulli">
-              <li><a href="./Cases.html" class="dropdown-item sidebar-link">Cases</a></li>
-              <li><a href="./Favorite-cases.html" class="dropdown-item sidebar-link">Favorite Cases</a></li>
-              <li><a href="./Favorite-cases.html" class="dropdown-item sidebar-link">Calendar View</a></li>
-              <li><a href="./Favorite-cases.html" class="dropdown-item sidebar-link">Gantt Chart</a></li>
-              <li><a href="./Favorite-cases.html" class="dropdown-item sidebar-link">Buik Upload </a></li>
-            </ul>
-    
-          
-          </div>
-        </div>
-      </div>
-    </div> -->
+                    <div *ngFor="let side of sideData">
+                      <!-- Button for dropdown accordion, shown only if `dropdown` is not zero -->
+                      <ng-container *ngIf="side.dropdown !== 0; else simpleButton">
+                        <button *ngIf="side.visibility === 1  || side.position === 1"
+                                class="accordion-button collapsed mt-3 mb-3" 
+                                type="button"
+                                data-bs-toggle="collapse" 
+                                [attr.data-bs-target]="'#flush-collapse-' + side.id" 
+                                aria-expanded="false" 
+                                [attr.aria-controls]="'flush-collapse-' + side.id" 
+                                style="margin-left: 30px !important;">
+                          
+                          <i ngClass="{{side.icon}}"></i> 
+                          <span style="margin-left: 15px !important;">
+                            {{ side.side_name }}
+                          </span>
+
+                          <i *ngIf="side.dropdown === 1" class="fas fa-chevron-down" style="margin-left: auto;"></i>
+                        </button>
+                    
+                        <!-- Dropdown content -->
+                        <div [id]="'flush-collapse-' + side.id" 
+                             class="accordion-collapse collapse" 
+                             [attr.aria-labelledby]="'flush-heading-' + side.id" data-bs-parent="#accordionFlushExample">
+                          <div class="accordion-body">
+                            <ul class="dropulli">
+                              <li *ngFor="let submenu of getFilteredSubMenus(side.id)" style="list-style: none;">
+                                <a  class="dropdown-item sidebar-link">{{ submenu.name }}</a>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                      </ng-container>
+                    
+                      <!-- Simple button without dropdown, shown when `dropdown` is 0 -->
+                      <ng-template #simpleButton>
+                        <button *ngIf="side.visibility === 1 || side.position === 1" 
+                                class="btn  mt-3 mb-3" 
+                                type="button" 
+                                style="margin-left: 19px !important;">
+                          <i ngClass="{{side.icon}}"></i> 
+                          <span style="margin-left: 15px !important;">
+                            {{ side.side_name }}
+                          </span>
+                        </button>
+                      </ng-template>
+                    </div>
+                    
     
 
     <div class="accordion-item">

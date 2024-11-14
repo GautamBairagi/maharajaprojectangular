@@ -59,7 +59,7 @@ export class SidebarSettingComponent implements OnInit {
 
     const headers = new HttpHeaders({
       'Content-type': 'application/json',
-      'Authkey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjc0MiwiZW1haWwiOiJtYXlhbmtAZ21haWwuY29tIiwiaWF0IjoxNzMxNTAyMTQwLCJleHAiOjE3MzE1MDU3NDB9.MOSYLutYs7td6TXTE7mhyf3w_TiK14lNupb70fyFXB4'
+      'Authkey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjc0MiwiZW1haWwiOiJtYXlhbmtAZ21haWwuY29tIiwiaWF0IjoxNzMxNTc2OTY2LCJleHAiOjE3MzE1ODA1NjZ9.AARNo8FQeEPtQmwjnru5FkIuY9PseVHVjVAANP6T-sw'
     });
 
     this.api.updateMenu(url, payload, { headers }).subscribe(

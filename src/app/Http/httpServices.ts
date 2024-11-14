@@ -17,7 +17,7 @@ export class HttpService {
     get(url: string): Observable<any> {
          const val = new HttpHeaders({
             'Content-type': 'application/json',
-            Authkey: ` ${'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjczOSwiZW1haWwiOiJtcl9yZWhhbkBnbWFpbC5jb20iLCJpYXQiOjE3MzE1NzAzMDQsImV4cCI6MTczMTU3MzkwNH0.7IzisKg6sSQ2xUQkn_BNRjrFqvMLMOQeC-xcEFmwBx8'}`,
+            Authkey: ` ${'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjc0MiwiZW1haWwiOiJtYXlhbmtAZ21haWwuY29tIiwiaWF0IjoxNzMxNTc2OTY2LCJleHAiOjE3MzE1ODA1NjZ9.AARNo8FQeEPtQmwjnru5FkIuY9PseVHVjVAANP6T-sw'}`,
           });
         return this.http.get<any>(url,{
             headers:val
@@ -34,10 +34,10 @@ export class HttpService {
         }).pipe(catchError(this.errorHandle))
     }
 
-    put(url: string, payload?:any): Observable<any> {
+    put(url: string, payload?: any,): Observable<any> {
         const opt = new HttpHeaders({
             'Content-type': 'application/json',
-            Authkey: `${'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjc0MiwiZW1haWwiOiJtYXlhbmtAZ21haWwuY29tIiwiaWF0IjoxNzMxNTAyMTQwLCJleHAiOjE3MzE1MDU3NDB9.MOSYLutYs7td6TXTE7mhyf3w_TiK14lNupb70fyFXB4'}`,
+            Authkey: `${'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjc0MiwiZW1haWwiOiJtYXlhbmtAZ21haWwuY29tIiwiaWF0IjoxNzMxNTc2OTY2LCJleHAiOjE3MzE1ODA1NjZ9.AARNo8FQeEPtQmwjnru5FkIuY9PseVHVjVAANP6T-sw'}`,
           });
         return this.http.put<any>(url,payload,{
             headers:opt
