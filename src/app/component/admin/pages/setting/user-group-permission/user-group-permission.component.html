@@ -1,1 +1,109 @@
-<p>user-group-permission works!</p>
+<!-- <p>user-group-permission works!</p>
+<div class="content">
+    
+    <div class="container text-left">
+      <div class="row justify-content-center">
+        <div class="col-lg-3">
+
+            <label class="custom-control overflow-checkbox">
+              <input type="checkbox" class="overflow-control-input" checked="">
+              <span class="overflow-control-indicator"></span>
+              <span class="overflow-control-description">First checkbox</span>
+            </label>
+            
+        </div>
+      </div>
+          
+    </div>
+  </div> -->
+
+
+<div class="permissions-page " >
+    <h2>User Group Permissions</h2>
+    <div class="alert alert-danger">
+        <strong>Note:</strong> Admin always have all the permissions. Here you can set permissions for members and
+        clients.
+    </div>
+
+    <div class="permissions-section">
+        <div class="permissions-group" >
+            <h3>Member Group Permissions</h3>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Module/Permissions</th>
+                        <th>Create</th>
+                        <th>Read</th>
+                        <th>Update</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let module of memberModules">
+                        <td>{{ module.name }}</td>
+                        <td>
+                             <label class="custom-control overflow-checkbox">
+                                <input type="checkbox" class="overflow-control-input" checked="">
+                                <span class="overflow-control-indicator"></span>
+                            </label> 
+                        </td>
+                        <td> 
+                            <label class="custom-control overflow-checkbox">
+                                <input type="checkbox" class="overflow-control-input" checked="">
+                                <span class="overflow-control-indicator"></span>
+                            </label> 
+                        </td>
+                        <td> 
+                            <label class="custom-control overflow-checkbox">
+                                <input type="checkbox" class="overflow-control-input" checked="">
+                                <span class="overflow-control-indicator"></span>
+                            </label>
+                         </td>
+                        <td> 
+                            <label class="custom-control overflow-checkbox">
+                                <input type="checkbox" class="overflow-control-input" checked="">
+                                <span class="overflow-control-indicator"></span>
+                            </label> 
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="permissions-group">
+            <h3>Client Group Permissions</h3>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Module/Permissions</th>
+                        <th>Create</th>
+                        <th>Read</th>
+                        <th>Update</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let module of clientModules">
+                        <td>{{ module.name }}</td>
+
+                        <td> <label class="custom-control overflow-checkbox">
+                                <input type="checkbox" class="overflow-control-input" checked="">
+                                <span class="overflow-control-indicator"></span>
+                            </label> </td>
+                        <td> <label class="custom-control overflow-checkbox">
+                                <input type="checkbox" class="overflow-control-input" checked="">
+                                <span class="overflow-control-indicator"></span>
+                            </label> </td>
+                        <td> <label class="custom-control overflow-checkbox">
+                                <input type="checkbox" class="overflow-control-input" checked="">
+                                <span class="overflow-control-indicator"></span>
+                            </label> </td>
+                        <td> <label class="custom-control overflow-checkbox">
+                                <input type="checkbox" class="overflow-control-input" checked="">
+                                <span class="overflow-control-indicator"></span>
+                            </label> </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

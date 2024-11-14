@@ -26,7 +26,7 @@ const routes: Routes = [
         component:AddUsersComponent
       },
       {
-        path:'viewusers',
+        path:'Users',
         component:UsersComponent
       },
       {

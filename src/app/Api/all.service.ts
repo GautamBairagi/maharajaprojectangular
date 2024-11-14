@@ -26,6 +26,13 @@ export class AllService extends HttpService {
     return this.get(superAdminEndPoints.getSubMenu)
    }
 
+   getUsersdata(){
+    return this.get(superAdminEndPoints.getUsers)
+   }
+   
+
+
+
    updateMenu(url: string, payload: any, options?: { headers: HttpHeaders }): Observable<any> {
     return this.http.put(url, payload, options);
   }
