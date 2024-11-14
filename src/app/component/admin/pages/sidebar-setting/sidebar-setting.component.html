@@ -1,0 +1,19 @@
+<div class="container">
+    
+    <div class="row">
+        
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div cdkDropList (cdkDropListDropped)="onDrop($event)">
+              <div *ngFor="let name of allMenus" cdkDrag>
+                <div class="card m-1" >
+                  <div class="card-body"  >
+                     {{ name.id }} / {{ name.side_name }}
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+      
+    </div>
+    
+</div>
