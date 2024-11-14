@@ -19,7 +19,7 @@ export class AllService extends HttpService {
     return this.post(superAdminEndPoints.createusers,data)
    }
   getsidebarmenu(){
-    return this.http.get(superAdminEndPoints.getsidebar)
+    return this.get(superAdminEndPoints.getsidebar)
    }
 
   //  private apiUrl = superAdminEndPoints.getsidebar;

@@ -66,17 +66,17 @@ addusers() {
 
 
 
-getsidebarsdata(){
-      this.service.getsidebarmenu().subscribe({
-          next: (res) => {
-              console.log("res sidebar data",res)
-          },
-          error: (err) => {
-              console.log(err);
-          }
-      });
+// getsidebarsdata(){
+//       this.service.getsidebarmenu().subscribe({
+//           next: (res) => {
+//               console.log("res sidebar data",res)
+//           },
+//           error: (err) => {
+//               console.log(err);
+//           }
+//       });
 
-}
+// }
 
 // getsidebarsdata() {
 //   this.service.getsidebarmenu().subscribe({
@@ -94,22 +94,22 @@ getsidebarsdata(){
 //   });
 // }
 
-// sidebarItems: any[] = [];
+sidebarItems: any[] = [];
 
 
 
-  // getsidebarsdata() {
-  //   this.service.getsidebarmenu().subscribe({
-  //     next: (res) => {
-  //       // Sort items by position
-  //       this.sidebarItems = res.sort((a: any, b: any) => a.position - b.position);
-  //       console.log('this.sidebarItems ',this.sidebarItems )
-  //     },
-  //     error: (err) => {
-  //       console.error("Error fetching sidebar data:", err);
-  //     }
-  //   });
-  // }
+  getsidebarsdata() {
+    this.service.getsidebarmenu().subscribe({
+      next: (res) => {
+        // Sort items by position
+        this.sidebarItems = res.sort((a: any, b: any) => a.position - b.position);
+        console.log('this.sidebarItems ',this.sidebarItems )
+      },
+      error: (err) => {
+        console.error("Error fetching sidebar data:", err);
+      }
+    });
+  }
 }
 
 

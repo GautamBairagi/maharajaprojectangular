@@ -10,8 +10,8 @@ export class HttpService {
     token:any;
 
     constructor(public http:HttpClient){
-        this.token = localStorage.getItem('token');
-        console.log("https token get", this.token)
+        // this.token = localStorage.getItem('token');
+        // console.log("https token get", this.token)
     }
 
 
@@ -34,15 +34,15 @@ export class HttpService {
 
 
 
-    // get(url: string): Observable<any> {
-    //      const val = new HttpHeaders({
-    //         'Content-type': 'application/json',
-    //         Authorization: `${this.token}`,
-    //       });
-    //     return this.http.get<any>(url,{
-    //         headers:val
-    //     }).pipe(catchError(this.errorHandle))
-    // }
+    get(url: string): Observable<any> {
+         const val = new HttpHeaders({
+            'Content-type': 'application/json',
+            Authkey: `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjc0MSwiZW1haWwiOiJnYXV0YW0xQGdtYWlsLmNvbSIsImlhdCI6MTczMTU3MDUyMywiZXhwIjoxNzMxNTc0MTIzfQ.psqIKlrh1WRcyjKWQS5m3A5gsVcE9A38eTLZhqv0rT0`,
+          });
+        return this.http.get<any>(url,{
+            headers:val
+        }).pipe(catchError(this.errorHandle))
+    }
 
     post(url: string, payload?:any): Observable<any> {
         const opt = new HttpHeaders({
