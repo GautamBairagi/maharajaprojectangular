@@ -5,6 +5,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { UsersComponent } from './pages/users/users.component';
 import { AddUsersComponent } from './shared/add-users/add-users.component';
 import { SidebarSettingComponent } from './pages/sidebar-setting/sidebar-setting.component';
+import { UserGroupPermissionComponent } from './pages/setting/user-group-permission/user-group-permission.component';
 
 const routes: Routes = [
   {
@@ -17,7 +18,7 @@ const routes: Routes = [
         pathMatch:'full'
       },
       {
-        path:'home',
+        path:'Home',
         component:HomeComponent
       },
       {
@@ -29,9 +30,13 @@ const routes: Routes = [
         component:UsersComponent
       },
       {
-        path:'sidebar_setting',
+        path:'Setting',
         component:SidebarSettingComponent
-      }
+      },
+      {
+        path:'user_group_permission',
+        component:UserGroupPermissionComponent
+      },
     ]
   }
 ];

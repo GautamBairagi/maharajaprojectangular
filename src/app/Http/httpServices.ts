@@ -10,14 +10,34 @@ export class HttpService {
     token:any;
 
     constructor(public http:HttpClient){
-        this.token = localStorage.getItem('token');
-        console.log("https token get", this.token)
+        // this.token = localStorage.getItem('token');
+        // console.log("https token get", this.token)
     }
+
+
+    // get(url: string): Observable<any> {
+    //     const val = new HttpHeaders({
+    //       'Content-type': 'application/json',
+    //       Authorization: `${this.token}`,
+    //     });
+      
+    //     return this.http.get<any>(url, {
+    //       headers: val
+    //     }).pipe(
+    //       delay(2000), // delay by 1 second (1000 milliseconds)
+    //       catchError(this.errorHandle)
+    //     );
+    //   }
+
+
+    
+
+
 
     get(url: string): Observable<any> {
          const val = new HttpHeaders({
             'Content-type': 'application/json',
-            Authkey: ` ${'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjc0MiwiZW1haWwiOiJtYXlhbmtAZ21haWwuY29tIiwiaWF0IjoxNzMxNTc2OTY2LCJleHAiOjE3MzE1ODA1NjZ9.AARNo8FQeEPtQmwjnru5FkIuY9PseVHVjVAANP6T-sw'}`,
+            Authkey: ` ${'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjc0MiwiZW1haWwiOiJtYXlhbmtAZ21haWwuY29tIiwiaWF0IjoxNzMxNTgwNzkzLCJleHAiOjE3MzE1ODQzOTN9.5Urqsfne_4N2nVP44RocFfSU753qqdeLbVsoi15lWy8'}`,
           });
         return this.http.get<any>(url,{
             headers:val
@@ -37,7 +57,7 @@ export class HttpService {
     put(url: string, payload?: any,): Observable<any> {
         const opt = new HttpHeaders({
             'Content-type': 'application/json',
-            Authkey: `${'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjc0MiwiZW1haWwiOiJtYXlhbmtAZ21haWwuY29tIiwiaWF0IjoxNzMxNTc2OTY2LCJleHAiOjE3MzE1ODA1NjZ9.AARNo8FQeEPtQmwjnru5FkIuY9PseVHVjVAANP6T-sw'}`,
+            Authkey: `${'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjc0MiwiZW1haWwiOiJtYXlhbmtAZ21haWwuY29tIiwiaWF0IjoxNzMxNTgwNzkzLCJleHAiOjE3MzE1ODQzOTN9.5Urqsfne_4N2nVP44RocFfSU753qqdeLbVsoi15lWy8'}`,
           });
         return this.http.put<any>(url,payload,{
             headers:opt

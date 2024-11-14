@@ -9,6 +9,7 @@ import { UsersComponent } from './pages/users/users.component';
 import { AddUsersComponent } from './shared/add-users/add-users.component';
 import { SidebarSettingComponent } from './pages/sidebar-setting/sidebar-setting.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { UserGroupPermissionComponent } from './pages/setting/user-group-permission/user-group-permission.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     HomeComponent,
     UsersComponent,
     AddUsersComponent,
-    SidebarSettingComponent
+    SidebarSettingComponent,
+    UserGroupPermissionComponent
   ],
   imports: [
     CommonModule,

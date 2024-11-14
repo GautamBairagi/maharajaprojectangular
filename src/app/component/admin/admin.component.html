@@ -177,11 +177,7 @@
                   <div class="accordion-item">
                     <h2 class="accordion-header " id="">
                     
-                      <!-- <button class="accordion-button collapsed mt-3 mb-3" type="button" *ngFor="let side of sideData"
-                        aria-controls="flush-collapsePayroll" style="margin-left: 19px !important; ">
-                        <i class="fas fa-bars"></i> <span style="margin-left: 15px !important;">
-                          <a *ngIf="side.position === 1 || side.visibility === 0"  href="./Expenses.html" class="dropdown-item sidebar-link "></a>{{ side.side_name }}</span>
-                      </button> -->
+                 
 
 
 <!-- <div  *ngFor="let side of sideData">
@@ -199,6 +195,9 @@
 
                     </h2>
                     </div>
+
+
+
      
 
                     <div *ngFor="let side of sideData">
@@ -214,7 +213,7 @@
                                 style="margin-left: 30px !important;">
                           
                           <i ngClass="{{side.icon}}"></i> 
-                          <span style="margin-left: 15px !important;">
+                          <span style="margin-left: 15px !important;" [routerLink]="['/Admin', side.side_name_old]" >
                             {{ side.side_name }}
                           </span>
 
@@ -228,7 +227,7 @@
                           <div class="accordion-body">
                             <ul class="dropulli">
                               <li *ngFor="let submenu of getFilteredSubMenus(side.id)" style="list-style: none;">
-                                <a  class="dropdown-item sidebar-link">{{ submenu.name }}</a>
+                                <a [routerLink]="['/Admin', submenu.old_name]"  class="dropdown-item sidebar-link">{{ submenu.name }}</a>
                               </li>
                             </ul>
                           </div>
@@ -260,30 +259,9 @@
         </button>
       </h2>
       </div>
-          
-     
+        
       </div>
     
-
-
-    <!-- <div class="sidebar">
-        <img src="../../../../../assets/maharaja.png" class="img-fluid" alt="">
-
-        <div id="mySidebar" #mySidebar class="sidebar">
-            <ng-container *ngFor="let item of sidebarItems">
-                <a *ngIf="item.position === 1" style="text-decoration: none;color: #333;margin-left: 8%;"
-                    routerLink="/Admin/home">
-                    <i class="fa-solid fa-right-from-bracket"></i> {{ item.side_name }}
-                </a>
-            </ng-container>
-        </div>
-
-        <div id="main" #main style="background-color: #f4f7fa;"></div>
-    </div> -->
-
-
-
-
     <div class="content">
         <div class="header">
             <div class="search-bar">
