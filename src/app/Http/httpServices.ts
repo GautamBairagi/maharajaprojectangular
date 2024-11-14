@@ -1,15 +1,15 @@
 import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { Observable, catchError,throwError } from "rxjs";
+import { Observable, catchError, throwError } from "rxjs";
 import { Injectable } from "@angular/core";
-import {  delay } from 'rxjs/operators';
+import { delay } from 'rxjs/operators';
 @Injectable({
     providedIn: 'root'
 })
 
 export class HttpService {
-    token:any;
+    token: any;
 
-    constructor(public http:HttpClient){
+    constructor(public http: HttpClient) {
         // this.token = localStorage.getItem('token');
         // console.log("https token get", this.token)
     }
@@ -20,7 +20,7 @@ export class HttpService {
     //       'Content-type': 'application/json',
     //       Authorization: `${this.token}`,
     //     });
-      
+
     //     return this.http.get<any>(url, {
     //       headers: val
     //     }).pipe(
@@ -30,61 +30,61 @@ export class HttpService {
     //   }
 
 
-    
+
 
 
 
     get(url: string): Observable<any> {
-         const val = new HttpHeaders({
+        const val = new HttpHeaders({
             'Content-type': 'application/json',
-            Authkey: ` ${'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjc0MiwiZW1haWwiOiJtYXlhbmtAZ21haWwuY29tIiwiaWF0IjoxNzMxNTgwNzkzLCJleHAiOjE3MzE1ODQzOTN9.5Urqsfne_4N2nVP44RocFfSU753qqdeLbVsoi15lWy8'}`,
-          });
-        return this.http.get<any>(url,{
-            headers:val
+            Authkey: ` ${'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjc0MSwiZW1haWwiOiJnYXV0YW0xQGdtYWlsLmNvbSIsImlhdCI6MTczMTU4MTY3NiwiZXhwIjoxNzMxNTg1Mjc2fQ.JQaYpJNIIZr2nuMZAZxW0tp8YLxWzO_w84rRI3NGkfw'}`,
+        });
+        return this.http.get<any>(url, {
+            headers: val
         }).pipe(catchError(this.errorHandle))
     }
 
-    post(url: string, payload?:any): Observable<any> {
+    post(url: string, payload?: any): Observable<any> {
         const opt = new HttpHeaders({
             'Content-type': 'application/json',
             Authkey: `${this.token}`,
-          });
-        return this.http.post<any>(url,payload,{
-            headers:opt
+        });
+        return this.http.post<any>(url, payload, {
+            headers: opt
         }).pipe(catchError(this.errorHandle))
     }
 
     put(url: string, payload?: any,): Observable<any> {
         const opt = new HttpHeaders({
             'Content-type': 'application/json',
-            Authkey: `${'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjc0MiwiZW1haWwiOiJtYXlhbmtAZ21haWwuY29tIiwiaWF0IjoxNzMxNTgwNzkzLCJleHAiOjE3MzE1ODQzOTN9.5Urqsfne_4N2nVP44RocFfSU753qqdeLbVsoi15lWy8'}`,
-          });
-        return this.http.put<any>(url,payload,{
-            headers:opt
+            Authkey: `${'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjc0MSwiZW1haWwiOiJnYXV0YW0xQGdtYWlsLmNvbSIsImlhdCI6MTczMTU4MTY3NiwiZXhwIjoxNzMxNTg1Mjc2fQ.JQaYpJNIIZr2nuMZAZxW0tp8YLxWzO_w84rRI3NGkfw'}`,
+        });
+        return this.http.put<any>(url, payload, {
+            headers: opt
         }).pipe(catchError(this.errorHandle))
     }
 
 
 
-    patch(url: string, payload?:any): Observable<any> {
+    patch(url: string, payload?: any): Observable<any> {
         const opt = new HttpHeaders({
             'Content-type': 'application/json',
             Authkey: `${this.token}`,
-          });
-        return this.http.patch<any>(url,payload,{
-            headers:opt
+        });
+        return this.http.patch<any>(url, payload, {
+            headers: opt
         }).pipe(catchError(this.errorHandle))
     }
 
     delete(url: string): Observable<any> {
         const val = new HttpHeaders({
-           'Content-type': 'application/json',
-           Authkey: `${this.token}`,
-         });
-       return this.http.delete<any>(url,{
-           headers:val
-       }).pipe(catchError(this.errorHandle))
-   }
+            'Content-type': 'application/json',
+            Authkey: `${this.token}`,
+        });
+        return this.http.delete<any>(url, {
+            headers: val
+        }).pipe(catchError(this.errorHandle))
+    }
 
     errorHandle(error: any) {
         let errorMessage = '';
@@ -95,7 +95,7 @@ export class HttpService {
         }
         console.log(errorMessage);
         return throwError(() => {
-            
+
             return errorMessage;
         });
     }

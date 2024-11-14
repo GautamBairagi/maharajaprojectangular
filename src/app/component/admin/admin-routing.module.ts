@@ -30,7 +30,7 @@ const routes: Routes = [
         component:UsersComponent
       },
       {
-        path:'Setting',
+        path:'setting',
         component:SidebarSettingComponent
       },
       {
