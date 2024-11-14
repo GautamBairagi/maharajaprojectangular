@@ -31,10 +31,4 @@ export class AllService extends HttpService {
   //  getsidebarmenu(): Observable<SidebarItem[]> {
   //    return this.http.get<SidebarItem[]>(this.apiUrl);
   //  }
-
-
-
-
-
-
 }

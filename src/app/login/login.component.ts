@@ -80,13 +80,14 @@ export class LoginComponent implements OnInit {
                 next: (res) => {
                     console.log("res",res)
                     if (res.success) {
-                        sessionStorage.setItem('userId', res.response.userId);
-                        sessionStorage.setItem('group_id', res.response.group_id);
-                        sessionStorage.setItem('group_name', res.response.group_name);
-                        sessionStorage.setItem('first_name', res.response.first_name);
-                        sessionStorage.setItem('last_name', res.response.last_name);
-                        sessionStorage.setItem('token', res.response.token);
-                        sessionStorage.setItem('username', res.response.username);
+                        localStorage.setItem('userId', res.response.userId);
+                        localStorage.setItem('group_id', res.response.group_id);
+                        localStorage.setItem('group_name', res.response.group_name);
+                        localStorage.setItem('first_name', res.response.first_name);
+                        localStorage.setItem('last_name', res.response.last_name);
+                        localStorage.setItem('token', res.response.token);
+                        console.log("login token at login time", res.response.token)
+                        localStorage.setItem('username', res.response.username);
                         this.swet.SucessToast(`${res.response.first_name} ${res.response.last_name} ${res.message}`);
                         this.router.navigate(['Admin'])
                     }
@@ -122,29 +123,29 @@ export class LoginComponent implements OnInit {
     //     }
     // }
 
-    onChanges(data: string) {
-        if (data === 'superadmin') {
-            this.loginForm.controls['email'].setValue('superadmin@gmail.com');
-            this.loginForm.controls['password'].setValue('superadmin');
-        } else if (data === 'doctor') {
-            this.loginForm.controls['email'].setValue('mayank@gmail.com');
-            this.loginForm.controls['password'].setValue('mayank@123');
-        }
-        else if (data === 'nurse') {
-            // this.form.controls['mobileNumber'].setValue('+919644605330');
-            this.loginForm.controls['email'].setValue('nurse@gmail.com');
-            this.loginForm.controls['password'].setValue('nurse');
-        }
-        else if (data === 'patient') {
-            // this.form.controls['mobileNumber'].setValue('+919644605330');
-            this.loginForm.controls['email'].setValue('patient@gmail.com');
-            this.loginForm.controls['password'].setValue('patient');
-        }
-    }
+    // onChanges(data: string) {
+    //     if (data === 'superadmin') {
+    //         this.loginForm.controls['email'].setValue('superadmin@gmail.com');
+    //         this.loginForm.controls['password'].setValue('superadmin');
+    //     } else if (data === 'doctor') {
+    //         this.loginForm.controls['email'].setValue('mayank@gmail.com');
+    //         this.loginForm.controls['password'].setValue('mayank@123');
+    //     }
+    //     else if (data === 'nurse') {
+    //         // this.form.controls['mobileNumber'].setValue('+919644605330');
+    //         this.loginForm.controls['email'].setValue('nurse@gmail.com');
+    //         this.loginForm.controls['password'].setValue('nurse');
+    //     }
+    //     else if (data === 'patient') {
+    //         // this.form.controls['mobileNumber'].setValue('+919644605330');
+    //         this.loginForm.controls['email'].setValue('patient@gmail.com');
+    //         this.loginForm.controls['password'].setValue('patient');
+    //     }
+    // }
 
 
     onChangess() {
-            this.loginForm.controls['email'].setValue('mr_rehan@gmail.com');
+            this.loginForm.controls['email'].setValue('gautam1@gmail.com');
             this.loginForm.controls['password'].setValue('123');
     }
 

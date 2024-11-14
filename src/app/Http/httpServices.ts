@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable, catchError,throwError } from "rxjs";
 import { Injectable } from "@angular/core";
-
+import {  delay } from 'rxjs/operators';
 @Injectable({
     providedIn: 'root'
 })
@@ -10,14 +10,14 @@ export class HttpService {
     token:any;
 
     constructor(public http:HttpClient){
-        this.token = sessionStorage.getItem('token');
-        
+        this.token = localStorage.getItem('token');
+        console.log("https token get", this.token)
     }
 
     get(url: string): Observable<any> {
          const val = new HttpHeaders({
             'Content-type': 'application/json',
-            Authkey: ` ${'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjc0MiwiZW1haWwiOiJtYXlhbmtAZ21haWwuY29tIiwiaWF0IjoxNzMxNTAyMTQwLCJleHAiOjE3MzE1MDU3NDB9.MOSYLutYs7td6TXTE7mhyf3w_TiK14lNupb70fyFXB4'}`,
+            Authkey: ` ${'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjczOSwiZW1haWwiOiJtcl9yZWhhbkBnbWFpbC5jb20iLCJpYXQiOjE3MzE1NzAzMDQsImV4cCI6MTczMTU3MzkwNH0.7IzisKg6sSQ2xUQkn_BNRjrFqvMLMOQeC-xcEFmwBx8'}`,
           });
         return this.http.get<any>(url,{
             headers:val
@@ -69,10 +69,8 @@ export class HttpService {
     errorHandle(error: any) {
         let errorMessage = '';
         if (error.error instanceof ErrorEvent) {
-            // Get client-side error
             errorMessage = error.error.message;
         } else {
-            // Get server-side error
             errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
         }
         console.log(errorMessage);

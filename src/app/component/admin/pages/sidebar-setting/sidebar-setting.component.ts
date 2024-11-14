@@ -22,6 +22,7 @@ export class SidebarSettingComponent implements OnInit {
   getSideMenus(){
     this.api.getsidebarmenu().subscribe((res:any)=>{
       this.allMenus =res;
+      this.allMenus = res.sort((a: any, b: any) => a.position - b.position);
     })
   }
 
@@ -64,6 +65,8 @@ export class SidebarSettingComponent implements OnInit {
     this.api.updateMenu(url, payload, { headers }).subscribe(
       (response) => {
         console.log('Drag and drop data sent successfully:', response);
+        
+        window.location.reload()
       },
       (error) => {
         console.error('Error sending drag and drop data:', error);
