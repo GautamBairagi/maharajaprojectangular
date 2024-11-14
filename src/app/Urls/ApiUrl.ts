@@ -16,6 +16,5 @@ export const superAdminEndPoints = {
     superAdminLogin: `${baseUrl}login`,
     createusers: `${baseUrl}createuser`,
     getsidebar: `${baseUrl}sidebars`,
-    
-
+    updateSidebar: `${baseUrl}sidebar`,
 }

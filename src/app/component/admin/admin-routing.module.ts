@@ -4,6 +4,7 @@ import { AdminComponent } from './admin.component';
 import { HomeComponent } from './pages/home/home.component';
 import { UsersComponent } from './pages/users/users.component';
 import { AddUsersComponent } from './shared/add-users/add-users.component';
+import { SidebarSettingComponent } from './pages/sidebar-setting/sidebar-setting.component';
 
 const routes: Routes = [
   {
@@ -26,6 +27,10 @@ const routes: Routes = [
       {
         path:'viewusers',
         component:UsersComponent
+      },
+      {
+        path:'sidebar_setting',
+        component:SidebarSettingComponent
       }
     ]
   }

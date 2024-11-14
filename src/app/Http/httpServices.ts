@@ -17,7 +17,7 @@ export class HttpService {
     get(url: string): Observable<any> {
          const val = new HttpHeaders({
             'Content-type': 'application/json',
-            authkey: `${this.token}`,
+            Authkey: ` ${'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjc0MiwiZW1haWwiOiJtYXlhbmtAZ21haWwuY29tIiwiaWF0IjoxNzMxNTAyMTQwLCJleHAiOjE3MzE1MDU3NDB9.MOSYLutYs7td6TXTE7mhyf3w_TiK14lNupb70fyFXB4'}`,
           });
         return this.http.get<any>(url,{
             headers:val
@@ -27,7 +27,7 @@ export class HttpService {
     post(url: string, payload?:any): Observable<any> {
         const opt = new HttpHeaders({
             'Content-type': 'application/json',
-            authkey: `${this.token}`,
+            Authkey: `${this.token}`,
           });
         return this.http.post<any>(url,payload,{
             headers:opt
@@ -37,7 +37,7 @@ export class HttpService {
     put(url: string, payload?:any): Observable<any> {
         const opt = new HttpHeaders({
             'Content-type': 'application/json',
-            authkey: `${this.token}`,
+            Authkey: `${'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjc0MiwiZW1haWwiOiJtYXlhbmtAZ21haWwuY29tIiwiaWF0IjoxNzMxNTAyMTQwLCJleHAiOjE3MzE1MDU3NDB9.MOSYLutYs7td6TXTE7mhyf3w_TiK14lNupb70fyFXB4'}`,
           });
         return this.http.put<any>(url,payload,{
             headers:opt
@@ -49,7 +49,7 @@ export class HttpService {
     patch(url: string, payload?:any): Observable<any> {
         const opt = new HttpHeaders({
             'Content-type': 'application/json',
-            authkey: `${this.token}`,
+            Authkey: `${this.token}`,
           });
         return this.http.patch<any>(url,payload,{
             headers:opt
@@ -59,7 +59,7 @@ export class HttpService {
     delete(url: string): Observable<any> {
         const val = new HttpHeaders({
            'Content-type': 'application/json',
-           authkey: `${this.token}`,
+           Authkey: `${this.token}`,
          });
        return this.http.delete<any>(url,{
            headers:val

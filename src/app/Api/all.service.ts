@@ -22,10 +22,12 @@ export class AllService extends HttpService {
     return this.get(superAdminEndPoints.getsidebar)
    }
 
-  //  private apiUrl = superAdminEndPoints.getsidebar;
+   updateMenu(url: string, payload: any, options?: { headers: HttpHeaders }): Observable<any> {
+    return this.http.put(url, payload, options);
+  }
 
+  //  private apiUrl = superAdminEndPoints.getsidebar;
   
- 
   //  getsidebarmenu(): Observable<SidebarItem[]> {
   //    return this.http.get<SidebarItem[]>(this.apiUrl);
   //  }

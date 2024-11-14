@@ -7,6 +7,8 @@ import { HomeComponent } from './pages/home/home.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { UsersComponent } from './pages/users/users.component';
 import { AddUsersComponent } from './shared/add-users/add-users.component';
+import { SidebarSettingComponent } from './pages/sidebar-setting/sidebar-setting.component';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 
 @NgModule({
@@ -14,12 +16,14 @@ import { AddUsersComponent } from './shared/add-users/add-users.component';
     AdminComponent,
     HomeComponent,
     UsersComponent,
-    AddUsersComponent
+    AddUsersComponent,
+    SidebarSettingComponent
   ],
   imports: [
     CommonModule,
     AdminRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    DragDropModule
   ]
 })
 export class AdminModule { }
