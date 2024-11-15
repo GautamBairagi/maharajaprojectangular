@@ -2,17 +2,69 @@
     
     <div class="row">
         
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+          <div class="three">
+            <h1>Side Menus</h1>
+          </div>
             <div cdkDropList (cdkDropListDropped)="onDrop($event)">
               <div *ngFor="let name of allMenus" cdkDrag>
-                <div class="card m-1" >
-                  <div class="card-body"  >
-                     {{ name.id }} / {{ name.side_name }}
+                <div class="card m-1">
+                  <div class="card-body">
+                     {{ name.position }} - {{ name.side_name }}
+                     <i (click)="sideMenuById(name.id)" class="fa-regular fa-pen-to-square corner-icon" data-bs-toggle="modal" data-bs-target="#exampleModal" style="cursor: pointer;"></i>
+                     <i class="fa-solid fa-bars corner-icon"></i>
                   </div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content" *ngFor="let edit of ByIdsideMenu">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Edit  {{ edit.side_name }} </h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" >
+       
+        <form #userForm="ngForm" (ngSubmit)="editMenu()">
+          <input type="text" id="side_name" [(ngModel)]="ByIdsideMenu.side_name" name="side_name" class="form-control" placeholder="Enter new name here">
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Save changes</button>
+          </div>
+        </form>
+      </div>
+     
+    </div>
+  </div>
+</div>
                 </div>
               </div>
             </div>
         </div>
+
+        
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+          <div class="three">
+            <h1>Sub Side Menus</h1>
+          </div>
+          <div  *ngFor="let group of subMenuGroups" class="card mt-2">
+            <div class="card-header">
+              {{ group.parent_name }}
+            </div>
+            <div class="card-body"  >
+              <div cdkDropList  (cdkDropListDropped)="onDropsub($event)" >
+                
+                <div *ngFor="let sub of group.subMenus" cdkDrag>
+                  <h6 class="card-title">{{ sub.name }} <i class="fa-solid fa-bars corner-icon"></i></h6>
+                </div>
+              </div>
+             
+            </div>
+          </div>
+          
+        </div>
+        
       
     </div>
     
