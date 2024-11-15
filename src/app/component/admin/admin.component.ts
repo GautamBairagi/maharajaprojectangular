@@ -33,7 +33,7 @@ export class AdminComponent implements OnInit {
     localStorage.removeItem('group_name');
     localStorage.removeItem('first_name');
     localStorage.removeItem('last_name');
-    localStorage.removeItem('token');
+    localStorage.removeItem('user_token');
     localStorage.removeItem('username');
     this.router.navigateByUrl("/", { replaceUrl: true })
 }
@@ -73,6 +73,46 @@ getSubMenus() {
 getFilteredSubMenus(parentId: number) {
   return this.subMenuData.filter(sub => sub.parent_id === parentId);
 }
+
+
+
+// handelclick(){
+//   forkJoin([this.getsidefirst(),this.getsecond()]).subscribe({
+//   next:(res)=>{
+//     // res[0] first api data
+//     // res[1] first api data
+//   },
+//   error:(err)=>{
+
+//   }
+//   })
+// }
+
+// getsidefirst(){
+//   this.service.getsidebarmenu().subscribe({
+//       next: (res) => {
+     
+//           console.log("res sidebar data",res)
+//           this.sideData = res
+//       },
+//       error: (err) => {
+//           console.log(err);
+//       }
+//   });
+// }
+
+
+// getsecond(){
+//   this.service.getsidebarmenu().subscribe({
+//       next: (res) => {
+//           console.log("res sidebar data",res)
+//           this.sideData = res
+//       },
+//       error: (err) => {
+//           console.log(err);
+//       }
+//   });
+// }
 
 
 }

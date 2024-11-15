@@ -57,12 +57,15 @@ export class SidebarSettingComponent implements OnInit {
       old_position: replacedItemPosition
     };
 
-    const headers = new HttpHeaders({
-      'Content-type': 'application/json',
-      'Authkey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjc0MiwiZW1haWwiOiJtYXlhbmtAZ21haWwuY29tIiwiaWF0IjoxNzMxNTc2OTY2LCJleHAiOjE3MzE1ODA1NjZ9.AARNo8FQeEPtQmwjnru5FkIuY9PseVHVjVAANP6T-sw'
-    });
+    // const headers = new HttpHeaders({
+    //   'Content-type': 'application/json',
+    //   'Authkey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjc0MiwiZW1haWwiOiJtYXlhbmtAZ21haWwuY29tIiwiaWF0IjoxNzMxNTc2OTY2LCJleHAiOjE3MzE1ODA1NjZ9.AARNo8FQeEPtQmwjnru5FkIuY9PseVHVjVAANP6T-sw'
+    // });
 
-    this.api.updateMenu(url, payload, { headers }).subscribe(
+    this.api.updateMenu(url, payload, 
+      // { headers }
+
+    ).subscribe(
       (response) => {
         console.log('Drag and drop data sent successfully:', response);
         

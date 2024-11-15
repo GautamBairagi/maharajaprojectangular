@@ -15,75 +15,66 @@ export class HttpService {
     }
 
 
-    // get(url: string): Observable<any> {
-    //     const val = new HttpHeaders({
-    //       'Content-type': 'application/json',
-    //       Authorization: `${this.token}`,
-    //     });
-
-    //     return this.http.get<any>(url, {
-    //       headers: val
-    //     }).pipe(
-    //       delay(2000), // delay by 1 second (1000 milliseconds)
-    //       catchError(this.errorHandle)
-    //     );
-    //   }
-
-
-
-
-
-
     get(url: string): Observable<any> {
-        const val = new HttpHeaders({
-            'Content-type': 'application/json',
-            Authkey: ` ${'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjc0MSwiZW1haWwiOiJnYXV0YW0xQGdtYWlsLmNvbSIsImlhdCI6MTczMTU4MTY3NiwiZXhwIjoxNzMxNTg1Mjc2fQ.JQaYpJNIIZr2nuMZAZxW0tp8YLxWzO_w84rRI3NGkfw'}`,
-        });
-        return this.http.get<any>(url, {
-            headers: val
-        }).pipe(catchError(this.errorHandle))
+        // const val = new HttpHeaders({
+        //     'Content-type': 'application/json',
+        //     Authkey: ` ${'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjc0MSwiZW1haWwiOiJnYXV0YW0xQGdtYWlsLmNvbSIsImlhdCI6MTczMTU4MTY3NiwiZXhwIjoxNzMxNTg1Mjc2fQ.JQaYpJNIIZr2nuMZAZxW0tp8YLxWzO_w84rRI3NGkfw'}`,
+        // });
+        return this.http.get<any>(url,
+        //      {
+        //     headers: val
+        // }
+    ).pipe(catchError(this.errorHandle))
     }
 
     post(url: string, payload?: any): Observable<any> {
-        const opt = new HttpHeaders({
-            'Content-type': 'application/json',
-            Authkey: `${this.token}`,
-        });
-        return this.http.post<any>(url, payload, {
-            headers: opt
-        }).pipe(catchError(this.errorHandle))
+        // const opt = new HttpHeaders({
+        //     'Content-type': 'application/json',
+        //     Authkey: `${this.token}`,
+        // });
+        return this.http.post<any>(url, payload,
+        //      {
+        //     headers: opt
+        // }
+    ).pipe(catchError(this.errorHandle))
     }
 
     put(url: string, payload?: any,): Observable<any> {
-        const opt = new HttpHeaders({
-            'Content-type': 'application/json',
-            Authkey: `${'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjc0MSwiZW1haWwiOiJnYXV0YW0xQGdtYWlsLmNvbSIsImlhdCI6MTczMTU4MTY3NiwiZXhwIjoxNzMxNTg1Mjc2fQ.JQaYpJNIIZr2nuMZAZxW0tp8YLxWzO_w84rRI3NGkfw'}`,
-        });
-        return this.http.put<any>(url, payload, {
-            headers: opt
-        }).pipe(catchError(this.errorHandle))
+        // const opt = new HttpHeaders({
+        //     'Content-type': 'application/json',
+        //     Authkey: `${'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjc0MSwiZW1haWwiOiJnYXV0YW0xQGdtYWlsLmNvbSIsImlhdCI6MTczMTU4MTY3NiwiZXhwIjoxNzMxNTg1Mjc2fQ.JQaYpJNIIZr2nuMZAZxW0tp8YLxWzO_w84rRI3NGkfw'}`,
+        // });
+        return this.http.put<any>(url, payload, 
+        //     {
+        //     headers: opt
+        // }
+    ).pipe(catchError(this.errorHandle))
     }
 
 
 
     patch(url: string, payload?: any): Observable<any> {
-        const opt = new HttpHeaders({
-            'Content-type': 'application/json',
-            Authkey: `${this.token}`,
-        });
-        return this.http.patch<any>(url, payload, {
-            headers: opt
-        }).pipe(catchError(this.errorHandle))
+        // const opt = new HttpHeaders({
+        //     'Content-type': 'application/json',
+        //     Authkey: `${this.token}`,
+        // });
+        return this.http.patch<any>(url, payload,
+        //      {
+        //     headers: opt
+        // }
+    ).pipe(catchError(this.errorHandle))
     }
 
     delete(url: string): Observable<any> {
-        const val = new HttpHeaders({
-            'Content-type': 'application/json',
-            Authkey: `${this.token}`,
-        });
-        return this.http.delete<any>(url, {
-            headers: val
-        }).pipe(catchError(this.errorHandle))
+        // const val = new HttpHeaders({
+        //     'Content-type': 'application/json',
+        //     Authkey: `${this.token}`,
+        // });
+        return this.http.delete<any>(url,
+        //      {
+        //     headers: val
+        // }
+    ).pipe(catchError(this.errorHandle))
     }
 
     errorHandle(error: any) {

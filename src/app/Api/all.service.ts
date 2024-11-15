@@ -37,6 +37,11 @@ export class AllService extends HttpService {
     return this.http.put(url, payload, options);
   }
 
+  getToken(){
+    return localStorage.getItem("user_token")
+   }
+
+
   // updateMenu(url: string, payload: any){
   //   return this.put(superAdminEndPoints.updateSidebar , url , payload)
   // }
