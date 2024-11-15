@@ -10,14 +10,19 @@ import { SweetalertssService } from 'src/app/sweetalertss.service';
   styleUrls: ['./admin.component.css']
 })
 export class AdminComponent implements OnInit {
+
+ 
   loginForm!:FormGroup;
   constructor(
     private router:Router,
     private fb: FormBuilder,
     private service:AllService,
     private swet :SweetalertssService,
-  ){}
+  ){
+   
+  }
 
+ 
 
   ngOnInit(): void {
     this.getsidebarsdata();

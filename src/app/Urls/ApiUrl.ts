@@ -17,8 +17,9 @@ export const superAdminEndPoints = {
     createusers: `${baseUrl}createuser`,
     getsidebar: `${baseUrl}sidebars`,
     SidebarByID: `${baseUrl}sidebar_details/`,
+    SubSidebarByID: `${baseUrl}subsidebar_details/`,
     updateSidebar: `${baseUrl}sidebar`,
     getSubMenu: `${baseUrl}subsidebars`,
     getUsers: `${baseUrl}users`,
-   
+    rooms: `${baseUrl}room`,
 }

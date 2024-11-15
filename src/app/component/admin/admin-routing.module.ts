@@ -6,6 +6,7 @@ import { UsersComponent } from './pages/users/users.component';
 import { AddUsersComponent } from './shared/add-users/add-users.component';
 import { SidebarSettingComponent } from './pages/sidebar-setting/sidebar-setting.component';
 import { UserGroupPermissionComponent } from './pages/setting/user-group-permission/user-group-permission.component';
+import { RoomsComponent } from './pages/rooms/rooms.component';
 
 const routes: Routes = [
   {
@@ -36,6 +37,10 @@ const routes: Routes = [
       {
         path:'user_group_permission',
         component:UserGroupPermissionComponent
+      },
+      {
+        path:'Projects',
+        component:RoomsComponent
       },
     ]
   }

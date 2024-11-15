@@ -14,28 +14,89 @@ export class SidebarSettingComponent implements OnInit {
   updatesideMenu:FormGroup;
   edit: any;
 
+  headerColor: string;
+  sidebarColor: string;
+  headerFontColor: string;
+  sidebarFontColor: string;
+
+
   constructor(private api:AllService, private http: HttpClient,private fb:FormBuilder){
     this.updatesideMenu = this.fb.group({
       // id: new FormControl(''),
       side_name: [''],
     });
+
+    this.headerColor = this.api.getHeaderColor();
+    this.sidebarColor = this.api.getSidebarColor();
+    this.headerFontColor = this.api.getHeaderFontColor();
+    this.sidebarFontColor = this.api.getSidebarFontColor();
   }
 
-  editMenu(){
-    this.api.editSideMenuName(this.id, this.ByIdsideMenu).subscribe((res:any)=>{
-    })
+  updateHeaderColor(color: string) {
+    this.api.setHeaderColor(color);
+  }
+
+  updateSidebarColor(color: string) {
+    this.api.setSidebarColor(color);
+  }
+
+  updateHeaderFontColor(color: string) {
+    this.api.setHeaderFontColor(color);
+  }
+
+  updateSidebarFontColor(color: string) {
+    this.api.setSidebarFontColor(color);
+  }
+
+  // editMenu(){
+  //   this.api.editSideMenuName(this.id, this.ByIdsideMenu).subscribe((res:any)=>{
+  //   })
+  // }
+
+  editMenu() {
+    const updatedData = { id: this.id, side_name: this.ByIdsideMenu.side_name };
+
+    this.api.editSideMenuName(this.id, updatedData).subscribe(
+      (res: any) => {
+        console.log('Menu updated successfully!', res);
+        window.location.reload()
+      },
+      (err: any) => {
+        console.error('Error updating menu', err);
+      }
+    );
+  }
+
+  editSubMenu() {
+    const updatedData = { id: this.id, name: this.ByIdsubMenu.name };
+
+    this.api.editSubSideMenuName(this.id, updatedData).subscribe(
+      (res: any) => {
+        console.log(' Sub Menu updated successfully!', res);
+        window.location.reload()
+      },
+      (err: any) => {
+        console.error('Error updating menu', err);
+      }
+    );
   }
 
   id:any;
-  ByIdsideMenu:any=[];
+  ByIdsideMenu:any= [];
+  ByIdsubMenu:any= [];
+
   sideMenuById(data: any) {
-    this.id = data
-    console.log("daataaaaa", this.id)
+    this.id = data;
     this.api.sibeMenuById(data).subscribe((res: any) => {
-      this.ByIdsideMenu = res;
-      // this.updatesideMenu.patchValue({ id: this.edit.id });
-      
-    })
+      this.ByIdsideMenu = res; // Assuming 'res' is the object for the specific menu item
+    });
+  }
+
+  subSideMenuById(data: any) {
+    this.id = data;
+    this.api.subSideMenuById(data).subscribe((res: any) => {
+      this.ByIdsubMenu = res; // Assuming 'res' is the object for the specific menu item
+    });
   }
 
   ngOnInit(): void {
@@ -68,12 +129,11 @@ export class SidebarSettingComponent implements OnInit {
         return acc;
       }, {});
   
-      this.subMenuGroups = res.sort((a: any, b: any) => a.position - b.position);
 this.subMenuGroups = res;
       // Convert the grouped object into an array
       this.subMenuGroups = Object.keys(grouped).map(parentName => ({
         parent_name: parentName,
-        subMenus: grouped[parentName]
+        subMenus: grouped[parentName].sort((a: any, b: any) => a.position - b.position)
       }));
     });
   }
@@ -137,10 +197,10 @@ this.subMenuGroups = res;
     const flatSubMenus = this.subMenuGroups.flatMap(group => group.subMenus);
   
     // Retrieve IDs and positions of dragged and replaced items
-    const draggedItemId = flatSubMenus[event.previousIndex].id;
-    const draggedItemPosition = flatSubMenus[event.previousIndex].position;
-    const replacedItemId = flatSubMenus[event.currentIndex].id;
-    const replacedItemPosition = flatSubMenus[event.currentIndex].position;
+    const draggedItemId2 = flatSubMenus[event.previousIndex].id;
+    const draggedItemPosition2 = flatSubMenus[event.previousIndex].position;
+    const replacedItemId2 = flatSubMenus[event.currentIndex].id;
+    const replacedItemPosition2 = flatSubMenus[event.currentIndex].position;
   
     // Reorder in the flat array
     moveItemInArray(flatSubMenus, event.previousIndex, event.currentIndex);
@@ -155,16 +215,16 @@ this.subMenuGroups = res;
   
     // Send updated data to the server
     this.sendDragAndDropDataToServerSub(
-      draggedItemId,
-      replacedItemId,
-      draggedItemPosition,
-      replacedItemPosition
+      draggedItemId2,
+      replacedItemId2,
+      draggedItemPosition2,
+      replacedItemPosition2
     );
 
-    console.log( draggedItemId,
-      replacedItemId,
-      draggedItemPosition,
-      replacedItemPosition)
+    console.log( draggedItemId2,
+      replacedItemId2,
+      draggedItemPosition2,
+      replacedItemPosition2)
   }
 
   groupByParentName(flatSubMenus: any[]) {
@@ -183,17 +243,17 @@ this.subMenuGroups = res;
   }
   
   sendDragAndDropDataToServerSub(
-    draggedItemId: number,
-    replacedItemId: number,
-    draggedItemPosition: number,
-    replacedItemPosition: number
+    draggedItemId2: number,
+    replacedItemId2: number,
+    draggedItemPosition2: number,
+    replacedItemPosition2: number
   ) {
     const url = 'http://192.168.1.231:5000/subsidebar';
     const payload = {
-      first_id: replacedItemId,
-      last_id: draggedItemId,
-      new_position: draggedItemPosition,
-      old_position: replacedItemPosition
+      first_id: replacedItemId2,
+      last_id: draggedItemId2,
+      new_position: draggedItemPosition2,
+      old_position: replacedItemPosition2
     };
   
   
