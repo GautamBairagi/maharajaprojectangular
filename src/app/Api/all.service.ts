@@ -50,12 +50,36 @@ export class AllService extends HttpService {
   }
 
   getToken(){
-    return localStorage.getItem("user_token")
+    const tokkn= localStorage.getItem("user_token");
+    const wspace= localStorage.getItem("workspace_id");
+    return {tokkn,wspace}
    }
 
   updateSubMenu(url: string, payload: any, options?: { headers: HttpHeaders }): Observable<any> {
     return this.http.put(url, payload, options);
   }
+
+
+  
+
+ 
+
+   
+   getuserById(id:any){
+    return this.get(superAdminEndPoints.getUsersByid + id )
+   }
+
+
+   userupdatedss(id:any, data:any){
+    return this.put(superAdminEndPoints.Usersupdate + id, data )
+   }
+
+
+
+
+
+
+   
 
   // updateMenu(url: string, payload: any){
   //   return this.put(superAdminEndPoints.updateSidebar , url , payload)

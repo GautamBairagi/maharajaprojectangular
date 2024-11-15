@@ -1,0 +1,11 @@
+.modal-content {
+    padding: 20px;
+    border-radius: 8px;
+  }
+  .form-group {
+    margin-bottom: 15px;
+  }
+
+  .text-danger{
+    color: red;
+  }

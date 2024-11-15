@@ -211,9 +211,9 @@
                         <button *ngIf="side.visibility === 1 || side.position === 1" 
                                 class="btn  mt-3 mb-3" 
                                 type="button" 
-                                style="margin-left: 19px !important;">
+                                style="margin-left: 19px !important;" [routerLink]="['/Admin', side.side_name_old]">
                           <i ngClass="{{side.icon}}"></i> 
-                          <span style="margin-left: 15px !important;" [routerLink]="['/Admin', side.side_name_old]">
+                          <span style="margin-left: 15px !important;" >
                             {{ side.side_name }}
                           </span>
                         </button>
