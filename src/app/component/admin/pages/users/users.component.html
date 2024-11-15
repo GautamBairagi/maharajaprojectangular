@@ -1,14 +1,11 @@
-
-
 <div class="col-lg-12 col-md-12 d-flex  gap-2  mt-2 "
-style="background-color: #F7F7F7; white-space: wrap ; height: 70px;">
-<h5 class="fs-4 mt-3 text-center p-2" style="color: #777;">User List</h5> <span><button type="button"
-  class="btn text-white mt-3" style="background-color: #868e92;" ><span><i
+  style="background-color: #F7F7F7; white-space: wrap ; height: 70px;">
+  <h5 class="fs-4 mt-3 text-center p-2" style="color: #777;">User List</h5> <span><button type="button"
+      (click)="onclick()" class="btn text-white mt-3" style="background-color: #868e92;"><span><i
           class="fa-sharp fa-solid fa-plus"></i></span> Add</button></span>
 </div>
-
 <div class="" style="overflow-x: scroll;">
-  <table class="table table-bordered table-hover table-striped ">y
+  <table class="table table-bordered table-hover table-striped ">
     <thead class="" style="font-size: 13px; text-wrap: nowrap; ">
       <tr>
         <th>Id</th>
@@ -17,6 +14,7 @@ style="background-color: #F7F7F7; white-space: wrap ; height: 70px;">
         <th>Active</th>
         <th>Role</th>
         <th>Action</th>
+        <!-- <th>edit</th> -->
       </tr>
     </thead>
     <tbody style="text-wrap: nowrap;" class="">
@@ -24,15 +22,16 @@ style="background-color: #F7F7F7; white-space: wrap ; height: 70px;">
         <td>{{a.id }}</td>
         <td>
           <img [src]="a.profile" style="width: 50px; height: 50px;" alt="">
-          {{a.first_name }} {{a.last_name}}
+          {{a.first_name}} {{a.last_name}}
+          <i class="fa fa-edit" style="cursor: pointer; margin-left: 10px; color: rgb(64, 64, 250);"
+            (click)="ById(a.id)" data-bs-toggle="modal" data-bs-target="#exampleModal"></i>
         </td>
         <td>{{a.email }}</td>
         <td><button class="btn btn-success">Status</button></td>
         <td>{{a.group_name }}</td>
-
         <div class="dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <span id="profileDropdown" style="justify-content: center;">
-            <i class="fa-solid fa-ellipsis-vertical" ></i>
+            <i class="fa-solid fa-ellipsis-vertical"></i>
           </span>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="profileDropdown">
             <a class="dropdown-item">
@@ -55,7 +54,87 @@ style="background-color: #F7F7F7; white-space: wrap ; height: 70px;">
             </a>
           </div>
         </div>
-        
+        <td>
+          <button (click)="ById(a.id)" class="btn btn-primary bg-transparent m-1" style="color: #438eb9;"
+            data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-pen-to-square"></i></button>
+          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog  modal-lg">
+              <div class="modal-content text-start">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Users</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <form #userForm="ngForm" (ngSubmit)="updateusers()">
+                    <div class="form-row">
+                      <div class="form-group col-md-6">
+                        <label for="name">First Name</label>
+                        <input type="text" class="form-control" id="first_name"  [(ngModel)]="userByIdData.first_name"
+                          name="first_name" required />
+                      </div>
+                      <div class="form-group col-md-6">
+                        <label>Last Name</label>
+                        <input type="text" class="form-control" id="last_name"  [(ngModel)]="userByIdData.last_name"
+                          name="last_name" required />
+                      </div>
+                    </div>
+
+                    <div class="form-row">
+                      <div class="form-group col-md-6">
+                        <label>Email</label>
+                        <input type="text" class="form-control" id="email"  [(ngModel)]="userByIdData.email"
+                          name="email" required />
+                      </div>
+                      <div class="form-group col-md-6">
+                        <label>Password</label>
+                        <input type="text" class="form-control" id="password"  [(ngModel)]="userByIdData.password"
+                          name="password" required />
+
+                      </div>
+                    </div>
+
+
+
+                    <div class="form-row">
+                      <div class="form-group col-md-6">
+                        <label>Date of Birth</label>
+                        <input type="text" class="form-control" id="date_of_birth"  [(ngModel)]="userByIdData.date_of_birth"
+                          name="date_of_birth" required />
+                      </div>
+                      <div class="form-group col-md-6">
+                        <label>Date of Joining</label>
+                        <input type="text" class="form-control" id="date_of_joining"  [(ngModel)]="userByIdData.date_of_joining"
+                          name="date_of_joining" required />
+                      </div>
+                    </div>
+
+                    <div class="form-row">
+                      <div class="form-group col-md-6">
+                        <label>Phone</label>
+                        <input type="text" class="form-control" id="phone"  [(ngModel)]="userByIdData.phone"
+                          name="phone" required />
+                      </div>
+                      <div class="form-group col-md-6">
+                        <label>Designation</label>
+                        <input type="text" class="form-control" id="designation"  [(ngModel)]="userByIdData.designation"
+                          name="designation" required />
+                      </div>
+                    </div>
+                    <button type="submit"  class="btn btn-success m-1">Save</button>
+                    <button type="button" class="btn btn-danger" type="button"  data-bs-dismiss="modal" aria-label="Close">cancel</button>
+
+
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+         
+          
+        </td>
+
+
       </tr>
     </tbody>
   </table>

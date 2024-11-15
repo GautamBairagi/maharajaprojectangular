@@ -86,7 +86,6 @@ export class LoginComponent implements OnInit {
                         localStorage.setItem('first_name', res.response.first_name);
                         localStorage.setItem('last_name', res.response.last_name);
                         localStorage.setItem('user_token', res.response.token);
-                        console.log("login token at login time", res.response.token)
                         localStorage.setItem('username', res.response.username);
                         this.swet.SucessToast(`${res.response.first_name} ${res.response.last_name} ${res.message}`);
                         this.router.navigate(['Admin'])

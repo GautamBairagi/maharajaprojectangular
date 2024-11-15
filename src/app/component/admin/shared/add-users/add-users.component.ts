@@ -12,6 +12,7 @@ import { SweetalertssService } from 'src/app/sweetalertss.service';
 export class AddUsersComponent implements OnInit {
 
 
+
   loginForm!:FormGroup;
   constructor(
     private router:Router,
@@ -20,21 +21,32 @@ export class AddUsersComponent implements OnInit {
     private swet :SweetalertssService,
    
   ){
-   
+    const userIdString = localStorage.getItem('userId');
+    this.userId = userIdString ? parseInt(userIdString, 10) : null;
+  
   }
-
+  userId:any
   ck: boolean = false;
  
 
   ngOnInit(): void {
     this.loginForm = this.fb.group({
-        email: ['', Validators.required],
-        username: ['', Validators.required],
+        email: ['',  [Validators.required, Validators.email]],
         password: ['', Validators.required],
+        first_name :['',Validators.required ],
+        last_name :['', ],
+        active :[1],
+        group_id :[2],
+        profile :['',],
+        date_of_birth :['', ],
+        date_of_joining :['', ],
+        gender :['', ],
+        designation :['', ],
+        phone :['', Validators.required],
     });
+  
+  
 }
-
-
 
 
 addusers() {
@@ -47,7 +59,7 @@ addusers() {
           next: (res) => {
               console.log("res",res)
               if (res.success) {
-                  this.router.navigate(['home'])
+                  this.router.navigate(['/Admin/Users'])
               }
           },
           error: (err) => {
@@ -56,5 +68,10 @@ addusers() {
       });
   }
 }
+
+cancel(){
+  this.router.navigate(['/Admin/Users'])
+}
+
 
 }

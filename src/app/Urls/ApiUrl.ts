@@ -7,7 +7,7 @@ const baseUrl = 'http://192.168.1.231:5000/';
 // const token = localStorage.getItem('token');
 // console.log("apiurls token get", token)
 
-
+// Usersupdate: `${baseUrl}editUser/`,
 
 
 
@@ -22,4 +22,7 @@ export const superAdminEndPoints = {
     getSubMenu: `${baseUrl}subsidebars`,
     getUsers: `${baseUrl}users`,
     rooms: `${baseUrl}room`,
+    getUsersByid: `${baseUrl}users_details/`, // uiser get by id
+    Usersupdate: `${baseUrl}editUser/`,
+   
 }
