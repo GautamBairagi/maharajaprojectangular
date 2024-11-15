@@ -19,4 +19,6 @@ export const superAdminEndPoints = {
     SidebarByID: `${baseUrl}sidebar_details/`,
     updateSidebar: `${baseUrl}sidebar`,
     getSubMenu: `${baseUrl}subsidebars`,
+    getUsers: `${baseUrl}users`,
+   
 }

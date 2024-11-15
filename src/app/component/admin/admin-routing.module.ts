@@ -26,11 +26,11 @@ const routes: Routes = [
         component:AddUsersComponent
       },
       {
-        path:'viewusers',
+        path:'Users',
         component:UsersComponent
       },
       {
-        path:'Setting',
+        path:'setting',
         component:SidebarSettingComponent
       },
       {
