@@ -22,6 +22,18 @@ export class AllService extends HttpService {
     return this.get(superAdminEndPoints.getsidebar)
    }
 
+   sibeMenuById(id:any){
+    return this.get(superAdminEndPoints.SidebarByID + id )
+   }
+
+  //  editSideMenuName(id:any,data:any){
+  //   return this.put(superAdminEndPoints.SidebarByID + id , data )
+  //  }
+
+   editSideMenuName(id: any, updatedData: any) {
+    return this.put(superAdminEndPoints.SidebarByID + id, updatedData);
+  }
+
    getsubmenu(){
     return this.get(superAdminEndPoints.getSubMenu)
    }
@@ -41,6 +53,9 @@ export class AllService extends HttpService {
     return localStorage.getItem("user_token")
    }
 
+  updateSubMenu(url: string, payload: any, options?: { headers: HttpHeaders }): Observable<any> {
+    return this.http.put(url, payload, options);
+  }
 
   // updateMenu(url: string, payload: any){
   //   return this.put(superAdminEndPoints.updateSidebar , url , payload)

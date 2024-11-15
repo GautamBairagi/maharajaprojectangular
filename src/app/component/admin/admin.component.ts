@@ -44,7 +44,7 @@ sideData:any[]=[];
 getsidebarsdata(){
       this.service.getsidebarmenu().subscribe({
           next: (res) => {
-              console.log("res sidebar data",res)
+              // console.log("res sidebar data",res)
               this.sideData = res.sort((a: any, b: any) => a.position - b.position);
               this.sideData = res
           },
