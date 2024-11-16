@@ -26,7 +26,7 @@ constructor(
   this.updateForm = this.fb.group({
     
     email: [''],
-    password: [''],
+    // password: [''],
     first_name :['' ],
     last_name :['', ],
     // active :[1],
