@@ -27,6 +27,7 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.getusersdatas()
     this.getcliwentsdatas()
+    this.getRooms()
     this.loginForm = this.fb.group({
         email: ['', Validators.required],
         username: ['', Validators.required],
@@ -93,6 +94,14 @@ getcliwentsdatas() {
       console.log(err);
     },
   });
+}
+
+
+allRooms:any[]=[];
+getRooms(){
+  this.service.getRooms().subscribe((res:any)=>{
+    this.allRooms = res.length
+  })
 }
 
 }

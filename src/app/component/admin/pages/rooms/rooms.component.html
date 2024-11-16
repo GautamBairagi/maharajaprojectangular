@@ -1,60 +1,134 @@
-
 <div class="container">
-    
-    <div class="row">
-        
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-end">
-            <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-    Create Room
-  </button>
-  
-  <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content text-start">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Create Room Here</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Create</button>
+
+  <div class="row">
+
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-end">
+      <!-- Button trigger modal -->
+      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        Create Room
+      </button>
+
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content text-start">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Create Room Here</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form [formGroup]="createRoomForm" (ngSubmit)="submitRoom()">
+                <div class="mb-3">
+                  <label for="name" class="form-label">Name</label>
+                  <input type="text" class="form-control" id="name" formControlName="name"
+                    placeholder="Enter room name">
+                </div>
+                <div class="mb-3">
+                  <label for="room_id" class="form-label">Room ID</label>
+                  <input type="text" formControlName="room_id" class="form-control" id="room_id"
+                    placeholder="Enter room ID">
+                </div>
+                <div class="mb-3">
+                  <label for="">Select Users</label>
+                  <div class="multi-select-dropdown">
+                    <div class="selected-options">
+                      <span *ngFor="let user of selectedUsers" class="selected-item">
+                        {{ user.first_name }} {{ user.last_name }}
+                        <button type="button" class="unselect-btn" (click)="toggleSelection(user)">
+                          &times;
+                        </button>
+                      </span>
+                    </div>
+
+                    <div class="dropdown-options">
+                      <label *ngFor="let user of userData" class="dropdown-item">
+                        <input type="checkbox" [checked]="isUserSelected(user)" (change)="toggleSelection(user)" />
+                        {{ user.first_name }} {{ user.last_name }}
+                      </label>
+                    </div>
+                  </div>
+
+
+                </div>
+                <div class="mb-3">
+                  <label for="client_id" class="form-label">Select Clients</label>
+                  <div class="multi-select-dropdown">
+                    <div class="selected-options">
+                      <span *ngFor="let client of selectedClients" class="selected-item">
+                        {{ client.first_name }} {{ client.last_name }}
+                        <button type="button" class="unselect-btn" (click)="toggleSelectionClient(client)">
+                          &times;
+                        </button>
+                      </span>
+                    </div>
+                  
+                    <div class="dropdown-options">
+                      <label *ngFor="let client of clientData" class="dropdown-item">
+                        <input
+                          type="checkbox"
+                          [checked]="isClientSelected(client)"
+                          (change)="toggleSelectionClient(client)"
+                        />
+                        {{ client.first_name }} {{ client.last_name }}
+                      </label>
+                    </div>
+                  </div>
+                  
+                </div>
+                <div class="mb-3">
+                  <label for="description" class="form-label">Description</label>
+                  <textarea formControlName="description" placeholder="Enter description" class="form-control"
+                    id="description" rows="3"></textarea>
+                </div>
+
+
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <button type="submit" class="btn btn-primary">Create</button>
+                </div>
+              </form>
+            </div>
+
+          </div>
         </div>
       </div>
     </div>
-  </div>
-        </div>
-        
-    </div>
 
-    
-    
-    
-    <div class="row">
-      
-      <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" *ngFor="let room of allRooms" >
-        <div class="card mt-4">
-            <div class="card-header">
-              {{ room.name }}
-            </div>
-            <div class="card-body">
-              <h5 class="card-title">Special title treatment</h5>
-              <p class="card-text">{{ room.description }}</p>
-              <div class="popover-container">
-                <button class="popover-button">Hover Me</button>
-                <div class="popover-content">
-                    <p>This is the hover popover content!</p>
-                </div>
-            </div>
+  </div>
+
+
+
+
+  <div class="row">
+
+    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" *ngFor="let room of allRooms">
+      <div class="card mt-4">
+        <div class="card-header">
+          {{ room.name }}
+        </div>
+        <div class="card-body">
+          <!-- <h5 class="card-title">Special title treatment</h5> -->
+          <p class="card-text">{{ room.description }}</p>
+          <div class="popover-container" *ngFor="let userId of room.user_ids.split(',')" style="display: inline-flex;">
+            <!-- Fetch user details on hover -->
+            <button class="popover-button" (mouseenter)="fetchUserDetails(userId)" [attr.data-user-id]="userId">
+              {{ getInitials(userId) }}
+            </button>
+            <!-- Show user details in popover -->
+            <div class="popover-content">
+              <p *ngIf="userDetails[userId]; else loading">
+                {{ userDetails[userId].first_name }} {{ userDetails[userId].last_name }}
+              </p>
+              <ng-template #loading>
+                <p>Loading...</p>
+              </ng-template>
             </div>
           </div>
-      
+        </div>
+      </div>
     </div>
-    
-    
-    
-</div>
+
+
+
+
+  </div>

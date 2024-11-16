@@ -105,10 +105,30 @@ export class AllService extends HttpService {
    
 
 
+   getClients(){
+    return this.get(superAdminEndPoints.getClientss)
+   }
+
+   postRoomData(data:any){
+    return this.post(superAdminEndPoints.createRooms,data)
+   }
 
    getRooms(){
     return this.get(superAdminEndPoints.rooms)
    }
+
+   getUserDtlsRooms(id:any){
+    return this.get(superAdminEndPoints.userDetailsForRoom + id )
+   }
+
+
+  //  roomsgetbyuseridss(id:any){
+  //   return this.get(superAdminEndPoints.roomsgetbyuserid + id )
+  //  }
+
+
+
+   
 
 
    updateMenu(url: string, payload: any, options?: { headers: HttpHeaders }): Observable<any> {

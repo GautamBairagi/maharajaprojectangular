@@ -15,6 +15,7 @@ import { RoomsComponent } from './pages/rooms/rooms.component';
 import { UserdetailsComponent } from './pages/userdetails/userdetails.component';
 import { ClientviewComponent } from './pages/clientview/clientview.component';
 import { AddclientComponent } from './shared/addclient/addclient.component';
+import { ClientdetailsComponent } from './pages/clientdetails/clientdetails.component';
 
 
 
@@ -29,7 +30,8 @@ import { AddclientComponent } from './shared/addclient/addclient.component';
     RoomsComponent,
     UserdetailsComponent,
     ClientviewComponent,
-    AddclientComponent
+    AddclientComponent,
+    ClientdetailsComponent
   ],
   imports: [
     CommonModule,

@@ -12,6 +12,7 @@
         <th>User Name</th>
         <th>Active</th>
         <th>Role</th>
+        <th>Assigned</th>
         <th>Action</th>
       </tr>
     </thead>
@@ -20,7 +21,7 @@
         <td>{{a.id }}</td>
         <td>
           <div class="d-flex " style="justify-content: center;">
-            <img [src]="a.profile" style="height: 50px; width: 50px; " class="img-fluid" alt="">
+            <!-- <img [src]="a.profile" style="height: 50px; width: 50px; " class="img-fluid" alt=""> -->
             <div>
               <span  (click)="ById(a.id)"> <a class="pro" (click)="userprofile()"  >{{a.first_name}} {{a.last_name}} </a>  <br> {{a.email}}</span> 
               <i class="fa fa-edit" style="cursor: pointer; color: rgb(64, 64, 250); padding: 5px;"
@@ -110,7 +111,28 @@
             {{ a.active ? 'Active' : 'Inactive' }}
           </button>
         </td>
+
         <td><button class="btn btn-sm text-light"  style="border-radius: 20px; background-color: #34395e;">{{a.group_name }}</button></td>
+
+        <td style="text:center;">
+          <div class="d-flex gap-2">
+            <div>
+            <button type="button" class="btn btn-secondary small-btn">{{a.user_count}}</button>
+            <span>Rooms</span>
+          </div>
+          <div>
+            <button type="button" class="btn btn-secondary small-btn">0</button>
+            <span>Project</span>
+          </div> <div>
+            <button type="button" class="btn btn-secondary small-btn">0</button>
+            <span>Project</span>
+          </div>
+          </div>
+        </td>
+
+  
+
+
         <div class="dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <span id="profileDropdown" style="justify-content: center;">
             <i class="fa-solid fa-ellipsis-vertical"></i>

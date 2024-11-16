@@ -10,6 +10,7 @@ import { RoomsComponent } from './pages/rooms/rooms.component';
 import { UserdetailsComponent } from './pages/userdetails/userdetails.component';
 import { ClientviewComponent } from './pages/clientview/clientview.component';
 import { AddclientComponent } from './shared/addclient/addclient.component';
+import { ClientdetailsComponent } from './pages/clientdetails/clientdetails.component';
 
 const routes: Routes = [
   {
@@ -52,9 +53,15 @@ const routes: Routes = [
       {
         path:'Clients',
         component:ClientviewComponent
-      },  {
+      }, 
+      
+      {
         path:'Addclient',
         component:AddclientComponent
+      },
+      {
+        path:'Clientdetails',
+        component:ClientdetailsComponent
       },
     ]
   }

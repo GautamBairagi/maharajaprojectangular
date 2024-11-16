@@ -13,11 +13,17 @@ export const superAdminEndPoints = {
     getSubMenu: `${baseUrl}subsidebars`,
     getUsers: `${baseUrl}users`,
     getclients: `${baseUrl}client`,
+
+    getClientss: `${baseUrl}client`,
     createclient: `${baseUrl}createclient`,
     
 
 
     rooms: `${baseUrl}room`,
+    // roomsgetbyuserid: `${baseUrl}user/`,
+   
+
+    createRooms: `${baseUrl}createroom`,
     getUsersByid: `${baseUrl}users_details/`, // uiser get by id
     Usersupdate: `${baseUrl}editUser/`,
     Userstatusupdate: `${baseUrl}activateUser/`,
@@ -28,5 +34,6 @@ export const superAdminEndPoints = {
 
     getLanguagess: `${baseUrl}get_language`,
     changeLanguage: `${baseUrl}change_language?lang=`,
+    userDetailsForRoom: `${baseUrl}userdata/`,
   
 }

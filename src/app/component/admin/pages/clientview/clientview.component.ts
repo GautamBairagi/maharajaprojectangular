@@ -62,8 +62,13 @@ export class ClientviewComponent {
     }
     
     userprofile(){
-      this.router.navigate(['/Admin/Userdetails'])
+      this.router.navigate(['/Admin/Clientdetails'])
     }
+
+ 
+  
+    
+    
     
     
     
@@ -103,7 +108,7 @@ export class ClientviewComponent {
       toggleVerified(data: any) {
         var id = data.id;
         this.dataSend = {
-          active: !data.active // Toggle between true and false
+          active: !data.active 
         };
       
         this.service.Userstatusupdatess(id, this.dataSend).subscribe(res => {
@@ -112,9 +117,9 @@ export class ClientviewComponent {
             const accountStatus = res.active;
             const doctorName = res.name;
             if (accountStatus) {
-              this.swet.SucessToast(`${doctorName} Lead Action Successfully`);
+              this.swet.SucessToast(`Action Done Successfully`);
             } else {
-              this.swet.SucessToast(`${doctorName} Lead Action Sccessfully`);
+              this.swet.SucessToast(`Action Done Sccessfully`);
             }
           }
         });

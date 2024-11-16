@@ -41,8 +41,7 @@ dataSend: any
 
   ngOnInit(): void {
     this.getusersdatas();
-
-
+    // this.usergetbyid();
   }
   getusersData:any= []
   getusersdatas() {
@@ -66,6 +65,8 @@ userprofile(){
 
 
 
+
+
 id:any;
 userByIdData:any=[];
   ById(data: any) {
@@ -76,6 +77,21 @@ userByIdData:any=[];
       console.log("policy by id", this.userByIdData)
     })
   }
+
+
+
+  // usergetbyid() {
+  //   this.id = data
+  //   console.log("user id", this.id)
+  //   this.service.roomsgetbyuseridss(this.id).subscribe((res: any) => {
+  //     this.userByIdData = res[0];
+  //     console.log("policy by id", this.userByIdData)
+  //   })
+  // }
+
+  
+
+
 
   updateusers() {
     this.service.userupdatedss(this.id, this.userByIdData).subscribe((res: any) => {
@@ -110,7 +126,7 @@ userByIdData:any=[];
         const accountStatus = res.active;
         const doctorName = res.name;
         if (accountStatus) {
-          this.swet.SucessToast(`${doctorName} Lead Action Successfully`);
+          this.swet.SucessToast(` Action done Successfully`);
         } else {
           this.swet.SucessToast(`${doctorName} Lead Action Sccessfully`);
         }
@@ -121,6 +137,22 @@ userByIdData:any=[];
 
 
   
+
+//   url:any;
+// driverAbst == is a key
+
+
+// driverDetailsUpdate(){
+//     this.updateDetails.value.driverAbst = this.url;
+//     this.api.updateDriverDetails(this.updateDetails.value).subscribe((res:any)=>{
+//       window.location.reload();
+//       console.log(res);
+//     })
+//   }
+//   isImage(url: string): boolean {
+//     const imageExtensions = ['.jpg', '.jpeg', '.png', '.gif'];
+//     return imageExtensions.some(ext => url.toLowerCase().endsWith(ext));
+// }
 
   
 

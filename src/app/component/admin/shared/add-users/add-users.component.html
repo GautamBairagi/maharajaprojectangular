@@ -59,6 +59,9 @@
               [ngClass]="{'is-invalid': loginForm.controls['phone'].errors && ck }">
               <p class="text-danger" *ngIf="loginForm.controls['phone'].errors && ck">Enter your phone</p>
             </div>
+
+
+
             <div class="form-group col-md-6">
               <label>Designation</label>
               <input type="text" class="form-control" placeholder="Designation" formControlName="designation">
@@ -75,6 +78,16 @@
             <label class="form-check-label" for="female">Female</label>
           </div>
         </div>
+        
+
+        <div class="form-row">
+          <div class="form-group col-md-6">
+         
+            <input type="file" class="form-control" formControlName="profile" (click)="onSelectFile($event)">
+          </div>
+          
+        </div>
+
         
 
         <button type="submit" (click)="addusers()" type="button" class="btn btn-success m-1">Save</button>
