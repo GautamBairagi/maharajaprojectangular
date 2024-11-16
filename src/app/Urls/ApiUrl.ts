@@ -21,8 +21,10 @@ export const superAdminEndPoints = {
     updateSidebar: `${baseUrl}sidebar`,
     getSubMenu: `${baseUrl}subsidebars`,
     getUsers: `${baseUrl}users`,
+    getClients: `${baseUrl}client`,
     rooms: `${baseUrl}room`,
+    createRooms: `${baseUrl}createroom`,
     getUsersByid: `${baseUrl}users_details/`, // uiser get by id
     Usersupdate: `${baseUrl}editUser/`,
-   
+    userDetailsForRoom: `${baseUrl}userdata/`,
 }

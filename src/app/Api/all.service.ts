@@ -91,8 +91,20 @@ export class AllService extends HttpService {
     return this.get(superAdminEndPoints.getUsers)
    }
 
+   getClients(){
+    return this.get(superAdminEndPoints.getClients)
+   }
+
+   postRoomData(data:any){
+    return this.post(superAdminEndPoints.createRooms,data)
+   }
+
    getRooms(){
     return this.get(superAdminEndPoints.rooms)
+   }
+
+   getUserDtlsRooms(id:any){
+    return this.get(superAdminEndPoints.userDetailsForRoom + id )
    }
 
 
