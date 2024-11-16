@@ -10,6 +10,12 @@ import { AddUsersComponent } from './shared/add-users/add-users.component';
 import { SidebarSettingComponent } from './pages/sidebar-setting/sidebar-setting.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { UserGroupPermissionComponent } from './pages/setting/user-group-permission/user-group-permission.component';
+import { ColorPickerModule } from 'ngx-color-picker';
+import { RoomsComponent } from './pages/rooms/rooms.component';
+import { UserdetailsComponent } from './pages/userdetails/userdetails.component';
+import { ClientviewComponent } from './pages/clientview/clientview.component';
+import { AddclientComponent } from './shared/addclient/addclient.component';
+
 
 
 @NgModule({
@@ -19,14 +25,19 @@ import { UserGroupPermissionComponent } from './pages/setting/user-group-permiss
     UsersComponent,
     AddUsersComponent,
     SidebarSettingComponent,
-    UserGroupPermissionComponent
+    UserGroupPermissionComponent,
+    RoomsComponent,
+    UserdetailsComponent,
+    ClientviewComponent,
+    AddclientComponent
   ],
   imports: [
     CommonModule,
     AdminRoutingModule,
     ReactiveFormsModule,
     DragDropModule,
-    FormsModule
+    FormsModule,
+    ColorPickerModule
   ]
 })
 export class AdminModule { }

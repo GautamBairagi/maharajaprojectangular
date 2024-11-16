@@ -6,6 +6,10 @@ import { UsersComponent } from './pages/users/users.component';
 import { AddUsersComponent } from './shared/add-users/add-users.component';
 import { SidebarSettingComponent } from './pages/sidebar-setting/sidebar-setting.component';
 import { UserGroupPermissionComponent } from './pages/setting/user-group-permission/user-group-permission.component';
+import { RoomsComponent } from './pages/rooms/rooms.component';
+import { UserdetailsComponent } from './pages/userdetails/userdetails.component';
+import { ClientviewComponent } from './pages/clientview/clientview.component';
+import { AddclientComponent } from './shared/addclient/addclient.component';
 
 const routes: Routes = [
   {
@@ -36,6 +40,21 @@ const routes: Routes = [
       {
         path:'user_group_permission',
         component:UserGroupPermissionComponent
+      },
+      {
+        path:'Projects',
+        component:RoomsComponent
+      },
+      {
+        path:'Userdetails',
+        component:UserdetailsComponent
+      },
+      {
+        path:'Clients',
+        component:ClientviewComponent
+      },  {
+        path:'Addclient',
+        component:AddclientComponent
       },
     ]
   }

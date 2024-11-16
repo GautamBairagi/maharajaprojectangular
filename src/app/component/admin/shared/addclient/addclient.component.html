@@ -1,0 +1,131 @@
+
+
+<div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Create New Client</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="cancel()" >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <form [formGroup]="loginForm">
+              <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label>First Name</label>  
+                    <input type="text" class="form-control" placeholder="First Name" formControlName="first_name"
+                    [ngClass]="{'is-invalid': loginForm.controls['first_name'].errors && ck }">
+                    <p class="text-danger" *ngIf="loginForm.controls['first_name'].errors && ck"> Enter your first name</p>
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label>Last Name</label>
+                    <input type="text" class="form-control" placeholder="Last Name" formControlName="last_name">
+                  </div>
+                </div>
+             
+              <div class="form-row">
+          <div class="form-group col-md-6">
+            <label>Email</label>
+            <input type="email"  class="form-control" formControlName="email" placeholder="Email"
+            [ngClass]="{'is-invalid': loginForm.controls['email'].errors && ck }">
+            <p class="text-danger" *ngIf="loginForm.controls['email'].errors && ck"> Enter your Email</p>
+          </div>
+  
+         
+              <div class="form-group col-md-6">
+                <label>Password</label>
+                <input type="password" class="form-control" placeholder="Password" formControlName="password"
+                [ngClass]="{'is-invalid': loginForm.controls['password'].errors && ck }">
+                <p class="text-danger" *ngIf="loginForm.controls['password'].errors && ck"> Enter your password</p>
+              </div>
+            </div> 
+  
+       
+        
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label>Date of Birth</label>
+              <input type="date" class="form-control" formControlName="date_of_birth">
+            </div>
+            <div class="form-group col-md-6">
+              <label>Date of Joining</label>
+              <input type="date" class="form-control" formControlName="date_of_joining">
+            </div>
+          </div>
+  
+          <div class="form-row">
+              <div class="form-group col-md-6">
+                <label>Phone</label>
+                <input type="text" class="form-control" placeholder="Phone" formControlName="phone"
+                [ngClass]="{'is-invalid': loginForm.controls['phone'].errors && ck }">
+                <p class="text-danger" *ngIf="loginForm.controls['phone'].errors && ck">Enter your phone</p>
+              </div>
+              <div class="form-group col-md-6">
+                <label>Designation</label>
+                <input type="text" class="form-control" placeholder="Designation" formControlName="designation">
+              </div>
+            </div> 
+        
+
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label>Address </label>
+                  <input type="text" class="form-control" placeholder="Address" formControlName="address">
+                </div>
+                <div class="form-group col-md-6">
+                    <label>Country </label>
+                    <input type="text" class="form-control" placeholder="Country" formControlName="country">
+                  </div>
+              
+              </div>
+
+             
+               <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label>City  </label>
+                    <input type="text" class="form-control" placeholder="City" formControlName="city">
+                  </div>
+                <div class="form-group col-md-6">
+                  <label>State </label>
+                  <input type="text" class="form-control" placeholder="State" formControlName="state">
+                </div>
+              </div>
+               <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label>Zip code  </label>
+                    <input type="text" class="form-control" placeholder="Zip code " formControlName="zip_code">
+                  </div>
+
+                  <div class="form-group">
+                    <label>Gender</label><br>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="gender" id="male" value="male" formControlName="gender">
+                      <label class="form-check-label" for="male">Male</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="gender" id="female" value="female" formControlName="gender">
+                      <label class="form-check-label" for="female">Female</label>
+                    </div>
+                  </div>
+        
+              </div>
+          <button type="submit" (click)="addclient()" type="button" class="btn btn-success m-1">Save</button>
+          <button type="submit" class="btn btn-danger" (click)="cancel()" type="button" >cancel</button>
+  
+        </form>
+      </div>
+    </div>
+  </div>
+  
+   
+   
+  
+              
+  
+  
+  
+  
+  
+  
+  

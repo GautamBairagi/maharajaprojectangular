@@ -1,0 +1,60 @@
+
+<div class="container">
+    
+    <div class="row">
+        
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-end">
+            <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Create Room
+  </button>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content text-start">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Create Room Here</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Create</button>
+        </div>
+      </div>
+    </div>
+  </div>
+        </div>
+        
+    </div>
+
+    
+    
+    
+    <div class="row">
+      
+      <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" *ngFor="let room of allRooms" >
+        <div class="card mt-4">
+            <div class="card-header">
+              {{ room.name }}
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">Special title treatment</h5>
+              <p class="card-text">{{ room.description }}</p>
+              <div class="popover-container">
+                <button class="popover-button">Hover Me</button>
+                <div class="popover-content">
+                    <p>This is the hover popover content!</p>
+                </div>
+            </div>
+            </div>
+          </div>
+      
+    </div>
+    
+    
+    
+</div>

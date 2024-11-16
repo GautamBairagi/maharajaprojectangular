@@ -13,59 +13,53 @@ export class AddUsersComponent implements OnInit {
 
 
 
-  loginForm!:FormGroup;
+  loginForm!: FormGroup;
   constructor(
-    private router:Router,
+    private router: Router,
     private fb: FormBuilder,
-    private service:AllService,
-    private swet :SweetalertssService,
-   
-  ){
+    private service: AllService,
+    private swet: SweetalertssService,
+
+  ) {
     const userIdString = localStorage.getItem('userId');
     this.userId = userIdString ? parseInt(userIdString, 10) : null;
-  
   }
-  userId:any
+  userId: any
   ck: boolean = false;
- 
-
   ngOnInit(): void {
     this.loginForm = this.fb.group({
-        email: ['',  [Validators.required, Validators.email]],
-        password: ['', Validators.required],
-        first_name :['',Validators.required ],
-        last_name :['', ],
-        active :[1],
-        group_id :[2],
-        profile :['',],
-        date_of_birth :['', ],
-        date_of_joining :['', ],
-        gender :['', ],
-        designation :['', ],
-        phone :['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', Validators.required],
+      first_name: ['', Validators.required],
+      last_name: ['',],
+      active: [1],
+      group_id: [2],
+      profile: ['',],
+      date_of_birth: ['',],
+      date_of_joining: ['',],
+      gender: ['',],
+      designation: ['',],
+      phone: ['', Validators.required],
     });
-  
-  
-}
+  }
 
-
-addusers() {
+    addusers() {
   if (this.loginForm.invalid) {
-      this.ck = true;
-      return;
+    this.ck = true;
+    return;
   } else {
-      console.log("Patient data", this.loginForm.value);
-      this.service.createusersadmin(this.loginForm.value).subscribe({
-          next: (res) => {
-              console.log("res",res)
-              if (res.success) {
-                  this.router.navigate(['/Admin/Users'])
-              }
-          },
-          error: (err) => {
-              console.log(err);
-          }
-      });
+    console.log("Patient data", this.loginForm.value);
+    this.service.createusersadmin(this.loginForm.value).subscribe({
+      next: (res) => {
+        console.log("res", res)
+        if (res.success) {
+          this.router.navigate(['/Admin/Users'])
+        }
+      },
+      error: (err) => {
+        console.log(err);
+      }
+    });
   }
 }
 

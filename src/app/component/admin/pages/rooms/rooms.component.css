@@ -1,24 +1,10 @@
-tr th{
-
-    color:#6c757d;
-    text-align: center;
-     white-space: nowrap ;
-    
-
-}
-
-tr td{
-    white-space: nowrap ;
-    text-align: center;
+.card{
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 }
 
 .popover-container {
     position: relative; /* Ensures the popover is positioned relative to the container */
     display: inline-block; /* Keeps the button and popover inline */
-}
-
-.popover-container:hover .popover-content {
-    display: block; /* Show the popover on hover */
 }
 
 .popover-button {
@@ -52,7 +38,6 @@ tr td{
     display: none; /* Initially hidden */
 }
 
-.pro{
-    color:blueviolet;
-    cursor: pointer;
+.popover-container:hover .popover-content {
+    display: block; /* Show the popover on hover */
 }

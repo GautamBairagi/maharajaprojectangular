@@ -10,18 +10,26 @@ import { SweetalertssService } from 'src/app/sweetalertss.service';
   styleUrls: ['./admin.component.css']
 })
 export class AdminComponent implements OnInit {
+
+ 
   loginForm!:FormGroup;
   constructor(
     private router:Router,
     private fb: FormBuilder,
     private service:AllService,
     private swet :SweetalertssService,
-  ){}
+  ){
+   
+  }
 
+ 
 
   ngOnInit(): void {
     this.getsidebarsdata();
   this.getSubMenus()
+  // this.selectedLanguage = sessionStorage.getItem('language') || 'French';
+  this.selectedLanguage = sessionStorage.getItem('language') || 'French';
+
 }
 
 
@@ -115,7 +123,61 @@ getFilteredSubMenus(parentId: number) {
 // }
 
 
+
+
+
+languages = [
+  { name: 'English', flagCode: 'us' },
+  { name: 'French', flagCode: 'fr' },
+  { name: 'Spanish', flagCode: 'es' },
+  { name: 'Portuguese', flagCode: 'pt' },
+  { name: 'Hindi', flagCode: 'in' },
+  { name: 'Russian', flagCode: 'ru' },
+  { name: 'German', flagCode: 'de' },
+  { name: 'Arabic', flagCode: 'ae' },
+  { name: 'Chinese', flagCode: 'cn' },
+];
+selectedLanguage = 'French';
+
+
+
+
+
+// Change Language
+// changeLanguage(language: string): void {
+//   this.selectedLanguage = language;
+//   sessionStorage.setItem('language', language);
+
+//   this.service.changeLanguage(language).subscribe({
+//     next: () => console.log(`Language changed to ${language}`),
+//     error: (err) => console.error('Error changing language:', err),
+//   });
+// }
+
+// // Get Language Flag Code
+// getFlagCode(language: string): string {
+//   const lang = this.languages.find((l) => l.name === language);
+//   return lang ? lang.flagCode : 'fr';
+// }
+
+
+changeLanguage(language: string): void {
+  this.selectedLanguage = language;
+  sessionStorage.setItem('language', language);
+  this.service.changeLanguage(language).subscribe({
+    next: () => console.log(`Language changed to ${language}`),
+    error: (err) => console.error('Error changing language:', err),
+  });
 }
+
+getFlagCode(language: string): string {
+  const lang = this.languages.find(l => l.name === language);
+  return lang ? lang.flagCode : 'fr';
+}
+
+}
+
+
 
 
 
