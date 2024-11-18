@@ -56,18 +56,3 @@ tr td{
     color:blueviolet;
     cursor: pointer;
 }
-
-
-.small-btn {
-    width: 40px;          /* Keeps button width */
-    height: 40px;         /* Keeps button height */
-    font-size: 14px;      /* Small font size */
-    padding: 0;           /* No padding */
-    display: flex;        /* Use flexbox to center content */
-    align-items: center;  /* Vertically center text */
-    justify-content: center; /* Horizontally center text */
-    border-radius: 50%;   /* Makes the button circular */
-    text-align: center;   /* Ensure text is centered */
-
-  }
-  

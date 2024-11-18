@@ -127,39 +127,7 @@
 
 <body>
    
-    <!-- <nav class="navbar navbar-expand-sm navbar-dark navbar-fixed-top sticky-top"
-    style="background-color: white; color: #fff; height: 70px; z-index: 1050 !important;">
-    <div class="container-fluid">
-       
-        <a class="navbar-brand logo1" href="./index.html">
-            <img src="" width="250px"
-                alt="Logo" class="img-fluid">
-        </a>
-  
-      
-        <button class="toggle-btn2" onclick="toggleNav()">
-            <i class="fas fa-bars" style="color: #000 !important"></i>
-        </button>
-  
-       
-        <button class="toggle-btn" onclick="toggleNav()">
-            <i class="fas fa-bars" style="color: #000 !important;"></i>
-        </button>
-   
-        <div class="d-flex align-items-center ms-auto">
-          
-            <img src="" alt="Admin Image" class="rounded-pill"
-                width="40px" height="40px">
-  
-        
-            <div class="ms-2 ">
-              <small class=" text-dark"></small><br>
-              <span class="text-dark"></span>
-            </div>
-        </div>
-    </div>
-  </nav>
-     -->
+ 
     <div id="mySidebar"  class="sidebar" style="overflow: scroll;" >
         <div class="sidebar-header">
           <img src="../../../assets/maharaja.png" class="img-fluid" alt="">
@@ -252,14 +220,39 @@
                         </a>
                         <!-- <button (ckick)="handelclick()">button</button> -->
                     </div>
+
+
+                   
+                      
                 </div>
             </div>
         </div>
-
+                     <!-- <div class="dropdown fit-width dropdown-lang">
+                        <button
+                          class="btn dropdown-toggle btn-default d-flex align-items-center pl-0 pr-0 pr-lg-2"
+                          style="color: white; border: none;"
+                          [ngClass]="'flag-icon-' + getFlagCode(selectedLanguage)"
+                          id="google_translate_element"
+                        >
+                          {{ selectedLanguage }}
+                        </button>
+                        <div class="dropdown-menu">
+                          <ul class="translation-links pl-4" style="list-style-type: none;">
+                            <li *ngFor="let lang of languages" class="mt-1">
+                              <a href="javascript:void(0);" (click)="changeLanguage(lang.name)" class="translation-language">
+                                <span class="flag-icon" [ngClass]="'flag-icon-' + lang.flagCode" style="margin-right: 5px;"></span>
+                                {{ lang.name }}
+                              </a>
+                            </li>
+                          </ul>
+                        </div>
+                      </div> -->
 
         <router-outlet></router-outlet>
 
     </div>
+
+
     <script>
         function toggleNav() {
     const sidebar = document.getElementById("mySidebar");

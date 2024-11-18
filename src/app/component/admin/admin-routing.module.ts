@@ -8,6 +8,10 @@ import { SidebarSettingComponent } from './pages/sidebar-setting/sidebar-setting
 import { UserGroupPermissionComponent } from './pages/setting/user-group-permission/user-group-permission.component';
 import { RoomsComponent } from './pages/rooms/rooms.component';
 import { RoomDetailsComponent } from './pages/room-details/room-details.component';
+import { UserdetailsComponent } from './pages/userdetails/userdetails.component';
+import { ClientviewComponent } from './pages/clientview/clientview.component';
+import { AddclientComponent } from './shared/addclient/addclient.component';
+import { ClientdetailsComponent } from './pages/clientdetails/clientdetails.component';
 
 const routes: Routes = [
   {
@@ -45,7 +49,24 @@ const routes: Routes = [
       },
       {
         path:'room-details',
-        component:RoomDetailsComponent
+        component:RoomDetailsComponent,
+      },
+      {
+        path:'Userdetails',
+        component:UserdetailsComponent
+      },
+      {
+        path:'Clients',
+        component:ClientviewComponent
+      }, 
+      
+      {
+        path:'Addclient',
+        component:AddclientComponent
+      },
+      {
+        path:'Clientdetails',
+        component:ClientdetailsComponent
       },
     ]
   }

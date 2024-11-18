@@ -59,6 +59,13 @@ export class AllService extends HttpService {
    createusersadmin(data: any) {
     return this.post(superAdminEndPoints.createusers,data)
    }
+
+
+   createclients(data: any) {
+    return this.post(superAdminEndPoints.createclient,data)
+   }
+
+   
   getsidebarmenu(){
     return this.get(superAdminEndPoints.getsidebar)
    }
@@ -91,8 +98,15 @@ export class AllService extends HttpService {
     return this.get(superAdminEndPoints.getUsers)
    }
 
+   getclientsdata(){
+    return this.get(superAdminEndPoints.getclients)
+   }
+
+   
+
+
    getClients(){
-    return this.get(superAdminEndPoints.getClients)
+    return this.get(superAdminEndPoints.getClientss)
    }
 
    postRoomData(data:any){
@@ -125,6 +139,15 @@ export class AllService extends HttpService {
     return this.roomData;
   }
 
+  //  roomsgetbyuseridss(id:any){
+  //   return this.get(superAdminEndPoints.roomsgetbyuserid + id )
+  //  }
+
+
+
+   
+
+
    updateMenu(url: string, payload: any, options?: { headers: HttpHeaders }): Observable<any> {
     return this.http.put(url, payload, options);
   }
@@ -155,11 +178,19 @@ export class AllService extends HttpService {
    }
 
 
-
-
-
+   Userstatusupdatess(id:any, data:any){
+    return this.patch(superAdminEndPoints.Userstatusupdate + id, data )
+   }
 
    
+
+
+   changeLanguage(language: string): Observable<any> {
+    return this.http.get(`${superAdminEndPoints.changeLanguage}${language}`);
+  }
+
+  
+
 
   // updateMenu(url: string, payload: any){
   //   return this.put(superAdminEndPoints.updateSidebar , url , payload)

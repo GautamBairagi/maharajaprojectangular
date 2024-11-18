@@ -2,15 +2,6 @@
 // const baseUrl = 'https://alora-plus.vercel.app/api/v1/';
 const baseUrl = 'http://192.168.1.231:5000/';
 
-// const userId = localStorage.getItem('userId');
-// const group_id = localStorage.getItem('group_id');
-// const token = localStorage.getItem('token');
-// console.log("apiurls token get", token)
-
-// Usersupdate: `${baseUrl}editUser/`,
-
-
-
 
 export const superAdminEndPoints = {
     superAdminLogin: `${baseUrl}login`,
@@ -21,11 +12,29 @@ export const superAdminEndPoints = {
     updateSidebar: `${baseUrl}sidebar`,
     getSubMenu: `${baseUrl}subsidebars`,
     getUsers: `${baseUrl}users`,
-    getClients: `${baseUrl}client`,
+    getclients: `${baseUrl}client`,
+
+    getClientss: `${baseUrl}client`,
+    createclient: `${baseUrl}createclient`,
+    
+
+
     rooms: `${baseUrl}room`,
+    // roomsgetbyuserid: `${baseUrl}user/`,
+   
+
     createRooms: `${baseUrl}createroom`,
     getUsersByid: `${baseUrl}users_details/`, // uiser get by id
     Usersupdate: `${baseUrl}editUser/`,
+    Userstatusupdate: `${baseUrl}activateUser/`,
+   
+
+
+
+
+    getLanguagess: `${baseUrl}get_language`,
+    changeLanguage: `${baseUrl}change_language?lang=`,
     userDetailsForRoom: `${baseUrl}userdata/`,
     roomDetails: `${baseUrl}room_details/`,
+  
 }
