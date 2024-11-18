@@ -27,4 +27,5 @@ export const superAdminEndPoints = {
     getUsersByid: `${baseUrl}users_details/`, // uiser get by id
     Usersupdate: `${baseUrl}editUser/`,
     userDetailsForRoom: `${baseUrl}userdata/`,
+    roomDetails: `${baseUrl}room_details/`,
 }

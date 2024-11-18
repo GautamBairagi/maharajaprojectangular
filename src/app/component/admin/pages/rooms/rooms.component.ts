@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AllService } from 'src/app/Api/all.service';
 import { SweetalertssService } from 'src/app/sweetalertss.service';
 
@@ -14,13 +15,13 @@ export class RoomsComponent implements OnInit,AfterViewInit {
 
   createRoomForm:FormGroup;
 
-  constructor(private api:AllService, private fb:FormBuilder,private sweet:SweetalertssService){
+  constructor(private api:AllService, private fb:FormBuilder,private sweet:SweetalertssService, private router: Router){
     this.createRoomForm = this.fb.group({
-      name: new FormControl(''),
-      user_ids: new FormControl([]),
-      client_id: new FormControl([]),
-      description: new FormControl(''),
-      room_id: new FormControl(''),
+      name: new FormControl('',Validators.required),
+      user_ids: new FormControl([],Validators.required),
+      client_id: new FormControl([],Validators.required),
+      description: new FormControl('',Validators.required),
+      room_id: new FormControl('',Validators.required),
     });
   }
 
@@ -64,7 +65,23 @@ export class RoomsComponent implements OnInit,AfterViewInit {
   getRooms(){
     this.api.getRooms().subscribe((res:any)=>{
       this.allRooms = res
+      this.filteredRooms = res; 
     })
+  }
+
+  filteredRooms: any[] = [];
+  searchText: string = '';
+
+  filterRooms() {
+    if (this.searchText.trim() === '') {
+      this.filteredRooms = this.allRooms;
+    } else {
+      this.filteredRooms = this.allRooms.filter(room =>
+        room.name.toLowerCase().includes(this.searchText.toLowerCase()) ||
+        room.room_id.toString().includes(this.searchText) ||
+        room.description.toLowerCase().includes(this.searchText.toLowerCase())
+      );
+    }
   }
 
 
@@ -83,6 +100,24 @@ export class RoomsComponent implements OnInit,AfterViewInit {
   getclients(): void {
     this.api.getClients().subscribe((res: any[]) => {
       this.clientData = res;
+    });
+  }
+
+  id:any;
+  ByIdData:any=[];
+  roomDetails(data: any) {
+    this.id = data;
+    console.log("dataaaaa", this.id);
+  
+    this.api.getRoomDtls(data).subscribe((res: any) => {
+      this.ByIdData = res;
+      // console.log("policy by id", this.ByIdData);
+  
+      // Store the data in the service
+      this.api.setRoomData(this.ByIdData);
+      
+      // Navigate to another component (optional)
+      this.router.navigate(['/Admin/room-details']);
     });
   }
 
@@ -157,6 +192,20 @@ isClientSelected(client: any): boolean {
     }
   }
 
+  fetchClientDetails(userId: string) {
+    // Check if user details are already fetched
+    if (!this.userDetails[userId]) {
+      this.api.getUserDtlsRooms(userId).subscribe((data: any[]) => {
+        // Assuming the API returns an array with one object
+        const user = data[0]; // Access the first object in the array
+        this.userDetails[userId] = {
+          first_name: user.first_name,
+          last_name: user.last_name
+        };
+      });
+    }
+  }
+
   getInitials(userId: string): string {
     const user = this.userDetails[userId];
     if (user) {
@@ -164,7 +213,7 @@ isClientSelected(client: any): boolean {
       const lastInitial = user.last_name ? user.last_name.charAt(0).toUpperCase() : '';
       return firstInitial || lastInitial ? `${firstInitial}${lastInitial}` : 'U';
     }
-    return 'U'; // Default to 'U' while loading
+    return 'View'; // Default to 'U' while loading
   }
 
   isPopoverVisible: boolean = false;

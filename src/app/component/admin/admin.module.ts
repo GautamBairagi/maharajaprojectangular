@@ -12,6 +12,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { UserGroupPermissionComponent } from './pages/setting/user-group-permission/user-group-permission.component';
 import { ColorPickerModule } from 'ngx-color-picker';
 import { RoomsComponent } from './pages/rooms/rooms.component';
+import { RoomDetailsComponent } from './pages/room-details/room-details.component';
 
 
 
@@ -23,7 +24,8 @@ import { RoomsComponent } from './pages/rooms/rooms.component';
     AddUsersComponent,
     SidebarSettingComponent,
     UserGroupPermissionComponent,
-    RoomsComponent
+    RoomsComponent,
+    RoomDetailsComponent
   ],
   imports: [
     CommonModule,
