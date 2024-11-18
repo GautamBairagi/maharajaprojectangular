@@ -35,5 +35,6 @@ export const superAdminEndPoints = {
     getLanguagess: `${baseUrl}get_language`,
     changeLanguage: `${baseUrl}change_language?lang=`,
     userDetailsForRoom: `${baseUrl}userdata/`,
+    roomDetails: `${baseUrl}room_details/`,
   
 }

@@ -20,13 +20,19 @@
               <form [formGroup]="createRoomForm" (ngSubmit)="submitRoom()">
                 <div class="mb-3">
                   <label for="name" class="form-label">Name</label>
-                  <input type="text" class="form-control" id="name" formControlName="name"
+                  <input type="text" class="form-control"  [ngClass]="{ 'is-invalid': createRoomForm.get('name')?.invalid && createRoomForm.get('name')?.touched }" id="name" formControlName="name"
                     placeholder="Enter room name">
+                    <div class="invalid-feedback" *ngIf="createRoomForm.get('name')?.invalid && createRoomForm.get('name')?.touched">
+                      Name is required.
+                    </div>
                 </div>
                 <div class="mb-3">
                   <label for="room_id" class="form-label">Room ID</label>
-                  <input type="text" formControlName="room_id" class="form-control" id="room_id"
+                  <input type="text" formControlName="room_id" [ngClass]="{ 'is-invalid': createRoomForm.get('room_id')?.invalid && createRoomForm.get('room_id')?.touched }" class="form-control" id="room_id"
                     placeholder="Enter room ID">
+                    <div class="invalid-feedback" *ngIf="createRoomForm.get('room_id')?.invalid && createRoomForm.get('room_id')?.touched">
+                      Room ID is required.
+                    </div>
                 </div>
                 <div class="mb-3">
                   <label for="">Select Users</label>
@@ -77,8 +83,11 @@
                 </div>
                 <div class="mb-3">
                   <label for="description" class="form-label">Description</label>
-                  <textarea formControlName="description" placeholder="Enter description" class="form-control"
+                  <textarea formControlName="description"  [ngClass]="{ 'is-invalid': createRoomForm.get('description')?.invalid && createRoomForm.get('description')?.touched }" placeholder="Enter description" class="form-control"
                     id="description" rows="3"></textarea>
+                </div>
+                <div class="invalid-feedback" *ngIf="createRoomForm.get('description')?.invalid && createRoomForm.get('description')?.touched">
+                  Description is required.
                 </div>
 
 
@@ -99,22 +108,47 @@
 
 
 
+  <div class="search-container mb-2 mt-4">
+    <input type="text" class="form-control" placeholder="Search Rooms" [(ngModel)]="searchText" (input)="filterRooms()" />
+  </div>
+  
   <div class="row">
-
-    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" *ngFor="let room of allRooms">
-      <div class="card mt-4">
-        <div class="card-header">
-          {{ room.name }}
+    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" *ngFor="let room of filteredRooms">
+      <div class="card mt-4" (click)="roomDetails(room.id)" style="cursor: pointer;">
+        <div class="card-header d-flex justify-content-between">
+          <span>{{ room.name }}</span> <span>Id : {{ room.room_id }}</span>
         </div>
         <div class="card-body">
-          <!-- <h5 class="card-title">Special title treatment</h5> -->
           <p class="card-text">{{ room.description }}</p>
-          <div class="popover-container" *ngFor="let userId of room.user_ids.split(',')" style="display: inline-flex;">
-            <!-- Fetch user details on hover -->
+          <hr>
+         
+         <div class="row">
+          
+          <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            <p>Users</p>
+            <div class="popover-container" *ngFor="let userId of room.user_ids.split(',')" style="display: inline-flex;">
+              <button class="popover-button" (mouseenter)="fetchUserDetails(userId)" [attr.data-user-id]="userId">
+                {{ getInitials(userId) }}
+              </button>
+              <div class="popover-content">
+                <p *ngIf="userDetails[userId]; else loading">
+                  {{ userDetails[userId].first_name }} {{ userDetails[userId].last_name }}
+                </p>
+                <ng-template #loading>
+                  <p>Loading...</p>
+                </ng-template>
+              </div>
+            </div>
+            
+          </div>
+
+          <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            <p>Clients </p>
+
+          <div class="popover-container" *ngFor="let userId of room.client_id.split(',')" style="display: inline-flex;">
             <button class="popover-button" (mouseenter)="fetchUserDetails(userId)" [attr.data-user-id]="userId">
               {{ getInitials(userId) }}
             </button>
-            <!-- Show user details in popover -->
             <div class="popover-content">
               <p *ngIf="userDetails[userId]; else loading">
                 {{ userDetails[userId].first_name }} {{ userDetails[userId].last_name }}
@@ -124,11 +158,17 @@
               </ng-template>
             </div>
           </div>
+          </div>
+
+          
+        
+          </div>
+          
+          
+         </div>
+         
         </div>
       </div>
     </div>
-
-
-
-
   </div>
+  

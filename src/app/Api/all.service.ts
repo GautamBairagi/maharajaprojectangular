@@ -117,10 +117,27 @@ export class AllService extends HttpService {
     return this.get(superAdminEndPoints.rooms)
    }
 
+   getRoomDtls(id:any){
+    return this.get(superAdminEndPoints.roomDetails + id )
+   }
+
    getUserDtlsRooms(id:any){
     return this.get(superAdminEndPoints.userDetailsForRoom + id )
    }
 
+   getRoomsDtlsRooms(id:any){
+    return this.get(superAdminEndPoints.userDetailsForRoom + id )
+   }
+   
+   private roomData: any;
+
+   setRoomData(data: any) {
+    this.roomData = data;
+  }
+
+  getRoomData() {
+    return this.roomData;
+  }
 
   //  roomsgetbyuseridss(id:any){
   //   return this.get(superAdminEndPoints.roomsgetbyuserid + id )
