@@ -98,6 +98,31 @@ export class AllService extends HttpService {
     return this.get(superAdminEndPoints.getUsers)
    }
 
+   getTasksOFRoom(){
+    return this.get(superAdminEndPoints.addTask)
+  }
+
+
+  getmedicines(){
+    return this.get(superAdminEndPoints.getmedicine)
+  }
+
+  
+
+
+  
+   getroutines(){
+    return this.get(superAdminEndPoints.routines)
+   }
+
+
+
+   Usersdatasfilter(order: string = 'first_name', sort: string = 'DESC', limit: number = 10, offset: number = 0, search: string = '') {
+    const url = `${superAdminEndPoints.getUsers}?order=${order}&sort=${sort}&limit=${limit}&offset=${offset}&search=${search}`;
+    return this.get(url); // Assuming you have a 'get' method to make the API call
+  }
+  
+
    getclientsdata(){
     return this.get(superAdminEndPoints.getclients)
    }
@@ -138,6 +163,35 @@ export class AllService extends HttpService {
   getRoomData() {
     return this.roomData;
   }
+
+
+
+  private userData: any;
+
+  setUserData(data: any) {
+   this.userData = data;
+ }
+
+ getUserData() {
+  return this.userData;
+}
+
+
+
+private clientData: any;
+
+setclientData(data: any) {
+ this.clientData = data;
+}
+
+getclientData() {
+return this.clientData;
+}
+
+
+
+
+
 
   //  roomsgetbyuseridss(id:any){
   //   return this.get(superAdminEndPoints.roomsgetbyuserid + id )
@@ -181,6 +235,13 @@ export class AllService extends HttpService {
    Userstatusupdatess(id:any, data:any){
     return this.patch(superAdminEndPoints.Userstatusupdate + id, data )
    }
+
+
+   clientstatusupdates(id:any, data:any){
+    return this.patch(superAdminEndPoints.clientstatusupdatess + id, data )
+   }
+
+   
 
    
 

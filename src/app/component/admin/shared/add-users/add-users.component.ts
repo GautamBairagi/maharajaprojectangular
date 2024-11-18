@@ -44,7 +44,7 @@ export class AddUsersComponent implements OnInit {
   }
 
     addusers() {
-    this.loginForm.value.profile = this.url;
+    // this.loginForm.value.profile = this.url;
 
   if (this.loginForm.invalid) {
     this.ck = true;

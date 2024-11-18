@@ -80,6 +80,23 @@ export class ClientviewComponent {
         console.log("user id", this.id)
         this.service.getuserById(data).subscribe((res: any) => {
           this.userByIdData = res[0];
+          this.userprofile()
+          this.service.setclientData(this.userByIdData);
+          console.log("policy by id", this.userByIdData)
+        })
+      }
+
+
+          
+ 
+    userByIdDatas:any=[];
+      ByIds(data: any) {
+        this.id = data
+        console.log("user id", this.id)
+        this.service.getuserById(data).subscribe((res: any) => {
+          this.userByIdData = [res[0]];
+          this.userprofile()
+          this.service.setclientData(this.userByIdData);
           console.log("policy by id", this.userByIdData)
         })
       }
@@ -103,27 +120,88 @@ export class ClientviewComponent {
           console.error('Error updating user', error);
         });
       }
-    
-    
-      toggleVerified(data: any) {
-        var id = data.id;
-        this.dataSend = {
-          active: !data.active 
-        };
-      
-        this.service.Userstatusupdatess(id, this.dataSend).subscribe(res => {
-          if (res) {
-            this.getusersdatas();
-            const accountStatus = res.active;
-            const doctorName = res.name;
-            if (accountStatus) {
-              this.swet.SucessToast(`Action Done Successfully`);
-            } else {
-              this.swet.SucessToast(`Action Done Sccessfully`);
-            }
-          }
-        });
+  
+  // Convert the active value to the corresponding status string
+getStatus(active: number): string {
+  switch (active) {
+    case 1:
+      return "1"; // Admit
+    case 2:
+      return "2"; // Discharge
+    case 0:
+    default:
+      return "0"; // Inactive
+  }
+}
+
+// Handle status updates
+updateStatus(user: any, newStatus: string) {
+  const id = user.id;
+  const updatedStatus = parseInt(newStatus, 10);
+
+  this.dataSend = {
+    active: updatedStatus,
+  };
+
+  this.service.clientstatusupdates(id, this.dataSend).subscribe(
+    (res: any) => {
+      if (res) {
+        this.getusersdatas(); // Refresh user data
+        console.log("uop",this.getusersdatas())
+        const statusText = this.getStatusText(updatedStatus);
+        this.swet.SucessToast(`Status updated to ${statusText} successfully!`);
       }
+    },
+    (err: any) => {
+      console.error(err);
+    }
+  );
+}
+
+// Convert the active number to a status label for toast messages
+// getStatusText(active: number): string {
+//   switch (active) {
+//     case 1:
+//       return "Admit";
+//     case 2:
+//       return "Discharge";
+//     case 0:
+//     default:
+//       return "Inactive";
+//   }
+// }
+
+
+
+getStatusText(active: number): string {
+  switch (active) {
+    case 1: // Admit
+      return 'btn-success'; // Green
+    case 2: // Discharge
+      return 'btn-danger'; // Red
+    case 0: // Inactive
+    default:
+      return 'btn-warning'; // Orange
+  }
+}
+
+
+ByIdData:any=[];
+roomDetails(data: any) {
+  this.id = data;
+  console.log("dataaaaa", this.id);
+
+  this.service.getRoomDtls(data).subscribe((res: any) => {
+    this.ByIdData = res;
+    // console.log("policy by id", this.ByIdData);
+
+    // Store the data in the service
+    this.service.setRoomData(this.ByIdData);
+    
+    // Navigate to another component (optional)
+    this.router.navigate(['/Admin/room-details']);
+  });
+}
     
 
 }

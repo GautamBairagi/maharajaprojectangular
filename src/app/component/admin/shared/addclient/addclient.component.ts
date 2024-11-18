@@ -37,7 +37,7 @@ export class AddclientComponent {
         password: ['', Validators.required],
         first_name :['',Validators.required ],
         last_name :['', ],
-        active :[1],
+        active :[0],
         group_id :[3],
         profile :['',],
         date_of_birth :['', ],

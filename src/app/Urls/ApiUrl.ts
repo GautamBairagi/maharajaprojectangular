@@ -16,6 +16,10 @@ export const superAdminEndPoints = {
 
     getClientss: `${baseUrl}client`,
     createclient: `${baseUrl}createclient`,
+    routines: `${baseUrl}routine`,
+    addTask: `${baseUrl}task`,
+    getmedicine: `${baseUrl}medicine`,
+    
     
 
 
@@ -27,6 +31,8 @@ export const superAdminEndPoints = {
     getUsersByid: `${baseUrl}users_details/`, // uiser get by id
     Usersupdate: `${baseUrl}editUser/`,
     Userstatusupdate: `${baseUrl}activateUser/`,
+
+    clientstatusupdatess:`${baseUrl}activateUser/`,
    
 
 
