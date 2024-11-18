@@ -67,6 +67,8 @@ addusers() {
     localStorage.removeItem('last_name');
     localStorage.removeItem('token');
     localStorage.removeItem('username');
+    localStorage.removeItem('workspace_id');
+    
 
     this.router.navigateByUrl("/", { replaceUrl: true })
 }

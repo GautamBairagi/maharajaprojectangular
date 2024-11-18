@@ -25,13 +25,12 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css",
-               "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css",
-              "node_modules/select2/dist/css/select2.min.css"
+              "src/styles.css"
+              
+             
             ],
             "scripts": [
-              "node_modules/jquery/dist/jquery.min.js",
-              "node_modules/select2/dist/js/select2.min.js"
+         
             ]
           },
           "configurations": {

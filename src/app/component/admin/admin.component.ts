@@ -43,6 +43,8 @@ export class AdminComponent implements OnInit {
     localStorage.removeItem('last_name');
     localStorage.removeItem('user_token');
     localStorage.removeItem('username');
+    localStorage.removeItem('workspace_id');
+    
     this.router.navigateByUrl("/", { replaceUrl: true })
 }
 
