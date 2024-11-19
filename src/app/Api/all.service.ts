@@ -115,27 +115,19 @@ export class AllService extends HttpService {
     return this.get(superAdminEndPoints.addTask)
   }
 
-
   getmedicines(){
     return this.get(superAdminEndPoints.getmedicine)
   }
-
-  
-
-
   
    getroutines(){
     return this.get(superAdminEndPoints.routines)
    }
-
-
 
    Usersdatasfilter(order: string = 'first_name', sort: string = 'DESC', limit: number = 10, offset: number = 0, search: string = '') {
     const url = `${superAdminEndPoints.getUsers}?order=${order}&sort=${sort}&limit=${limit}&offset=${offset}&search=${search}`;
     return this.get(url); // Assuming you have a 'get' method to make the API call
   }
   
-
    getclientsdata(){
     return this.get(superAdminEndPoints.getclients)
    }
@@ -212,19 +204,9 @@ getclientData() {
 return this.clientData;
 }
 
-
-
-
-
-
   //  roomsgetbyuseridss(id:any){
   //   return this.get(superAdminEndPoints.roomsgetbyuserid + id )
   //  }
-
-
-
-   
-
 
    updateMenu(url: string, payload: any, options?: { headers: HttpHeaders }): Observable<any> {
     return this.http.put(url, payload, options);
@@ -241,11 +223,6 @@ return this.clientData;
   }
 
 
-  
-
- 
-
-   
    getuserById(id:any){
     return this.get(superAdminEndPoints.getUsersByid + id )
    }
@@ -276,6 +253,19 @@ return this.clientData;
 
   postTaskFromRoom(data:any){
     return this.post(superAdminEndPoints.addTask, data )
+  }
+
+  postComments(data:any){
+    return this.post(superAdminEndPoints.comment,data)
+   }
+
+   getComments(){
+    return this.get(superAdminEndPoints.comment)
+   }
+
+   getCommentsByTaskId(task_id: string) {
+    const url = `${superAdminEndPoints.comment}?task_id=${task_id}`;
+    return this.get(url);
   }
 
   
