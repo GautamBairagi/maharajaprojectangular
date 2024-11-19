@@ -101,7 +101,7 @@ export class RoomTasksComponent implements OnInit {
     if (this.addTaskForm.valid) {
       this.api.postTaskFromRoom(this.addTaskForm.value).subscribe((res: any) => {
         this.sweet.SucessToast('Task added succesfully')
-        window.location.reload()
+        // window.location.reload()
       })
       console.log('Form Data:', this.addTaskForm.value);
     } else {

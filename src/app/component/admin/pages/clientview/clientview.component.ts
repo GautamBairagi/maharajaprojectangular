@@ -57,7 +57,8 @@ export class ClientviewComponent {
           },
         });
       }
-    onclick(){
+
+    addClient(){
       this.router.navigate(['/Admin/Addclient'])
     }
     

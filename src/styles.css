@@ -1,6 +1,7 @@
 :root {
-    --header-color: #ff416c;
-    --sidebar-color: #ff4b2b;
+    --header-color: #C4DFE6;
+    /* --header-color: linear-gradient(red, yellow); */
+    --sidebar-color: #66A5AD;
     --header-font-color: #ffffff;
     --sidebar-font-color: #ffffff;
   }

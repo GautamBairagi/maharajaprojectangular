@@ -129,14 +129,14 @@
    
  
     <div id="mySidebar"  class="sidebar" style="overflow: scroll;" >
-        <div class="sidebar-header">
-          <img src="../../../assets/maharaja.png" class="img-fluid" alt="">
-        </div>
+        
+          <img src="../../../assets/maharaja.png" class="img-fluid w-100" alt="">
+       
     
                     <div *ngFor="let side of sideData">
                       <ng-container *ngIf="side.dropdown !== 0; else simpleButton">
                         <button *ngIf="side.visibility === 1  || side.position === 1"
-                                class="accordion-button collapsed mt-3 mb-3" 
+                                class="accordion-button collapsed mt-4 mb-3" 
                                 type="button"
                                 data-bs-toggle="collapse" 
                                 [attr.data-bs-target]="'#flush-collapse-' + side.id"

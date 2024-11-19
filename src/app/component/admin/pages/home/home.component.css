@@ -1,59 +1,17 @@
 
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f5f5f5;
-}
-
-.sidebar {
-    height: 100vh;
-    background-color: #f8f9fa;
-    padding-top: 20px;
-    position: fixed;
-    width: 250px;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-}
-
-.sidebar .nav-link {
-    color: #333;
-    font-weight: 500;
-    padding: 10px 20px;
-}
-
-.sidebar .nav-link.active {
-    color: #007bff;
-    background-color: #e9ecef;
-    border-radius: 5px;
-}
-
-.content {
-    margin-left: 260px;
-    padding: 20px;
-}
-
-.header {
-    background: linear-gradient(45deg, #ff416c, #ff4b2b);
-    padding: 15px 20px;
-    color: white;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-radius: 5px;
-    margin-bottom: 20px;
-}
-
-.header .search-bar {
-    display: flex;
-    align-items: center;
-}
-
-.header .search-bar input {
-    margin-right: 5px;
-}
 
 .card {
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    border-left: 4px solid var(--sidebar-color);
+    transition: transform 0.2s;
+    border-radius: 10px;
+}
+
+.xl .card {
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
     border: none;
     transition: transform 0.2s;
+    border-radius: 10px;
 }
 
 .card:hover {
@@ -61,14 +19,14 @@ body {
 }
 
 .card-header {
-    background: #4e73df;
+    background-color: var(--sidebar-color);
     color: white;
     font-weight: bold;
 }
 
 .card-body i {
     color: white;
-    margin-bottom: 10px;
+    /* margin-bottom: 10px; */
 }
 
 .icons i {
@@ -99,13 +57,14 @@ body {
 }
 
 .icon-box {
-    background-color: #34395e;
+    background-color: var(--sidebar-color);
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     width: 50px;
     height: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 5px;
+    border-radius: 20px;
 }
 
 
