@@ -18,6 +18,10 @@ import { ClientviewComponent } from './pages/clientview/clientview.component';
 import { AddclientComponent } from './shared/addclient/addclient.component';
 import { ClientdetailsComponent } from './pages/clientdetails/clientdetails.component';
 import { RoomTasksComponent } from './pages/room-tasks/room-tasks.component';
+import { AddRoutineComponent } from './shared/add-routine/add-routine.component';
+import { AddTaskComponent } from './shared/add-task/add-task.component';
+import { AddMildstoneComponent } from './shared/add-mildstone/add-mildstone.component';
+import { AddMedesComponent } from './shared/add-medes/add-medes.component';
 
 
 
@@ -35,7 +39,11 @@ import { RoomTasksComponent } from './pages/room-tasks/room-tasks.component';
     ClientviewComponent,
     AddclientComponent,
     ClientdetailsComponent,
-    RoomTasksComponent
+    RoomTasksComponent,
+    AddRoutineComponent,
+    AddTaskComponent,
+    AddMildstoneComponent,
+    AddMedesComponent
   ],
   imports: [
     CommonModule,

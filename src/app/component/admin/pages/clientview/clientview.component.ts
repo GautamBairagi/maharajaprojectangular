@@ -88,14 +88,20 @@ export class ClientviewComponent {
 
 
           
- 
+      client_idss:any;
     userByIdDatas:any=[];
       ByIds(data: any) {
         this.id = data
         console.log("user id", this.id)
         this.service.getuserById(data).subscribe((res: any) => {
           this.userByIdData = [res[0]];
+          this.client_idss=res[0].id
+          localStorage.setItem('clientdetails', JSON.stringify(this.userByIdData));
+          localStorage.setItem('clientid', JSON.stringify(data));
+      // Store the data in the service
+
           this.userprofile()
+          
           this.service.setclientData(this.userByIdData);
           console.log("policy by id", this.userByIdData)
         })
@@ -185,23 +191,15 @@ getStatusText(active: number): string {
   }
 }
 
-
 ByIdData:any=[];
 roomDetails(data: any) {
   this.id = data;
   console.log("dataaaaa", this.id);
-
   this.service.getRoomDtls(data).subscribe((res: any) => {
     this.ByIdData = res;
-    // console.log("policy by id", this.ByIdData);
-
-    // Store the data in the service
     this.service.setRoomData(this.ByIdData);
-    
-    // Navigate to another component (optional)
-    this.router.navigate(['/Admin/room-details']);
+        this.router.navigate(['/Admin/room-details']);
   });
 }
     
-
 }

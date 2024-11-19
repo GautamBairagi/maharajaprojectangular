@@ -1,0 +1,61 @@
+<div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Create New Mildstone</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="cancel()" >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <form [formGroup]="loginForm">
+              <div class="form-row">
+                  <div class="form-group col-md-6"> 
+                    <label>Room Id</label>  
+                    <input type="text" class="form-control" placeholder="First Name" formControlName="room_id"
+                    [ngClass]="{'is-invalid': loginForm.controls['room_id'].errors && ck }">
+                    <p class="text-danger" *ngIf="loginForm.controls['room_id'].errors && ck">Enter your Room id</p>
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label>Title Name</label>
+                    <input type="text" class="form-control" placeholder="title" formControlName="title">
+                  </div>
+                </div>
+             
+              <div class="form-row">
+          <div class="form-group col-md-6">
+            <label>Description</label>
+            <input type="text"  class="form-control" formControlName="description" placeholder="description"
+            [ngClass]="{'is-invalid': loginForm.controls['description'].errors && ck }">
+            <p class="text-danger" *ngIf="loginForm.controls['description'].errors && ck">Enter your Description</p>
+          </div>
+  
+         
+              <div class="form-group col-md-6">
+                <label>status</label>
+                <input type="text" class="form-control" placeholder="status" formControlName="status"
+                [ngClass]="{'is-invalid': loginForm.controls['status'].errors && ck }">
+                <p class="text-danger" *ngIf="loginForm.controls['status'].errors && ck"> Enter your status</p>
+              </div>
+            </div> 
+  
+
+   
+          <button type="submit" (click)="addusers()" type="button" class="btn btn-success m-1">Save</button>
+          <button type="submit" class="btn btn-danger" (click)="cancel()" type="button" >cancel</button>
+  
+        </form>
+      </div>
+    </div>
+  </div>
+  
+   
+   
+  
+              
+  
+  
+  
+  
+  
+  
+  

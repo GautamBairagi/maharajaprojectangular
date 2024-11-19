@@ -21,6 +21,13 @@ export const superAdminEndPoints = {
     routines: `${baseUrl}routine`,
     addTask: `${baseUrl}task`,
     getmedicine: `${baseUrl}medicine`,
+
+
+    gertmilestones: `${baseUrl}milestone_details`,
+    createmilestoness: `${baseUrl}createmilestone`,
+
+    
+    
     
     
     rooms: `${baseUrl}room`,

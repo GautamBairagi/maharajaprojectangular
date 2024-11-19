@@ -15,9 +15,10 @@ export class ClientdetailsComponent {
 
   allData :any[] = []
   ngOnInit(): void {
-    this.getusersdatas();
+    this.getuserstaskdatas();
     this.getTasksOFUsers()
     this.getmedicinesusers()
+    this.getssmilestone()
 
 
     const clientData = this.service.getclientData();
@@ -25,11 +26,14 @@ export class ClientdetailsComponent {
     console.log("Received client data:", clientData);
   }
 
-  getusersData:any= []
-  getusersdatas(): void {
+  getusertaskdataData:any= []
+  routinelength:any
+  getuserstaskdatas(): void {
     this.service.getroutines().subscribe({
       next: (res: any) => {
-        this.getusersData = res; 
+        this.getusertaskdataData = res; 
+        this.routinelength = res.length; 
+
       },
       error: (err) => {
         console.log(err);
@@ -37,12 +41,13 @@ export class ClientdetailsComponent {
     });
   }
 
-
-  getTasksOFUser:any= []
+  tasklength:any;
+  getTasksOFUserss:any= []
   getTasksOFUsers(): void {
     this.service.getTasksOFRoom().subscribe({
       next: (res: any) => {
-        this.getTasksOFUser = res; 
+        this.getTasksOFUserss = res; 
+        this.tasklength = res.length; 
       },
       error: (err) => {
         console.log(err);
@@ -51,11 +56,13 @@ export class ClientdetailsComponent {
   }
 
 
-  getmedicinesuser:any= []
+  getmedicinesUser:any= []
+  medeslength:any;
   getmedicinesusers(): void {
     this.service.getmedicines().subscribe({
       next: (res: any) => {
-        this.getTasksOFUser = res; 
+        this.getmedicinesUser = res; 
+        this.medeslength = res.length; 
       },
       error: (err) => {
         console.log(err);
@@ -70,6 +77,46 @@ export class ClientdetailsComponent {
   }
   
 
+  mildstonelength:any
+  getmildstonedata:any = [];
+  getssmilestone(): void {
+    this.service.gertmilestoness().subscribe({
+      next: (res: any) => {
+        this.getmildstonedata = res; 
+        this.mildstonelength = res.length; 
+        
+        
+      },
+      error: (err) => {
+        console.log(err);
+      },
+    });
+  }
+  
+  openRoutineTab() {
+    const tabButton = document.getElementById('nav-home-tab'); // Access document directly
+    if (tabButton) {
+      tabButton.click(); // Simulate a click on the tab
+    }
+  }    
+
+  openmedsTab() {
+    const tabButton = document.getElementById('nav-contact-tab'); // Access document directly
+    if (tabButton) {
+      tabButton.click(); // Simulate a click on the tab
+    }
+  }  opentaskTab() {
+    const tabButton = document.getElementById('nav-profile-tab'); // Access document directly
+    if (tabButton) {
+      tabButton.click(); // Simulate a click on the tab
+    }
+  }  openmildstoneTab() {
+    const tabButton = document.getElementById('nav-mildstone-tab'); // Access document directly
+    if (tabButton) {
+      tabButton.click(); // Simulate a click on the tab
+    }
+  }
+  
   
 
 }

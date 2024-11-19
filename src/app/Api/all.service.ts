@@ -60,11 +60,9 @@ export class AllService extends HttpService {
     return this.post(superAdminEndPoints.createusers,data)
    }
 
-
    createclients(data: any) {
     return this.post(superAdminEndPoints.createclient,data)
    }
-
    
   getsidebarmenu(){
     return this.get(superAdminEndPoints.getsidebar)
@@ -142,7 +140,18 @@ export class AllService extends HttpService {
     return this.get(superAdminEndPoints.getclients)
    }
 
+
+   gertmilestoness(){
+    return this.get(superAdminEndPoints.gertmilestones)
+   }
+
+
+   createmilestones(data:any){
+    return this.post(superAdminEndPoints.createmilestoness,data)
+   }
+
    
+
 
 
    getClients(){
@@ -160,7 +169,7 @@ export class AllService extends HttpService {
    getRoomDtls(id:any){
     return this.get(superAdminEndPoints.roomDetails + id )
    }
-
+   
    getUserDtlsRooms(id:any){
     return this.get(superAdminEndPoints.userDetailsForRoom + id )
    }
