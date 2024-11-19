@@ -32,28 +32,29 @@ export class AddMedesComponent {
   ck: boolean = false;
   ngOnInit(): void {
     this.loginForm = this.fb.group({
-      user_id:[this.userId],
-      room_id: ['106'],
-      client_id: [this.clientid],
-      title: ['',],
-      description: ['',],
-      status: ['',]
+      allergies: ['',],
+      allotted_from: ['',],
+      allotted_to: ['',],
+      expiry_date: ['',],
+      medicine_name: ['',],
+      medicine_restrictions: ['',],
+      mfg_date: ['',],
+      precautions: ['',],
+      qty: ['',],
+      user_id: [this.userId],
     });
   }
 
-  addusers() {
+  addmeds() {
     if (this.loginForm.invalid) {
       this.ck = true;
       return;
     } else {
       console.log("Patient data", this.loginForm.value);
-      
-      this.service.createmilestones(this.loginForm.value).subscribe({
+      this.service.addmedinice(this.loginForm.value).subscribe({
         next: (res) => {
           console.log("res", res)
-          if (res.success) {
-            this.router.navigate(['/Admin/Users'])
-          }
+            this.router.navigate(['/Admin/Clientdetails'])
         },
         error: (err) => {
           console.log(err);

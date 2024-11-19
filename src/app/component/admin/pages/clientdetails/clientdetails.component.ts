@@ -94,26 +94,26 @@ export class ClientdetailsComponent {
   }
   
   openRoutineTab() {
-    const tabButton = document.getElementById('nav-home-tab'); // Access document directly
+    const tabButton = document.getElementById('nav-home-tab'); 
     if (tabButton) {
-      tabButton.click(); // Simulate a click on the tab
+      tabButton.click(); 
     }
   }    
 
   openmedsTab() {
-    const tabButton = document.getElementById('nav-contact-tab'); // Access document directly
+    const tabButton = document.getElementById('nav-contact-tab'); 
     if (tabButton) {
-      tabButton.click(); // Simulate a click on the tab
+      tabButton.click(); 
     }
   }  opentaskTab() {
-    const tabButton = document.getElementById('nav-profile-tab'); // Access document directly
+    const tabButton = document.getElementById('nav-profile-tab'); 
     if (tabButton) {
-      tabButton.click(); // Simulate a click on the tab
+      tabButton.click(); 
     }
   }  openmildstoneTab() {
-    const tabButton = document.getElementById('nav-mildstone-tab'); // Access document directly
+    const tabButton = document.getElementById('nav-mildstone-tab'); 
     if (tabButton) {
-      tabButton.click(); // Simulate a click on the tab
+      tabButton.click(); 
     }
   }
   

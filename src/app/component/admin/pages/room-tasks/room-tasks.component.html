@@ -55,12 +55,14 @@
                                         </div>
                                     </div>
                                 </span>
-                                <span>
+                                <span (click)="setCommentFormData(task)" data-bs-toggle="modal"
+                                data-bs-target="#commentModal">
                                     <i (click)="setCommentFormData(task)" data-bs-toggle="modal"
                                         data-bs-target="#commentModal" class="fa-regular fa-comments"></i>
                                         <span class="top-0 start-100 translate-middle badge rounded-pill bg-danger">
                                             {{ taskCommentsCount[task.id] || 0 }}
                                           </span>
+                               
                                 </span>
 
 

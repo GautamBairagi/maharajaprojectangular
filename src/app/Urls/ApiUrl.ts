@@ -25,6 +25,7 @@ export const superAdminEndPoints = {
 
     gertmilestones: `${baseUrl}milestone_details`,
     createmilestoness: `${baseUrl}createmilestone`,
+    
 
     
     
