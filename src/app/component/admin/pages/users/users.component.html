@@ -1,4 +1,4 @@
-<div class="col-lg-12 col-md-12 d-flex  gap-2  mt-2 " 
+<!-- <div class="col-lg-12 col-md-12 d-flex  gap-2  mt-2 " 
   style="background-color: #F7F7F7; white-space: wrap ; height: 70px;   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px; border-radius: 10px;">
   <h5 class="fs-4 mt-3 text-center p-2" style="color: #777;">User List</h5> <span><button type="button"
       (click)="onclick()" class="btn text-white mt-3" style="background-color: #868e92;"><span><i
@@ -21,10 +21,9 @@
         <td>{{a.id }}</td>
         <td>
           <div class="d-flex " style="justify-content: center;">
-            <!-- <img [src]="a.profile" style="height: 50px; width: 50px; " class="img-fluid" alt=""> -->
             <div>
-              <span  (click)="ById(a.id)"> <a class="pro" (click)="userprofile()"  >{{a.first_name}} {{a.last_name}} </a>  <br> {{a.email}}</span> 
-              <i class="fa fa-edit" style="cursor: pointer; color: rgb(64, 64, 250); padding: 5px;"
+              <span  (click)="ByIds(a.id)"> <a class="pro"  >{{a.first_name}} {{a.last_name}} </a>  <br> {{a.email}}</span> 
+              <i class="fa fa-edit"  (click)="ById(a.id)" style="cursor: pointer; color: rgb(64, 64, 250); padding: 5px;"
                 (click)="ById(a.id)" data-bs-toggle="modal" data-bs-target="#exampleModal"></i>
               <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                 aria-hidden="true">
@@ -55,12 +54,7 @@
                             <input type="text" class="form-control" id="email"  [(ngModel)]="userByIdData.email"
                               name="email" required />
                           </div>
-                          <!-- <div class="form-group col-md-6">
-                            <label>Password</label>
-                            <input type="text" class="form-control" id="password"  [(ngModel)]="userByIdData.password"
-                              name="password" required />
-    
-                          </div> -->
+                      
                         </div>
     
     
@@ -115,7 +109,7 @@
         <td><button class="btn btn-sm text-light"  style="border-radius: 20px; background-color: #34395e;">{{a.group_name }}</button></td>
 
         <td style="text:center;">
-          <div class="d-flex gap-2">
+          <div class="d-flex gap-2" style="justify-content: center;">
             <div>
             <button type="button" class="btn btn-secondary small-btn">{{a.user_count}}</button>
             <span>Rooms</span>
@@ -161,4 +155,309 @@
       </tr>
     </tbody>
   </table>
+</div> -->
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="col-lg-12 col-md-12 d-flex gap-2 mt-2" style="background-color: #F7F7F7; white-space: wrap; height: 70px; box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px; border-radius: 10px;">
+  <h5 class="fs-4 mt-3 text-center p-2" style="color: #777;">User List</h5>
+  <span>
+    <button type="button" (click)="onclick()" class="btn text-white mt-3" style="background-color: #868e92;">
+      <i class="fa-sharp fa-solid fa-plus"></i> Add
+    </button>
+  </span>
+  <input type="text" [(ngModel)]="searchQuery" placeholder="Search" (input)="onSearch()" class="form-control mt-3" style="width: 200px;">
 </div>
+
+<div class="mt-2" style="overflow-x: scroll; box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; border-radius: 10px;">
+  <table class="table table-bordered table-hover table-striped">
+    <thead style="font-size: 13px;">
+      <tr>
+        <th (click)="onSortChange('id')">Id <i class="fa fa-arrow-up" *ngIf="sortBy === 'id' && sortDirection === 'ASC'"></i><i class="fa fa-arrow-down" *ngIf="sortBy === 'id' && sortDirection === 'DESC'"></i></th>
+        <th (click)="onSortChange('name')">User Name <i class="fa fa-arrow-up" *ngIf="sortBy === 'name' && sortDirection === 'ASC'"></i><i class="fa fa-arrow-down" *ngIf="sortBy === 'name' && sortDirection === 'DESC'"></i></th>
+        <th (click)="onSortChange('date')">Active <i class="fa fa-arrow-up" *ngIf="sortBy === 'date' && sortDirection === 'ASC'"></i><i class="fa fa-arrow-down" *ngIf="sortBy === 'date' && sortDirection === 'DESC'"></i></th>
+        <th>Role</th>
+        <th>Assigned</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of getusersData">
+        <td>{{ user.id }}</td>
+        <td>{{ user.name }}</td>
+        <td>{{ user.date }}</td>
+        <td>{{ user.role }}</td>
+        <td>{{ user.assigned }}</td>
+        <td><button class="btn btn-primary">View</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div *ngIf="totalItems > 10">
+  <button (click)="onPageChange(currentPage - 1)" [disabled]="currentPage === 1">Previous</button>
+  <button (click)="onPageChange(currentPage + 1)" [disabled]="currentPage * 10 >= totalItems">Next</button>
+</div> -->
+
+
+
+
+
+<!-- 
+<div class="col-lg-12 col-md-12 d-flex gap-2 mt-2"
+  style="background-color: #F7F7F7; white-space: wrap; height: 70px; box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px; border-radius: 10px;">
+  <h5 class="fs-4 mt-3 text-center p-2" style="color: #777;">User List</h5>
+  <span>
+    <button type="button" (click)="onclick()" class="btn text-white mt-3" style="background-color: #868e92;">
+      <i class="fa-sharp fa-solid fa-plus"></i> Add
+    </button>
+  </span>
+
+  <span>
+  <input type="text" [(ngModel)]="searchQuery" placeholder="Search" (input)="onSearch()" class="form-control mt-3"
+    style="width: 200px;">
+  </span>
+</div> -->
+
+
+<div class="col-lg-12 col-md-12 d-flex justify-content-between align-items-center mt-2"
+  style="background-color: #F7F7F7; height: 70px; box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px; border-radius: 10px;">
+
+  <!-- Left side content -->
+  <div class="d-flex gap-2">
+    <h5 class="fs-4 mt-3 text-center " style="color: #777;">User List</h5>
+    <button type="button" (click)="onclick()" class="btn text-white mt-2" style="background-color: #868e92;">
+      <i class="fa-sharp fa-solid fa-plus"></i> Add
+    </button>
+  </div>
+
+  <!-- Right side search input -->
+  <input type="text" [(ngModel)]="searchQuery" placeholder="Search" (input)="onSearch()" class="form-control mt-3"
+    style="width: 200px;">
+</div>
+
+
+<div class="mt-2" style="overflow-x: scroll; box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; border-radius: 10px;">
+  <table class="table table-bordered table-hover table-striped">
+    <thead style="font-size: 13px;">
+      <tr>
+        <th (click)="onSortChange('id')">Id <i class="fa fa-arrow-up" style="color: #34395e;"
+            *ngIf="sortBy === 'id' && sortDirection === 'ASC'"></i><i class="fa fa-arrow-down"
+            *ngIf="sortBy === 'id' && sortDirection === 'DESC'"></i></th>
+        <th (click)="onSortChange('first_name')">User Name <i class="fa fa-arrow-up"
+            *ngIf="sortBy === 'first_name' && sortDirection === 'ASC'"></i><i class="fa fa-arrow-down"
+            *ngIf="sortBy === 'first_name' && sortDirection === 'DESC'"></i></th>
+        
+        <th (click)="onSortChange('active')">active <i class="fa fa-arrow-up"
+            *ngIf="sortBy === 'active' && sortDirection === 'ASC'"></i><i class="fa fa-arrow-down"
+            *ngIf="sortBy === 'active' && sortDirection === 'DESC'"></i></th>
+        <th (click)="onSortChange('group_name')">Role<i class="fa fa-arrow-up"
+            *ngIf="sortBy === 'group_name' && sortDirection === 'ASC'"></i><i class="fa fa-arrow-down"
+            *ngIf="sortBy === 'group_name' && sortDirection === 'DESC'"></i></th>
+        <th>Assigned</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of getusersData">
+        <td>{{ user.id }}</td>
+        <td>
+          <div class="d-flex " style="justify-content: center;">
+            <div>
+              <span (click)="ByIds(user.id)"> <a class="pro">{{user.first_name}} {{user.last_name}} </a> <br>
+                {{user.email}}</span>
+              <i class="fa fa-edit" (click)="ById(user.id)"
+                style="cursor: pointer; color: rgb(64, 64, 250); padding: 5px;" (click)="ById(user.id)"
+                data-bs-toggle="modal" data-bs-target="#exampleModal"></i>
+              <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog  modal-lg">
+                  <div class="modal-content text-start">
+                    <div class="modal-header">
+                      <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Users</h1>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      <form #userForm="ngForm" (ngSubmit)="updateusers()">
+                        <div class="form-row">
+                          <div class="form-group col-md-6">
+                            <label for="name">First Name</label>
+                            <input type="text" class="form-control" id="first_name"
+                              [(ngModel)]="userByIdData.first_name" name="first_name" required />
+                          </div>
+                          <div class="form-group col-md-6">
+                            <label>Last Name</label>
+                            <input type="text" class="form-control" id="last_name" [(ngModel)]="userByIdData.last_name"
+                              name="last_name" required />
+                          </div>
+                        </div>
+
+                        <div class="form-row">
+                          <div class="form-group col-md-6">
+                            <label>Email</label>
+                            <input type="text" class="form-control" id="email" [(ngModel)]="userByIdData.email"
+                              name="email" required />
+                          </div>
+                        </div>
+                        <div class="form-row">
+                          <div class="form-group col-md-6">
+                            <label>Date of Birth</label>
+                            <input type="text" class="form-control" id="date_of_birth"
+                              [(ngModel)]="userByIdData.date_of_birth" name="date_of_birth" required />
+                          </div>
+                          <div class="form-group col-md-6">
+                            <label>Date of Joining</label>
+                            <input type="text" class="form-control" id="date_of_joining"
+                              [(ngModel)]="userByIdData.date_of_joining" name="date_of_joining" required />
+                          </div>
+                        </div>
+                        <div class="form-row">
+                          <div class="form-group col-md-6">
+                            <label>Phone</label>
+                            <input type="text" class="form-control" id="phone" [(ngModel)]="userByIdData.phone"
+                              name="phone" required />
+                          </div>
+                          <div class="form-group col-md-6">
+                            <label>Designation</label>
+                            <input type="text" class="form-control" id="designation"
+                              [(ngModel)]="userByIdData.designation" name="designation" required />
+                          </div>
+                        </div>
+                        <button type="submit" class="btn btn-success m-1">Save</button>
+                        <button type="button" class="btn btn-danger" type="button" data-bs-dismiss="modal"
+                          aria-label="Close">cancel</button>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </td>
+        <td>
+          <button class="btn btn-sm" [ngClass]="user.active ? 'btn-success' : 'btn-danger'" style="border-radius: 20px;"
+            (click)="toggleVerified(user)">
+            {{ user.active ? 'Active' : 'Inactive' }}
+          </button>
+        </td>
+        <td><button class="btn btn-sm text-light"
+            style="border-radius: 20px; background-color: #34395e;">{{user.group_name }}</button></td>
+        <td style="text:center;">
+          <div class="d-flex gap-2" style="justify-content: center;">
+            <div>
+              <button type="button" class="btn btn-secondary small-btn">{{user.user_count}}</button>
+              <span>Rooms</span>
+            </div>
+            <div>
+              <button type="button" class="btn btn-secondary small-btn">0</button>
+              <span>Project</span>
+            </div>
+            <div>
+              <button type="button" class="btn btn-secondary small-btn">0</button>
+              <span>Project</span>
+            </div>
+          </div>
+        </td>
+        <div class="dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <span id="profileDropdown" style="justify-content: center;">
+            <i class="fa-solid fa-ellipsis-vertical"></i>
+          </span>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="profileDropdown">
+            <a class="dropdown-item">
+              <i style="color: #34395e;" class="fas fa-cogs mr-2"></i> Permission
+            </a>
+            <a class="dropdown-item">
+              <i style="color: #34395e;" class="fas fa-user-shield mr-2"></i> Make Admin
+            </a>
+            <a class="dropdown-item">
+              <i style="color: #34395e;" class="fas fa-user-tie mr-2"></i> Make Client
+            </a>
+            <a class="dropdown-item">
+              <i style="color: #34395e;" class="fas fa-users mr-2"></i> Make Member
+            </a>
+            <a class="dropdown-item">
+              <i style="color: #34395e;" class="fas fa-user-cog mr-2"></i> Make Manager
+            </a>
+            <a class="dropdown-item">
+              <i style="color: #34395e;" class="fas fa-trash-alt mr-2"></i> Delete Workspace
+            </a>
+          </div>
+        </div>
+      </tr>
+    </tbody>
+  </table>
+  <!-- Pagination buttons -->
+</div>
+<!-- <div>
+  <button class="Previous" (click)="onPageChange(currentPage - 1)" [disabled]="currentPage === 1">Previous</button>
+  <button class="Next" (click)="onPageChange(currentPage + 1)" [disabled]="currentPage * 10 >= totalItems">Next</button>
+</div> -->
+
+
+
+<div
+  class="d-flex justify-content-between align-items-center mt-3 p-2 rounded"
+  style="background-color: #f7f7f7; box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;"
+>
+  <!-- Rows Info -->
+  <div>
+    Showing {{ getStartIndex() }} to {{ getEndIndex() }} of {{ totalItems }} rows
+  </div>
+
+  <!-- Rows Per Page Selector -->
+  <div class="d-flex align-items-center gap-2">
+    <span>Rows per page:</span>
+    <select  class="btn text-light" style="border-radius: 10px;"
+      class="btn form-select-sm"
+      style="width: 60px;"
+      [(ngModel)]="rowsPerPage"
+      (change)="onRowsPerPageChange()"
+    >
+      <option value="5">5</option>
+      <option value="10" selected>10</option>
+      <option value="20">20</option>
+    </select>
+  </div>
+
+  <!-- Pagination Controls -->
+  <div>
+    <button
+      class="btn btn-outline-primary btn-sm"
+      (click)="onPageChange(currentPage - 1)"
+      [disabled]="currentPage === 1"
+    >
+      &lt;
+    </button>
+    <button
+      *ngFor="let page of getPaginationButtons()"
+      class="btn"
+      [ngClass]="{
+        'btn-primary': page === currentPage,
+        'btn-outline-primary': page !== currentPage
+      }"
+      (click)="onPageChange(page)"
+    >
+      {{ page }}
+    </button>
+    <button
+      class="btn btn-outline-primary btn-sm"
+      (click)="onPageChange(currentPage + 1)"
+      [disabled]="currentPage * rowsPerPage >= totalItems"
+    >
+      &gt;
+    </button>
+  </div>
+</div>
+
+
+
+
+
+

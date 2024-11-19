@@ -99,7 +99,7 @@ export class AllService extends HttpService {
    }
 
   //  getRoomUsersdata(id:any){
-  //   const roomNo = localStorage.getItem('roomNumber')
+  //   const roomNo = localStorage.getgetTasksOFRoomItem('roomNumber')
   //   return this.get(superAdminEndPoints.getRoomUsers + roomNo )
   //  }
 
@@ -112,6 +112,31 @@ export class AllService extends HttpService {
     const roomNo = localStorage.getItem('roomNumber');
     return this.get(superAdminEndPoints.getRoomUsers + roomNo);
   }
+
+   getTasksOFRoom(){
+    return this.get(superAdminEndPoints.addTask)
+  }
+
+
+  getmedicines(){
+    return this.get(superAdminEndPoints.getmedicine)
+  }
+
+  
+
+
+  
+   getroutines(){
+    return this.get(superAdminEndPoints.routines)
+   }
+
+
+
+   Usersdatasfilter(order: string = 'first_name', sort: string = 'DESC', limit: number = 10, offset: number = 0, search: string = '') {
+    const url = `${superAdminEndPoints.getUsers}?order=${order}&sort=${sort}&limit=${limit}&offset=${offset}&search=${search}`;
+    return this.get(url); // Assuming you have a 'get' method to make the API call
+  }
+  
 
    getclientsdata(){
     return this.get(superAdminEndPoints.getclients)
@@ -153,6 +178,35 @@ export class AllService extends HttpService {
   getRoomData() {
     return this.roomData;
   }
+
+
+
+  private userData: any;
+
+  setUserData(data: any) {
+   this.userData = data;
+ }
+
+ getUserData() {
+  return this.userData;
+}
+
+
+
+private clientData: any;
+
+setclientData(data: any) {
+ this.clientData = data;
+}
+
+getclientData() {
+return this.clientData;
+}
+
+
+
+
+
 
   //  roomsgetbyuseridss(id:any){
   //   return this.get(superAdminEndPoints.roomsgetbyuserid + id )
@@ -197,6 +251,13 @@ export class AllService extends HttpService {
     return this.patch(superAdminEndPoints.Userstatusupdate + id, data )
    }
 
+
+   clientstatusupdates(id:any, data:any){
+    return this.patch(superAdminEndPoints.clientstatusupdatess + id, data )
+   }
+
+   
+
    
 
 
@@ -208,9 +269,6 @@ export class AllService extends HttpService {
     return this.post(superAdminEndPoints.addTask, data )
   }
 
-  getTasksOFRoom(){
-    return this.get(superAdminEndPoints.addTask)
-  }
   
   // updateMenu(url: string, payload: any){
   //   return this.put(superAdminEndPoints.updateSidebar , url , payload)

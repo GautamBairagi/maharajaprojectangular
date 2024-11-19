@@ -18,6 +18,10 @@ export const superAdminEndPoints = {
 
     getClientss: `${baseUrl}client`,
     createclient: `${baseUrl}createclient`,
+    routines: `${baseUrl}routine`,
+    addTask: `${baseUrl}task`,
+    getmedicine: `${baseUrl}medicine`,
+    
     
     rooms: `${baseUrl}room`,
     // roomsgetbyuserid: `${baseUrl}user/`,
@@ -27,9 +31,15 @@ export const superAdminEndPoints = {
     Usersupdate: `${baseUrl}editUser/`,
     Userstatusupdate: `${baseUrl}activateUser/`,
 
+    clientstatusupdatess:`${baseUrl}activateUser/`,
+   
+
+
+
+
     getLanguagess: `${baseUrl}get_language`,
     changeLanguage: `${baseUrl}change_language?lang=`,
     userDetailsForRoom: `${baseUrl}userdata/`,
     roomDetails: `${baseUrl}room_details/`,
-    addTask: `${baseUrl}task`,
+  
 }

@@ -57,19 +57,40 @@
         </div>
     </div>
     <hr>
-    <div class="row mt-3">
+
+    <div class="row mt-3" *ngFor="let a of allData" >
         <div class="col-md-6">
-          <p><strong>Name:</strong> Gautam sir</p>
-          <p><strong>User Type:</strong> Team Member</p>
-          <p><strong>Contact:</strong> gautamwork@admin.com</p>
-          <p><strong>Status:</strong> <span  style="background-color: #218838; color: white; border-radius: 10px;  padding: 3px;">Active</span></p>
+
+            <!-- date_of_birth
+date_of_joining
+designation
+
+
+gender
+last_name
+
+phone
+profile -->
+
+
+
+          <p><strong>Name:</strong> {{a.first_name}}</p>
+          <p><strong>User Type:</strong> {{a.group_name}}</p>
+          <p><strong>Contact:</strong>{{a.email}}</p> 
+          <p><strong>Status:</strong> <span  style="background-color: #218838; color: white; border-radius: 10px;  padding: 3px;">{{a.active}}</span></p> 
         </div>
         <div class="col-md-6">
-          <p><strong>Date of Birth:</strong> 30-Nov-0001</p>
-          <p><strong>Date of Joining:</strong> 30-Nov-0001</p>
-          <p><strong>Designation:</strong> Kiaan</p>
+          <p><strong>Date of Birth:</strong>{{a.date_of_birth | date:'dd-MM-yyyy'}}</p>
+          <p><strong>Date of Joining:</strong> {{a.date_of_joining | date:'dd-MM-yyyy'}}</p>
+          <p><strong>Designation:</strong> {{a.designation}}</p>
         </div>
       </div>
+
+      
+
+
+
+
 
 
       <div class="row mt-3">
