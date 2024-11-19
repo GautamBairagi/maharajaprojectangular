@@ -1,4 +1,105 @@
-h2{
+.head{
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     padding: 5px;
 }
+
+
+.card{
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+
+.popover-container {
+    position: relative; /* Ensures the popover is positioned relative to the container */
+    display: inline-block; /* Keeps the button and popover inline */
+}
+
+.popover-button {
+    margin: 2px;
+    padding: 10px 20px;
+    font-size: 14px;
+    background-color: var(--sidebar-color);
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    border: none;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border-radius: 50px;
+}
+
+.popover-button:hover {
+    background-color: #0056b3;
+}
+
+.popover-content {
+    position: absolute;
+    top: 100%; /* Position below the button */
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #fff;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    z-index: 1000;
+    min-width: 200px;
+    text-align: center;
+    display: none; /* Initially hidden */
+}
+
+.popover-container:hover .popover-content {
+    display: block; /* Show the popover on hover */
+}
+
+.btn-primary, .btn-success{
+    background-color: var(--sidebar-color);
+    border: none;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+
+.multi-select-dropdown {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 10px;
+    max-width: auto;
+  }
+  
+  .selected-options {
+    margin-bottom: 10px;
+  }
+  
+  .selected-item {
+    display: inline-block;
+    background-color: #007bff;
+    color: white;
+    padding: 5px 10px;
+    margin: 2px;
+    border-radius: 3px;
+  }
+  
+  .unselect-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-weight: bold;
+    margin-left: 5px;
+    cursor: pointer;
+  }
+  
+  .dropdown-options {
+    max-height: 200px;
+    overflow-y: auto;
+  }
+  
+  .dropdown-item {
+    display: flex;
+    align-items: center;
+    margin: 5px 0;
+  }
+  
+  input[type='checkbox'] {
+    margin-right: 10px;
+  }
+  
+  

@@ -1,20 +1,154 @@
+<div class="container" *ngFor="let a of ByIdData">
 
-<div class="container">
-    
     <div class="row">
-        
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-            <h2>Room Details</h2>
+
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 head d-flex justify-content-between">
+            <h2>{{ a.name }}</h2>
+            <button routerLink="/Admin/room_tasks" class="btn btn-primary" >Room Tasks</button>
         </div>
-        
+        <small>Room Description :-</small>
+        <h4> {{ a.description }} </h4>
+
     </div>
-    
+
     <div class="row">
-        
-        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" *ngFor="let a of allData">
-            {{ a.id }}
+
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            <div class="card mt-4" (click)="roomDetails(a.id)" style="cursor: pointer;">
+                <div class="card-header d-flex justify-content-between">
+                    <p>Users</p>
+                </div>
+                <div class="card-body">
+
+                    <div class="row">
+
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+                            <div class="popover-container" *ngFor="let userId of a.user_ids.split(',')"
+                                style="display: inline-flex;">
+                                <button class="popover-button" (mouseenter)="fetchUserDetails(userId)"
+                                    [attr.data-user-id]="userId">
+                                    {{ getInitials(userId) }}
+                                </button>
+                                <div class="popover-content">
+                                    <p *ngIf="userDetails[userId]; else loading">
+                                        {{ userDetails[userId].first_name }} {{ userDetails[userId].last_name }}
+                                    </p>
+                                    <ng-template #loading>
+                                        <p>Loading...</p>
+                                    </ng-template>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+            </div>
         </div>
-        
+
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            <div class="card mt-4" (click)="roomDetails(a.id)" style="cursor: pointer;">
+                <div class="card-header d-flex justify-content-between">
+                    <p>Residents</p>
+                </div>
+                <div class="card-body">
+
+                    <div class="row">
+
+
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+                            <div class="popover-container" *ngFor="let userId of a.client_id.split(',')"
+                                style="display: inline-flex;">
+                                <button class="popover-button" (mouseenter)="fetchUserDetails(userId)"
+                                    [attr.data-user-id]="userId">
+                                    {{ getInitials(userId) }}
+                                </button>
+                                <div class="popover-content">
+                                    <p *ngIf="userDetails[userId]; else loading">
+                                        {{ userDetails[userId].first_name }} {{ userDetails[userId].last_name }}
+                                    </p>
+                                    <ng-template #loading>
+                                        <p>Loading...</p>
+                                    </ng-template>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+        </div>
+
     </div>
-    
+
+
+    <div class="row">
+
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            <div class="card mt-4">
+                <div class="card-header d-flex justify-content-between">
+                    <span>All Residents</span>
+                    <!-- <span> <button class="btn btn-success rounded-pill" data-bs-toggle="modal" data-bs-target="#clientModal" ><i class="fa-solid fa-plus"></i></button> </span> -->
+
+                    <!-- Client Add Modal -->
+                    <div class="modal fade" id="clientModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Add Resident</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    ...
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary"
+                                        data-bs-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>First Name</th>
+                                    <th>Last Name</th>
+                                    <th>Email</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let rr of roomClients">
+                                    <td> {{ rr.first_name }} </td>
+                                    <td> {{ rr.last_name }} </td>
+                                    <td> {{ rr.email }} </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+        
+
+    </div>
+
+
 </div>

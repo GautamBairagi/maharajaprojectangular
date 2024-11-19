@@ -1,0 +1,215 @@
+
+<div class="container">
+
+    
+    <div class="row">
+   
+        
+        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+            <div class="card mt-4" style="cursor: pointer;">
+                <div class="card-header d-flex justify-content-between">
+                    <p>Users</p>
+                </div>
+                <div class="card-body">
+
+                    <div class="row">
+
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+                           
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+        </div>
+        
+   
+    </div>
+    
+    
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="card mt-4">
+                <div class="card-header d-flex justify-content-between">
+                    <span>All Tasks</span> <span> <button class="btn btn-success rounded-pill" data-bs-toggle="modal"
+                            data-bs-target="#taskModal"><i class="fa-solid fa-plus"></i></button> </span>
+
+
+                    <!-- Task Add Modal -->
+                    <div class="modal fade" id="taskModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Add Task</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <form [formGroup]="addTaskForm" (ngSubmit)="onSubmit()">
+
+
+                                        <!-- User ID -->
+                                        <div class="form-group">
+                                            <label for="user_id">User</label>
+                                            <select id="user_id" formControlName="user_id" class="form-select">
+                                                <option value="">Select User</option>
+                                                <option *ngFor="let rr of roomUsers" [value]="rr.id"> {{ rr.first_name
+                                                    }} </option>
+                                            </select>
+                                        </div>
+
+
+                                        <!-- Title -->
+                                        <div class="form-group">
+                                            <label for="title">Title</label>
+                                            <input id="title" type="text" formControlName="title"
+                                                class="form-control" />
+                                        </div>
+
+                                        <!-- Day -->
+                                        <div class="form-group">
+                                            <label for="day">Day</label>
+                                            <input id="day" type="text" formControlName="day" class="form-control" />
+                                        </div>
+
+                                        <!-- Task Days -->
+                                        <div class="form-group">
+                                            <label for="task_days">Task Days</label>
+                                            <input id="task_days" type="number" formControlName="task_days"
+                                                class="form-control" />
+                                        </div>
+
+                                        <!-- Description -->
+                                        <div class="form-group">
+                                            <label for="description">Description</label>
+                                            <textarea id="description" formControlName="description"
+                                                class="form-control"></textarea>
+                                        </div>
+
+                                        <!-- Priority -->
+                                        <div class="form-group">
+                                            <label for="priority">Priority</label>
+                                            <select id="priority" formControlName="priority" class="form-control">
+                                                <option value="">Select Priority</option>
+                                                <option value="Low">Low</option>
+                                                <option value="Medium">Medium</option>
+                                                <option value="High">High</option>
+                                            </select>
+                                        </div>
+
+                                        <!-- start Date -->
+                                        <div class="form-group">
+                                            <label for="start_date">Start Date</label>
+                                            <input id="start_date" type="date" formControlName="start_date"
+                                                class="form-control" />
+                                        </div>
+
+                                        <!-- Due Date -->
+                                        <div class="form-group">
+                                            <label for="due_date">Due Date</label>
+                                            <input id="due_date" type="date" formControlName="due_date"
+                                                class="form-control" />
+                                        </div>
+
+                                        <!-- Time -->
+                                        <div class="form-group">
+                                            <label for="time">Time</label>
+                                            <input id="time" type="time" formControlName="time" class="form-control" />
+                                        </div>
+
+                                        <!-- Status -->
+                                        <div class="form-group">
+                                            <label for="status">Status</label>
+                                            <select id="status" formControlName="status" class="form-control">
+                                                <option value="">Select Status</option>
+                                                <option value="Pending">Pending</option>
+                                                <option value="In Progress">In Progress</option>
+                                                <option value="Completed">Completed</option>
+                                            </select>
+                                        </div>
+
+                                        <!-- Class -->
+                                        <div class="form-group">
+                                            <label for="class">Class</label>
+                                            <input id="class" type="text" formControlName="class"
+                                                class="form-control" />
+                                        </div>
+
+                                        <!-- Task Message -->
+                                        <div class="form-group">
+                                            <label for="task_message">Task Message</label>
+                                            <textarea id="task_message" formControlName="task_message"
+                                                class="form-control"></textarea>
+                                        </div>
+
+                                        <!-- Submit Button -->
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                data-bs-dismiss="modal">Close</button>
+                                            <button type="submit" class="btn btn-primary">Submit</button>
+                                        </div>
+
+                                    </form>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+
+                    <div class="table-responsive">
+
+                        <table class="table table-hover" style="text-wrap: nowrap;">
+                            <thead>
+                                <tr>
+                                    <th>User</th>
+                                    <th>Title</th>
+                                    <th>Day</th>
+                                    <th>Task Days</th>
+                                    <th>Description</th>
+                                    <th>Priority</th>
+                                    <th>Start Date</th>
+                                    <th>Due Date</th>
+                                    <th>Time</th>
+                                    <th>Status</th>
+                                    <th>Class</th>
+                                    <th>Task Message</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let task of allTasks; let i = index">
+
+
+                                    <td>{{ task.name }}</td>
+
+                                    <td>{{ task.title }}</td>
+                                    <td>{{ task.day }}</td>
+                                    <td>{{ task.task_days }}</td>
+                                    <td>{{ task.description }}</td>
+                                    <td>{{ task.priority }}</td>
+                                    <td>{{ task.start_date | date }}</td>
+                                    <td>{{ task.due_date | date }}</td>
+                                    <td>{{ task.time }}</td>
+                                    <td>{{ task.status }}</td>
+                                    <td>{{ task.class }}</td>
+                                    <td>{{ task.task_message }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+    
+</div>

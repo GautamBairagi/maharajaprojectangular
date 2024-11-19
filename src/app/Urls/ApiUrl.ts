@@ -12,29 +12,24 @@ export const superAdminEndPoints = {
     updateSidebar: `${baseUrl}sidebar`,
     getSubMenu: `${baseUrl}subsidebars`,
     getUsers: `${baseUrl}users`,
+    getRoomUsers: `${baseUrl}users/`,
+    getRoomClients: `${baseUrl}clients/`,
     getclients: `${baseUrl}client`,
 
     getClientss: `${baseUrl}client`,
     createclient: `${baseUrl}createclient`,
     
-
-
     rooms: `${baseUrl}room`,
     // roomsgetbyuserid: `${baseUrl}user/`,
-   
 
     createRooms: `${baseUrl}createroom`,
     getUsersByid: `${baseUrl}users_details/`, // uiser get by id
     Usersupdate: `${baseUrl}editUser/`,
     Userstatusupdate: `${baseUrl}activateUser/`,
-   
-
-
-
 
     getLanguagess: `${baseUrl}get_language`,
     changeLanguage: `${baseUrl}change_language?lang=`,
     userDetailsForRoom: `${baseUrl}userdata/`,
     roomDetails: `${baseUrl}room_details/`,
-  
+    addTask: `${baseUrl}task`,
 }

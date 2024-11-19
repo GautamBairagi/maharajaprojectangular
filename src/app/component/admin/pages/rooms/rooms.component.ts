@@ -15,13 +15,17 @@ export class RoomsComponent implements OnInit,AfterViewInit {
 
   createRoomForm:FormGroup;
 
+  userid:any;
   constructor(private api:AllService, private fb:FormBuilder,private sweet:SweetalertssService, private router: Router){
+    const userId = localStorage.getItem('userId');
+    this.userid = userId;
     this.createRoomForm = this.fb.group({
       name: new FormControl('',Validators.required),
       user_ids: new FormControl([],Validators.required),
       client_id: new FormControl([],Validators.required),
       description: new FormControl('',Validators.required),
-      room_id: new FormControl('',Validators.required),
+      room_number: new FormControl('',Validators.required),
+      user_id: new FormControl(this.userid,Validators.required),
     });
   }
 
@@ -90,7 +94,6 @@ export class RoomsComponent implements OnInit,AfterViewInit {
   selectedUsers: any[] = [];
   
 
-
   getUsers(): void {
     this.api.getUsersdata().subscribe((res: any[]) => {
       this.userData = res;
@@ -105,14 +108,17 @@ export class RoomsComponent implements OnInit,AfterViewInit {
 
   id:any;
   ByIdData:any=[];
+  roomNo:any;
   roomDetails(data: any) {
     this.id = data;
     console.log("dataaaaa", this.id);
   
     this.api.getRoomDtls(data).subscribe((res: any) => {
       this.ByIdData = res;
+      this.roomNo = res[0].room_number;
       // console.log("policy by id", this.ByIdData);
-  
+      localStorage.setItem('roomDetails', JSON.stringify(this.ByIdData));
+      localStorage.setItem('roomNumber', JSON.stringify(this.roomNo));
       // Store the data in the service
       this.api.setRoomData(this.ByIdData);
       

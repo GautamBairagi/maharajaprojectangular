@@ -1,5 +1,4 @@
 <div class="container">
-
   <div class="row">
 
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-end">
@@ -27,11 +26,11 @@
                     </div>
                 </div>
                 <div class="mb-3">
-                  <label for="room_id" class="form-label">Room ID</label>
-                  <input type="text" formControlName="room_id" [ngClass]="{ 'is-invalid': createRoomForm.get('room_id')?.invalid && createRoomForm.get('room_id')?.touched }" class="form-control" id="room_id"
-                    placeholder="Enter room ID">
-                    <div class="invalid-feedback" *ngIf="createRoomForm.get('room_id')?.invalid && createRoomForm.get('room_id')?.touched">
-                      Room ID is required.
+                  <label for="room_number" class="form-label">Room No</label>
+                  <input type="text" formControlName="room_number" [ngClass]="{ 'is-invalid': createRoomForm.get('room_number')?.invalid && createRoomForm.get('room_number')?.touched }" class="form-control" id="room_number"
+                    placeholder="Enter room No">
+                    <div class="invalid-feedback" *ngIf="createRoomForm.get('room_number')?.invalid && createRoomForm.get('room_number')?.touched">
+                      Room No is required.
                     </div>
                 </div>
                 <div class="mb-3">
@@ -57,7 +56,7 @@
 
                 </div>
                 <div class="mb-3">
-                  <label for="client_id" class="form-label">Select Clients</label>
+                  <label for="client_id" class="form-label">Select Residents</label>
                   <div class="multi-select-dropdown">
                     <div class="selected-options">
                       <span *ngFor="let client of selectedClients" class="selected-item">
@@ -106,8 +105,6 @@
   </div>
 
 
-
-
   <div class="search-container mb-2 mt-4">
     <input type="text" class="form-control" placeholder="Search Rooms" [(ngModel)]="searchText" (input)="filterRooms()" />
   </div>
@@ -116,7 +113,7 @@
     <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" *ngFor="let room of filteredRooms">
       <div class="card mt-4" (click)="roomDetails(room.id)" style="cursor: pointer;">
         <div class="card-header d-flex justify-content-between">
-          <span>{{ room.name }}</span> <span>Id : {{ room.room_id }}</span>
+          <span>{{ room.name }}</span> <span>No : {{ room.room_number }}</span>
         </div>
         <div class="card-body">
           <p class="card-text">{{ room.description }}</p>

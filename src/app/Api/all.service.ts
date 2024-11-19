@@ -98,6 +98,21 @@ export class AllService extends HttpService {
     return this.get(superAdminEndPoints.getUsers)
    }
 
+  //  getRoomUsersdata(id:any){
+  //   const roomNo = localStorage.getItem('roomNumber')
+  //   return this.get(superAdminEndPoints.getRoomUsers + roomNo )
+  //  }
+
+   getRoomClientsdata(id: any): Observable<any> {
+    const roomNo = localStorage.getItem('roomNumber');
+    return this.get(superAdminEndPoints.getRoomClients + roomNo);
+  }
+
+  getRoomUsersdata(id: any): Observable<any> {
+    const roomNo = localStorage.getItem('roomNumber');
+    return this.get(superAdminEndPoints.getRoomUsers + roomNo);
+  }
+
    getclientsdata(){
     return this.get(superAdminEndPoints.getclients)
    }
@@ -189,9 +204,14 @@ export class AllService extends HttpService {
     return this.http.get(`${superAdminEndPoints.changeLanguage}${language}`);
   }
 
+  postTaskFromRoom(data:any){
+    return this.post(superAdminEndPoints.addTask, data )
+  }
+
+  getTasksOFRoom(){
+    return this.get(superAdminEndPoints.addTask)
+  }
   
-
-
   // updateMenu(url: string, payload: any){
   //   return this.put(superAdminEndPoints.updateSidebar , url , payload)
   // }
