@@ -4,14 +4,23 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AllService } from 'src/app/Api/all.service';
 import { SweetalertssService } from 'src/app/sweetalertss.service';
+import { DatePipe } from '@angular/common';
 
 
 @Component({
   selector: 'app-clientview',
   templateUrl: './clientview.component.html',
-  styleUrls: ['./clientview.component.css']
+  styleUrls: ['./clientview.component.css'],
+  providers: [DatePipe]
 })
 export class ClientviewComponent {
+
+  activePopoverIndex: number | null = null;
+
+  togglePopover(index: number): void {
+    // Toggle the popover for the clicked index
+    this.activePopoverIndex = this.activePopoverIndex === index ? null : index;
+  }
 
     // loginForm!:FormGroup;
     updateForm!:FormGroup;
@@ -20,6 +29,7 @@ export class ClientviewComponent {
       private router:Router,
       private fb: FormBuilder,
       private swet :SweetalertssService,
+      private datePipe: DatePipe
     ){
       const userIdString = localStorage.getItem('userId');
       this.userId = userIdString ? parseInt(userIdString, 10) : null;
@@ -34,6 +44,10 @@ export class ClientviewComponent {
         designation :['', ],
         phone :[''],
       })
+    }
+
+    getFormattedDate(): string {
+      return this.datePipe.transform(this.userByIdData.date_of_birth, 'date') || '';
     }
     
     userId:any
@@ -66,13 +80,6 @@ export class ClientviewComponent {
       this.router.navigate(['/Admin/Clientdetails'])
     }
 
- 
-  
-    
-    
-    
-    
-    
     
     id:any;
     userByIdData:any=[];
@@ -81,7 +88,7 @@ export class ClientviewComponent {
         console.log("user id", this.id)
         this.service.getuserById(data).subscribe((res: any) => {
           this.userByIdData = res[0];
-          this.userprofile()
+          // this.userprofile()
           this.service.setclientData(this.userByIdData);
           console.log("policy by id", this.userByIdData)
         })
@@ -95,16 +102,16 @@ export class ClientviewComponent {
         this.id = data
         console.log("user id", this.id)
         this.service.getuserById(data).subscribe((res: any) => {
-          this.userByIdData = [res[0]];
+          this.userByIdDatas = [res[0]];
           this.client_idss=res[0].id
-          localStorage.setItem('clientdetails', JSON.stringify(this.userByIdData));
+          localStorage.setItem('clientdetails', JSON.stringify(this.userByIdDatas));
           localStorage.setItem('clientid', JSON.stringify(data));
       // Store the data in the service
 
           this.userprofile()
           
-          this.service.setclientData(this.userByIdData);
-          console.log("policy by id", this.userByIdData)
+          this.service.setclientData(this.userByIdDatas);
+          console.log("policy by id", this.userByIdDatas)
         })
       }
     
