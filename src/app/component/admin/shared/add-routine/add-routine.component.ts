@@ -60,7 +60,7 @@ export class AddRoutineComponent {
   }
 
   cancel() {
-    this.router.navigate(['/Admin/Users'])
+    this.router.navigate(['/Admin/Clientdetails'])
   }
   url: any;
 

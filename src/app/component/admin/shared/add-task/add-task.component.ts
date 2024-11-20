@@ -30,7 +30,7 @@ export class AddTaskComponent {
   ck: boolean = false;
   ngOnInit(): void {
     this.loginForm = this.fb.group({
-      allotted_to: ['',],
+      allotted_to: [this.clientid],
       day: ['',],
       description: ['',],
       due_date: ['',],
@@ -40,12 +40,13 @@ export class AddTaskComponent {
       project_id: ['106'], //room id // room no
       start_date: ['',],
       status: ['',],
-      task_days: ['',],
-      task_message: ['',],
+      task_days: ['',], // 
+      task_message: ['',], // imported ya allergy notes 
       time: ['',],
       title: ['',],
       user_id: [this.userId],
-      comment_count: [''],
+      medicint:[',medicine id'],
+      comment_count: [''],  // 
     });
   }
 
@@ -71,7 +72,7 @@ export class AddTaskComponent {
   }
 
   cancel() {
-    this.router.navigate(['/Admin/Users'])
+    this.router.navigate(['/Admin/Clientdetails'])
   }
   url: any;
 

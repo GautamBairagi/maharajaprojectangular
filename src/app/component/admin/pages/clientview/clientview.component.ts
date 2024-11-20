@@ -81,7 +81,7 @@ export class ClientviewComponent {
         console.log("user id", this.id)
         this.service.getuserById(data).subscribe((res: any) => {
           this.userByIdData = res[0];
-          this.userprofile()
+      
           this.service.setclientData(this.userByIdData);
           console.log("policy by id", this.userByIdData)
         })

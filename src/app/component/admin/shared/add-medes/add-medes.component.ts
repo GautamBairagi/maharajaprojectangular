@@ -33,11 +33,11 @@ export class AddMedesComponent {
   ngOnInit(): void {
     this.loginForm = this.fb.group({
       allergies: ['',],
-      allotted_from: ['',],
-      allotted_to: ['',],
+      allotted_from: ['',], //user id
+      allotted_to: ['',], //patient name 
       expiry_date: ['',],
       medicine_name: ['',],
-      medicine_restrictions: ['',],
+      medicine_restrictions: ['',], //notes
       mfg_date: ['',],
       precautions: ['',],
       qty: ['',],
