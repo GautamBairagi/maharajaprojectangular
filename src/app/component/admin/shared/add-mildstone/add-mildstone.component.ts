@@ -49,9 +49,9 @@ export class AddMildstoneComponent {
       this.service.createmilestones(this.loginForm.value).subscribe({
         next: (res) => {
           console.log("res", res)
-          if (res.success) {
-            this.router.navigate(['/Admin/Users'])
-          }
+        
+            this.router.navigate(['/Admin/Clientdetails'])
+        
         },
         error: (err) => {
           console.log(err);

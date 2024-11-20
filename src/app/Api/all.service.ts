@@ -118,6 +118,13 @@ export class AllService extends HttpService {
   getmedicines(){
     return this.get(superAdminEndPoints.getmedicine)
   }
+
+
+  addmedinice(data: any){
+    return this.post(superAdminEndPoints.getmedicine,data)
+  }
+
+  
   
    getroutines(){
     return this.get(superAdminEndPoints.routines)

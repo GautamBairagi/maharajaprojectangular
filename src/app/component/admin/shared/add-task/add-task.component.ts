@@ -25,32 +25,42 @@ export class AddTaskComponent {
     const clientIdString = localStorage.getItem('clientid');
     this.clientid = clientIdString ? parseInt(clientIdString, 10) : null;
   }
-  userId:any
+  userId: any
   clientid: any
   ck: boolean = false;
   ngOnInit(): void {
     this.loginForm = this.fb.group({
-      user_id:[this.userId],
-      room_id: ['106'],
-      client_id: [this.clientid],
-      title: ['',],
+      allotted_to: ['',],
+      day: ['',],
       description: ['',],
-      status: ['',]
+      due_date: ['',],
+      milestone_id: ['',],
+      name: ['',],
+      priority: ['',],
+      project_id: ['106'], //room id // room no
+      start_date: ['',],
+      status: ['',],
+      task_days: ['',],
+      task_message: ['',],
+      time: ['',],
+      title: ['',],
+      user_id: [this.userId],
+      comment_count: [''],
     });
   }
 
-  addusers() {
+  addtask() {
     if (this.loginForm.invalid) {
       this.ck = true;
       return;
     } else {
       console.log("Patient data", this.loginForm.value);
-      
-      this.service.createmilestones(this.loginForm.value).subscribe({
+
+      this.service.postTaskFromRoom(this.loginForm.value).subscribe({
         next: (res) => {
           console.log("res", res)
           if (res.success) {
-            this.router.navigate(['/Admin/Users'])
+            this.router.navigate(['/Admin/Clientdetails'])
           }
         },
         error: (err) => {
