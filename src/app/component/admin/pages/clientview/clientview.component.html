@@ -1,45 +1,44 @@
 <div class="col-lg-12 col-md-12 d-flex  justify-content-between  mt-2 ">
   <span><h5 class="fs-4 mt-3 text-center p-2" style="color: #777;">Client List</h5></span> <span><button type="button"
-      (click)="addClient()" class="btn btn-primary text-white mt-3"><span><i
+      (click)="addClient()" class="btn btn-primary  addbutton text-white mt-3"><span><i
           class="fa-sharp fa-solid fa-plus"></i></span> Add</button></span>
 </div>
-<div class="mt-2" style="overflow-x: scroll; box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; border-radius: 10px;">
+<div class="mt-2" style="overflow-x: scroll; box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px; border-radius: 10px;">
   <table class="table table-bordered table-hover table-striped ">
     <thead class="" style="font-size: 13px; text-wrap: nowrap; ">
       <tr>
-        <th>Id</th>
-        <th>test</th>
         <th>Room No</th>
-        <th>Client Name</th>
-        <th>Active</th>
+        <th>Clients</th>
+        <th>Status</th>
         <th>Role</th>
         <th>Action</th>
       </tr>
     </thead>
     <tbody style="text-wrap: nowrap;" class="">
       <tr style="background-color: #f9f9f9;" *ngFor="let a of getusersData;   let i = index">
-        <td>{{a.id }}</td>
-       <td>
-       </td>
-        <td>
+        <td style="text:center;">
           <div class="d-flex gap-2" style="justify-content: center;">
             <div>
-            <button type="button" class="btn btn-secondary small-btn" (click)="roomDetails(a.room_id)">{{a.room_number}}</button>
-          </div>
+              <button type="button" class="btn small-btn text-light" style="background-color: #34395e;">{{a.room_number}}</button>
+            
+            </div>
+
           </div>
         </td>
-
-
-        <!-- <td (click)="roomDetails(a.room_id)" >{{a.room_number}}</td> -->
         <td>
-          <div class="d-flex " style="justify-content: center;">
-            <!-- <img [src]="a.profile" style="height: 50px; width: 50px;" class="img-fluid" alt=""> -->
-            <div>
-              <span (click)="ById(a.id)"> <a class="pro"   (click)="ByIds(a.id)" >{{a.first_name}} {{a.last_name}} </a>
-                <br> {{a.email}}</span>
-              <i class="fa fa-edit" style="cursor: pointer; color: rgb(64, 64, 250);" (click)="ById(a.id)"
-                data-bs-toggle="modal" data-bs-target="#exampleModal"></i>
-              <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+          <div style="display: flex;  justify-content: center; margin-left:  10px;">
+            <!-- Profile Image -->
+            <img [src]="a.profile" class="img-fluid" style="width: 50px; height: 50px; border-radius: 100%;box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;" alt="">
+            
+            <!-- Name and Email -->
+            <div style="margin-left: 0px;">
+              <p style="margin: 0; font-weight: bold;text-align: start;font-size: 0.9em;"> <span (click)="ByIds(a.id)">{{ a.first_name }} {{a.last_name}}</span>
+                <span (click)="ByIds(a.id)" ><i class="fa-solid fa-eye m-2"></i></span> 
+                <span style="cursor: pointer;" (click)="ById(a.id)"
+                data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-regular fa-pen-to-square"></i></span>
+                
+               </p>
+               <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                 aria-hidden="true">
                 <div class="modal-dialog  modal-lg">
                   <div class="modal-content text-start">
@@ -76,7 +75,7 @@
                         <div class="form-row">
                           <div class="form-group col-md-6">
                             <label>Date of Birth</label>
-                            <input type="text" class="form-control" id="date_of_birth"
+                            <input type="text" class="form-control" id="date_of_birth" [value]="getFormattedDate()"
                               [(ngModel)]="userByIdData.date_of_birth" name="date_of_birth" required />
                           </div>
                           <div class="form-group col-md-6">
@@ -108,14 +107,17 @@
                   </div>
                 </div>
               </div>
+              <p style="margin: 0; font-size: 0.9em; color: gray;text-align: start;">{{ a.email }}</p>
             </div>
-
           </div>
         </td>
+        
+       
+       
        
           <td>
             <select
-               class="btn text-light" style="border-radius: 10px;"
+               class="btn text-light" style="border-radius: 10px;box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;"
               [ngClass]="getStatusText(a.active)"
               name="clientStatus"
               id="clientStatus"
@@ -128,61 +130,49 @@
               
             </select>
           </td>
-          
-      
-        
 
-
-
-
-      <!-- <tr *ngFor="let data of clientData">
         <td>
-          <select
-            class="btn btn-primary"
-            name="clientStatus"
-            id="clientStatus"
-            (change)="onStatusChange($event, data)"
-          >
-            <option value="Admit">Admit</option>
-            <option value="Discharge">Discharge</option>
-            <option value="Inactive">Inactive</option>
-          </select>
-        </td>
-      </tr> -->
-      
+          <button class="btn btn-sm text-light" style="border-radius: 20px; background-color: #34395e;">{{a.group_name
+            }}</button>
+            </td>
 
-
-
-
-
-
-        <td><button class="btn btn-sm text-light" style="border-radius: 20px; background-color: #34395e;">{{a.group_name
-            }}</button></td>
-        <div class="dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <span id="profileDropdown" style="justify-content: center;">
-            <i class="fa-solid fa-ellipsis-vertical"></i>
-          </span>
-          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="profileDropdown">
-            <a class="dropdown-item">
-              <i style="color: #34395e;" class="fas fa-cogs mr-2"></i> Permission
-            </a>
-            <a class="dropdown-item">
-              <i style="color: #34395e;" class="fas fa-user-shield mr-2"></i> Make Admin
-            </a>
-            <a class="dropdown-item">
-              <i style="color: #34395e;" class="fas fa-user-tie mr-2"></i> Make Client
-            </a>
-            <a class="dropdown-item">
-              <i style="color: #34395e;" class="fas fa-users mr-2"></i> Make Member
-            </a>
-            <a class="dropdown-item">
-              <i style="color: #34395e;" class="fas fa-user-cog mr-2"></i> Make Manager
-            </a>
-            <a class="dropdown-item">
-              <i style="color: #34395e;" class="fas fa-trash-alt mr-2"></i> Delete Workspace
-            </a>
-          </div>
-        </div>
+            <td>
+              
+              <div class="position-relative" style="display: inline-block;">
+                <!-- Ellipsis Icon -->
+                <span (click)="togglePopover(i)" style="cursor: pointer;box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;padding: 10px;border-radius: 10px;">
+                  <i class="fa-solid fa-ellipsis-vertical"></i>
+                </span>
+          
+                <!-- Popover List -->
+                <div 
+                  *ngIf="activePopoverIndex === i" 
+                  class="popover-menu" 
+                  style="position: absolute; top: 20px; right: 0; background: white; border: 1px solid #ccc; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); padding: 10px; z-index: 1000; border-radius: 5px;">
+                  <ul style="list-style: none; margin: 0; padding: 0;">
+                    <li style="display: flex; align-items: center; padding: 5px 0;">
+                      <i class="fa-solid fa-plus" style="margin-right: 8px; color: #333;"></i> 
+                      <a style="text-decoration: none; color: #333;">Make Admin</a>
+                    </li>
+                    <li style="display: flex; align-items: center; padding: 5px 0;">
+                      <i class="fa-solid fa-plus" style="margin-right: 8px; color: #333;"></i> 
+                      <a style="text-decoration: none; color: #333;">Make Super Admin</a>
+                    </li>
+                    <li style="display: flex; align-items: center; padding: 5px 0;">
+                      <i class="fa-solid fa-key" style="margin-right: 8px; color: #333;"></i> 
+                      <a style="text-decoration: none; color: #333;">Permission</a>
+                    </li>
+                    <li style="display: flex; align-items: center; padding: 5px 0;">
+                      <i class="fa-solid fa-trash" style="margin-right: 8px; color: red;"></i> 
+                      <a style="text-decoration: none; color: #333;">Delete From Workspace</a>
+                    </li>
+                  </ul>
+                  
+                </div>
+              </div>
+             
+            </td>
+        
       </tr>
     </tbody>
   </table>

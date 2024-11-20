@@ -1,277 +1,283 @@
 <div class="container" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; border-radius: 10px;">
-    <div class="row">
-        <div class="col-12">
-            <h2 class="text-center m-4">Client Detail</h2>
-            <hr>
-        </div>
+  <div class="row">
+    <div class="col-12">
+      <h2 class="text-center m-4">Client Detail</h2>
+      <hr>
     </div>
+  </div>
 
-    <div class="row">
-        <div class="col-md-2">
-            <img src="../assets/profilephoto.jpg" alt="User Avatar" class="rounded-circle img-fluid">
-        </div>
-        <div class="col-md-10">
-            <div class="row">
-                <div class="row mt-4">
-                    <div class="col-md-3">
-                        <div class="card" (click)="openRoutineTab()">
-                            <div class="card-body">
-                                <h5 class="card-title">Routine</h5>
-                                <p class="card-text">{{routinelength}}</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="card"(click)="opentaskTab()" >
-                            <div class="card-body">
-                                <h5 class="card-title">Task</h5>
-                                <p class="card-text">{{tasklength}}</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="card"(click)="openmedsTab()" >
-                            <div class="card-body">
-                                <h5 class="card-title">Medes</h5>
-                                <p class="card-text">{{medeslength}}</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="card" (click)="openmildstoneTab()">
-                            <div class="card-body">
-                                <h5 class="card-title">Mildstone</h5>
-                                <p class="card-text">{{mildstonelength}}</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
-
-
+  <div class="row">
+    <div class="col-md-2"   *ngFor="let a of allData">
+      <!-- <img src="../assets/profilephoto.jpg"  class="rounded-circle img-fluid"> -->
+      <img [src]="a.profile" alt="User Avatar" class="rounded-circle img-fluid" >
+    </div>
+    <div class="col-md-10">
+      <div class="row">
+        <div class="row mt-4">
+          <div class="col-md-3">
+            <div class="card" (click)="openRoutineTab()">
+              <div class="card-body">
+                <h5 class="card-title">Routine</h5>
+                <p class="card-text">{{routinelength}}</p>
+              </div>
             </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card" (click)="opentaskTab()">
+              <div class="card-body">
+                <h5 class="card-title">Task</h5>
+                <p class="card-text">{{tasklength}}</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card" (click)="openmedsTab()">
+              <div class="card-body">
+                <h5 class="card-title">Medes</h5>
+                <p class="card-text">{{medeslength}}</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card" (click)="openmildstoneTab()">
+              <div class="card-body">
+                <h5 class="card-title">Mildstone</h5>
+                <p class="card-text">{{mildstonelength}}</p>
+              </div>
+            </div>
+          </div>
         </div>
-    </div>
-    <hr>
-    <div class="row mt-3" *ngFor="let a of allData" >
-        <div class="col-md-6">
-          <p><strong>Name:</strong> {{a.first_name}}</p>
-          <p><strong>User Type:</strong>Client</p>
-          <p><strong>Contact:</strong>{{a.email}}</p> 
-          <p><strong>Status:</strong> <span  style="background-color: #218838; color: white; border-radius: 10px;  padding: 3px;">Active</span></p> 
-        </div>
-        <div class="col-md-6">
-          <p><strong>Date of Birth:</strong>{{a.date_of_birth | date:'dd-MM-yyyy'}}</p>
-          <p><strong>Date of Joining:</strong> {{a.date_of_joining | date:'dd-MM-yyyy'}}</p>
-          <p><strong>Designation:</strong> {{a.designation}}</p>
-        </div>
-      </div>
-    <div class="row mt-3">
 
-        <div class="col-md-12"> 
-            <nav>
-                <div class="nav nav-tabs" id="nav-tab" role="tablist"> 
-                    <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home"
-                        type="button" role="tab" aria-controls="nav-home" aria-selected="true">Routine</button>
-                    <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile"
-                        type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Task</button>
-                    <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact"
-                        type="button" role="tab" aria-controls="nav-contact" aria-selected="false">Medes</button>
-                        <button class="nav-link" id="nav-mildstone-tab" data-bs-toggle="tab" data-bs-target="#nav-mildstone" 
-                        type="button" role="tab" aria-controls="nav-mildstone" aria-selected="false">Mildstone</button>
-                        <!-- <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact"
+
+
+
+      </div>
+    </div>
+  </div>
+  <hr>
+  <div class="row mt-3" *ngFor="let a of allData">
+    <div class="col-md-6">
+      <p><strong>Name:</strong> {{a.first_name}}</p>
+      <p><strong>User Type:</strong>Client</p>
+      <p><strong>Contact:</strong>{{a.email}}</p>
+      <p><strong>Status:</strong> <span
+          style="background-color: #218838; color: white; border-radius: 10px;  padding: 3px;">Active</span></p>
+    </div>
+    <div class="col-md-6">
+      <p><strong>Date of Birth:</strong>{{a.date_of_birth | date:'dd-MM-yyyy'}}</p>
+      <p><strong>Date of Joining:</strong> {{a.date_of_joining | date:'dd-MM-yyyy'}}</p>
+      <p><strong>Designation:</strong> {{a.designation}}</p>
+    </div>
+  </div>
+  <div class="row mt-3">
+
+    <div class="col-md-12">
+      <nav>
+        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+          <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home"
+            type="button" role="tab" aria-controls="nav-home" aria-selected="true">Routine</button>
+          <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button"
+            role="tab" aria-controls="nav-profile" aria-selected="false">Task</button>
+          <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button"
+            role="tab" aria-controls="nav-contact" aria-selected="false">Medes</button>
+          <button class="nav-link" id="nav-mildstone-tab" data-bs-toggle="tab" data-bs-target="#nav-mildstone"
+            type="button" role="tab" aria-controls="nav-mildstone" aria-selected="false">Mildstone</button>
+          <!-- <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact"
                         type="button" role="tab" aria-controls="nav-contact" aria-selected="false">Activity</button> <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact"
                         type="button" role="tab" aria-controls="nav-contact" aria-selected="false">Task</button> -->
-                </div>
-            </nav>
-
-            <!-- <button>add</button> -->
-            <div class="tab-content" id="nav-tabContent">
-                <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                    <div class="col-lg-12 col-md-12 d-flex  gap-2  mt-2 "
-  style="background-color: #F7F7F7; white-space: wrap ; height: 70px; box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px; border-radius: 10px;">
-  <h5 class="fs-4 mt-3 text-center p-2" style="color: #777;">Client Routine</h5> <span><button type="button"
-      routerLink="/Admin/addroutine" class="btn text-white mt-3" style="background-color: #868e92;"><span><i
-          class="fa-sharp fa-solid fa-plus"></i></span> Add</button></span>
-</div>
-                    <div class="mt-2" style="overflow-x: scroll; box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; border-radius: 10px;">
-                        <table class="table table-bordered table-hover table-striped ">
-                          <thead class="" style="font-size: 13px; text-wrap: nowrap; ">
-                            <tr>
-                              <th>Id</th>
-                              <th>Medicine Name</th>
-                              <th>RX Number</th>
-                              <th>Frequency</th>
-                              <th>unit</th>
-                              <th>Time</th>
-                              <th>Mfg Date</th>
-                              <th>Expiry Date</th>
-                              <th>Routine Start Date</th>
-                              <th>Routine End Date</th>
-                              <th>Difference Time</th>
-                              <th>Message</th>
-                              <th>Created At</th>
-                            </tr>
-                          </thead>
-                          <tbody style="text-wrap: nowrap;" class="">
-                           <tr *ngFor="let task of getusertaskdataData ; let i=index" >
-                            <td>{{i+1  }}</td>
-                            <td>{{task.medicine_name   }}</td>
-                            <td>{{task.rxnumber   }}</td>
-                            <td>{{task.frequency   }}</td>
-                            <td>{{task.unit   }}</td>
-                            <td>{{task.time   }}</td>
-                            <td>{{task.mfg_date   }}</td>
-                            <td>{{task.expiry_date   }}</td>
-                            <td>{{task.routine_start_date   | date:'dd-MM-yyyy'   }}</td>
-                            <td>{{task.routine_end_date   | date:'dd-MM-yyyy'   }}</td>
-                            <td>{{task.difference_time   }}</td>
-                            <td>{{task.message   }}</td>
-                            <td>{{task.created_at  | date:'dd-MM-yyyy'   }}</td>
-                           </tr>
-                          </tbody>
-                        </table>
-                      </div> 
-                    </div>
-
-                <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-                   
-                    <div class="col-lg-12 col-md-12 d-flex  gap-2  mt-2 "
-                    style="background-color: #F7F7F7; white-space: wrap ; height: 70px; box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px; border-radius: 10px;">
-                    <h5 class="fs-4 mt-3 text-center p-2" style="color: #777;">Client Task</h5> <span><button type="button"
-                      routerLink="/Admin/addtask"    class="btn text-white mt-3" style="background-color: #868e92;"><span><i
-                            class="fa-sharp fa-solid fa-plus"></i></span> Add</button></span>
-                  </div>
-                    <div class="mt-2" style="overflow-x: scroll; box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; border-radius: 10px;">
-                        <table class="table table-bordered table-hover table-striped ">
-                          <thead class="" style="font-size: 13px; text-wrap: nowrap; ">
-                            <tr>
-                              <th>Id</th>
-                              <th>Name</th>
-                              <th>Title</th>
-                              <th>Milestone Id</th>
-                              <th>Day</th>
-                              <th>Task Days</th>
-                              <th>Description</th>
-                              <th>Priority</th>
-                              <th>Due Date</th>
-                              <th>Time</th>
-                              <th>Status</th>
-                              <th>Task Message</th>
-                              <th>Comment Count</th>
-                              <th>Start Date</th>
-                              <th>Date Created</th>
-                              <th>Status</th>
-                            </tr>
-                          </thead>
-                          <tbody style="text-wrap: nowrap;" class="">
-                           <tr *ngFor="let task of getTasksOFUserss ; let i=index;">
-                            <td>{{i + 1}}</td>
-                            <td>{{task.name   }}</td>
-                            <td>{{task.title   }}</td>
-                            <td>{{task.milestone_id   }}</td>
-                            <td>{{task.day   }}</td>
-                            <td>{{task.task_days   }}</td>
-                            <td>{{task.description   }}</td>
-                            <td>{{task.priority   }}</td>
-                            <td>{{task.due_date  | date:'dd-MM-yyyy'  }}</td>
-                            <td>{{task.time   }}</td>
-                            <td>{{task.status   }}</td>
-                            <td>{{task.task_message   }}</td>
-                            <td>{{task.comment_count   }}</td>
-                            <td>{{task.start_date  | date:'dd-MM-yyyy' }}</td>
-                            <td>{{task.date_created  | date:'dd-MM-yyyy'  }}</td>
-                            <td>{{task.status   }}</td>
-                            | 
-
-                             
-                        
-                           </tr>
-                          </tbody>
-                        </table>
-                      </div> 
-                </div>
-                <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
-
-                    <div class="col-lg-12 col-md-12 d-flex  gap-2  mt-2 "
-                    style="background-color: #F7F7F7; white-space: wrap ; height: 70px; box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px; border-radius: 10px;">
-                    <h5 class="fs-4 mt-3 text-center p-2" style="color: #777;">Client Medes</h5> <span><button type="button"
-                     routerLink="/Admin/addmedes"    class="btn text-white mt-3" style="background-color: #868e92;"><span><i
-                            class="fa-sharp fa-solid fa-plus"></i></span> Add</button></span>
-                  </div>
-
-                    <div class="mt-2" style="overflow-x: scroll; box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; border-radius: 10px;">
-                        <table class="table table-bordered table-hover table-striped ">
-                          <thead class="" style="font-size: 13px; text-wrap: nowrap; ">
-                            <tr>
-                              <th>Id</th>
-                              <th>Medicine Name</th>
-                              <th>Medicine Restrictions</th>
-                              <th>Allergies</th>
-                              <th>Precautions</th>
-                              <th>Allotted To</th>
-                              <th>Allotted From</th>
-                              <th>MFG Date</th>
-                              <th>Expiry Date</th>
-                              <th>QTY</th>
-                              <th>created Date</th>
-                            </tr>
-                          </thead>
-                          <tbody style="text-wrap: nowrap;" class="">
-                           <tr *ngFor="let medes of getmedicinesUser; let i = index;">
-                            <td>{{i+1}}</td>
-                            <td>{{medes.medicine_name}}</td>
-                            <td>{{medes.medicine_restrictions}}</td>
-                            <td>{{medes.allergies}}</td>
-                            <td>{{medes.precautions}}</td>
-                            <td>{{medes.allotted_to}}</td>
-                            <td>{{medes.allotted_from}}</td>
-                            <td>{{medes.mfg_date | date:'dd-MM-yyyy'}}</td>
-                            <td>{{medes.expiry_date | date:'dd-MM-yyyy'}}</td>
-                            <td>{{medes.qty}}</td>
-                            <td>{{medes.created_at | date:'dd-MM-yyyy'}}</td>
-                           </tr>
-                          </tbody>
-                        </table>
-                      </div> 
-                </div>
-
-
-                <div class="tab-pane fade" id="nav-mildstone" role="tabpanel" aria-labelledby="nav-mildstone-tab">
-
-                    <div class="col-lg-12 col-md-12 d-flex  gap-2  mt-2 "
-                    style="background-color: #F7F7F7; white-space: wrap ; height: 70px; box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px; border-radius: 10px;">
-                    <h5 class="fs-4 mt-3 text-center p-2" style="color: #777;">Client Mildstone</h5> <span><button type="button"
-                     routerLink="/Admin/addmildstone" class="btn text-white mt-3" style="background-color: #868e92;"><span><i
-                            class="fa-sharp fa-solid fa-plus"></i></span> Add</button></span>
-                  </div>
-
-                    <div class="mt-2" style="overflow-x: scroll; box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; border-radius: 10px;">
-                        <table class="table table-bordered table-hover table-striped ">
-                          <thead class="" style="font-size: 13px; text-wrap: nowrap; ">
-                            <tr>
-                              <th>Id</th>
-                              <th>Title</th>
-                              <th>Description</th>
-                              <th>Status</th>
-                              <th>Date</th>
-                            </tr>
-                          </thead>
-                          <tbody style="text-wrap: nowrap;" class="" >
-                           <tr *ngFor="let mild of getmildstonedata ;  let i = index">
-                            <td>{{ i+1 }}</td>
-
-                            <td>{{mild.title}}</td>
-                            <td>{{mild.description}}</td>
-                            <td>{{mild.status}}</td>
-                            <td>{{mild.date_created | date:'dd-MM-yyy'}}</td>
-                           </tr>
-                          </tbody>
-                        </table>
-                      </div> 
-                </div>
-            </div>
         </div>
+      </nav>
+
+      <!-- <button>add</button> -->
+      <div class="tab-content" id="nav-tabContent">
+        <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+          <div class="col-lg-12 col-md-12 d-flex  gap-2  mt-2 "
+            style="background-color: #F7F7F7; white-space: wrap ; height: 70px; box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px; border-radius: 10px;">
+            <h5 class="fs-4 mt-3 text-center p-2" style="color: #777;">Client Routine</h5> <span><button type="button"
+                routerLink="/Admin/addroutine" class="btn text-white mt-3" style="background-color: #868e92;"><span><i
+                    class="fa-sharp fa-solid fa-plus"></i></span> Add</button></span>
+          </div>
+          <div class="mt-2"
+            style="overflow-x: scroll; box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; border-radius: 10px;">
+            <table class="table table-bordered table-hover table-striped ">
+              <thead class="" style="font-size: 13px; text-wrap: nowrap; ">
+                <tr>
+                  <th>Id</th>
+                  <th>Medicine Name</th>
+                  <th>RX Number</th>
+                  <th>Frequency</th>
+                  <th>unit</th>
+                  <th>Time</th>
+                  <th>Mfg Date</th>
+                  <th>Expiry Date</th>
+                  <th>Routine Start Date</th>
+                  <th>Routine End Date</th>
+                  <th>Difference Time</th>
+                  <th>Message</th>
+                  <th>Created At</th>
+                </tr>
+              </thead>
+              <tbody style="text-wrap: nowrap;" class="">
+                <tr *ngFor="let task of getusertaskdataData ; let i=index">
+                  <td>{{i+1 }}</td>
+                  <td>{{task.medicine_name }}</td>
+                  <td>{{task.rxnumber }}</td>
+                  <td>{{task.frequency }}</td>
+                  <td>{{task.unit }}</td>
+                  <td>{{task.time }}</td>
+                  <td>{{task.mfg_date }}</td>
+                  <td>{{task.expiry_date }}</td>
+                  <td>{{task.routine_start_date | date:'dd-MM-yyyy' }}</td>
+                  <td>{{task.routine_end_date | date:'dd-MM-yyyy' }}</td>
+                  <td>{{task.difference_time }}</td>
+                  <td>{{task.message }}</td>
+                  <td>{{task.created_at | date:'dd-MM-yyyy' }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+
+          <div class="col-lg-12 col-md-12 d-flex  gap-2  mt-2 "
+            style="background-color: #F7F7F7; white-space: wrap ; height: 70px; box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px; border-radius: 10px;">
+            <h5 class="fs-4 mt-3 text-center p-2" style="color: #777;">Client Task</h5> <span><button type="button"
+                routerLink="/Admin/addtask" class="btn text-white mt-3" style="background-color: #868e92;"><span><i
+                    class="fa-sharp fa-solid fa-plus"></i></span> Add</button></span>
+          </div>
+          <div class="mt-2"
+            style="overflow-x: scroll; box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; border-radius: 10px;">
+            <table class="table table-bordered table-hover table-striped ">
+              <thead class="" style="font-size: 13px; text-wrap: nowrap; ">
+                <tr>
+                  <th>Id</th>
+                  <th>Name</th>
+                  <th>Title</th>
+                  <th>Milestone Id</th>
+                  <th>Day</th>
+                  <th>Task Days</th>
+                  <th>Description</th>
+                  <th>Priority</th>
+                  <th>Due Date</th>
+                  <th>Time</th>
+                  <th>Status</th>
+                  <th>Task Message</th>
+                  <th>Comment Count</th>
+                  <th>Start Date</th>
+                  <th>Date Created</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody style="text-wrap: nowrap;" class="">
+                <tr *ngFor="let task of getTasksOFUserss ; let i=index;">
+                  <td>{{i + 1}}</td>
+                  <td>{{task.name }}</td>
+                  <td>{{task.title }}</td>
+                  <td>{{task.milestone_id }}</td>
+                  <td>{{task.day }}</td>
+                  <td>{{task.task_days }}</td>
+                  <td>{{task.description }}</td>
+                  <td>{{task.priority }}</td>
+                  <td>{{task.due_date | date:'dd-MM-yyyy' }}</td>
+                  <td>{{task.time }}</td>
+                  <td>{{task.status }}</td>
+                  <td>{{task.task_message }}</td>
+                  <td>{{task.comment_count }}</td>
+                  <td>{{task.start_date | date:'dd-MM-yyyy' }}</td>
+                  <td>{{task.date_created | date:'dd-MM-yyyy' }}</td>
+                  <td>{{task.status }}</td>
+                  |
+
+
+
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+
+          <div class="col-lg-12 col-md-12 d-flex  gap-2  mt-2 "
+            style="background-color: #F7F7F7; white-space: wrap ; height: 70px; box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px; border-radius: 10px;">
+            <h5 class="fs-4 mt-3 text-center p-2" style="color: #777;">Client Medes</h5> <span><button type="button"
+                routerLink="/Admin/addmedes" class="btn text-white mt-3" style="background-color: #868e92;"><span><i
+                    class="fa-sharp fa-solid fa-plus"></i></span> Add</button></span>
+          </div>
+
+          <div class="mt-2"
+            style="overflow-x: scroll; box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; border-radius: 10px;">
+            <table class="table table-bordered table-hover table-striped ">
+              <thead class="" style="font-size: 13px; text-wrap: nowrap; ">
+                <tr>
+                  <th>Id</th>
+                  <th>Medicine Name</th>
+                  <th>Medicine Restrictions</th>
+                  <th>Allergies</th>
+                  <th>Precautions</th>
+                  <th>Allotted To</th>
+                  <th>Allotted From</th>
+                  <th>MFG Date</th>
+                  <th>Expiry Date</th>
+                  <th>QTY</th>
+                  <th>created Date</th>
+                </tr>
+              </thead>
+              <tbody style="text-wrap: nowrap;" class="">
+                <tr *ngFor="let medes of getmedicinesUser; let i = index;">
+                  <td>{{i+1}}</td>
+                  <td>{{medes.medicine_name}}</td>
+                  <td>{{medes.medicine_restrictions}}</td>
+                  <td>{{medes.allergies}}</td>
+                  <td>{{medes.precautions}}</td>
+                  <td>{{medes.allotted_to}}</td>
+                  <td>{{medes.allotted_from}}</td>
+                  <td>{{medes.mfg_date | date:'dd-MM-yyyy'}}</td>
+                  <td>{{medes.expiry_date | date:'dd-MM-yyyy'}}</td>
+                  <td>{{medes.qty}}</td>
+                  <td>{{medes.created_at | date:'dd-MM-yyyy'}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+
+        <div class="tab-pane fade" id="nav-mildstone" role="tabpanel" aria-labelledby="nav-mildstone-tab">
+
+          <div class="col-lg-12 col-md-12 d-flex  gap-2  mt-2 "
+            style="background-color: #F7F7F7; white-space: wrap ; height: 70px; box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px; border-radius: 10px;">
+            <h5 class="fs-4 mt-3 text-center p-2" style="color: #777;">Client Mildstone</h5> <span><button type="button"
+                routerLink="/Admin/addmildstone" class="btn text-white mt-3" style="background-color: #868e92;"><span><i
+                    class="fa-sharp fa-solid fa-plus"></i></span> Add</button></span>
+          </div>
+
+          <div class="mt-2"
+            style="overflow-x: scroll; box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; border-radius: 10px;">
+            <table class="table table-bordered table-hover table-striped ">
+              <thead class="" style="font-size: 13px; text-wrap: nowrap; ">
+                <tr>
+                  <th>Id</th>
+                  <th>Title</th>
+                  <th>Description</th>
+                  <th>Status</th>
+                  <th>Date</th>
+                </tr>
+              </thead>
+              <tbody style="text-wrap: nowrap;" class="">
+                <tr *ngFor="let mild of getmildstonedata ;  let i = index">
+                  <td>{{ i+1 }}</td>
+
+                  <td>{{mild.title}}</td>
+                  <td>{{mild.description}}</td>
+                  <td>{{mild.status}}</td>
+                  <td>{{mild.date_created | date:'dd-MM-yyy'}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
 </div>

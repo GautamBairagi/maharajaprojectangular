@@ -4,11 +4,13 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AllService } from 'src/app/Api/all.service';
 import { SweetalertssService } from 'src/app/sweetalertss.service';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
-  styleUrls: ['./users.component.css']
+  styleUrls: ['./users.component.css'],
+  providers: [DatePipe]
 })
 export class UsersComponent implements OnInit  {
 //   updateForm!:FormGroup;
@@ -184,6 +186,7 @@ constructor(
   private router: Router,
   private fb: FormBuilder,
   private swet: SweetalertssService,
+  private datePipe: DatePipe
 ) {
   const userIdString = localStorage.getItem('userId');
   this.userId = userIdString ? parseInt(userIdString, 10) : null;
@@ -197,6 +200,10 @@ constructor(
     designation: [''],
     phone: [''],
   });
+}
+
+getFormattedDate(): string {
+  return this.datePipe.transform(this.userByIdData.date_of_birth, 'date') || '';
 }
 
 ngOnInit(): void {
@@ -303,12 +310,26 @@ toggleVerified(data: any) {
       if (accountStatus) {
         this.swet.SucessToast(` Action done Successfully`);
       } else {
-        this.swet.SucessToast(`${doctorName} Lead Action Sccessfully`);
+        this.swet.SucessToast(` Done Action Sccessfully`);
       }
     }
   });
 }
 
+
+
+
+activePopoverIndex: number | null = null;
+
+// togglePopover(index: number): void {
+//   // Toggle the popover for the clicked index
+//   this.activePopoverIndex = this.activePopoverIndex === index ? null : index;
+// }
+
+
+togglePopover(index: number): void {
+  this.activePopoverIndex = this.activePopoverIndex === index ? null : index;
+}
 }
 
 

@@ -28,15 +28,25 @@ export class AddMildstoneComponent {
   userId:any
   clientid: any
   ck: boolean = false;
+  client_room_number:any;
+
+  allData:any;
   ngOnInit(): void {
     this.loginForm = this.fb.group({
       user_id:[this.userId],
-      room_id: ['106'],
+      room_id: [this.client_room_number],
       client_id: [this.clientid],
       title: ['',],
       description: ['',],
       status: ['',]
     });
+
+    const clientData = this.service.getclientData();
+    this.allData = clientData;
+    this.client_room_number= clientData[0].room_number
+    console.log("in mildstone client data:", clientData);
+    console.log("in mildstone client allData:", this.client_room_number);
+
   }
 
   addusers() {
