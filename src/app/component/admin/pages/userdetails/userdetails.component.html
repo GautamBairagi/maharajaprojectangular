@@ -9,6 +9,9 @@
         </div>
     </div>
  
+ 
+  
+
     <div class="row">
         <div class="col-md-2">
             <img src="../assets/profilephoto.jpg" alt="User Avatar" class="rounded-circle img-fluid">
@@ -61,18 +64,6 @@
     <div class="row mt-3" *ngFor="let a of allData" >
         <div class="col-md-6">
 
-            <!-- date_of_birth
-date_of_joining
-designation
-
-
-gender
-last_name
-
-phone
-profile -->
-
-
 
           <p><strong>Name:</strong> {{a.first_name}}</p>
           <p><strong>User Type:</strong> {{a.group_name}}</p>
@@ -88,7 +79,22 @@ profile -->
 
       
 
-
+      <div
+      cdkDropList
+      (cdkDropListDropped)="onFileDropped($event)"
+      class="drag-drop-zone"
+      (dragover)="onDragOver($event)"
+      (drop)="onDrop($event)"
+    >
+      <p>Drag and drop files here</p>
+    </div>
+    <div *ngIf="files.length > 0">
+      <h3>Uploaded Files:</h3>
+      <ul>
+        <li *ngFor="let file of files">{{ file.name }}</li>
+      </ul>
+    </div>
+    
 
 
 

@@ -32,17 +32,26 @@ export class AddMedesComponent {
   ck: boolean = false;
   ngOnInit(): void {
     this.loginForm = this.fb.group({
-      allergies: ['',],
-      allotted_from: ['',], //user id
-      allotted_to: ['',], //patient name 
-      expiry_date: ['',],
-      medicine_name: ['',],
-      medicine_restrictions: ['',], //notes
-      mfg_date: ['',],
+      allergies: [''],
+      allotted_from: [''], 
+      allotted_to: [this.clientid], 
+      expiry_date: [''],
+      medicine_name: [''],
+      medicine_restrictions: [''], 
+      mfg_date: [''],
       precautions: ['',],
-      qty: ['',],
+      qty: [''],
       user_id: [this.userId],
     });
+
+    this.getUser()
+  }
+
+  usersData:any;
+  getUser(){
+    this.service.getUsersdata().subscribe((res)=>{
+      this.usersData = res
+    })
   }
 
   addmeds() {
@@ -54,6 +63,7 @@ export class AddMedesComponent {
       this.service.addmedinice(this.loginForm.value).subscribe({
         next: (res) => {
           console.log("res", res)
+          this.swet.SucessToast('Medicine added succesfully')
             this.router.navigate(['/Admin/Clientdetails'])
         },
         error: (err) => {

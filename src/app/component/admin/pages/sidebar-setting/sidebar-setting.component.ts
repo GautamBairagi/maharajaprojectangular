@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AllService } from 'src/app/Api/all.service';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
-import { HttpClient,HttpHeaders  } from '@angular/common/http'; // Import HttpClient
+import { HttpClient, HttpHeaders } from '@angular/common/http'; // Import HttpClient
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { SweetalertssService } from 'src/app/sweetalertss.service';
 
 
 @Component({
@@ -11,7 +12,8 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
   styleUrls: ['./sidebar-setting.component.css']
 })
 export class SidebarSettingComponent implements OnInit {
-  updatesideMenu:FormGroup;
+  updatesideMenu: FormGroup;
+  updateLogo: FormGroup;
   edit: any;
 
   headerColor: string;
@@ -19,12 +21,22 @@ export class SidebarSettingComponent implements OnInit {
   headerFontColor: string;
   sidebarFontColor: string;
 
+  userId:any
 
-  constructor(private api:AllService, private http: HttpClient,private fb:FormBuilder){
+  constructor(private api: AllService, private http: HttpClient, private fb: FormBuilder, private sweet: SweetalertssService) {
     this.updatesideMenu = this.fb.group({
       // id: new FormControl(''),
       side_name: [''],
     });
+
+    const userIdString = localStorage.getItem('userId');
+    this.userId = userIdString ? parseInt(userIdString, 10) : null;
+
+    this.updateLogo = this.fb.group({
+      title: [''],
+      logo: [''],
+      user_id: [this.userId],
+    })
 
     this.headerColor = this.api.getHeaderColor();
     this.sidebarColor = this.api.getSidebarColor();
@@ -81,9 +93,9 @@ export class SidebarSettingComponent implements OnInit {
     );
   }
 
-  id:any;
-  ByIdsideMenu:any= [];
-  ByIdsubMenu:any= [];
+  id: any;
+  ByIdsideMenu: any = [];
+  ByIdsubMenu: any = [];
 
   sideMenuById(data: any) {
     this.id = data;
@@ -104,12 +116,12 @@ export class SidebarSettingComponent implements OnInit {
     this.getSubMenus()
   }
 
-  allMenus:any[] = [];
-  subMenus:any[] = [];
+  allMenus: any[] = [];
+  subMenus: any[] = [];
 
-  getSideMenus(){
-    this.api.getsidebarmenu().subscribe((res:any)=>{
-      this.allMenus =res;
+  getSideMenus() {
+    this.api.getsidebarmenu().subscribe((res: any) => {
+      this.allMenus = res;
       this.allMenus = res.sort((a: any, b: any) => a.position - b.position);
     })
   }
@@ -128,8 +140,8 @@ export class SidebarSettingComponent implements OnInit {
         acc[submenu.parent_name].push(submenu);
         return acc;
       }, {});
-  
-this.subMenuGroups = res;
+
+      this.subMenuGroups = res;
       // Convert the grouped object into an array
       this.subMenuGroups = Object.keys(grouped).map(parentName => ({
         parent_name: parentName,
@@ -174,13 +186,13 @@ this.subMenuGroups = res;
     //   'Authkey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjc0MiwiZW1haWwiOiJtYXlhbmtAZ21haWwuY29tIiwiaWF0IjoxNzMxNTc2OTY2LCJleHAiOjE3MzE1ODA1NjZ9.AARNo8FQeEPtQmwjnru5FkIuY9PseVHVjVAANP6T-sw'
     // });
 
-    this.api.updateMenu(url, payload, 
+    this.api.updateMenu(url, payload,
       // { headers }
 
     ).subscribe(
       (response) => {
         console.log('Drag and drop data sent successfully:', response);
-        
+
         window.location.reload()
       },
       (error) => {
@@ -195,24 +207,24 @@ this.subMenuGroups = res;
   onDropsub(event: CdkDragDrop<any[]>) {
     // Flatten the submenus to access items by index
     const flatSubMenus = this.subMenuGroups.flatMap(group => group.subMenus);
-  
+
     // Retrieve IDs and positions of dragged and replaced items
     const draggedItemId2 = flatSubMenus[event.previousIndex].id;
     const draggedItemPosition2 = flatSubMenus[event.previousIndex].position;
     const replacedItemId2 = flatSubMenus[event.currentIndex].id;
     const replacedItemPosition2 = flatSubMenus[event.currentIndex].position;
-  
+
     // Reorder in the flat array
     moveItemInArray(flatSubMenus, event.previousIndex, event.currentIndex);
-  
+
     // Update the positions of items in `flatSubMenus` after reordering
     flatSubMenus.forEach((item, index) => {
       item.position = index + 1; // Adjust position based on new order
     });
-  
+
     // Update the original `subMenuGroups` with the reordered data
     this.subMenuGroups = this.groupByParentName(flatSubMenus);
-  
+
     // Send updated data to the server
     this.sendDragAndDropDataToServerSub(
       draggedItemId2,
@@ -221,7 +233,7 @@ this.subMenuGroups = res;
       replacedItemPosition2
     );
 
-    console.log( draggedItemId2,
+    console.log(draggedItemId2,
       replacedItemId2,
       draggedItemPosition2,
       replacedItemPosition2)
@@ -235,13 +247,13 @@ this.subMenuGroups = res;
       acc[submenu.parent_name].push(submenu);
       return acc;
     }, {});
-  
+
     return Object.keys(grouped).map(parentName => ({
       parent_name: parentName,
       subMenus: grouped[parentName]
     }));
   }
-  
+
   sendDragAndDropDataToServerSub(
     draggedItemId2: number,
     replacedItemId2: number,
@@ -255,12 +267,12 @@ this.subMenuGroups = res;
       new_position: draggedItemPosition2,
       old_position: replacedItemPosition2
     };
-  
-  
-  
+
+
+
     this.api.updateMenu(url, payload,
-     
-      ).subscribe(
+
+    ).subscribe(
       (response) => {
         console.log('Drag and drop data sent successfully:', response);
       },
@@ -268,6 +280,58 @@ this.subMenuGroups = res;
         console.error('Error sending drag and drop data:', error);
       }
     );
+  }
+
+
+  changeLogo() {
+    this.updateLogo.value.logo = this.url;
+    this.api.postLogo(this.updateLogo.value).subscribe((res: any) => {
+      this.sweet.SucessToast('Logo Changes Succesfully')
+      window.location.reload()
+    })
+  }
+
+  url: any;
+
+  onSelectFile(event: any) {
+    let file = event.target.files[0];
+    console.log('hello', file);
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => {
+      this.url = reader.result;
+      console.log('lo', this.url);
+      this.updateLogo.value.logo = reader.result;
+    };
+    if (event.target.files && event.target.files[0]) {
+      if (
+        event.target.files[0].type === 'image/jpeg' ||
+        event.target.files[0].type === 'image/png' ||
+        event.target.files[0].type === 'image/jpg' ||
+        event.target.files[0].type === 'application/pdf' ||
+        event.target.files[0].type === 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+      ) {
+        if (event.target.files[0].size < 200 * 200) {
+          / Checking height  width*/
+        }
+        if (event.target.files[0].size < 20000) {
+          / checking size here - 2MB /
+        }
+      }
+    }
+  }
+
+  isPDF(url: string): boolean {
+    return url.startsWith('data:application/pdf');
+  }
+
+  isExcel(url: string): boolean {
+    return url.includes('application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+  }
+
+  isImage(url: string): boolean {
+    const imageExtensions = ['.jpg', '.jpeg', '.png', '.gif'];
+    return imageExtensions.some(ext => url.toLowerCase().endsWith(ext));
   }
 
 

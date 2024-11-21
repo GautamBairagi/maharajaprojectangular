@@ -22,6 +22,15 @@ import { AddRoutineComponent } from './shared/add-routine/add-routine.component'
 import { AddTaskComponent } from './shared/add-task/add-task.component';
 import { AddMildstoneComponent } from './shared/add-mildstone/add-mildstone.component';
 import { AddMedesComponent } from './shared/add-medes/add-medes.component';
+import { RoomActivityComponent } from './pages/Activity Logs/room-activity/room-activity.component';
+import { CommentActivityComponent } from './pages/Activity Logs/comment-activity/comment-activity.component';
+import { MilestoneActivityComponent } from './pages/Activity Logs/milestone-activity/milestone-activity.component';
+import { MedicineActivityComponent } from './pages/Activity Logs/medicine-activity/medicine-activity.component';
+import { TaskActivityComponent } from './pages/Activity Logs/task-activity/task-activity.component';
+import { StatusActivityComponent } from './pages/Activity Logs/status-activity/status-activity.component';
+import { SettingActivityComponent } from './pages/Activity Logs/setting-activity/setting-activity.component';
+import { UnitActivityComponent } from './pages/Activity Logs/unit-activity/unit-activity.component';
+import { FrequencyActivityComponent } from './pages/Activity Logs/frequency-activity/frequency-activity.component';
 import { StatusComponent } from './pages/status/status.component';
 import { AddstatusComponent } from './shared/addstatus/addstatus.component';
 
@@ -46,6 +55,15 @@ import { AddstatusComponent } from './shared/addstatus/addstatus.component';
     AddTaskComponent,
     AddMildstoneComponent,
     AddMedesComponent,
+    RoomActivityComponent,
+    CommentActivityComponent,
+    MilestoneActivityComponent,
+    MedicineActivityComponent,
+    TaskActivityComponent,
+    StatusActivityComponent,
+    SettingActivityComponent,
+    UnitActivityComponent,
+    FrequencyActivityComponent,
     StatusComponent,
     AddstatusComponent
   ],

@@ -248,7 +248,7 @@
   <table class="table table-bordered table-hover table-striped">
     <thead style="font-size: 13px;">
       <tr>
-        <th (click)="onSortChange('id')">Id <i class="fa fa-arrow-up" style="color: #34395e;"
+        <th (click)="onSortChange('id')">Room No <i class="fa fa-arrow-up" style="color: #34395e;"
             *ngIf="sortBy === 'id' && sortDirection === 'ASC'"></i><i class="fa fa-arrow-down"
             *ngIf="sortBy === 'id' && sortDirection === 'DESC'"></i></th>
         <th (click)="onSortChange('first_name')">User Name <i class="fa fa-arrow-up"
@@ -267,10 +267,9 @@
     </thead>
     <tbody>
       <tr *ngFor="let user of getusersData; let i=index;">
-        <td>{{ user.id }}</td>
-
+        <td>{{ user.room_number }}</td>
         <td>
-          <div style="display: flex;  justify-content: center; margin-left:  10px;">
+          <div style="display: flex;  justify-content: start; margin-left:  10px;">
             <!-- Profile Image -->
             <img [src]="user.profile" class="img-fluid" style="width: 50px; height: 50px; border-radius: 100%;box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;" alt="">
             

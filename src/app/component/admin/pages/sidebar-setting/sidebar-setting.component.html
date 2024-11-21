@@ -1,44 +1,79 @@
 <div class="container">
 
-<div class="row justify-content-end">
-  <div class="col-md-6">
-    <h2>Customize Theme</h2>
-    <div class="row">
-      
-      <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-        <label for="headerColor">Header Color</label>
-        <input [(colorPicker)]="headerColor" class="form-control w-25" (colorPickerChange)="updateHeaderColor($event)" [style.background]="headerColor" />  
-      </div>
-      
-      <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-        <label for="sidebarColor">Sidebar Color</label>
-        <input [(colorPicker)]="sidebarColor" class="form-control w-25" (colorPickerChange)="updateSidebarColor($event)" [style.background]="sidebarColor" />  
-      </div>
-      
-      
-    </div>
-
-    
-    <div class="row">
-      
-      <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-        <label for="headerFontColor">Header Font Color</label>
-    <input [(colorPicker)]="headerFontColor" class="form-control w-25" (colorPickerChange)="updateHeaderFontColor($event)" [style.background]="headerFontColor" />
-      </div>
-      
-      <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-        <label for="sidebarFontColor">Sidebar Font Color</label>
-    <input [(colorPicker)]="sidebarFontColor" class="form-control w-25" (colorPickerChange)="updateSidebarFontColor($event)" [style.background]="sidebarFontColor" />
-      </div>
-      
-      
-    </div>
-    
-    
-  </div>
-</div>
-
   <div class="row">
+
+    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+      
+
+      <div class="row">
+
+        <form [formGroup]="updateLogo" (ngSubmit)="changeLogo()" >
+          <legend>Customize Logo</legend>
+
+          <div class="form-group">
+            <label for="">Title</label>
+            <input type="text" formControlName="title" class="form-control" placeholder="Enter title here">
+          </div>
+          <div class="form-group">
+            <label for="">Logo</label>
+            <input 
+                  type="file" 
+                  id="fileInput" 
+                  (change)="onSelectFile($event)" 
+                  accept=".jpeg, .jpg, .png, .pdf, .xlsx" class="form-control"
+                  formControlName="logo"
+                />
+          </div>
+
+          <button type="submit" class="btn btn-primary">Add</button>
+        </form>
+
+      </div>
+
+    </div>
+
+    <div class="col-md-6">
+      <h2>Customize Theme</h2>
+      <div class="row">
+
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+          <label for="headerColor">Header Color</label>
+          <input [(colorPicker)]="headerColor" class="form-control w-25" (colorPickerChange)="updateHeaderColor($event)"
+            [style.background]="headerColor" />
+        </div>
+
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+          <label for="sidebarColor">Sidebar Color</label>
+          <input [(colorPicker)]="sidebarColor" class="form-control w-25"
+            (colorPickerChange)="updateSidebarColor($event)" [style.background]="sidebarColor" />
+        </div>
+
+
+      </div>
+
+
+      <div class="row">
+
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+          <label for="headerFontColor">Header Font Color</label>
+          <input [(colorPicker)]="headerFontColor" class="form-control w-25"
+            (colorPickerChange)="updateHeaderFontColor($event)" [style.background]="headerFontColor" />
+        </div>
+
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+          <label for="sidebarFontColor">Sidebar Font Color</label>
+          <input [(colorPicker)]="sidebarFontColor" class="form-control w-25"
+            (colorPickerChange)="updateSidebarFontColor($event)" [style.background]="sidebarFontColor" />
+        </div>
+
+
+      </div>
+
+
+    </div>
+  </div>
+
+  <div class="row mt-4">
 
     <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
       <div class="three">
@@ -67,14 +102,8 @@
 
                     <form #userForm="ngForm" (ngSubmit)="editMenu()">
                       <!-- Two-way binding to edit.side_name -->
-                      <input 
-                        type="text" 
-                        id="side_name" 
-                        name="side_name" 
-                        class="form-control" 
-                        [(ngModel)]="ByIdsideMenu.side_name" 
-                        placeholder="Enter new name here"
-                        required>
+                      <input type="text" id="side_name" name="side_name" class="form-control"
+                        [(ngModel)]="ByIdsideMenu.side_name" placeholder="Enter new name here" required>
                       <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-primary">Save changes</button>
@@ -90,7 +119,7 @@
       </div>
     </div>
 
-    
+
 
     <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
       <div class="three">
@@ -104,45 +133,40 @@
           <div cdkDropList (cdkDropListDropped)="onDropsub($event)">
 
             <div *ngFor="let sub of group.subMenus" cdkDrag>
-              
-              
-                <h6  class="card-title">{{ sub.name }}
-                  <!-- <i (click)="subSideMenuById(sub.id)" class="fa-regular fa-pen-to-square corner-icon" data-bs-toggle="modal"
+
+
+              <h6 class="card-title">{{ sub.name }}
+                <!-- <i (click)="subSideMenuById(sub.id)" class="fa-regular fa-pen-to-square corner-icon" data-bs-toggle="modal"
                   data-bs-target="#exampleModal2" style="cursor: pointer;"></i> -->
-                   <i class="fa-solid fa-bars corner-icon"></i></h6>
-              
+                <i class="fa-solid fa-bars corner-icon"></i>
+              </h6>
+
             </div>
 
             <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-              <div class="modal-content" *ngFor="let edit of ByIdsubMenu">
-                <div class="modal-header">
-                  <h1 class="modal-title fs-5" id="exampleModalLabel">Edit {{ edit.name }} </h1>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
+              aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content" *ngFor="let edit of ByIdsubMenu">
+                  <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Edit {{ edit.name }} </h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
 
-                  <form #userForm="ngForm" (ngSubmit)="editSubMenu()">
-                    
-                    <input 
-                      type="text" 
-                      id="name" 
-                      name="name" 
-                      class="form-control" 
-                      [(ngModel)]="ByIdsubMenu.name" 
-                      placeholder="Enter new sub name here"
-                      required>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                      <button type="submit" class="btn btn-primary">Save changes</button>
-                    </div>
-                  </form>
-                </div>
+                    <form #userForm="ngForm" (ngSubmit)="editSubMenu()">
 
+                      <input type="text" id="name" name="name" class="form-control" [(ngModel)]="ByIdsubMenu.name"
+                        placeholder="Enter new sub name here" required>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save changes</button>
+                      </div>
+                    </form>
+                  </div>
+
+                </div>
               </div>
             </div>
-          </div>
           </div>
 
         </div>
