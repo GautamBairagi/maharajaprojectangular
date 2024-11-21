@@ -20,10 +20,15 @@ export const superAdminEndPoints = {
     createclient: `${baseUrl}createclient`,
     routines: `${baseUrl}routine`,
     addTask: `${baseUrl}task`,
+addstatus: `${baseUrl}status`,
+       
     getmedicine: `${baseUrl}medicine`,
 
 
     gertmilestones: `${baseUrl}milestone_details`,
+    gertmilestonesBYClientId: `${baseUrl}milestone_details/`,
+
+ 
     createmilestoness: `${baseUrl}createmilestone`,
     
 
@@ -33,11 +38,25 @@ export const superAdminEndPoints = {
     
     rooms: `${baseUrl}room`,
     // roomsgetbyuserid: `${baseUrl}user/`,
-
     createRooms: `${baseUrl}createroom`,
     getUsersByid: `${baseUrl}users_details/`, // uiser get by id
     Usersupdate: `${baseUrl}editUser/`,
     Userstatusupdate: `${baseUrl}activateUser/`,
+    InstatusStatusupdate: `${baseUrl}statusupdate/`,
+    statusUpdtedGetById: `${baseUrl}status_details/`,
+    statusUpdtedput: `${baseUrl}status/`,
+
+    allactiveststus: `${baseUrl}activestatus`,
+    frequencys: `${baseUrl}frequency`,
+    uinitsdatas: `${baseUrl}unit`,
+
+    // timesdata: `${baseUrl}times`,
+
+    
+
+     
+
+    
 
     clientstatusupdatess:`${baseUrl}activateUser/`,
    

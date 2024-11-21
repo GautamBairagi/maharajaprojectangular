@@ -1,0 +1,88 @@
+tr th{
+
+    color:#6c757d;
+    text-align: center;
+     white-space: nowrap ;
+    
+
+}
+
+tr td{
+    white-space: nowrap ;
+    text-align: center;
+}
+
+.pro{
+    color:blueviolet;
+    cursor: pointer;
+}
+
+.small-btn {
+    width: 40px;          /* Keeps button width */
+    height: 40px;         /* Keeps button height */
+    font-size: 14px;      /* Small font size */
+    padding: 0;           /* No padding */
+    display: flex;        /* Use flexbox to center content */
+    align-items: center;  /* Vertically center text */
+    justify-content: center; /* Horizontally center text */
+    border-radius: 50%;   /* Makes the button circular */
+    text-align: center;   /* Ensure text is centered */
+
+  }
+
+  th i{
+    color:  #34395e;
+    /* font-size: 12px; */
+  }
+  
+
+
+  button.Previous,
+  button.Next {
+    background-color: #007bff; /* Primary blue */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 5px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  button.Previous:hover,
+  button.Next:hover {
+    background-color: #0056b3; /* Darker blue for hover */
+    transform: scale(1.05); /* Slight zoom effect */
+  }
+  
+  button.Previous:disabled,
+  button.Next:disabled {
+    background-color: #6c757d; /* Gray for disabled state */
+    cursor: not-allowed;
+    transform: none; /* Remove zoom effect when disabled */
+  }
+  
+  button.Previous,
+  button.Next {
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Add subtle shadow */
+  }
+  
+  button.Previous:active,
+  button.Next:active {
+    background-color: #004085; /* Even darker blue for active state */
+    transform: scale(0.95); /* Slight press effect */
+  }
+  
+
+  /* select.form-select-sm {
+    text-align: center;
+    padding: 2px;
+  } */
+  .btnss {
+    width: 30px;
+    height: 30px;
+  }
+
+  
+  

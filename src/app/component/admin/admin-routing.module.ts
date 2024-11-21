@@ -17,6 +17,8 @@ import { AddRoutineComponent } from './shared/add-routine/add-routine.component'
 import { AddTaskComponent } from './shared/add-task/add-task.component';
 import { AddMedesComponent } from './shared/add-medes/add-medes.component';
 import { AddMildstoneComponent } from './shared/add-mildstone/add-mildstone.component';
+import { StatusComponent } from './pages/status/status.component';
+import { AddstatusComponent } from './shared/addstatus/addstatus.component';
 
 const routes: Routes = [
   {
@@ -92,6 +94,14 @@ const routes: Routes = [
       {
         path:'addmildstone',
         component:AddMildstoneComponent
+      },
+      {
+        path:'Statuses',
+        component:StatusComponent
+      },
+      {
+        path:'Addstatus',
+        component:AddstatusComponent
       }
     ]
   }

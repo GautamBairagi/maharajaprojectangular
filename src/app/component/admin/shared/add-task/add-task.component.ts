@@ -1,6 +1,6 @@
 
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AllService } from 'src/app/Api/all.service';
 import { SweetalertssService } from 'src/app/sweetalertss.service';
@@ -28,63 +28,117 @@ export class AddTaskComponent {
   userId: any
   clientid: any
   ck: boolean = false;
+  allData:any;
+
+
   ngOnInit(): void {
+    this.getssmilestone()
+    this.getmedicinesusers()
+    this.allactiveststusss()
+    this.units()
+    // this.timesss()
+
+    this.frequencysss()
     this.loginForm = this.fb.group({
       allotted_to: [this.clientid],
-      day: ['',],
       description: ['',],
-      due_date: ['',],
+      due_date: ['', Validators.required],
       milestone_id: ['',],
       name: ['',],
       priority: ['',],
-      project_id: ['106'], //room id // room no
-      start_date: ['',],
+      project_id: [], 
+      start_date: ['', [Validators.required, this.noPastDateValidator]],
       status: ['',],
-      task_days: ['',], // 
-      task_message: ['',], // imported ya allergy notes 
-      time: ['',],
-      title: ['',],
+      task_message: ['',], 
       user_id: [this.userId],
-      medicint:[',medicine id'],
-      comment_count: [''],  // 
+      medicine_id: new FormControl([],Validators.required),
+      comment_count: [''],  
+      frequency: [''],  
+      unit: [''],  
     });
+
+    const clientData = this.service.getclientData();
+    this.allData = clientData;
+    const client_room_number= clientData[0].room_number
+    console.log("in mildstone client data:", clientData);
+    console.log("in mildstone client allData:", client_room_number);
+    this.loginForm.patchValue({ project_id: client_room_number });
+    this.loginForm.get('start_date')?.valueChanges.subscribe((startDate) => {
+      this.updateDueDateValidator(startDate);
+    });
+
   }
 
-  addtask() {
-    if (this.loginForm.invalid) {
-      this.ck = true;
-      return;
-    } else {
-      console.log("Patient data", this.loginForm.value);
 
-      this.service.postTaskFromRoom(this.loginForm.value).subscribe({
-        next: (res) => {
-          console.log("res", res)
-          if (res.success) {
-            this.router.navigate(['/Admin/Clientdetails'])
+
+  noPastDateValidator(control: any) {
+    const currentDate = new Date().toISOString().split('T')[0]; 
+    if (control.value && control.value < currentDate) {
+      return { noPastDate: true }; 
+    }
+    return null; 
+  }
+
+ 
+  updateDueDateValidator(startDate: string) {
+    const dueDateControl = this.loginForm.get('due_date');
+    if (dueDateControl) {
+      dueDateControl.setValidators([
+        Validators.required,
+        (control) => {
+          if (control.value && control.value < startDate) {
+            return { dueDateInvalid: true }; 
           }
-        },
-        error: (err) => {
-          console.log(err);
+          return null; 
         }
-      });
+      ]);
+      dueDateControl.updateValueAndValidity(); 
     }
   }
 
+  // addtask() {
+  //   if (this.loginForm.invalid) {
+  //     this.ck = true;
+  //     return;
+  //   } else {
+  //     console.log("Patient data", this.loginForm.value);
+  //     this.service.postTaskFromRoom(this.loginForm.value).subscribe({
+  //       next: (res) => {
+  //         console.log("res", res)
+  //         if (res.success) {
+  //           this.router.navigate(['/Admin/Clientdetails'])
+  //         }
+  //       },
+  //       error: (err) => {
+  //         console.log(err);
+  //       }
+  //     });
+  //   }
+  // }
+  submitRoom(){
+    const formValue = this.loginForm.value;
+  const userIds = Array.isArray(formValue.medicine_id) ? formValue.medicine_id : formValue.medicine_id.split(',');
+  const formData = {
+    ...formValue,
+    medicine_id: userIds.join(','), 
+  };
+    console.log(formData);
+       this.service.postTaskFromRoom(formData).subscribe((response) => {
+        console.log('Room created successfully', response);
+        this.router.navigate(['/Admin/Clientdetails'])
+      });
+  }
   cancel() {
     this.router.navigate(['/Admin/Clientdetails'])
   }
   url: any;
-
   onSelectFile(event: any) {
     const file = event.target.files?.[0]; // Safely access the file
     if (!file) {
       console.error("No file selected");
       return;
     }
-
     console.log("Selected file:", file);
-
     const reader = new FileReader();
     reader.onload = () => {
       this.url = reader.result;
@@ -94,8 +148,99 @@ export class AddTaskComponent {
     reader.onerror = (error) => {
       console.error("Error reading file:", error);
     };
-
     reader.readAsDataURL(file);
   }
+  getmildstonedata:any = [];
+  getssmilestone(): void {
+    this.service.getmildstonebyclientID(this.clientid).subscribe({
+      next: (res: any) => {
+        this.getmildstonedata = res;  
+      },
+      error: (err) => {
+        console.log(err);
+      },
+    });
+  }
+  getmedicinesUser:any= []
+  getmedicinesusers(): void {
+    this.service.getmedicines().subscribe({
+      next: (res: any) => {
+        this.getmedicinesUser = res; 
+      },
+      error: (err) => {
+        console.log(err);
+      },
+    });
+  }
+  selectedUsers: any[] = [];
+  toggleSelection(user: any): void {
+    const userIdsControl = this.loginForm.get('medicine_id');
+    const index = this.selectedUsers.findIndex((u) => u.id === user.id);
+    if (index > -1) {
+      this.selectedUsers.splice(index, 1);
+    } else {
+      this.selectedUsers.push(user);
+    }
+    userIdsControl?.setValue(this.selectedUsers.map((u) => u.id));
+  }
+  isUserSelected(user: any): boolean {
+    return this.selectedUsers.some((u) => u.id === user.id);
+  }
 
+
+  allactiveststussss:any=[]
+  allactiveststusss(): void {
+    this.service.allactiveststuss().subscribe({
+      next: (res: any) => {
+        this.allactiveststussss = res; 
+      },
+      error: (err) => {
+        console.log(err);
+      },
+    });
+  }
+
+
+  
+  frequencyssss:any=[]
+  frequencysss(): void {
+    this.service.frequencyss().subscribe({
+      next: (res: any) => {
+        this.frequencyssss = res; 
+      },
+      error: (err) => {
+        console.log(err);
+      },
+    });
+  }
+
+  unitss:any=[]
+  units(): void {
+    this.service.uinitsdata().subscribe({
+      next: (res: any) => {
+        this.unitss = res; 
+      },
+      error: (err) => {
+        console.log(err);
+      },
+    });
+  }
+
+  // timess:any=[]
+  // timesss(): void {
+  //   this.service.times().subscribe({
+  //     next: (res: any) => {
+  //       this.timess = res; 
+  //     },
+  //     error: (err) => {
+  //       console.log(err);
+  //     },
+  //   });
+  // }
+
+
+  
+
+
+  
 }

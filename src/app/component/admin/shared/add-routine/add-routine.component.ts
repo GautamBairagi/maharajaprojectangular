@@ -28,17 +28,25 @@ export class AddRoutineComponent {
   clientid: any
   ck: boolean = false;
   ngOnInit(): void {
+    this.getmedicinesusers()
     this.loginForm = this.fb.group({
       user_id:[this.userId],
-      room_id: ['106'],
       client_id: [this.clientid],
-      title: ['',],
-      description: ['',],
-      status: ['',]
+      medicine_name:[''],
+      rxnumber:[''],
+      frequency:[''],
+      unit:[''],
+      time:[''],
+      mfg_date:[''],
+      expiry_date:[''],
+      routine_start_date:[''],
+      routine_end_date:[''],
+      difference_time:[''],
+      message:[''],
     });
   }
 
-  addusers() {
+  addroutine() {
     if (this.loginForm.invalid) {
       this.ck = true;
       return;
@@ -86,4 +94,19 @@ export class AddRoutineComponent {
     reader.readAsDataURL(file);
   }
 
+
+
+  getmedicinesUser:any= []
+
+  getmedicinesusers(): void {
+    this.service.getmedicines().subscribe({
+      next: (res: any) => {
+        this.getmedicinesUser = res; 
+       
+      },
+      error: (err) => {
+        console.log(err);
+      },
+    });
+  }
 }

@@ -1,82 +1,68 @@
-
 <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Create New Task</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="cancel()" >
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>  
+        <div class="modal-header">
+            <h5 class="modal-title">Create New Task</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="cancel()">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <form [formGroup]="loginForm">
+                <div class="form-row">
 
-      <div class="modal-body">
-        <form [formGroup]="loginForm">
-            <div class="form-row">
-
-                <div class="form-group col-md-6">
-                    <label>Name </label>
-                    <input type="text" class="form-control" formControlName="name" placeholder="name">
+                    <div class="form-group col-md-6">
+                        <label>Name </label>
+                        <input type="text" class="form-control" formControlName="name" placeholder="name">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="user_id">Mildstone Title</label>
+                        <select id="user_id" formControlName="milestone_id" class="form-select">
+                            <option value="">Select Mildstone Title</option>
+                            <option *ngFor="let rr of getmildstonedata" [value]="rr.id"> {{ rr.title
+                                }} </option>
+                        </select>
+                    </div>
                 </div>
-
-              
-                <div class="form-group col-md-6">
-                    <label>Day</label>
-                    <input type="text" class="form-control" placeholder="Day" formControlName="day">
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label>Description </label>
+                        <input type="text" class="form-control" placeholder="Description" formControlName="description">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Task Message</label>
+                        <input type="text" class="form-control" placeholder="Task Message"
+                            formControlName="task_message">
+                    </div>
                 </div>
-            </div>
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label>Description </label>
-                    <input type="text" class="form-control" placeholder="Description" formControlName="description">
-                </div>
-            </div>
-         
-            <div class="form-row">
-             
-                <div class="form-group col-md-6">
-                    <label>Allotted To</label>
-                    <input type="text" class="form-control" formControlName="allotted_to" placeholder="Allotted To">
-                </div>
-                <div class="form-group col-md-6">
-                    <label>Due Date</label>
-                    <input type="date" class="form-control" formControlName="due_date">
-                </div>
-            </div>
-             <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label>Priority</label>
-                    <select id="priority" formControlName="priority" class="form-control">
-                        <option value="">Select Priority</option>
-                        <option value="Low">Low</option>
-                        <option value="Medium">Medium</option>
-                        <option value="High">High</option>
-                    </select>
-                </div>
-
-               
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label>Start Date</label>
+                        <input type="date" class="form-control" formControlName="start_date">
+                        <div *ngIf="loginForm.get('start_date')?.errors?.['noPastDate']" class="text-danger">
+                            Start date cannot be in the past.
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Due Date</label>
+                        <input type="date" class="form-control" formControlName="due_date">
+                        <div *ngIf="loginForm.get('due_date')?.errors?.['dueDateInvalid']" class="text-danger">
+                            Due date must be after the start date.
+                        </div>
+                    </div>
 
 
-
-                <div class="form-group col-md-6">
-                    <label>Title</label>
-                    <input type="text" class="form-control" placeholder="Title" formControlName="title">
                 </div>
-            </div>
-              <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label>Time</label>
-                    <input type="text" class="form-control" placeholder="Time" formControlName="time">
-                </div>
-                <div class="form-group col-md-6">
-                    <label>Task Message</label>
-                    <input type="text" class="form-control" placeholder="Task Message" formControlName="task_message">
-                </div>
-            </div> 
-             <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label>Task Days</label>
-                    <input type="text" class="form-control" placeholder="Task Days" formControlName="task_days">
-                </div>
-                <div class="form-group col-md-6">
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label>Priority</label>
+                        <select id="priority" formControlName="priority" class="form-control">
+                            <option value="">Select Priority</option>
+                            <option value="Low">Low</option>
+                            <option value="Medium">Medium</option>
+                            <option value="High">High</option>
+                        </select>
+                    </div>
+                    <!-- <div class="form-group col-md-6">
                     <label>status </label>
                         <select id="status" formControlName="status" class="form-control">
                             <option value="">Select Status</option>
@@ -84,27 +70,86 @@
                             <option value="In Progress">In Progress</option>
                             <option value="Completed">Completed</option>
                         </select>
-                  
-                </div>
-            </div>
+                </div> -->
 
-         
-        
-            <button type="submit" (click)="addtask()" type="button" class="btn btn-success m-1">Save</button>
-            <button type="submit" class="btn btn-danger" (click)="cancel()" type="button">cancel</button>
-        </form>
-      </div>
+
+                    <div class="form-group col-md-6">
+                        <label>Status</label>
+                        <select id="user_id" formControlName="status" class="form-select">
+                            <option value="">Select status </option>
+                            <option *ngFor="let rr of allactiveststussss" [value]="rr.id"> {{ rr.status
+                                }} </option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label>Frequency </label>                           
+                         <select id="frequency"formControlName="frequency"  class="form-select">
+                            <option value="">Select Frequency</option>
+                            <option *ngFor="let rr of frequencyssss" [value]="rr.id"> {{ rr.name
+                                }} </option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label>Unit </label>
+                        <select id="frequency"formControlName="unit"  class="form-select">
+                            <option value="">Select unit</option>
+                            <option *ngFor="let rr of unitss" [value]="rr.id"> {{ rr.title
+                                }} </option>
+                        </select>
+
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label>Time </label>
+                        <input type="time" class="form-control" formControlName="time" placeholder="Time">
+
+                    </div>
+                </div>
+                <div class="form-row">
+
+                    <!-- <div class="form-group col-md-6">
+                    <label>Medicine Name</label>
+                    <select id="user_id" formControlName="medicine_id" class="form-select">
+                        <option value="">Select Medicine Name</option>
+                        <option *ngFor="let rr of getmedicinesUser" [value]="rr.id"> {{ rr.medicine_name
+                            }} </option>
+                    </select>
+                </div> -->
+
+                  
+
+                    <div class="form-group col-md-12">
+                        <label for="">Select Medicine Name</label>
+                        <div class="multi-select-dropdown">
+                            <div class="selected-options">
+                                <span *ngFor="let user of selectedUsers" class="selected-item">
+                                    {{ user.medicine_name }}
+                                    <button type="button" class="unselect-btn" (click)="toggleSelection(user)">
+                                        &times;
+                                    </button>
+                                </span>
+                            </div>
+
+                            <div class="dropdown-options">
+                                <label *ngFor="let user of getmedicinesUser" class="dropdown-item">
+                                    <input type="checkbox" [checked]="isUserSelected(user)"
+                                        (change)="toggleSelection(user)" />
+                                    {{ user.medicine_name }}
+                                </label>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+
+
+                </div>
+                <button type="submit" (click)="submitRoom()" type="button" class="btn btn-success m-1">Save</button>
+                <button type="submit" class="btn btn-danger" (click)="cancel()" type="button">cancel</button>
+            </form>
+        </div>
     </div>
-  </div>
-  
-   
-   
-  
-              
-  
-  
-  
-  
-  
-  
-  
+</div>

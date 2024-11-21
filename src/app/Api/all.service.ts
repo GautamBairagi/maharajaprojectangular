@@ -143,6 +143,11 @@ export class AllService extends HttpService {
    gertmilestoness(){
     return this.get(superAdminEndPoints.gertmilestones)
    }
+getmildstonebyclientID(id:any){
+  return this.get(superAdminEndPoints.gertmilestonesBYClientId +id)
+}
+
+
 
 
    createmilestones(data:any){
@@ -244,6 +249,53 @@ return this.clientData;
     return this.patch(superAdminEndPoints.Userstatusupdate + id, data )
    }
 
+   InstatusStatusupdatess(id:any, data:any){
+    return this.patch(superAdminEndPoints.InstatusStatusupdate + id, data )
+   }
+
+
+   userpatchmethod(id:any, data:any){
+    return this.patch(superAdminEndPoints.statusUpdtedput + id, data )
+   }
+
+
+
+
+
+   getStatusById(id:any){
+    return this.get(superAdminEndPoints.statusUpdtedGetById + id )
+   }
+
+   allactiveststuss(){
+    return this.get(superAdminEndPoints.allactiveststus )
+   }
+
+
+   
+   frequencyss(){
+    return this.get(superAdminEndPoints.frequencys )
+   }
+
+
+   uinitsdata(){
+    return this.get(superAdminEndPoints.uinitsdatas )
+   }
+
+  //  times(){
+  //   return this.get(superAdminEndPoints.timesdata )
+  //  }
+   
+
+   
+
+   
+
+
+   
+
+
+
+
 
    clientstatusupdates(id:any, data:any){
     return this.patch(superAdminEndPoints.clientstatusupdatess + id, data )
@@ -261,6 +313,21 @@ return this.clientData;
   postTaskFromRoom(data:any){
     return this.post(superAdminEndPoints.addTask, data )
   }
+
+  postaddstatus(data:any){
+    return this.post(superAdminEndPoints.addstatus, data )
+  }
+
+
+
+  getstatus(){
+    return this.get(superAdminEndPoints.addstatus )
+   }
+
+
+   
+
+  
 
   postComments(data:any){
     return this.post(superAdminEndPoints.comment,data)

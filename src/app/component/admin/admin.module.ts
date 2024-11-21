@@ -22,6 +22,8 @@ import { AddRoutineComponent } from './shared/add-routine/add-routine.component'
 import { AddTaskComponent } from './shared/add-task/add-task.component';
 import { AddMildstoneComponent } from './shared/add-mildstone/add-mildstone.component';
 import { AddMedesComponent } from './shared/add-medes/add-medes.component';
+import { StatusComponent } from './pages/status/status.component';
+import { AddstatusComponent } from './shared/addstatus/addstatus.component';
 
 
 
@@ -43,7 +45,9 @@ import { AddMedesComponent } from './shared/add-medes/add-medes.component';
     AddRoutineComponent,
     AddTaskComponent,
     AddMildstoneComponent,
-    AddMedesComponent
+    AddMedesComponent,
+    StatusComponent,
+    AddstatusComponent
   ],
   imports: [
     CommonModule,
