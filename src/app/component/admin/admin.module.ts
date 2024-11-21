@@ -31,6 +31,9 @@ import { StatusActivityComponent } from './pages/Activity Logs/status-activity/s
 import { SettingActivityComponent } from './pages/Activity Logs/setting-activity/setting-activity.component';
 import { UnitActivityComponent } from './pages/Activity Logs/unit-activity/unit-activity.component';
 import { FrequencyActivityComponent } from './pages/Activity Logs/frequency-activity/frequency-activity.component';
+import { StatusComponent } from './pages/status/status.component';
+import { AddstatusComponent } from './shared/addstatus/addstatus.component';
+
 
 
 @NgModule({
@@ -61,6 +64,8 @@ import { FrequencyActivityComponent } from './pages/Activity Logs/frequency-acti
     SettingActivityComponent,
     UnitActivityComponent,
     FrequencyActivityComponent,
+    StatusComponent,
+    AddstatusComponent
   ],
   imports: [
     CommonModule,

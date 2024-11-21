@@ -1,16 +1,14 @@
-
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AllService } from 'src/app/Api/all.service';
 import { SweetalertssService } from 'src/app/sweetalertss.service';
 @Component({
-  selector: 'app-add-mildstone',
-  templateUrl: './add-mildstone.component.html',
-  styleUrls: ['./add-mildstone.component.css']
+  selector: 'app-addstatus',
+  templateUrl: './addstatus.component.html',
+  styleUrls: ['./addstatus.component.css']
 })
-export class AddMildstoneComponent {
-
+export class AddstatusComponent {
   loginForm!: FormGroup;
   constructor(
     private router: Router,
@@ -34,12 +32,16 @@ export class AddMildstoneComponent {
   ngOnInit(): void {
     this.loginForm = this.fb.group({
       user_id:[this.userId],
-      room_id: [],
-      client_id: [this.clientid],
-      title: [],
+      name: [],
       description: ['',],
-      status: ['',]
+      status: [0],
+      text_color: ['',]
     });
+
+
+
+
+
 
     const clientData = this.service.getclientData();
     this.allData = clientData;
@@ -49,20 +51,17 @@ export class AddMildstoneComponent {
     this.loginForm.patchValue({ room_id: client_room_number });
 
   }
-
-  addusers() {
+  addStatus() {
     if (this.loginForm.invalid) {
       this.ck = true;
       return;
     } else {
       console.log("Patient data", this.loginForm.value);
       
-      this.service.createmilestones(this.loginForm.value).subscribe({
+      this.service.postaddstatus(this.loginForm.value).subscribe({
         next: (res) => {
           console.log("res", res)
-        
-            this.router.navigate(['/Admin/Clientdetails'])
-        
+            this.router.navigate(['/Admin/Statuses'])
         },
         error: (err) => {
           console.log(err);
@@ -72,7 +71,7 @@ export class AddMildstoneComponent {
   }
 
   cancel() {
-    this.router.navigate(['/Admin/Users'])
+    this.router.navigate(['/Admin/Statuses'])
   }
   url: any;
 
@@ -97,5 +96,4 @@ export class AddMildstoneComponent {
 
     reader.readAsDataURL(file);
   }
-
 }

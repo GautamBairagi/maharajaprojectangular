@@ -50,7 +50,7 @@ export class RoomsComponent implements OnInit,AfterViewInit {
 
        this.api.postRoomData(formData).subscribe((response) => {
         this.sweet.SucessToast('Room created successfully')
-        window.location.reload()
+        // window.location.reload()
         console.log('Room created successfully', response);
       });
   }
