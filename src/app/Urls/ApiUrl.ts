@@ -25,12 +25,7 @@ export const superAdminEndPoints = {
 
     gertmilestones: `${baseUrl}milestone_details`,
     createmilestoness: `${baseUrl}createmilestone`,
-    
 
-    
-    
-    
-    
     rooms: `${baseUrl}room`,
     // roomsgetbyuserid: `${baseUrl}user/`,
 
@@ -39,11 +34,20 @@ export const superAdminEndPoints = {
     Usersupdate: `${baseUrl}editUser/`,
     Userstatusupdate: `${baseUrl}activateUser/`,
 
-    clientstatusupdatess:`${baseUrl}activateUser/`,
-   
+    clientstatusupdatess: `${baseUrl}activateUser/`,
+
     getLanguagess: `${baseUrl}get_language`,
     changeLanguage: `${baseUrl}change_language?lang=`,
     userDetailsForRoom: `${baseUrl}userdata/`,
     roomDetails: `${baseUrl}room_details/`,
     comment: `${baseUrl}comment`,
+    logo: `${baseUrl}setting/`,
+    
+    roomactivity: `${baseUrl}roomactivity`,
+    commentactivity: `${baseUrl}commentactivity`,
+    medicineactivity: `${baseUrl}medicineactivity`,
+    milestoneactivity: `${baseUrl}milestoneactivity`,
+    taskactivity: `${baseUrl}taskactivity`,
+    statusactivity: `${baseUrl}statusactivity`,
+    settingactivity: `${baseUrl}settingactivity`,
 }

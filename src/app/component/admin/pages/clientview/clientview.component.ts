@@ -117,8 +117,8 @@ export class ClientviewComponent {
     
       updateusers() {
         this.service.userupdatedss(this.id, this.userByIdData).subscribe((res: any) => {
-          console.log('Nurse updated successfully', res);
-          this.swet.SucessToast(`Alottement Updated Successfully`);
+          console.log(' updated successfully', res);
+          this.swet.SucessToast(`Updated Successfully`);
           window.location.reload()
         }, (error) => {
           console.error('Error updating user', error);
@@ -127,8 +127,8 @@ export class ClientviewComponent {
     
       updatestatuser() {
         this.service.Userstatusupdatess(this.id, this.userByIdData).subscribe((res: any) => {
-          console.log('Nurse updated successfully', res);
-          this.swet.SucessToast(`Alottement Updated Successfully`);
+          console.log('status updated successfully', res);
+          this.swet.SucessToast(`Action Updated Successfully`);
           window.location.reload()
         }, (error) => {
           console.error('Error updating user', error);

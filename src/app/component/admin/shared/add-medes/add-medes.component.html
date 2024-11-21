@@ -16,7 +16,7 @@
                     </div>
                     <div class="form-group col-md-6">
                         <label>Allergies</label>
-                        <input type="text" class="form-control" placeholder="First Name" formControlName="allergies">
+                        <input type="text" class="form-control" placeholder="Allergies" formControlName="allergies">
                     </div>
                 </div>
                 <div class="form-row">
@@ -43,19 +43,18 @@
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label>Allotted From </label>
-                        <input type="text" class="form-control" formControlName="allotted_from" placeholder="Allotted From">
+                        
+                        <select class="form-select" formControlName="allotted_from">
+                            <option value="" selected hidden >Select user</option>
+                            <option  *ngFor="let user of usersData" [value]="user.id"  > {{ user.first_name }} </option>
+                        </select>
                     </div>
-                    <div class="form-group col-md-6">
-                        <label>Allotted To</label>
-                        <input type="text" class="form-control" formControlName="allotted_to" placeholder="Allotted To">
-                    </div>
-                </div>
-                <div class="form-row">
                     <div class="form-group col-md-6">
                         <label>QTY</label>
                         <input type="text" class="form-control" placeholder="QTY" formControlName="qty">
                     </div>
                 </div>
+               
                 <button type="submit" (click)="addmeds()" type="button" class="btn btn-success m-1">Save</button>
                 <button type="submit" class="btn btn-danger" (click)="cancel()" type="button">cancel</button>
             </form>

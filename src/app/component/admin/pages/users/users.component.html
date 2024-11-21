@@ -248,16 +248,16 @@
   <table class="table table-bordered table-hover table-striped">
     <thead style="font-size: 13px;">
       <tr>
-        <th (click)="onSortChange('id')">Id <i class="fa fa-arrow-up" style="color: #34395e;"
+        <th (click)="onSortChange('id')">Room No <i class="fa fa-arrow-up" style="color: #34395e;"
             *ngIf="sortBy === 'id' && sortDirection === 'ASC'"></i><i class="fa fa-arrow-down"
             *ngIf="sortBy === 'id' && sortDirection === 'DESC'"></i></th>
         <th (click)="onSortChange('first_name')">User Name <i class="fa fa-arrow-up"
             *ngIf="sortBy === 'first_name' && sortDirection === 'ASC'"></i><i class="fa fa-arrow-down"
             *ngIf="sortBy === 'first_name' && sortDirection === 'DESC'"></i></th>
         
-        <th (click)="onSortChange('active')">active <i class="fa fa-arrow-up"
-            *ngIf="sortBy === 'active' && sortDirection === 'ASC'"></i><i class="fa fa-arrow-down"
-            *ngIf="sortBy === 'active' && sortDirection === 'DESC'"></i></th>
+        <th (click)="onSortChange('Status')">Status<i class="fa fa-arrow-up"
+            *ngIf="sortBy === 'Status' && sortDirection === 'ASC'"></i><i class="fa fa-arrow-down"
+            *ngIf="sortBy === 'Status' && sortDirection === 'DESC'"></i></th>
         <th (click)="onSortChange('group_name')">Role<i class="fa fa-arrow-up"
             *ngIf="sortBy === 'group_name' && sortDirection === 'ASC'"></i><i class="fa fa-arrow-down"
             *ngIf="sortBy === 'group_name' && sortDirection === 'DESC'"></i></th>
@@ -266,10 +266,96 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let user of getusersData">
-        <td>{{ user.id }}</td>
-        
+      <tr *ngFor="let user of getusersData; let i=index;">
+        <td>{{ user.room_number }}</td>
         <td>
+          <div style="display: flex;  justify-content: start; margin-left:  10px;">
+            <!-- Profile Image -->
+            <img [src]="user.profile" class="img-fluid" style="width: 50px; height: 50px; border-radius: 100%;box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;" alt="">
+            
+            <!-- Name and Email -->
+            <div style="margin-left: 0px;">
+              <p style="margin: 0; font-weight: bold;text-align: start;font-size: 0.9em;"> <span (click)="ByIds(user.id)">{{ user.first_name }} {{user.last_name}}</span>
+                <span (click)="ByIds(user.id)" ><i class="fa-solid fa-eye m-2"></i></span> 
+                <span style="cursor: pointer;" (click)="ById(user.id)"
+                data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-regular fa-pen-to-square"></i></span>
+                
+               </p>
+               <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog  modal-lg">
+                  <div class="modal-content text-start">
+                    <div class="modal-header">
+                      <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Client</h1>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      <form #userForm="ngForm" (ngSubmit)="updateusers()">
+                        <div class="form-row">
+                          <div class="form-group col-md-6">
+                            <label for="name">First Name</label>
+                            <input type="text" class="form-control" id="first_name"
+                              [(ngModel)]="userByIdData.first_name" name="first_name" required />
+                          </div>
+                          <div class="form-group col-md-6">
+                            <label>Last Name</label>
+                            <input type="text" class="form-control" id="last_name" [(ngModel)]="userByIdData.last_name"
+                              name="last_name" required />
+                          </div>
+                        </div>
+
+                        <div class="form-row">
+                          <div class="form-group col-md-6">
+                            <label>Email</label>
+                            <input type="text" class="form-control" id="email" [(ngModel)]="userByIdData.email"
+                              name="email" required />
+                          </div>
+                          
+                        </div>
+
+
+
+                        <div class="form-row">
+                          <div class="form-group col-md-6">
+                            <label>Date of Birth</label>
+                            <input type="text" class="form-control" id="date_of_birth" [value]="getFormattedDate()"
+                              [(ngModel)]="userByIdData.date_of_birth" name="date_of_birth" required />
+                          </div>
+                          <div class="form-group col-md-6">
+                            <label>Date of Joining</label>
+                            <input type="text" class="form-control" id="date_of_joining"
+                              [(ngModel)]="userByIdData.date_of_joining" name="date_of_joining" required />
+                          </div>
+                        </div>
+
+                        <div class="form-row">
+                          <div class="form-group col-md-6">
+                            <label>Phone</label>
+                            <input type="text" class="form-control" id="phone" [(ngModel)]="userByIdData.phone"
+                              name="phone" required />
+                          </div>
+                          <div class="form-group col-md-6">
+                            <label>Designation</label>
+                            <input type="text" class="form-control" id="designation"
+                              [(ngModel)]="userByIdData.designation" name="designation" required />
+                          </div>
+                        </div>
+                        <button type="submit" class="btn btn-success m-1">Save</button>
+                        <button type="button" class="btn btn-danger" type="button" data-bs-dismiss="modal"
+                          aria-label="Close">cancel</button>
+
+
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <p style="margin: 0; font-size: 0.9em; color: gray;text-align: start;">{{ user.email }}</p>
+            </div>
+          </div>
+        </td>
+
+        <!-- <td>
           <div class="d-flex " style="justify-content: center;">
             <div>
               <span (click)="ByIds(user.id)"> <a class="pro">{{user.first_name}} {{user.last_name}} </a> <br>
@@ -341,15 +427,20 @@
               </div>
             </div>
           </div>
-        </td>
+        </td> -->
+
+
+
         <td>
           <button class="btn btn-sm" [ngClass]="user.active ? 'btn-success' : 'btn-danger'" style="border-radius: 20px;"
             (click)="toggleVerified(user)">
             {{ user.active ? 'Active' : 'Inactive' }}
           </button>
         </td>
-        <td><button class="btn btn-sm text-light"
-            style="border-radius: 20px; background-color: #34395e;">{{user.group_name }}</button></td>
+        <td>
+          <button class="btn btn-sm text-light"
+            style="border-radius: 20px; background-color: #34395e;">{{user.group_name }}</button>
+          </td>
         <td style="text:center;">
           <div class="d-flex gap-2" style="justify-content: center;">
             <div>
@@ -366,31 +457,48 @@
             </div>
           </div>
         </td>
-        <div class="dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <span id="profileDropdown" style="justify-content: center;">
-            <i class="fa-solid fa-ellipsis-vertical"></i>
-          </span>
-          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="profileDropdown">
-            <a class="dropdown-item">
-              <i style="color: #34395e;" class="fas fa-cogs mr-2"></i> Permission
-            </a>
-            <a class="dropdown-item">
-              <i style="color: #34395e;" class="fas fa-user-shield mr-2"></i> Make Admin
-            </a>
-            <a class="dropdown-item">
-              <i style="color: #34395e;" class="fas fa-user-tie mr-2"></i> Make Client
-            </a>
-            <a class="dropdown-item">
-              <i style="color: #34395e;" class="fas fa-users mr-2"></i> Make Member
-            </a>
-            <a class="dropdown-item">
-              <i style="color: #34395e;" class="fas fa-user-cog mr-2"></i> Make Manager
-            </a>
-            <a class="dropdown-item">
-              <i style="color: #34395e;" class="fas fa-trash-alt mr-2"></i> Delete Workspace
-            </a>
+
+
+        <td>
+              
+          <div class="position-relative" style="display: inline-block;">
+            <!-- Ellipsis Icon -->
+            <span (click)="togglePopover(i)" style="cursor: pointer;box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;padding: 10px;border-radius: 10px;">
+              <i class="fa-solid fa-ellipsis-vertical"></i>
+            </span>
+      
+            <!-- Popover List -->
+            <div 
+              *ngIf="activePopoverIndex === i" 
+              class="popover-menu" 
+              style="position: absolute; top: 20px; right: 0; background: white; border: 1px solid #ccc; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); padding: 10px; z-index: 1000; border-radius: 5px;">
+              <ul style="list-style: none; margin: 0; padding: 0;">
+
+
+                <li style="display: flex; align-items: center; padding: 5px 0;">
+                  <i class="fa-solid fa-plus" style="margin-right: 8px; color: #333;"></i> 
+                  <a  style="text-decoration: none; color: #333;">Make Admin</a>
+                </li>
+                <li style="display: flex; align-items: center; padding: 5px 0;">
+                  <i class="fa-solid fa-plus" style="margin-right: 8px; color: #333;"></i> 
+                  <a  style="text-decoration: none; color: #333;">Make Super Admin</a>
+                </li>
+                <li style="display: flex; align-items: center; padding: 5px 0;">
+                  <i class="fa-solid fa-key" style="margin-right: 8px; color: #333;"></i> 
+                  <a  style="text-decoration: none; color: #333;">Permission</a>
+                </li>
+                <li style="display: flex; align-items: center; padding: 5px 0;">
+                  <i class="fa-solid fa-trash" style="margin-right: 8px; color: red;"></i> 
+                  <a  style="text-decoration: none; color: #333;">Delete From Workspace</a>
+                </li>
+              
+              
+              </ul>
+              
+            </div>
           </div>
-        </div>
+         
+        </td>
       </tr>
     </tbody>
   </table>

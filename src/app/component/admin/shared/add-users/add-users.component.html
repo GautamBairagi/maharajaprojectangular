@@ -82,8 +82,14 @@
 
         <div class="form-row">
           <div class="form-group col-md-6">
-         
-            <input type="file" class="form-control" formControlName="profile" (click)="onSelectFile($event)">
+            <label for="fileInput">Profile</label>
+            <input 
+              type="file" 
+              id="fileInput" 
+              (change)="onSelectFile($event)" 
+              accept=".jpeg, .jpg, .png, .pdf, .xlsx" class="form-control"
+              formControlName="profile"
+            />
           </div>
           
         </div>

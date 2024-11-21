@@ -1,6 +1,6 @@
 <div class="col-lg-12 col-md-12 d-flex  justify-content-between  mt-2 ">
   <span><h5 class="fs-4 mt-3 text-center p-2" style="color: #777;">Client List</h5></span> <span><button type="button"
-      (click)="addClient()" class="btn btn-primary text-white mt-3"><span><i
+      (click)="addClient()" class="btn btn-primary  addbutton text-white mt-3"><span><i
           class="fa-sharp fa-solid fa-plus"></i></span> Add</button></span>
 </div>
 <div class="mt-2" style="overflow-x: scroll; box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px; border-radius: 10px;">
@@ -9,21 +9,29 @@
       <tr>
         <th>Room No</th>
         <th>Clients</th>
-        <th>Active</th>
+        <th>Status</th>
         <th>Role</th>
         <th>Action</th>
       </tr>
     </thead>
     <tbody style="text-wrap: nowrap;" class="">
       <tr style="background-color: #f9f9f9;" *ngFor="let a of getusersData;   let i = index">
-        <td>{{a.room_number }}</td>
+        <td style="text:center;">
+          <div class="d-flex gap-2" style="justify-content: center;">
+            <div>
+              <button type="button" class="btn small-btn text-light" style="background-color: #34395e;">{{a.room_number}}</button>
+            
+            </div>
+
+          </div>
+        </td>
         <td>
-          <div style="display: flex; align-items: center;">
+          <div style="display: flex;  justify-content: start; margin-left:  10px;">
             <!-- Profile Image -->
             <img [src]="a.profile" class="img-fluid" style="width: 50px; height: 50px; border-radius: 100%;box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;" alt="">
             
             <!-- Name and Email -->
-            <div style="margin-left: 10px;">
+            <div style="margin-left: 0px;">
               <p style="margin: 0; font-weight: bold;text-align: start;font-size: 0.9em;"> <span (click)="ByIds(a.id)">{{ a.first_name }} {{a.last_name}}</span>
                 <span (click)="ByIds(a.id)" ><i class="fa-solid fa-eye m-2"></i></span> 
                 <span style="cursor: pointer;" (click)="ById(a.id)"
@@ -140,19 +148,19 @@
                   <ul style="list-style: none; margin: 0; padding: 0;">
                     <li style="display: flex; align-items: center; padding: 5px 0;">
                       <i class="fa-solid fa-plus" style="margin-right: 8px; color: #333;"></i> 
-                      <a href="#" style="text-decoration: none; color: #333;">Make Admin</a>
+                      <a style="text-decoration: none; color: #333;">Make Admin</a>
                     </li>
                     <li style="display: flex; align-items: center; padding: 5px 0;">
                       <i class="fa-solid fa-plus" style="margin-right: 8px; color: #333;"></i> 
-                      <a href="#" style="text-decoration: none; color: #333;">Make Super Admin</a>
+                      <a style="text-decoration: none; color: #333;">Make Super Admin</a>
                     </li>
                     <li style="display: flex; align-items: center; padding: 5px 0;">
                       <i class="fa-solid fa-key" style="margin-right: 8px; color: #333;"></i> 
-                      <a href="#" style="text-decoration: none; color: #333;">Permission</a>
+                      <a style="text-decoration: none; color: #333;">Permission</a>
                     </li>
                     <li style="display: flex; align-items: center; padding: 5px 0;">
                       <i class="fa-solid fa-trash" style="margin-right: 8px; color: red;"></i> 
-                      <a href="#" style="text-decoration: none; color: #333;">Delete From Workspace</a>
+                      <a style="text-decoration: none; color: #333;">Delete From Workspace</a>
                     </li>
                   </ul>
                   

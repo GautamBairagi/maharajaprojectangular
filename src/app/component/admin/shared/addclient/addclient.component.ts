@@ -25,7 +25,6 @@ export class AddclientComponent {
   }
   userId:any
   ck: boolean = false;
- 
 
   ngOnInit(): void {
     this.loginForm = this.fb.group({
@@ -47,10 +46,7 @@ export class AddclientComponent {
         zip_code :['', ],
          country  :['', ],
     });
-  
-  
 }
-
 
 addclient() {
   if (this.loginForm.invalid) {
@@ -104,10 +100,6 @@ onSelectFile(event: any) {
   }
 }
 
-// isImage(url: string): boolean {
-//   return url.startsWith('data:image');
-// }
-
 isPDF(url: string): boolean {
   return url.startsWith('data:application/pdf');
 }
@@ -116,14 +108,11 @@ isExcel(url: string): boolean {
   return url.includes('application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
 }
 
-
-
-// driverAbst == is a key
-
 isImage(url: string): boolean {
   const imageExtensions = ['.jpg', '.jpeg', '.png', '.gif'];
   return imageExtensions.some(ext => url.toLowerCase().endsWith(ext));
 }
+
 
 cancel(){
   this.router.navigate(['/Admin/Clients'])

@@ -51,6 +51,7 @@ export class AddUsersComponent implements OnInit {
     return;
   } else {
     console.log("Patient data", this.loginForm.value);
+    this.loginForm.value.profile = this.url;
     this.service.createusersadmin(this.loginForm.value).subscribe({
       next: (res) => {
         console.log("res", res)
@@ -70,64 +71,51 @@ cancel(){
 }
 
 
+
+
 url:any;
 
+onSelectFile(event: any) {
+  let file = event.target.files[0];
+  console.log('hello', file);
+  const reader = new FileReader();
+  reader.readAsDataURL(file);
+  reader.onload = () => {
+    this.url = reader.result;
+    console.log('lo', this.url);
+    this.loginForm.value.profile = reader.result;
+  };
+  if (event.target.files && event.target.files[0]) {
+    if (
+      event.target.files[0].type === 'image/jpeg' ||
+      event.target.files[0].type === 'image/png' ||
+      event.target.files[0].type === 'image/jpg' ||
+      event.target.files[0].type === 'application/pdf' ||
+      event.target.files[0].type === 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+    ) {
+      if (event.target.files[0].size < 200 * 200) {
+        / Checking height  width*/
+      }
+      if (event.target.files[0].size < 20000) {
+        / checking size here - 2MB /
+      }
+    }
+  }
+}
 
+isPDF(url: string): boolean {
+  return url.startsWith('data:application/pdf');
+}
 
+isExcel(url: string): boolean {
+  return url.includes('application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+}
 
-
-
-// onSelectFile(event: any) {
+isImage(url: string): boolean {
+  const imageExtensions = ['.jpg', '.jpeg', '.png', '.gif'];
+  return imageExtensions.some(ext => url.toLowerCase().endsWith(ext));
+}
    
 
-//   let file = event.target.files[0];
-//   console.log('hello', file);
-//   const reader = new FileReader();
-//   reader.readAsDataURL(file);
-//   reader.onload = () => {
-//     this.url = reader.result;
-//     console.log('lo', this.url);
-//     this.loginForm.value.profile = reader.result;
-//   };
-//   if (event.target.files && event.target.files[0]) {
-//     if (
-//       event.target.files[0].type === 'image/jpeg' ||
-//       event.target.files[0].type === 'image/png' ||
-//       event.target.files[0].type === 'image/jpg' ||
-//       event.target.files[0].type === 'application/pdf' ||
-//       event.target.files[0].type === 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
-//     ) {
-//       if (event.target.files[0].size < 200 * 200) {
-//         / Checking height  width*/
-//       }
-//       if (event.target.files[0].size < 20000) {
-//         / checking size here - 2MB /
-//       }
-//     }
-//   }
-// }
 
-
-
-onSelectFile(event: any) {
-  const file = event.target.files?.[0]; // Safely access the file
-  if (!file) {
-      console.error("No file selected");
-      return;
-  }
-
-  console.log("Selected file:", file);
-
-  const reader = new FileReader();
-  reader.onload = () => {
-      this.url = reader.result;
-      console.log("File content as Base64:", this.url);
-      this.loginForm.patchValue({ profile: this.url }); // Use patchValue to update form control
-  };
-  reader.onerror = (error) => {
-      console.error("Error reading file:", error);
-  };
-
-  reader.readAsDataURL(file);
-}
 }
