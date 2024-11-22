@@ -92,4 +92,5 @@ addstatus: `${baseUrl}status`,
     personalGrowthGet: `${baseUrl}personalandemotinalgrowths`,
     currentProviderAdd: `${baseUrl}currentprovider`,
     currentProviderGet: `${baseUrl}currentproviders`,
+    graphCount: `${baseUrl}countdata`,
 }

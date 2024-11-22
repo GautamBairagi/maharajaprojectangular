@@ -10,7 +10,7 @@ import { SweetalertssService } from 'src/app/sweetalertss.service';
   styleUrls: ['./admin.component.css']
 })
 export class AdminComponent implements OnInit {
-
+  notifications: any[] = [];
 
   loginForm!: FormGroup;
   constructor(
@@ -30,7 +30,14 @@ export class AdminComponent implements OnInit {
     this.selectedLanguage = sessionStorage.getItem('language') || 'French';
 
     this.getLogo()
+    this.service.onNotificationReceived((data) => {
+      this.notifications.push(data);
+    });
+  }
 
+  sendNotification() {
+    const message = { message: 'New Task Assigned!', timestamp: new Date() };
+    this.service.sendNotification(message);
   }
 
   logoGet: any;

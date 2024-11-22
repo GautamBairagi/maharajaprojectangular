@@ -193,7 +193,10 @@
       </div>
     
     <div class="content" >
-       
+        <div *ngFor="let notification of notifications" class="notification">
+            {{ notification.message }}
+          </div>
+          <button (click)="sendNotification()">Send Notification</button>
           
         <div class="header"> 
             <div class="search-bar">

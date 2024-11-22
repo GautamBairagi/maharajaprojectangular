@@ -3,11 +3,13 @@ import { Injectable } from '@angular/core';
 import { HttpService } from '../Http/httpServices';
 import { superAdminEndPoints } from '../Urls/ApiUrl';
 import { Observable, BehaviorSubject } from 'rxjs';
+import { io, Socket } from 'socket.io-client';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AllService extends HttpService {
+  private socket: Socket;
 
   private headerColor = '#ff416c'; // default color
   private sidebarColor = '#ff4b2b'; // default color
@@ -52,7 +54,17 @@ export class AllService extends HttpService {
   constructor(public override http: HttpClient,
   ) {
     super(http)
+    this.socket = io('http://localhost:3000');
   }
+
+  sendNotification(message: any) {
+    this.socket.emit('send-notification', message);
+  }
+
+  onNotificationReceived(callback: (data: any) => void) {
+    this.socket.on('receive-notification', callback);
+  }
+
   superAdminLogin(data: any) {
     return this.post(superAdminEndPoints.superAdminLogin, data)
   }
@@ -481,6 +493,10 @@ getmildstonebyclientID(id:any){
  
   addSelfHomeCare(data:any){
     return this.post(superAdminEndPoints.addSelfHomeCare,data)
+  }
+
+  getGraph() {
+    return this.get(superAdminEndPoints.graphCount)
   }
 
 }
