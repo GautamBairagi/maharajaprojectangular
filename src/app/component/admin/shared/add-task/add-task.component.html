@@ -17,7 +17,7 @@
                     <div class="form-group col-md-6">
                         <label for="user_id">Mildstone Title</label>
                         <select id="user_id" formControlName="milestone_id" class="form-select">
-                            <option value="">Select Mildstone Title</option>
+                            <option value=""  selected hidden>Select Mildstone Title</option>
                             <option *ngFor="let rr of getmildstonedata" [value]="rr.id"> {{ rr.title
                                 }} </option>
                         </select>
@@ -56,7 +56,7 @@
                     <div class="form-group col-md-6">
                         <label>Priority</label>
                         <select id="priority" formControlName="priority" class="form-control">
-                            <option value="">Select Priority</option>
+                            <option value=""  selected hidden>Select Priority</option>
                             <option value="Low">Low</option>
                             <option value="Medium">Medium</option>
                             <option value="High">High</option>
@@ -76,7 +76,7 @@
                     <div class="form-group col-md-6">
                         <label>Status</label>
                         <select id="user_id" formControlName="status" class="form-select">
-                            <option value="">Select status </option>
+                            <option value=""  selected hidden>Select status </option>
                             <option *ngFor="let rr of allactiveststussss" [value]="rr.id"> {{ rr.status
                                 }} </option>
                         </select>
@@ -87,17 +87,26 @@
                     <div class="form-group col-md-4">
                         <label>Frequency </label>                           
                          <select id="frequency"formControlName="frequency"  class="form-select">
-                            <option value="">Select Frequency</option>
-                            <option *ngFor="let rr of frequencyssss" [value]="rr.id"> {{ rr.name
-                                }} </option>
+                            <!-- <option *ngFor="let rr of frequencyssss" [value]="rr.id"> {{ rr.name
+                                }} </option> -->
+
+                                <option value="" selected hidden>Choose Your Frequency</option>
+                                <option value="1-0-1">1-0-1</option>
+                                <option value="1-0-0">1-0-0</option>
+                                <option value="1-1-1">1-1-1</option>
+                                <option value="0-0-1">0-0-1</option>
+                                <option value="SOS">S.O.S</option>
+                                <option value="5ml-0-5ml">5ml-0-5ml</option>
+                                <option value="2.5ml-2.5ml">2.5ml-2.5ml</option>
+                                <option value="10ml-0-10ml">10ml-0-10ml</option>
+
                         </select>
                     </div>
                     <div class="form-group col-md-4">
                         <label>Unit </label>
                         <select id="frequency"formControlName="unit"  class="form-select">
-                            <option value="">Select unit</option>
-                            <option *ngFor="let rr of unitss" [value]="rr.id"> {{ rr.title
-                                }} </option>
+                            <option value=""  selected hidden>Select unit</option>
+                            <option *ngFor="let rr of unitss" [value]="rr.id"> {{ rr.title}} {{rr.qty}} </option>
                         </select>
 
                     </div>
