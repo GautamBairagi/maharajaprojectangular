@@ -1,0 +1,132 @@
+
+<div class="container">
+    <div class="row">
+    
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 p-1" >
+            <h4>Work/Career/Education</h4>
+        </div>
+        
+    </div>
+</div>
+
+<form [formGroup]="thisForm" (ngSubmit)="addMyForm()">
+    
+    <div class="container mt-2">
+        <div class="row justify-content-center">
+            
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <label for="">Patient Name</label>
+                <select formControlName="patientName" class="form-select" id="">
+                    <option value="">Select</option>
+                    <option *ngFor="let resi of residentData" [value]="resi.id">{{ resi.first_name }} {{ resi.last_name }}</option>
+                </select>
+            </div>
+            
+        </div>
+        <div class="row mt-4">
+            
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <label for="">Current Employment Status</label>
+                <select formControlName="currentEmployementStatus" class="form-select" id="">
+                    <option value="" selected hidden>Select</option>
+                    <option value="Employed">Employed</option>
+                    <option value="Unemployed">Unemployed</option>
+                    <option value="Student">Student</option>
+                    <option value="Retired">Retired</option>
+                    <option value="Unable to Work"> Unable to Work</option>
+                </select>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <label for=""> Occupation/Field of Work</label>
+              <input type="text" formControlName="occupation" id="" class="form-control" >
+            </div>
+            
+        </div>
+
+        <div class="row mt-4">
+            
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <label for="">Educational Background</label>
+                <textarea formControlName="educationalBackground" class="form-control" id=""></textarea>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <label for=""> Skills and Qualifications</label>
+              <textarea formControlName="skillsAndQualification" class="form-control" id=""></textarea>
+            </div>
+            
+        </div>
+
+        <div class="row mt-4">
+            
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <label for="">Work History</label>
+                <textarea formControlName="workHistory" id="" class="form-control"></textarea>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <label for=""> Future Career Goals</label>
+                <textarea formControlName="futureCareerGoal" class="form-control" id=""></textarea>
+            </div>
+            
+        </div>
+      
+        
+        <div class="row mt-4">
+            
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+            
+        </div>
+        
+        
+    </div>
+    
+</form>
+
+
+<div class="container mt-5">
+    
+    <div class="row">
+        
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <h4>Work/Career/Education List</h4>
+        </div>
+        
+    </div>
+    
+    <div class="row mt-4">
+        
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead style="background-color: #f6daf3; color: #3C3D37;">
+                        <tr>
+                            <th>Patient Name</th>
+                            <th>Current Employement Status</th>
+                            <th>Occupation</th>
+                            <th>Educational Background</th>
+                            <th>Future Career Goal</th>
+                            <th>Skills And Qualification</th>
+                            <th>Work History</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let data of workAndCareerData" >
+                            <td> {{ data.patientName }} </td>
+                            <td>{{ data.currentEmployementStatus }}</td>
+                            <td>{{ data.occupation }}</td>
+                            <td>{{ data.educationalBackground }}</td>
+                            <td>{{ data.futureCareerGoal }}</td>
+                            <td>{{ data.skillsAndQualification }}</td>
+                            <td>{{ data.workHistory }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+        </div>
+        
+    </div>
+    
+</div>

@@ -28,6 +28,18 @@ import { UnitActivityComponent } from './pages/Activity Logs/unit-activity/unit-
 import { FrequencyActivityComponent } from './pages/Activity Logs/frequency-activity/frequency-activity.component';
 import { StatusComponent } from './pages/status/status.component';
 import { AddstatusComponent } from './shared/addstatus/addstatus.component';
+import { CommunicationComponent } from '../Categories/communication/communication.component';
+import { WorkCareerEducationComponent } from '../Categories/work-career-education/work-career-education.component';
+import { TransportationComponent } from '../Categories/transportation/transportation.component';
+import { SelfCareComponent } from '../Categories/self-care/self-care.component';
+import { SafetyComponent } from '../Categories/safety/safety.component';
+import { PersonalAurEmotionalGrowthComponent } from '../Categories/personal-aur-emotional-growth/personal-aur-emotional-growth.component';
+import { HealthMedicalComponent } from '../Categories/health-medical/health-medical.component';
+import { EpsdtComponent } from '../Categories/epsdt/epsdt.component';
+import { DentalComponent } from '../Categories/dental/dental.component';
+import { CurrentProvidersComponent } from '../Categories/current-providers/current-providers.component';
+import { CurrentMedicationsComponent } from '../Categories/current-medications/current-medications.component';
+import { CommunityAurSocialInvolvementComponent } from '../Categories/community-aur-social-involvement/community-aur-social-involvement.component';
 
 const routes: Routes = [
   {
@@ -146,6 +158,54 @@ const routes: Routes = [
       {
         path:'Addstatus',
         component:AddstatusComponent
+      },
+      {
+        path:'communication',
+        component:CommunicationComponent
+      },
+      {
+        path:'community-aur-social-involvement',
+        component:CommunityAurSocialInvolvementComponent
+      },
+      {
+        path:'current-medications',
+        component:CurrentMedicationsComponent
+      },
+      {
+        path:'current-providers',
+        component:CurrentProvidersComponent
+      },
+      {
+        path:'dental',
+        component:DentalComponent
+      },
+      {
+        path:'epsdt',
+        component:EpsdtComponent
+      },
+      {
+        path:'health-medical',
+        component:HealthMedicalComponent
+      },
+      {
+        path:'personal-aur-emotional-growth',
+        component:PersonalAurEmotionalGrowthComponent
+      },
+      {
+        path:'safety',
+        component:SafetyComponent
+      },
+      {
+        path:'self-care',
+        component:SelfCareComponent
+      },
+      {
+        path:'transportation',
+        component:TransportationComponent
+      },
+      {
+        path:'work-career-education',
+        component:WorkCareerEducationComponent
       }
     ]
   }

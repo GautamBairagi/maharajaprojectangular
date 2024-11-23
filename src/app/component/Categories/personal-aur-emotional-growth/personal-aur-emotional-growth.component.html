@@ -1,0 +1,176 @@
+<div class="container">
+    <div class="row">
+
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 p-1">
+            <h4>Personal aur Emotional Growth</h4>
+        </div>
+
+    </div>
+</div>
+
+<form [formGroup]="thisForm" (ngSubmit)="addMyForm()">
+
+    <div class="container mt-2">
+        <div class="row justify-content-center">
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <label for="">Patient Name</label>
+                <select formControlName="patientName" class="form-select" id="">
+                    <option value="">Select</option>
+                    <option *ngFor="let resi of residentData" [value]="resi.first_name">{{ resi.first_name }} {{ resi.last_name }}</option>
+                </select>
+            </div>
+        </div>
+        <div class="row mt-4">
+
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <label for="">Current Emotional State</label>
+                <select formControlName="currentEmotionalState" class="form-select" id="">
+                    <option value="" selected hidden>Select</option>
+                    <option value="Very Positive"> Very Positive</option>
+                    <option value="Positive"> Positive</option>
+                    <option value="Neutral"> Neutral </option>
+                    <option value="Negative"> Negative</option>
+                    <option value="Very Negative"> Very Negative</option>
+
+                </select>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <label for="">Personal Goals</label>
+                <textarea formControlName="personalGoals" class="form-control" id=""></textarea>
+            </div>
+
+        </div>
+        <div class="row mt-4">
+
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <label for="">Coping Mechanisms</label>
+                <textarea formControlName="copingMechanisms" class="form-control" id=""></textarea>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <label for="">Support Systems</label>
+                <div class="d-flex">
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" formControlName="supportSystems" id="exampleRadios1"
+                            value="Family" checked>
+                        <label class="form-check-label" for="exampleRadios1">
+                            Family
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" formControlName="supportSystems" id="exampleRadios2"
+                            value="Friends">
+                        <label class="form-check-label" for="exampleRadios2">
+                            Friends
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" formControlName="supportSystems" id="exampleRadios3"
+                            value="Therapists">
+                        <label class="form-check-label" for="exampleRadios3">
+                            Therapists
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" formControlName="supportSystems" id="exampleRadios3"
+                            value="Support Groups">
+                        <label class="form-check-label" for="exampleRadios3">
+                            Support Groups
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" formControlName="supportSystems" id="exampleRadios3"
+                            value="Community Programs">
+                        <label class="form-check-label" for="exampleRadios3">
+                            Community Programs
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" formControlName="supportSystems" id="exampleRadios3"
+                            value="None">
+                        <label class="form-check-label" for="exampleRadios3">
+                            None
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="row mt-4">
+
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <label for="">Interest in Counseling or Therapy</label>
+                <select formControlName="interstInCounselingOrTheraphy" class="form-select" id="">
+                    <option value="" selected hidden>Select</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No"> No</option>
+                    <option value="Maybe"> Maybe</option>
+                </select>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <label for="">Activities for Emotional Growth</label>
+                <textarea formControlName="activitiesForEmotinalGrowth" class="form-control" id=""></textarea>
+            </div>
+
+        </div>
+
+
+        <div class="row mt-4">
+
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+
+        </div>
+
+
+    </div>
+
+</form>
+
+
+<div class="container mt-5">
+    
+    <div class="row">
+        
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <h4>Personal aur Emotional Growth List</h4>
+        </div>
+        
+    </div>
+    
+    <div class="row mt-4">
+        
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead style="background-color: #f6daf3; color: #3C3D37;">
+                        <tr>
+                            <th>Patient Name</th>
+                            <th>Current Emotional State</th>
+                            <th>Personal Goals</th>
+                            <th>Coping Mechanisms</th>
+                            <th>Support Systems</th>
+                            <th>Interst InCounseling Or Theraphy</th>
+                            <th>Activities For Emotinal Growth</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let data of personalGData" >
+                            <td> {{ data.patientName }} </td>
+                            <td>{{ data.currentEmotionalState }}</td>
+                            <td>{{ data.personalGoals }}</td>
+                            <td>{{ data.copingMechanisms }}</td>
+                            <td>{{ data.supportSystems }}</td>
+                            <td>{{ data.interstInCounselingOrTheraphy }}</td>
+                            <td>{{ data.activitiesForEmotinalGrowth }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+        </div>
+        
+    </div>
+    
+</div>

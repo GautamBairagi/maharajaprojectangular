@@ -1,0 +1,123 @@
+
+<div class="container">
+    <div class="row" >
+    
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 p-1">
+            <h4>Dental</h4>
+        </div>
+        
+    </div>
+</div>
+
+<form [formGroup]="thisForm" (ngSubmit)="addMyForm()" >
+    
+    <div class="container mt-2">
+        <div class="row justify-content-center">
+            
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <label for="">Patient Name</label>
+                <select formControlName="patientName" class="form-select" id="">
+                    <option value="">Select</option>
+                    <option *ngFor="let resi of residentData" [value]="resi.first_name">{{ resi.first_name }} {{ resi.last_name }}</option>
+                </select>
+            </div>
+            
+        </div>
+        <div class="row mt-4">
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <label for="">Current Dental Conditions:</label>
+              <textarea  class="form-control" formControlName="currentDentalConditions" id=""></textarea>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <label for="">Last Dental Visit Date</label>
+              <input type="date"  id="" class="form-control" formControlName="lastDenatalVisitDate" >
+            </div>
+           
+            
+        </div>
+      
+        <div class="row mt-4">
+            
+           
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <label for="">Dentist's Name and Contact Information</label>
+              <input type="text"  id="" class="form-control" formControlName="dentistNameAndContact" >
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <label for="">Dental Treatments Received</label>
+                <textarea  class="form-control" formControlName="dentalTreatmentReceived" id=""></textarea>
+            </div>
+            
+        </div>
+        <div class="row mt-4">
+            
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <label for="">Dental Care Routine</label>
+                <textarea  class="form-control" formControlName="dentalCareRoutine" id=""></textarea>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <label for="">Dental Insurance Information</label>
+              <input type="text"  id="" class="form-control" formControlName="dentalInsuranceInfo" >
+            </div>
+            
+        </div>
+        
+        <div class="row mt-4">
+            
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+            
+        </div>
+        
+        
+    </div>
+    
+</form>
+
+<div class="container mt-5">
+    
+    <div class="row">
+        
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <h4>Dental List</h4>
+        </div>
+        
+    </div>
+    
+    <div class="row mt-4">
+        
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead style="background-color: #f6daf3; color: #3C3D37;">
+                        <tr>
+                            <th>Patient Name</th>
+                            <th>Current Dental Conditions</th>
+                            <th>Last Denatal Visit Date</th>
+                            <th>Dentist Name And Contact</th>
+                            <th>Dental Treatment Received</th>
+                            <th>Dental Care Routine</th>
+                            <th>Dental Insurance Info</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let data of dentalData" >
+                            <td> {{ data.patientName }} </td>
+                            <td>{{ data.currentDentalConditions }}</td>
+                            <td>{{ data.lastDenatalVisitDate }}</td>
+                            <td>{{ data.dentistNameAndContact }}</td>
+                            <td>{{ data.dentalTreatmentReceived }}</td>
+                            <td>{{ data.dentalCareRoutine }}</td>
+                            <td>{{ data.dentalInsuranceInfo }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+        </div>
+        
+    </div>
+    
+</div>

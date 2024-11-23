@@ -1,1 +1,62 @@
-<p>task-activity works!</p>
+<div class="container-fluid mt-4">
+    <h4>Task Activities</h4>
+    <!-- Search Bar -->
+    <div class="mb-3">
+        <input type="text" class="form-control w-25" placeholder="Search here ..." (input)="onSearch($event)" />
+    </div>
+
+    <!-- Table -->
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+            <thead class="table-dark">
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Status</th>
+                   
+                    <th>priority</th>
+                    <th>title</th>
+                    
+                    <th>description</th>
+                    <th>Expiry Date</th>
+                    <th>Qty</th>
+                    <th>Created At</th>
+                    <th>Updated At</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let activity of displayedData">
+                    <td>{{ activity.first_name }}</td>
+                    <td>{{ activity.last_name }}</td>
+                    <td>{{ activity.status }}</td>
+                    <td>{{ activity.parsedMessage?.priority?.toString() || '0' }}</td>
+                    <td>{{ activity.parsedMessage?.title?.toString() || '0' }}</td>
+                    <td>{{ activity.parsedMessage?.description?.toString() || '0' }}</td>
+                    <td>{{ activity.parsedMessage?.expiry_date?.toString() || '0' }}</td>
+                    <td>{{ activity.parsedMessage?.qty?.toString() || '0' }}</td>
+                    <td>{{ activity.created_at | date:'short' }}</td>
+                    <td>{{ activity.updated_at | date:'short' }}</td>
+
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Pagination -->
+    <nav aria-label="Page navigation">
+        <ul class="pagination justify-content-center">
+            <li class="page-item" [class.disabled]="currentPage === 1">
+                <button class="page-link" (click)="changePage(currentPage - 1)">Previous</button>
+            </li>
+
+            <li class="page-item" *ngFor="let page of [].constructor(totalPages); let i = index"
+                [class.active]="currentPage === i + 1">
+                <button class="page-link" (click)="changePage(i + 1)">{{ i + 1 }}</button>
+            </li>
+
+            <li class="page-item" [class.disabled]="currentPage === totalPages">
+                <button class="page-link" (click)="changePage(currentPage + 1)">Next</button>
+            </li>
+        </ul>
+    </nav>
+</div>

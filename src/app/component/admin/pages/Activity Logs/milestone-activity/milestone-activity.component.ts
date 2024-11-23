@@ -8,7 +8,7 @@ import { AllService } from 'src/app/Api/all.service';
 })
 export class MilestoneActivityComponent implements OnInit {
   activityData: any[] = [];
-  displayedData: any[] = []; // Data for the current page
+  displayedData: any[] = [];
   searchQuery: string = '';
   currentPage: number = 1;
   itemsPerPage: number = 5;

@@ -47,11 +47,6 @@ addstatus: `${baseUrl}status`,
 
     // timesdata: `${baseUrl}times`,
 
-    
-
-     
-
-    
 
     clientstatusupdatess: `${baseUrl}activateUser/`,
 
@@ -69,4 +64,32 @@ addstatus: `${baseUrl}status`,
     taskactivity: `${baseUrl}taskactivity`,
     statusactivity: `${baseUrl}statusactivity`,
     settingactivity: `${baseUrl}settingactivity`,
+    unitactivity: `${baseUrl}unitactivity`,
+    frequencyactivity: `${baseUrl}frequencyactivity`,
+
+
+    tranportationGet: `${baseUrl}transportations`,
+    tranportation: `${baseUrl}transportation`,
+    workAndCarrierGet: `${baseUrl}workandcareerandeducations`,
+    workAndCarrier: `${baseUrl}workandcareerandeducation`,
+    communicationAndsocialGet: `${baseUrl}communicationandsociainvolvements`,
+    addCommunicationAndsocial: `${baseUrl}communicationandsociainvolvement`,
+    communicationGet: `${baseUrl}communications`,
+    addCommunication: `${baseUrl}communication`,
+    selfHomeCareGet: `${baseUrl}selfhomecares`,
+    addSelfHomeCare: `${baseUrl}selfhomecare`,
+    currentMedicationGet: `${baseUrl}currentmedications`,
+    currentMedication: `${baseUrl}currentmedication`,
+    dental: `${baseUrl}dental`,
+    dentalGet: `${baseUrl}dentals`,
+    epsdtr: `${baseUrl}epsdtr`,
+    epsdtrsGet: `${baseUrl}epsdtrs`,
+    healthmedical: `${baseUrl}healthmedical`,
+    healthmedicalGet: `${baseUrl}healthmedicals`,
+    saftey: `${baseUrl}saftey`,
+    safteysGet: `${baseUrl}safteys`,
+    personalGrowth: `${baseUrl}personalandemotinalgrowth`,
+    personalGrowthGet: `${baseUrl}personalandemotinalgrowths`,
+    currentProviderAdd: `${baseUrl}currentprovider`,
+    currentProviderGet: `${baseUrl}currentproviders`,
 }

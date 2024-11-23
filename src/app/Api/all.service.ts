@@ -376,5 +376,111 @@ getmildstonebyclientID(id:any){
   getSettingactivity() {
     return this.get(superAdminEndPoints.settingactivity)
   }
+  getunitactivity() {
+    return this.get(superAdminEndPoints.unitactivity)
+  }
+  getfrequencyactivity() {
+    return this.get(superAdminEndPoints.frequencyactivity)
+  }
+
+
+  // Categories functions
+
+  currentProviderGet() {
+    return this.get(superAdminEndPoints.currentProviderGet)
+  }
+
+  currentProvider(data:any) {
+    return this.post(superAdminEndPoints.currentProviderAdd,data)
+  }
+
+  currentMedicationGet() {
+    return this.get(superAdminEndPoints.currentMedicationGet)
+  }
+
+  currentMedication(data:any) {
+    return this.post(superAdminEndPoints.currentMedication,data)
+  }
+
+  dentalGet() {
+    return this.get(superAdminEndPoints.dentalGet)
+  }
+
+  dental(data:any) {
+    return this.post(superAdminEndPoints.dental,data)
+  }
+
+  epsdtrsGet() {
+    return this.get(superAdminEndPoints.epsdtrsGet)
+  }
+
+  epsdtrs(data:any) {
+    return this.post(superAdminEndPoints.epsdtr,data)
+  }
+
+  healthMedicalGet() {
+    return this.get(superAdminEndPoints.healthmedicalGet)
+  }
+
+  healthMedical(data:any) {
+    return this.post(superAdminEndPoints.healthmedical,data)
+  }
+
+  safetyGet() {
+    return this.get(superAdminEndPoints.safteysGet)
+  }
+
+  safety(data:any) {
+    return this.post(superAdminEndPoints.saftey,data)
+  }
+
+  personalGrowthGet() {
+    return this.get(superAdminEndPoints.personalGrowthGet)
+  }
+
+  personalGrowth(data:any) {
+    return this.post(superAdminEndPoints.personalGrowth,data)
+  }
+
+
+  getTranportation() {
+    return this.get(superAdminEndPoints.tranportationGet)
+  }
+ 
+  addTranportation(data:any){
+    return this.post(superAdminEndPoints.tranportation,data)
+  }
+
+  getWorkAndCareer() {
+    return this.get(superAdminEndPoints.workAndCarrierGet)
+  }
+ 
+  addWorkAndCareer(data:any){
+    return this.post(superAdminEndPoints.workAndCarrier,data)
+  }
+
+  getCommunicationAndSocial() {
+    return this.get(superAdminEndPoints.communicationAndsocialGet)
+  }
+ 
+  addCommunicationAndSocial(data:any){
+    return this.post(superAdminEndPoints.addCommunicationAndsocial,data)
+  }
+
+  getCommunication() {
+    return this.get(superAdminEndPoints.communicationGet)
+  }
+ 
+  addCommunication(data:any){
+    return this.post(superAdminEndPoints.addCommunication,data)
+  }
+
+  getSelfHomeCare() {
+    return this.get(superAdminEndPoints.selfHomeCareGet)
+  }
+ 
+  addSelfHomeCare(data:any){
+    return this.post(superAdminEndPoints.addSelfHomeCare,data)
+  }
 
 }

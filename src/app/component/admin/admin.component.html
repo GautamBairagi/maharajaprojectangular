@@ -157,7 +157,7 @@
                           <div class="accordion-body">
                             <ul class="dropulli">
                               <li *ngFor="let submenu of getFilteredSubMenus(side.id)" style="list-style: none;">
-                                <a [routerLink]="['/Admin', submenu.old_name]" style="color: var(--sidebar-font-color);"  class="dropdown-item sidebar-link">{{ submenu.name }}</a>
+                                <a [routerLink]="['/Admin', submenu.old_name]" style="color: var(--sidebar-font-color);background-color: var(--sidebar-color);"  class="dropdown-item sidebar-link">{{ submenu.name }}</a>
                               </li>
                             </ul>
                           </div>
