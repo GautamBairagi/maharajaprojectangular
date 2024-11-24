@@ -9,44 +9,43 @@
     <form [formGroup]="loginForm">
         <div class="mb-3">
             <label for="email" class="form-label">Email</label>
-            <input type="email" class="form-control" id="email" placeholder="admin@admin.com" type="text"
-                formControlName="email" class="form-control" placeholder="Username" aria-label="Username"
-                [ngClass]="{'is-invalid': loginForm.controls['email'].errors && ck }" aria-describedby="basic-addon1">
-            <p class="text-danger" *ngIf="loginForm.controls['email'].errors && ck"> Enter Your Email
-            </p>
+            <input type="email" id="email" formControlName="email" class="form-control"
+                placeholder="Username" aria-label="Username" 
+                [ngClass]="{'is-invalid': loginForm.controls['email'].invalid && ck }">
+            <p class="text-danger" *ngIf="loginForm.controls['email'].invalid && ck"> Enter Your Email</p>
         </div>
-
+    
         <div class="mb-3">
             <div class="d-flex justify-content-between">
                 <label for="password" class="form-label">Password</label>
                 <a href="#" class="text-small">Forgot Password?</a>
             </div>
-            <input type="password" class="form-control" id="password"
-                [type]="showPassword ? 'text' : 'password'" type="text" formControlName="password" class="form-control"
-                placeholder="Password" aria-label="Username"
-                [ngClass]="{'is-invalid': loginForm.controls['password'].errors && ck }"
-                aria-describedby="basic-addon1">
-            <p class="text-danger" *ngIf="loginForm.controls['password'].errors && ck"> Enter Your Password
-            </p>
+            <input type="password" id="password" formControlName="password" class="form-control"
+                [type]="showPassword ? 'text' : 'password'" placeholder="Password" aria-label="Username"
+                [ngClass]="{'is-invalid': loginForm.controls['password'].invalid && ck }">
+            <p class="text-danger" *ngIf="loginForm.controls['password'].invalid && ck"> Enter Your Password</p>
         </div>
+    
         <div class="mb-3 form-check">
             <input type="checkbox" class="form-check-input" id="exampleCheck1" (click)="togglePasswordVisibility()">
-            <label class="form-check-label text-secondary fw-bold" for="exampleCheck1">
-                Show Text
-            </label>
+            <label class="form-check-label text-secondary fw-bold" for="exampleCheck1">Show Text</label>
         </div>
+    
+        <!-- Display API error message here -->
+        <div *ngIf="apiErrorMessage" class="mb-3">
+            <p class="text-danger">{{ apiErrorMessage }}</p>
+        </div>
+    
         <div class="mb-3">
-            <button type="submit" class="btn btn-login"  (click)="onChangess()">Master Login</button>
+            <button type="submit" class="btn btn-login" (click)="onChangess()">Master Login</button>
         </div>
-
+    
         <div class="mb-3">
-            <button type="submit" class="btn btn-login"  (click)="addPatients()">Login</button>
+            <button type="submit" class="btn btn-login" (click)="login()">Login</button>
         </div>
-       
-       
-
-      
     </form>
+    
+    
 
     <div class="simple-footer mt-4">
         <p>Copyright &copy; Mexdy Technology & IT Services 2024</p>

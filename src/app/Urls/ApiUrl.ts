@@ -92,7 +92,11 @@ addstatus: `${baseUrl}status`,
     personalGrowthGet: `${baseUrl}personalandemotinalgrowths`,
     currentProviderAdd: `${baseUrl}currentprovider`,
     currentProviderGet: `${baseUrl}currentproviders`,
-    graphCount: `${baseUrl}countdata`,
+    graphCount: `${baseUrl}overview`,
     getNotification:`${baseUrl}notify`,
+    addAppointment:`${baseUrl}appoitment`,
+    getAppointment:`${baseUrl}appoitments`,
+    Theme:`${baseUrl}themes`,
+
     
 }

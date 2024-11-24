@@ -13,6 +13,8 @@ Chart.register(...registerables);
 })
 export class HomeComponent implements OnInit {
   loginForm!:FormGroup;
+  appointmentForm!: FormGroup;
+
   constructor(
     private router:Router,
     private fb: FormBuilder,
@@ -27,10 +29,22 @@ export class HomeComponent implements OnInit {
  
 
   ngOnInit(): void {
+
+    this.appointmentForm = this.fb.group({
+      first_name: ['', [Validators.required, Validators.maxLength(255)]],
+      title: ['', [Validators.required, Validators.maxLength(255)]],
+      description: ['', Validators.required],
+      date: ['', Validators.required],
+      appointmentTime: ['', Validators.required]
+    });
+
     this.getusersdatas()
     this.getcliwentsdatas()
     this.getRooms()
     this.getCounts()
+    this.getResident();
+    this.getAppointments()
+
 
     this.loginForm = this.fb.group({
         email: ['', Validators.required],
@@ -40,6 +54,31 @@ export class HomeComponent implements OnInit {
 
 
 }
+
+residentData:any[] = [];
+getResident(){
+  this.service.getclientsdata().subscribe((res:any)=>{
+    this.residentData = res;
+    console.log(res)
+  })
+}
+
+get f() {
+  return this.appointmentForm.controls;
+}
+
+onSubmit() {
+  if (this.appointmentForm.valid) {
+    console.log(this.appointmentForm.value);
+    this.service.postAppointment(this.appointmentForm.value).subscribe((res:any)=>{
+      console.log(res)
+      window.location.reload()
+    })
+  } else {
+    console.log('Form is invalid');
+  }
+}
+
 chart: any; // To store the chart instance
 
 
@@ -53,18 +92,14 @@ createChart() {
   this.chart = new Chart(ctx, {
     type: 'bar', // Change chart type as needed
     data: {
-      labels: ['Rooms', 'Users', 'Tasks','In Progress Tasks', 'Admit Clients', 'Discharge Clients', 'Inactive Clients'], // Labels for the data
+      labels: ['Rooms', 'Users in rooms', 'Residents in rooms', ], // Labels for the data
       datasets: [
         {
           label: 'Counts',
           data: [
-            this.allCount.rooms,
-            this.allCount.users,
-            this.allCount.tasks,
-            this.allCount.tasksCountinprogress,
-            this.allCount.admintClients,
-            this.allCount.dischargeClients,
-            this.allCount.inactiveClients,
+            this.allCount.total_rooms,
+            this.allCount.users_in_room,
+            this.allCount.client_in_room,
           ], // Map data from API response
           backgroundColor: [
             'rgba(255, 99, 132, 0.2)', // Colors for the bars
@@ -98,6 +133,13 @@ getCounts(){
   this.service.getGraph().subscribe((res:any)=>{
     this.allCount = res
     this.createChart();
+  })
+}
+
+AppointmentsData:any;
+getAppointments(){
+  this.service.getAppointment().subscribe((res:any)=>{
+    this.AppointmentsData = res
   })
 }
 

@@ -1,18 +1,16 @@
 :root {
-    --header-color: #C4DFE6;
-    /* --header-color: linear-gradient(red, yellow); */
-    --sidebar-color: #66A5AD;
-    --header-font-color: #ffffff;
-    --sidebar-font-color: #ffffff;
-  }
-  
-  .header {
-    background-color: var(--header-color);
-    color: var(--header-font-color);
-  }
-  
-  .sidebar {
-    background-color: var(--sidebar-color);
-    color: var(--sidebar-font-color);
-  }
-  
+  --header-color: #ffffff;
+  --sidebar-color: #2f4f4f;
+  --header-font: 'Arial', sans-serif;
+  --sidebar-font: 'Verdana', sans-serif;
+}
+
+.header {
+  background-color: var(--header-color);
+  font-family: var(--header-font);
+}
+
+.sidebar {
+  background-color: var(--sidebar-color);
+  font-family: var(--sidebar-font);
+}

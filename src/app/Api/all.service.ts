@@ -5,69 +5,98 @@ import { superAdminEndPoints } from '../Urls/ApiUrl';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { io, Socket } from 'socket.io-client';
 
+interface ThemeSettings {
+  header_font: string;
+  sidebar_color: string;
+  header_color: string;
+  sidebar_font: string;
+}
+
 @Injectable({
   providedIn: 'root'
 })
 export class AllService extends HttpService {
-  private socket: Socket;
+  private apiUrl = 'http://192.168.1.231:5000/theme';
 
-  private headerColor = '#ff416c'; // default color
-  private sidebarColor = '#ff4b2b'; // default color
-  private headerFontColor = '#ffffff';
-  private sidebarFontColor = '#ffffff';
 
-  setHeaderColor(color: string) {
-    this.headerColor = color;
-    document.documentElement.style.setProperty('--header-color', color);
-  }
+  //   getToken() {
+  //   const tokkn = localStorage.getItem("user_token");
+  //   const wspace = localStorage.getItem("workspace_id");
+  //   return { tokkn, wspace }
+  // }
 
-  setSidebarColor(color: string) {
-    this.sidebarColor = color;
-    document.documentElement.style.setProperty('--sidebar-color', color);
-  }
+// Fetch theme settings from API
+fetchThemeSettings(): Observable<ThemeSettings> {
 
-  setHeaderFontColor(color: string) {
-    this.headerFontColor = color;
-    document.documentElement.style.setProperty('--header-font-color', color);
-  }
 
-  setSidebarFontColor(color: string) {
-    this.sidebarFontColor = color;
-    document.documentElement.style.setProperty('--sidebar-font-color', color);
-  }
+  return this.http.get<ThemeSettings>(this.apiUrl);
+}
 
-  getHeaderColor() {
-    return this.headerColor;
-  }
-  getHeaderFontColor() {
-    return this.headerFontColor;
-  }
+// Update theme settings through the API
+updateThemeSettings(themeSettings: ThemeSettings): Observable<any> {
+  return this.http.put(this.apiUrl, themeSettings);
+}
 
-  getSidebarFontColor() {
-    return this.sidebarFontColor;
-  }
+  // private socket: Socket;
 
-  getSidebarColor() {
-    return this.sidebarColor;
-  }
+
+
+  // setHeaderColor(color: string) {
+  //   this.headerColor = color;
+  //   document.documentElement.style.setProperty('--header-color', color);
+  // }
+
+  // setSidebarColor(color: string) {
+  //   this.sidebarColor = color;
+  //   document.documentElement.style.setProperty('--sidebar-color', color);
+  // }
+
+  // setHeaderFontColor(color: string) {
+  //   this.headerFontColor = color;
+  //   document.documentElement.style.setProperty('--header-font-color', color);
+  // }
+
+  // setSidebarFontColor(color: string) {
+  //   this.sidebarFontColor = color;
+  //   document.documentElement.style.setProperty('--sidebar-font-color', color);
+  // }
+
+
+
+  // getHeaderColor() {
+  //   return this.headerColor;
+  // }
+  // getHeaderFontColor() {
+  //   return this.headerFontColor;
+  // }
+
+  // getSidebarFontColor() {
+  //   return this.sidebarFontColor;
+  // }
+
+  // getSidebarColor() {
+  //   return this.sidebarColor;
+  // }
+
+  
 
   constructor(public override http: HttpClient,
   ) {
     super(http)
-    this.socket = io('http://192.168.1.231:5000');
+    // this.socket = io('http://192.168.1.231:5000');
   }
 
-  sendNotification(message: any) {
-    this.socket.emit('send-notification', message);
-  }
+  // sendNotification(message: any) {
+  //   this.socket.emit('send-notification', message);
+  // }
 
-  getNotify(){
-    return this.get(superAdminEndPoints.getNotification)
-  }
+  // getNotify(){
+  //   return this.get(superAdminEndPoints.getNotification)
+  // }
 
-  onNotificationReceived(callback: (data: any) => void) {
-    this.socket.on('receive-notification', callback);
-  }
+  // onNotificationReceived(callback: (data: any) => void) {
+  //   this.socket.on('receive-notification', callback);
+  // }
 
   superAdminLogin(data: any) {
     return this.post(superAdminEndPoints.superAdminLogin, data)
@@ -501,6 +530,14 @@ getmildstonebyclientID(id:any){
 
   getGraph() {
     return this.get(superAdminEndPoints.graphCount)
+  }
+
+  postAppointment(data: any) {
+    return this.post(superAdminEndPoints.addAppointment, data)
+  }
+
+  getAppointment() {
+    return this.get(superAdminEndPoints.getAppointment)
   }
 
 }

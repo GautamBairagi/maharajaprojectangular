@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AllService } from 'src/app/Api/all.service';
 import { SweetalertssService } from 'src/app/sweetalertss.service';
+import { ThemeService } from 'src/app/theme.service';
 
 @Component({
   selector: 'app-admin',
@@ -18,12 +19,15 @@ export class AdminComponent implements OnInit {
     private fb: FormBuilder,
     private service: AllService,
     private swet: SweetalertssService,
+    private themeService:ThemeService
   ) {
 
   }
 
 
   ngOnInit(): void {
+    this.themeService.loadThemeSettingsFromApi();
+    
     this.getsidebarsdata();
     this.getSubMenus()
     // this.selectedLanguage = sessionStorage.getItem('language') || 'French';
@@ -38,10 +42,10 @@ export class AdminComponent implements OnInit {
     //   this.notifications.push({ message: data.message, isNew: true });
     // });
 
-    this.service.onNotificationReceived((data: string) => {
-      // Directly push the message to the notifications array
-      this.notifications.push(data);
-    });
+    // this.service.onNotificationReceived((data: string) => {
+    //   // Directly push the message to the notifications array
+    //   this.notifications.push(data);
+    // });
     // this.getNotify()
   }
 
@@ -72,10 +76,10 @@ export class AdminComponent implements OnInit {
     this.notifications = [];
   }
 
-  sendNotification() {
-    const message = { message: 'New Task Assigned!', timestamp: new Date() };
-    this.service.sendNotification(message);
-  }
+  // sendNotification() {
+  //   const message = { message: 'New Task Assigned!', timestamp: new Date() };
+  //   this.service.sendNotification(message);
+  // }
 
   logoGet: any;
   getLogo() {
