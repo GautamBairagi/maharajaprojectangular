@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AllService } from 'src/app/Api/all.service';
+import jsPDF from 'jspdf';
+import html2canvas from 'html2canvas';
 
 @Component({
   selector: 'app-frequency-activity',
@@ -11,7 +13,7 @@ export class FrequencyActivityComponent implements OnInit {
   displayedData: any[] = [];
   searchQuery: string = '';
   currentPage: number = 1;
-  itemsPerPage: number = 5;
+  itemsPerPage: number = 10;
   totalPages: number = 0;
 
   constructor(private api:AllService){}
@@ -87,5 +89,63 @@ export class FrequencyActivityComponent implements OnInit {
     this.updateDisplayedData();
   }
   
+  downloadPDF() {
+    const element = document.querySelector('.table-responsive') as HTMLElement; // Cast to HTMLElement
+    if (!element) return;
+  
+    html2canvas(element).then((canvas) => {
+      const imgData = canvas.toDataURL('image/png');
+      const pdf = new jsPDF('p', 'mm', 'a4');
+  
+      const imgWidth = 190; // A4 page width in mm
+      const pageHeight = 297; // A4 page height in mm
+      const imgHeight = (canvas.height * imgWidth) / canvas.width;
+      let heightLeft = imgHeight;
+  
+      let position = 10; // Top margin
+  
+      // Add the first page
+      pdf.addImage(imgData, 'PNG', 10, position, imgWidth, imgHeight);
+      heightLeft -= pageHeight;
+  
+      // Add more pages if necessary
+      while (heightLeft > 0) {
+        pdf.addPage();
+        position = 0; // Reset top margin for new pages
+        pdf.addImage(imgData, 'PNG', 10, position, imgWidth, imgHeight);
+        heightLeft -= pageHeight;
+      }
+  
+      pdf.save('frequency-activities.pdf'); // Save the PDF
+    });
+ }
+
+ downloadCSV() {
+  const headers = ['First Name', 'Last Name', 'Status', 'Description', 'Created At', 'Updated At'];
+
+  // Map data into rows
+  const rows = this.displayedData.map(activity => [
+    activity.first_name,
+    activity.last_name,
+    activity.status,
+    activity.parsedMessage?.description?.toString() || '0',
+    new Date(activity.created_at).toLocaleString(),
+    new Date(activity.updated_at).toLocaleString()
+  ]);
+
+  // Combine headers and rows
+  const csvContent = [headers, ...rows]
+    .map(row => row.map(value => `"${value}"`).join(',')) // Safely escape values with quotes
+    .join('\n');
+
+  // Create a blob and trigger download
+  const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement('a');
+  link.href = url;
+  link.setAttribute('download', 'frequency-activities.csv');
+  link.click();
+  URL.revokeObjectURL(url); // Cleanup
+}
 
 }

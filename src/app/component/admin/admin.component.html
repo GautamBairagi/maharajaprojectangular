@@ -2,232 +2,252 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TaskHub Dashboard</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-        
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TaskHub Dashboard</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    /*  */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+    }
+
+    .sidebar {
+      height: 100vh;
+
+      /* background-color: white; */
+      /* background-color: #f8f9fa; */
+      padding-top: 20px;
+      position: fixed;
+      width: 250px;
+      box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .content {
+      margin-left: 260px;
+      padding: 5px;
+    }
+
+    .header {
+      /* background: linear-gradient(45deg, #ff416c, #ff4b2b); */
+      background-color: var(--header-color);
+      box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+      padding: 10px 20px;
+      /* color: white; */
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-radius: 5px;
+      margin-bottom: 20px;
+    }
+
+    .header .search-bar {
+      display: flex;
+      align-items: center;
+    }
+
+    .header .search-bar input {
+      margin-right: 5px;
+    }
+
+    .card {
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+      border: none;
+      transition: transform 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card-header {
+      background: #4e73df;
+      color: white;
+      font-weight: bold;
+    }
+
+    .card-body i {
+      color: white;
+      margin-bottom: 10px;
+    }
+
+    .icons i {
+      color: var(--header-font-color);
+      ;
+      font-size: 1.2em;
+      cursor: pointer;
+    }
+
+    .icons i:hover {
+      color: #34395e;
+    }
+
+    @media (max-width: 768px) {
+      .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+      }
+
+      .content {
+        margin-left: 0;
+      }
+
+      .header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    .icon-box {
+      background-color: #34395e;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 5px;
+    }
 
 
-        /*  */
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f5f5f5;
-        }
+    .dropdown-toggle {
+      cursor: pointer;
+    }
 
-        .sidebar {
-            height: 100vh;
-            
-            /* background-color: white; */
-            /* background-color: #f8f9fa; */
-            padding-top: 20px;
-            position: fixed;
-            width: 250px;
-            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-        }
-
-        .content {
-            margin-left: 260px;
-            padding: 5px;
-        }
-
-        .header {
-            /* background: linear-gradient(45deg, #ff416c, #ff4b2b); */
-            background-color: var(--header-color);
-            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-            padding: 10px 20px;
-            /* color: white; */
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-radius: 5px;
-            margin-bottom: 20px;
-        }
-
-        .header .search-bar {
-            display: flex;
-            align-items: center;
-        }
-
-        .header .search-bar input {
-            margin-right: 5px;
-        }
-
-        .card {
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-            border: none;
-            transition: transform 0.2s;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-        }
-
-        .card-header {
-            background: #4e73df;
-            color: white;
-            font-weight: bold;
-        }
-
-        .card-body i {
-            color: white;
-            margin-bottom: 10px;
-        }
-
-        .icons i {
-            color: var(--header-font-color);;
-            font-size: 1.2em;
-            cursor: pointer;
-        }
-
-        .icons i:hover {
-            color: #34395e;
-        }
-
-        @media (max-width: 768px) {
-            .sidebar {
-                width: 100%;
-                height: auto;
-                position: relative;
-            }
-
-            .content {
-                margin-left: 0;
-            }
-
-            .header {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-        }
-
-        .icon-box {
-            background-color: #34395e;
-            width: 50px;
-            height: 50px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border-radius: 5px;
-        }
-
-
-        .dropdown-toggle {
-            cursor: pointer;
-        }
-
-        .dropdown-menu {
-            min-width: 150px;
-            font-size: 0.9rem;
-        }
-    </style>
+    .dropdown-menu {
+      min-width: 150px;
+      font-size: 0.9rem;
+    }
+  </style>
 </head>
 
 <body>
-   
- 
-    <div id="mySidebar"  class="sidebar" style="overflow: scroll;" >
-        
-          <img src="../../../assets/maharaja.png" class="img-fluid w-100" alt="">
-       
-                    <div *ngFor="let side of sideData">
-                      <ng-container *ngIf="side.dropdown !== 0; else simpleButton">
-                        <button *ngIf="side.visibility === 1  || side.position === 1"
-                                class="accordion-button collapsed mt-4 mb-3" 
-                                type="button"
-                                data-bs-toggle="collapse" 
-                                [attr.data-bs-target]="'#flush-collapse-' + side.id"
-                                aria-expanded="false" 
-                                [attr.aria-controls]="'flush-collapse-' + side.id" 
-                                style="margin-left: 30px !important;color: var(--sidebar-font-color);">
-                          
-                          <i ngClass="{{side.icon}}"></i> 
-                          <span style="margin-left: 15px !important;">
-                            {{ side.side_name }}
-                          </span>
 
-                          <i *ngIf="side.dropdown === 1" class="fas fa-chevron-down" style="margin-left: auto;"></i>
-                        </button>
-                    
-                        <div [id]="'flush-collapse-' + side.id" 
-                             class="accordion-collapse collapse" 
-                             [attr.aria-labelledby]="'flush-heading-' + side.id" data-bs-parent="#accordionFlushExample">
-                          <div class="accordion-body">
-                            <ul class="dropulli">
-                              <li *ngFor="let submenu of getFilteredSubMenus(side.id)" style="list-style: none;">
-                                <a [routerLink]="['/Admin', submenu.old_name]" style="color: var(--sidebar-font-color);background-color: var(--sidebar-color);"  class="dropdown-item sidebar-link">{{ submenu.name }}</a>
-                              </li>
-                            </ul>
-                          </div>
-                        </div>
-                      </ng-container>
-                    
-                      <!-- Simple button without dropdown, shown when `dropdown` is 0 -->
-                      <ng-template #simpleButton>
-                        <button *ngIf="side.visibility === 1 || side.position === 1" 
-                                class="btn  mt-3 mb-3" 
-                                type="button" [routerLink]="['/Admin', side.side_name_old]"
-                                style="margin-left: 19px !important;color: var(--sidebar-font-color);">
-                          <i ngClass="{{side.icon}}"></i> 
-                          <span style="margin-left: 15px !important;" >
-                            {{ side.side_name }}
-                          </span>
-                        </button>
-                      </ng-template>
-                    </div>
-                    
-    
+
+  <div id="mySidebar" class="sidebar" style="overflow: scroll;">
+
+    <img src="../../../assets/maharaja.png" class="img-fluid w-100" alt="">
+
+    <div *ngFor="let side of sideData">
+      <ng-container *ngIf="side.dropdown !== 0; else simpleButton">
+        <button *ngIf="side.visibility === 1  || side.position === 1" class="accordion-button collapsed mt-4 mb-3"
+          type="button" data-bs-toggle="collapse" [attr.data-bs-target]="'#flush-collapse-' + side.id"
+          aria-expanded="false" [attr.aria-controls]="'flush-collapse-' + side.id"
+          style="margin-left: 30px !important;color: var(--sidebar-font-color);">
+
+          <i ngClass="{{side.icon}}"></i>
+          <span style="margin-left: 15px !important;">
+            {{ side.side_name }}
+          </span>
+
+          <i *ngIf="side.dropdown === 1" class="fas fa-chevron-down" style="margin-left: auto;"></i>
+        </button>
+
+        <div [id]="'flush-collapse-' + side.id" class="accordion-collapse collapse"
+          [attr.aria-labelledby]="'flush-heading-' + side.id" data-bs-parent="#accordionFlushExample">
+          <div class="accordion-body">
+            <ul class="dropulli">
+              <li *ngFor="let submenu of getFilteredSubMenus(side.id)" style="list-style: none;">
+                <a [routerLink]="['/Admin', submenu.old_name]"
+                  style="color: var(--sidebar-font-color);background-color: var(--sidebar-color);"
+                  class="dropdown-item sidebar-link">{{ submenu.name }}</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </ng-container>
+
+      <!-- Simple button without dropdown, shown when `dropdown` is 0 -->
+      <ng-template #simpleButton>
+        <button *ngIf="side.visibility === 1 || side.position === 1" class="btn  mt-3 mb-3" type="button"
+          [routerLink]="['/Admin', side.side_name_old]"
+          style="margin-left: 19px !important;color: var(--sidebar-font-color);">
+          <i ngClass="{{side.icon}}"></i>
+          <span style="margin-left: 15px !important;">
+            {{ side.side_name }}
+          </span>
+        </button>
+      </ng-template>
+    </div>
+
+
 
     <div class="accordion-item">
       <h2 class="accordion-header " id="">
-        <button class="accordion-button collapsed mt-3 mb-3" type="button" 
-          aria-controls="flush-collapsePayroll" style="margin-left: 19px !important; ">
+        <button class="accordion-button collapsed mt-3 mb-3" type="button" aria-controls="flush-collapsePayroll"
+          style="margin-left: 19px !important; ">
           <i class="fa-solid fa-right-from-bracket"></i> <span style="margin-left: 15px !important;">
             <a href="./Expenses.html" class="dropdown-item sidebar-link "></a>Logout</span>
         </button>
       </h2>
-      </div>
-        
-      </div>
-    
-    <div class="content" >
-        <div *ngFor="let notification of notifications" class="notification">
-            {{ notification.message }}
-          </div>
-          <button (click)="sendNotification()">Send Notification</button>
-          
-        <div class="header"> 
-            <div class="search-bar">
-                <input type="text" class="form-control" placeholder="Search">
-                <button class="btn btn-light"><i class="fas fa-search"></i></button>
-            </div>
-            <div class="icons d-flex align-items-center" >
-                <i class="fas a fa-envelope mx-2"></i>
-                <i class="fas a fa-bell mx-2"></i>
+    </div>
 
-                <div class="dropdown ml-3" style="color: var(--header-font-color);">
-                    <span  style="color: var(--header-font-color);"
-                        aria-haspopup="true" aria-expanded="false">
-                        Hi 👋, Main
-                    </span>
-                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="profileDropdown" >
-                        <a class="dropdown-item">
-                            <i style="color: #34395e;" class="fas fa-user mr-2"></i> Profile
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" (click)="logouts()">
-                            <i style="color: #34395e;" class="fas fa-sign-out-alt mr-2"></i> Logout
-                        </a>
-                        <!-- <button (ckick)="handelclick()">button</button> -->
-                    </div>
-                   
-                      
+  </div>
+
+  <div class="content">
+
+
+    <div class="header">
+      <div class="search-bar">
+        <input type="text" class="form-control" placeholder="Search">
+        <button class="btn btn-light"><i class="fas fa-search"></i></button>
+      </div>
+      <div class="icons d-flex align-items-center">
+        <i class="fas a fa-envelope mx-2"></i>
+        <i class="fas fa-bell mx-2 position-relative" data-bs-toggle="modal" data-bs-target="#exampleModal"
+          (click)="markNotificationsAsRead()">
+          <!-- Badge to show count -->
+          <span *ngIf="newNotificationCount > 0"
+            class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+            {{ newNotificationCount }}
+            <span class="visually-hidden">unread messages</span>
+          </span>
+        </i>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content text-dark">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Notifications</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <div *ngFor="let notification of notifications" class="notification">
+                  {{ notification }}
                 </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              </div>
             </div>
+          </div>
         </div>
-                     <!-- <div class="dropdown fit-width dropdown-lang">
+
+
+
+        <div class="dropdown ml-3" style="color: var(--header-font-color);">
+          <span style="color: var(--header-font-color);" aria-haspopup="true" aria-expanded="false">
+            Hi 👋, Main
+          </span>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="profileDropdown">
+            <a class="dropdown-item">
+              <i style="color: #34395e;" class="fas fa-user mr-2"></i> Profile
+            </a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" (click)="logouts()">
+              <i style="color: #34395e;" class="fas fa-sign-out-alt mr-2"></i> Logout
+            </a>
+            <!-- <button (ckick)="handelclick()">button</button> -->
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+    <!-- <div class="dropdown fit-width dropdown-lang">
                         <button
                           class="btn dropdown-toggle btn-default d-flex align-items-center pl-0 pr-0 pr-lg-2"
                           style="color: white; border: none;"
@@ -248,44 +268,44 @@
                         </div>
                       </div> -->
 
-        <router-outlet></router-outlet>
+    <router-outlet></router-outlet>
 
-    </div>
+  </div>
 
 
-    <script>
-        function toggleNav() {
-    const sidebar = document.getElementById("mySidebar");
-    const main = document.getElementById("main");
-    sidebar.classList.toggle("closed");
-    if (window.innerWidth <= 768) {
+  <script>
+    function toggleNav() {
+      const sidebar = document.getElementById("mySidebar");
+      const main = document.getElementById("main");
+      sidebar.classList.toggle("closed");
+      if (window.innerWidth <= 768) {
         sidebar.classList.toggle("open");
+      }
     }
-}
-function openCamera() {
-    const video = document.getElementById('cameraFeed');
+    function openCamera() {
+      const video = document.getElementById('cameraFeed');
 
-    // Check if the browser supports the getUserMedia API
-    if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+      // Check if the browser supports the getUserMedia API
+      if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
         navigator.mediaDevices.getUserMedia({ video: true })
-        .then(function(stream) {
+          .then(function (stream) {
             // Display the camera feed in the video element
             video.srcObject = stream;
             video.style.display = 'block'; // Show the video feed
-        })
-        .catch(function(err) {
+          })
+          .catch(function (err) {
             console.log("Error accessing camera: " + err);
-        });
-    } else {
+          });
+      } else {
         alert("Camera not supported on this device.");
+      }
     }
-}
-    </script>
-       
+  </script>
 
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

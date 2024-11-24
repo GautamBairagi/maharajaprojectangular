@@ -53,7 +53,7 @@ createChart() {
   this.chart = new Chart(ctx, {
     type: 'bar', // Change chart type as needed
     data: {
-      labels: ['Rooms', 'Users', 'Tasks','In Progress Tasks', 'Admin Clients', 'Discharge Clients', 'Inactive Clients'], // Labels for the data
+      labels: ['Rooms', 'Users', 'Tasks','In Progress Tasks', 'Admit Clients', 'Discharge Clients', 'Inactive Clients'], // Labels for the data
       datasets: [
         {
           label: 'Counts',

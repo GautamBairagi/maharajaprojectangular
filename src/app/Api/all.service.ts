@@ -54,11 +54,15 @@ export class AllService extends HttpService {
   constructor(public override http: HttpClient,
   ) {
     super(http)
-    this.socket = io('http://localhost:3000');
+    this.socket = io('http://192.168.1.231:5000');
   }
 
   sendNotification(message: any) {
     this.socket.emit('send-notification', message);
+  }
+
+  getNotify(){
+    return this.get(superAdminEndPoints.getNotification)
   }
 
   onNotificationReceived(callback: (data: any) => void) {

@@ -30,9 +30,46 @@ export class AdminComponent implements OnInit {
     this.selectedLanguage = sessionStorage.getItem('language') || 'French';
 
     this.getLogo()
-    this.service.onNotificationReceived((data) => {
+    // this.service.onNotificationReceived((data) => {
+    //   this.notifications.push(data);
+    // });
+    // this.service.onNotificationReceived((data: { message: string }) => {
+      
+    //   this.notifications.push({ message: data.message, isNew: true });
+    // });
+
+    this.service.onNotificationReceived((data: string) => {
+      // Directly push the message to the notifications array
       this.notifications.push(data);
     });
+    // this.getNotify()
+  }
+
+
+  // getNotify(){
+  //   this.service.getNotify().subscribe((data: { message: string })=>{
+  //     // console.log('notify ho jao --',res)
+  //     // this.notifications.push({ message: data.message, isNew: true });
+
+  //   })
+  // }
+
+  // get newNotificationCount(): number {
+  //   return this.notifications.filter(notification => notification.isNew).length;
+  // }
+
+  // // Mark all notifications as read
+  // markNotificationsAsRead() {
+  //   this.notifications.forEach(notification => (notification.isNew = false));
+  // }
+
+  get newNotificationCount(): number {
+    return this.notifications.length; // The total number of notifications
+  }
+
+  // Mark all notifications as read (clear the array)
+  markNotificationsAsRead() {
+    this.notifications = [];
   }
 
   sendNotification() {
@@ -47,7 +84,6 @@ export class AdminComponent implements OnInit {
     })
   }
 
-
   logouts() {
     localStorage.removeItem('userId');
     localStorage.removeItem('group_id');
@@ -59,10 +95,10 @@ export class AdminComponent implements OnInit {
     localStorage.removeItem('workspace_id');
     localStorage.removeItem('roomDetails');
     localStorage.removeItem('roomNumber');
-
+    localStorage.removeItem('clientdetails');
+    localStorage.removeItem('clientid');
     this.router.navigateByUrl("/", { replaceUrl: true })
   }
-
 
 
   sideData: any[] = [];

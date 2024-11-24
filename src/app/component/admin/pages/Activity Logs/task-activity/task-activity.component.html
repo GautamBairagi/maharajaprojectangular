@@ -4,6 +4,9 @@
     <div class="mb-3">
         <input type="text" class="form-control w-25" placeholder="Search here ..." (input)="onSearch($event)" />
     </div>
+    <button class="btn btn-primary m-2" (click)="downloadPDF()">Download PDF</button>
+    <button class="btn btn-secondary m-2" (click)="downloadCSV()">Download CSV</button>
+
 
     <!-- Table -->
     <div class="table-responsive">
@@ -15,9 +18,9 @@
                     <th>Status</th>
                    
                     <th>priority</th>
-                    <th>title</th>
+                    <th>Title</th>
                     
-                    <th>description</th>
+                    <th>Description</th>
                     <th>Expiry Date</th>
                     <th>Qty</th>
                     <th>Created At</th>

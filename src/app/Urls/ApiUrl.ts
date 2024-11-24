@@ -93,4 +93,6 @@ addstatus: `${baseUrl}status`,
     currentProviderAdd: `${baseUrl}currentprovider`,
     currentProviderGet: `${baseUrl}currentproviders`,
     graphCount: `${baseUrl}countdata`,
+    getNotification:`${baseUrl}notify`,
+    
 }
