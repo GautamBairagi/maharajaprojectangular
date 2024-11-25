@@ -9,4 +9,26 @@
   .drag-drop-zone:hover {
     border-color: #3f51b5;
   }
-  
+  .card {
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    border-left: 4px solid var(--sidebar-color);
+    transition: transform 0.2s;
+    border-radius: 10px;
+}
+
+.xl .card {
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    border: none;
+    transition: transform 0.2s;
+    border-radius: 10px;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card-header {
+    background-color: var(--sidebar-color);
+    color: white;
+    font-weight: bold;
+}

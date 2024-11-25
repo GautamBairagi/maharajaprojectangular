@@ -9,11 +9,9 @@
       </div>
       <div class="modal-body">
         <form [formGroup]="loginForm">
-          <div class="form-row">
+          <div class="row">
             
-
-
-                 <div class="form-group col-md-6">
+                 <div class="form-group col-md-6 mb-3">
                   <label for="user_id">Medicine Name</label>
                   <select id="user_id" formControlName="medicine_name" class="form-select">
                       <option value="">Select Mildstone Title</option>
@@ -22,69 +20,60 @@
                   </select>
               </div>
 
-              <div class="form-group col-md-6">
+              <div class="form-group col-md-6 mb-3">
                 <label>RX Number</label>
                 <input type="text" class="form-control" placeholder="RX Number" formControlName="rxnumber">
             </div>
             
           </div>
-          <div class="form-row">
+          <div class="row">
            
-              <div class="form-group col-md-6">
+              <div class="form-group col-md-6 mb-3">
                   <label>Frequency</label>
                   <input type="text" class="form-control" placeholder="Frequency" formControlName="frequency">
               </div>
-              <div class="form-group col-md-6">
+              <div class="form-group col-md-6 mb-3">
                 <label>Unit</label>
                 <input type="text" class="form-control" formControlName="unit" placeholder="Unit">
             </div>
           </div>
-          <div class="form-row">
+          <div class="row">
             
-              <div class="form-group col-md-6">
+              <div class="form-group col-md-6 mb-3">
                   <label>Time</label>
                   <input type="text" class="form-control" formControlName="time" placeholder="time">
               </div>
-              <div class="form-group col-md-6">
+              <div class="form-group col-md-6 mb-3">
                 <label>MFG Date</label>
                 <input type="date" class="form-control" formControlName="mfg_date" placeholder="MFG Date">
               </div>
           </div>
-           <div class="form-row"> 
+           <div class="row"> 
           
-            <div class="form-group col-md-6">
+            <div class="form-group col-md-6 mb-3">
               <label>Message </label>
               <input type="text" class="form-control" formControlName="message" placeholder="Message">
             </div>
-              <div class="form-group col-md-6">
+              <div class="form-group col-md-6 mb-3">
                 <label>Expiry Date</label>
                 <input type="date" class="form-control" formControlName="expiry_date" placeholder="Expiry Date">
               </div>
           </div>
-            <div class="form-row">
+            <div class="row">
 
-              <div class="form-group col-md-6">
+              <div class="form-group col-md-6 mb-3">
                 <label>Routine Start Date</label>
                 <input type="date" class="form-control" formControlName="routine_start_date" placeholder="Routine Start Date">
               </div>
-              <div class="form-group col-md-6">
+              <div class="form-group col-md-6 mb-3">
                 <label>Routine End Date</label>
                 <input type="date" class="form-control" formControlName="routine_end_date" placeholder="Routine End Date">
               </div>
-            
-              <!-- <div class="form-group col-md-6">
-                  <label>Medicine Name</label>
-                  <select id="user_id" formControlName="medicine_id" class="form-select">
-                      <option value="">Select Medicine Name</option>
-                      <option *ngFor="let rr of getmedicinesUser" [value]="rr.id"> {{ rr.medicine_name
-                          }} </option>
-                  </select>
-              </div> -->
           </div> 
 
-          <div class="form-row"> 
+          <div class="row"> 
   
-            <div class="form-group col-md-6">
+            <div class="form-group col-md-6 mb-3">
               <label>Difference Time</label>
               <input type="text" class="form-control" formControlName="difference_time" placeholder="Difference Time">
             </div>

@@ -28,8 +28,12 @@
         <td>
           <div style="display: flex;  justify-content: start; margin-left:  10px;">
             <!-- Profile Image -->
-            <img [src]="a.profile" class="img-fluid" style="width: 50px; height: 50px; border-radius: 100%;box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;" alt="">
-            
+            <img 
+            [src]="a.profile || 'https://i.pinimg.com/736x/8b/16/7a/8b167af653c2399dd93b952a48740620.jpg'" 
+            class="img-fluid" 
+            style="width: 50px; height: 50px; border-radius: 100%; box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;" 
+            alt="Profile Image">
+                      
             <!-- Name and Email -->
             <div style="margin-left: 0px;">
               <p style="margin: 0; font-weight: bold;text-align: start;font-size: 0.9em;"> <span (click)="ByIds(a.id)">{{ a.first_name }} {{a.last_name}}</span>

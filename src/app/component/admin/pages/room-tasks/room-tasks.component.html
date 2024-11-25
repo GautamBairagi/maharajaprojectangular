@@ -1,4 +1,8 @@
+<<<<<<< HEAD
+<div class="container-fluid p-3 shadow">
+=======
 <div class="container-fluid">
+>>>>>>> 017ac832a9912b499e37c36b5be9fe2a4d0b981f
 
 
     <div class="row">
@@ -147,7 +151,7 @@
             'priority-low': task.priority === 'Low'
           }">
                 <div class="card-header d-flex justify-content-between">
-                    <small> {{ task.priority }} </small>
+                    <small class="fw-bold"> {{ task.priority }} </small>
                 </div>
                 <div class="card-body">
                     <div class="row">
@@ -156,7 +160,7 @@
                             <small class="description" [title]="task.description">
                                 {{ task.description }}
                             </small>
-                            <hr>
+                            <hr class="fw-bold">
                             <div class="d-flex justify-content-between">
                                 <span>
                                     <div class="popover-container" *ngFor="let userId of task.user_id.split(',')"

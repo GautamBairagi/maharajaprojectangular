@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,ElementRef, ViewChild,AfterViewInit   } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AllService } from 'src/app/Api/all.service';
@@ -10,7 +10,62 @@ import { ThemeService } from 'src/app/theme.service';
   templateUrl: './admin.component.html',
   styleUrls: ['./admin.component.css']
 })
-export class AdminComponent implements OnInit {
+export class AdminComponent implements OnInit,AfterViewInit  {
+  @ViewChild('cameraFeed', { static: false }) cameraFeed!: ElementRef<HTMLVideoElement>;
+  @ViewChild('mySidebar', { static: false }) mySidebar!: ElementRef<HTMLElement>;
+  @ViewChild('content', { static: false }) content!: ElementRef<HTMLElement>;
+
+  private viewInitialized = false;
+
+  ngAfterViewInit() {
+    this.viewInitialized = true;
+
+    // Debugging: Check if the elements are properly initialized
+    console.log('mySidebar initialized:', this.mySidebar);
+    console.log('content initialized:', this.content);
+    console.log('cameraFeed initialized:', this.cameraFeed);
+  }
+
+  toggleNav() {
+    if (!this.viewInitialized || !this.mySidebar || !this.content) {
+      console.error('View is not fully initialized or elements are undefined.');
+      return;
+    }
+
+    const sidebar = this.mySidebar.nativeElement;
+    const content = this.content.nativeElement;
+
+    // Toggle classes to control the sidebar state
+    sidebar.classList.toggle('closed');
+
+    if (window.innerWidth <= 768) {
+      sidebar.classList.toggle('open');
+    }
+  }
+
+  openCamera() {
+    if (!this.viewInitialized || !this.cameraFeed) {
+      console.error('View is not fully initialized or camera feed is undefined.');
+      return;
+    }
+
+    const videoElement = this.cameraFeed.nativeElement;
+
+    // Access the camera and display the video feed
+    if (navigator.mediaDevices?.getUserMedia) {
+      navigator.mediaDevices.getUserMedia({ video: true })
+        .then((stream) => {
+          videoElement.srcObject = stream;
+          videoElement.style.display = 'block';
+        })
+        .catch((err) => {
+          console.error('Error accessing the camera:', err);
+        });
+    } else {
+      alert('Camera is not supported on this device.');
+    }
+  }
+
   notifications: any[] = [];
 
   loginForm!: FormGroup;

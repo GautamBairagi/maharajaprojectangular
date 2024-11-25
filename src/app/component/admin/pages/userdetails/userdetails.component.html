@@ -1,17 +1,13 @@
 
-
-
-<div class="container" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; border-radius: 10px;">
+<div class="container-fluid p-3 py-4" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; border-radius: 10px;">
     <div class="row">
         <div class="col-12" >
-            <h2 class="text-center m-4">User Detail</h2>
+            <h2 class="text-center m-4">User Details</h2>
             <hr>
         </div>
     </div>
  
  
-  
-
     <div class="row">
         <div class="col-md-2">
             <img src="../assets/profilephoto.jpg" alt="User Avatar" class="rounded-circle img-fluid">
@@ -19,7 +15,7 @@
         <div class="col-md-10">
             <div class="row">
                 <div class="row mt-4">
-                    <div class="col-md-3">
+                    <div class="col-md-3 mb-2">
                         <div class="card">
                             <div class="card-body">
                                 <h5 class="card-title">Project</h5>
@@ -27,7 +23,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-3 mb-2">
                         <div class="card">
                             <div class="card-body">
                                 <h5 class="card-title">Invoice</h5>
@@ -35,16 +31,16 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-3">
-                        <div class="card">
+                    <div class="col-md-3 mb-2">
+                        <div class="card ">
                             <div class="card-body">
                                 <h5 class="card-title">Tasks</h5>
                                 <p class="card-text">0</p>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-3">
-                        <div class="card">
+                    <div class="col-md-3 mb-2">
+                        <div class="card ">
                             <div class="card-body">
                                 <h5 class="card-title">Tasks</h5>
                                 <p class="card-text">0</p>
@@ -52,10 +48,6 @@
                         </div>
                     </div>
                 </div>
-
-
-
-
             </div>
         </div>
     </div>
@@ -86,7 +78,7 @@
       (dragover)="onDragOver($event)"
       (drop)="onDrop($event)"
     >
-      <p>Drag and drop files here</p>
+      <p> <input type="file"> </p>
     </div>
     <div *ngIf="files.length > 0">
       <h3>Uploaded Files:</h3>
@@ -110,17 +102,21 @@
                         type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Invoice</button>
                     <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact"
                         type="button" role="tab" aria-controls="nav-contact" aria-selected="false">Notes</button>
-                        <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact"
-                        type="button" role="tab" aria-controls="nav-contact" aria-selected="false">Vouchers</button> <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact"
-                        type="button" role="tab" aria-controls="nav-contact" aria-selected="false">Task</button>
+                  <button class="nav-link" id="nav-Vouchers-tab" data-bs-toggle="tab" data-bs-target="#nav-Vouchers"
+                        type="button" role="tab" aria-controls="nav-contact" aria-selected="false">Vouchers</button>
+                 <button class="nav-link" id="nav-Task-tab" data-bs-toggle="tab" data-bs-target="#nav-Task"
+                        type="button" role="tab" aria-controls="nav-Task" aria-selected="false">Task</button>
                 </div>
             </nav>
             <div class="tab-content" id="nav-tabContent">
-                <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                <div class="tab-pane fade show active mt-3" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate ad eius veritatis consequuntur iste suscipit id. Qui eos illo odio esse dolore. Maxime sit laudantium alias ad nobis blanditiis totam nesciunt maiores quo repellat quos rem, porro ullam iusto odit deserunt, expedita tempora perspiciatis dignissimos suscipit repellendus magnam odio? Possimus.
                 </div>
-                <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">...</div>
-                <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">...</div>
+                <div class="tab-pane fade mt-3" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ea illo, maiores officiis, alias aliquid praesentium, ipsa saepe quis odit provident iste delectus voluptate facere assumenda magnam. Maiores exercitationem optio cum?</div>
+                <div class="tab-pane fade mt-3" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Itaque dolores, voluptatem earum, amet aliquid et obcaecati quo quisquam ipsam minima dignissimos mollitia totam labore. Dolorem sit repudiandae molestias incidunt eum?</div>
+                <div class="tab-pane fade mt-3" id="nav-Vouchers" role="tabpanel" aria-labelledby="nav-Vouchers-tab">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Itaque dolores, voluptatem earum, amet aliquid et obcaecati quo quisquam ipsam minima dignissimos mollitia totam labore. Dolorem sit repudiandae molestias incidunt eum?</div>
+                <div class="tab-pane fade mt-3" id="nav-Task" role="tabpanel" aria-labelledby="nav-Task-tab">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Itaque dolores, voluptatem earum, amet aliquid et obcaecati quo quisquam ipsam minima dignissimos mollitia totam labore. Dolorem sit repudiandae molestias incidunt eum?</div>
+
             </div>
         </div>
     </div>
