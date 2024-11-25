@@ -18,10 +18,10 @@ export class SidebarSettingComponent implements OnInit {
   updateLogo: FormGroup;
   edit: any;
 
-  headerColor: string = '#ffffff';
-  sidebarColor: string = '#2f4f4f';
-  headerFontColor: string = '#000000';
-  sidebarFontColor: string = '#000000';
+  header_color: string = '#ffffff';
+  sidebar_color: string = '#2f4f4f';
+  header_font_color: string = '#000000';
+  sidebar_font_color: string = '#000000';
 
 
   userId:any
@@ -119,14 +119,30 @@ export class SidebarSettingComponent implements OnInit {
     this.getSubMenus()
     
     this.theme.loadThemeSettingsFromApi();
+
+    this.theme.getThemeSettings().subscribe((settings) => {
+      if (settings) {
+        // console.log('Updated Settings:', settings);
+        this.header_color = settings.header_color;
+        this.sidebar_color = settings.sidebar_color;
+        this.header_font_color = settings.header_font;
+        this.sidebar_font_color = settings.sidebar_font;
+      }
+    });
     
     // Subscribe to the current theme settings
-    this.theme.getThemeSettings().subscribe((settings) => {
-      this.headerColor = settings.headerColor;
-      this.sidebarColor = settings.sidebarColor;
-      this.headerFontColor = settings.headerFontColor;
-      this.sidebarFontColor = settings.sidebarFontColor;
-    });
+    // this.theme.getThemeSettings().subscribe((settings) => {
+    //   console.log('res from BehaviorSubject:', settings);
+    //   this.header_color = settings.header_color;
+    //   this.sidebar_color = settings.sidebar_color;
+    //   this.header_font_color = settings.header_font_color;
+    //   this.sidebar_font_color = settings.sidebar_font_color;
+    // });
+
+
+    
+
+    // this.theme.applyTheme(settings);
   }
 
   updateHeaderColor(color: string) {

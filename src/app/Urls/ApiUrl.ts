@@ -97,6 +97,5 @@ addstatus: `${baseUrl}status`,
     addAppointment:`${baseUrl}appoitment`,
     getAppointment:`${baseUrl}appoitments`,
     Theme:`${baseUrl}themes`,
-
-    
+    notification:`${baseUrl}notification`,
 }

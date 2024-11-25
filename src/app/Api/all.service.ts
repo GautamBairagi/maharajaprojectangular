@@ -5,7 +5,7 @@ import { superAdminEndPoints } from '../Urls/ApiUrl';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { io, Socket } from 'socket.io-client';
 
-interface ThemeSettings {
+export interface ThemeSettings {
   header_font: string;
   sidebar_color: string;
   header_color: string;
@@ -27,8 +27,6 @@ export class AllService extends HttpService {
 
 // Fetch theme settings from API
 fetchThemeSettings(): Observable<ThemeSettings> {
-
-
   return this.http.get<ThemeSettings>(this.apiUrl);
 }
 
