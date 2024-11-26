@@ -9,29 +9,42 @@
     <div class="icons d-flex align-items-center">
         <i class="fas a fa-envelope mx-2"></i>
        <!-- Bell Icon with Count -->
-<i (click)="openPopup()" class="fas fa-bell mx-2">
-  <span *ngIf="unreadCount > 0" class="badge bg-danger">{{ unreadCount }}</span>
-</i>
+       <!-- Notification Bell with Unread Count -->
+<div>
+  <i (click)="openModal()" class="fas fa-bell mx-2">
+    <span *ngIf="unreadCount > 0" class="badge bg-danger">{{ unreadCount }}</span>
+  </i>
+</div>
 
 <!-- Modal -->
 <div class="modal" tabindex="-1" [ngStyle]="{'display': showModal ? 'block' : 'none'}">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Notifications</h1>
-        <button type="button" class="btn-close" aria-label="Close" (click)="closePopup()"></button>
+        <h1 class="modal-title fs-5">Notifications</h1>
+        <button type="button" class="btn-close" aria-label="Close" (click)="closeModal()"></button>
       </div>
-      <div class="container">
-        <div class="row" *ngFor="let nn of notifys">
-          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-            {{ nn.notification }}
-          </div>
+      <div class="modal-body">
+        <!-- Notification Titles List -->
+        <ul class="notification-titles">
+          <li
+            *ngFor="let notify of notifys"
+            [ngClass]="{'unread': !notify.read}"
+            (click)="selectNotification(notify)"
+          >
+            {{ notify.title }}
+          </li>
+        </ul>
+
+        <!-- Selected Notification Details -->
+        <div *ngIf="selectedNotification" class="notification-details mt-4">
+          <h3>{{ selectedNotification.title }}</h3>
+          <p>{{ selectedNotification.message }}</p>
         </div>
       </div>
     </div>
   </div>
 </div>
-
 
 
         <div class="dropdown ml-3" style="color: var(--header-font-color);">
@@ -115,6 +128,7 @@
       </div>
     
     <div #content class="content" >
+
                  
         <router-outlet></router-outlet>
 

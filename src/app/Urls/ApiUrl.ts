@@ -99,4 +99,5 @@ addstatus: `${baseUrl}status`,
     Theme:`${baseUrl}themes`,
     notification:`${baseUrl}notification`,
     residentNote:`${baseUrl}note`,
+    editpasswords: `${baseUrl}editpassword/`,
 }

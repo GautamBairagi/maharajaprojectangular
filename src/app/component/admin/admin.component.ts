@@ -14,15 +14,15 @@ export class AdminComponent implements OnInit, AfterViewInit {
 
   // gengerateChln = "none";
   // Open popup and mark all notifications as read
-  openPopup(): void {
-    this.showModal = true;
-    this.markAsRead();
-  }
+  // openPopup(): void {
+  //   this.showModal = true;
+  //   this.markAsRead();
+  // }
 
-  // Close popup
-  closePopup(): void {
-    this.showModal = false;
-  }
+  // // Close popup
+  // closePopup(): void {
+  //   this.showModal = false;
+  // }
 
   @ViewChild('cameraFeed', { static: false }) cameraFeed!: ElementRef<HTMLVideoElement>;
   @ViewChild('mySidebar', { static: false }) mySidebar!: ElementRef<HTMLElement>;
@@ -109,36 +109,56 @@ export class AdminComponent implements OnInit, AfterViewInit {
   notifys: any[] = [];
   unreadCount: number = 0;
   showModal: boolean = false;
-  errorMessage: string = '';
- // Fetch notifications
- getNotification(): void {
-  this.service.getNotification(null).subscribe({
-    next: (data) => {
-      this.notifys = data;
-      this.unreadCount = this.notifys.filter((notify) => !notify.read).length;
-      console.log('Notifications:', this.notifys);
-    },
-    error: (error) => {
-      this.errorMessage = 'Failed to fetch notifications';
-      console.error(error);
-    },
-  });
-}
+  selectedNotification: any = null;
+  // Fetch notifications
+  getNotification(): void {
+    this.service.getNotification(null).subscribe({
+      next: (data) => {
+        this.notifys = data;
+        this.updateUnreadCount();
+      },
+      error: (error) => {
+        console.error('Failed to fetch notifications:', error);
+      },
+    });
+  }
 
+  // Open modal to show notifications
+  openModal(): void {
+    this.showModal = true;
+    this.selectedNotification = null; // Reset selected notification when modal is opened
+  }
 
-// Mark notifications as read
-markAsRead(): void {
-  this.notifys = this.notifys.map((notify) => ({
-    ...notify,
-    // read: true,
-  }));
-  this.unreadCount = 0;
-  // Optionally, send an API call to update read status in backend
-  this.service.markAllAsRead(this.notifys).subscribe({
-    next: () => console.log('All notifications marked as read.'),
-    error: (error) => console.error('Error marking notifications as read:', error),
-  });
-}
+  // Close modal
+  closeModal(): void {
+    this.showModal = false;
+  }
+
+  // Select a specific notification
+  selectNotification(notify: any): void {
+    this.selectedNotification = notify;
+
+    if (!notify.read) {
+      this.markAsRead(notify);
+    }
+  }
+
+  // Mark a single notification as read
+  markAsRead(notify: any): void {
+    notify.read = true; // Update local read status
+    this.updateUnreadCount();
+
+    // Optionally, send to backend to update read status
+    this.service.markAsRead(notify.id).subscribe({
+      next: () => console.log(`Notification ${notify.id} marked as read.`),
+      error: (error) => console.error('Error marking notification as read:', error),
+    });
+  }
+
+  // Update unread count
+  updateUnreadCount(): void {
+    this.unreadCount = this.notifys.filter((notify) => !notify.read).length;
+  }
 
   logoGet: any;
   getLogo() {

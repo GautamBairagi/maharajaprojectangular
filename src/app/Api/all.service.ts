@@ -35,15 +35,24 @@ export class AllService extends HttpService {
     return this.http.get<any[]>(`${this.apiUrlNoty}/notification_details/` + userId , { params });
   }
 
-  markAllAsRead(notifications: any[]): Observable<void> {
+  // markAllAsRead(notifications: any[]): Observable<void> {
+  //   const userId = localStorage.getItem('userId')
+
+  //   const payload = notifications.map((notify) => ({
+  //     id: notify.id,
+  //     user_id: userId,
+  //     // read: true,
+  //   }));
+  //   return this.http.post<void>(`${this.apiUrlNoty}/readnotification`, payload);
+  // }
+
+  markAsRead(notificationId: number): Observable<void> {
     const userId = localStorage.getItem('userId')
 
-    const payload = notifications.map((notify) => ({
-      id: notify.id,
+    return this.http.post<void>(`${this.apiUrlNoty}/readnotification`, {
+      id: notificationId,
       user_id: userId,
-      // read: true,
-    }));
-    return this.http.post<void>(`${this.apiUrlNoty}/readnotification`, payload);
+    });
   }
 
   // getNotification(id: any) {
@@ -549,5 +558,8 @@ export class AllService extends HttpService {
     return this.post(superAdminEndPoints.residentNote, data)
   }
 
+  editpasswordss(id: any, data: any) {
+    return this.put(superAdminEndPoints.editpasswords + id, data)
+  }
 
 }

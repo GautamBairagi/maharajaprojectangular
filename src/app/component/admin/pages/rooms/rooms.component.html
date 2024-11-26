@@ -125,7 +125,7 @@
           <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
             <p>Users</p>
             <div class="popover-container" *ngFor="let userId of room.user_ids.split(',')" style="display: inline-flex;">
-              <button class="popover-button" (mouseenter)="fetchUserDetails(userId)" [attr.data-user-id]="userId">
+              <button class="popover-button" #autoClickButton (click)="ByIds(room.user_ids)" (mouseenter)="fetchUserDetails(userId)" [attr.data-user-id]="userId">
                 {{ getInitials(userId) }}
               </button>
               <div class="popover-content">
@@ -144,7 +144,7 @@
             <p>Clients </p>
 
           <div class="popover-container" *ngFor="let userId of room.client_id.split(',')" style="display: inline-flex;">
-            <button class="popover-button" (mouseenter)="fetchUserDetails(userId)" [attr.data-user-id]="userId">
+            <button class="popover-button" (click)="ByIds(room.user_ids)" (mouseenter)="fetchUserDetails(userId)" [attr.data-user-id]="userId">
               {{ getInitials(userId) }}
             </button>
             <div class="popover-content">
