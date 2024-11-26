@@ -117,39 +117,39 @@ const routes: Routes = [
         component:AddMildstoneComponent
       },
       {
-        path:'Room_Activity',
+        path:'Room Activity',
         component:RoomActivityComponent
       },
       {
-        path:'Comment_Activity',
+        path:'Comment Activity',
         component:CommentActivityComponent
       },
       {
-        path:'Milestone_Activity',
+        path:'Milestone Activity',
         component:MilestoneActivityComponent
       },
       {
-        path:'Medicine_Activity',
+        path:'Medicine Activity',
         component:MedicineActivityComponent
       },
       {
-        path:'Task_Activity',
+        path:'Task Activity',
         component:TaskActivityComponent
       },
       {
-        path:'Status_Activity',
+        path:'Status Activity',
         component:StatusActivityComponent
       },
       {
-        path:'Setting_Activity',
+        path:'Setting Activity',
         component:SettingActivityComponent
       },
       {
-        path:'Unit_Activity',
+        path:'Unit Activity',
         component:UnitActivityComponent
       },
       {
-        path:'Frequency_Activity',
+        path:'Frequency Activity',
         component:FrequencyActivityComponent
       },{
         path:'Statuses',

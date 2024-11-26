@@ -1,20 +1,20 @@
-<div class="container" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; border-radius: 10px;">
+<div class="container-fluid p-3" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; border-radius: 10px;">
   <div class="row">
     <div class="col-12">
-      <h2 class="text-center m-4">Client Detail</h2>
+      <h2 class="text-center m-4">Client Details</h2>
       <hr>
     </div>
   </div>
 
   <div class="row">
     <div class="col-md-2"   *ngFor="let a of allData">
-      <!-- <img src="../assets/profilephoto.jpg"  class="rounded-circle img-fluid"> -->
+      <img src="../assets/profilephoto.jpg"  class="rounded-circle img-fluid">
       <img [src]="a.profile" alt="User Avatar" class="rounded-circle img-fluid" >
     </div>
     <div class="col-md-10">
       <div class="row">
         <div class="row mt-4">
-          <div class="col-md-3">
+          <div class="col-md-3 mb-2">
             <div class="card" (click)="openRoutineTab()">
               <div class="card-body">
                 <h5 class="card-title">Routine</h5>
@@ -22,7 +22,7 @@
               </div>
             </div>
           </div>
-          <div class="col-md-3">
+          <div class="col-md-3 mb-2">
             <div class="card" (click)="opentaskTab()">
               <div class="card-body">
                 <h5 class="card-title">Task</h5>
@@ -30,7 +30,7 @@
               </div>
             </div>
           </div>
-          <div class="col-md-3">
+          <div class="col-md-3 mb-2">
             <div class="card" (click)="openmedsTab()">
               <div class="card-body">
                 <h5 class="card-title">Medes</h5>
@@ -38,7 +38,7 @@
               </div>
             </div>
           </div>
-          <div class="col-md-3">
+          <div class="col-md-3 mb-2">
             <div class="card" (click)="openmildstoneTab()">
               <div class="card-body">
                 <h5 class="card-title">Mildstone</h5>
@@ -57,16 +57,16 @@
   <hr>
   <div class="row mt-3" *ngFor="let a of allData">
     <div class="col-md-6">
-      <p><strong>Name:</strong> {{a.first_name}}</p>
-      <p><strong>User Type:</strong>Client</p>
-      <p><strong>Contact:</strong>{{a.email}}</p>
-      <p><strong>Status:</strong> <span
+      <p><strong class="me-2">Name:</strong> {{a.first_name}}</p>
+      <p><strong class="me-2">User Type:</strong>Client</p>
+      <p><strong class="me-2">Contact:</strong>{{a.email}}</p>
+      <p><strong class="me-2">Status:</strong> <span
           style="background-color: #218838; color: white; border-radius: 10px;  padding: 3px;">Active</span></p>
     </div>
     <div class="col-md-6">
-      <p><strong>Date of Birth:</strong>{{a.date_of_birth | date:'dd-MM-yyyy'}}</p>
-      <p><strong>Date of Joining:</strong> {{a.date_of_joining | date:'dd-MM-yyyy'}}</p>
-      <p><strong>Designation:</strong> {{a.designation}}</p>
+      <p><strong class="me-2">Date of Birth:</strong>{{a.date_of_birth | date:'dd-MM-yyyy'}}</p>
+      <p><strong class="me-2">Date of Joining:</strong> {{a.date_of_joining | date:'dd-MM-yyyy'}}</p>
+      <p><strong class="me-2">Designation:</strong> {{a.designation}}</p>
     </div>
   </div>
   <div class="row mt-3">
