@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 <div class="container-fluid p-3 shadow">
+=======
+<div class="container-fluid">
+>>>>>>> 017ac832a9912b499e37c36b5be9fe2a4d0b981f
 
 
     <div class="row">
@@ -11,127 +15,125 @@
                 <span> <button class="btn btn-success rounded-pill" data-bs-toggle="modal"
                         data-bs-target="#taskModal">Create Task</button> </span>
 
-                        <div class="modal fade" id="taskModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                        aria-hidden="true">
-                        <div class="modal-dialog modal-lg">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Add Task</h1>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                        aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    <form [formGroup]="addTaskForm" (ngSubmit)="onSubmit()">
+                <div class="modal fade" id="taskModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Add Task</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form [formGroup]="addTaskForm" (ngSubmit)="onSubmit()">
 
 
-                                        <!-- User ID -->
-                                        <div class="form-group">
-                                            <label for="user_id">User</label>
-                                            <select id="user_id" formControlName="user_id" class="form-select">
-                                                <option value="">Select User</option>
-                                                <option *ngFor="let rr of roomUsers" [value]="rr.id"> {{ rr.first_name
-                                                    }} </option>
-                                            </select>
-                                        </div>
+                                    <!-- User ID -->
+                                    <div class="form-group">
+                                        <label for="user_id">User</label>
+                                        <select id="user_id" formControlName="user_id" class="form-select">
+                                            <option value="">Select User</option>
+                                            <option *ngFor="let rr of roomUsers" [value]="rr.id"> {{ rr.first_name
+                                                }} </option>
+                                        </select>
+                                    </div>
 
 
-                                        <!-- Title -->
-                                        <div class="form-group">
-                                            <label for="title">Title</label>
-                                            <input id="title" type="text" formControlName="title"
-                                                class="form-control" />
-                                        </div>
+                                    <!-- Title -->
+                                    <div class="form-group">
+                                        <label for="title">Title</label>
+                                        <input id="title" type="text" formControlName="title" class="form-control" />
+                                    </div>
 
-                                        <!-- Day -->
-                                        <div class="form-group">
-                                            <label for="day">Day</label>
-                                            <input id="day" type="text" formControlName="day" class="form-control" />
-                                        </div>
+                                    <!-- Day -->
+                                    <div class="form-group">
+                                        <label for="day">Day</label>
+                                        <input id="day" type="text" formControlName="day" class="form-control" />
+                                    </div>
 
-                                        <!-- Task Days -->
-                                        <div class="form-group">
-                                            <label for="task_days">Task Days</label>
-                                            <input id="task_days" type="number" formControlName="task_days"
-                                                class="form-control" />
-                                        </div>
+                                    <!-- Task Days -->
+                                    <div class="form-group">
+                                        <label for="task_days">Task Days</label>
+                                        <input id="task_days" type="number" formControlName="task_days"
+                                            class="form-control" />
+                                    </div>
 
-                                        <!-- Description -->
-                                        <div class="form-group">
-                                            <label for="description">Description</label>
-                                            <textarea id="description" formControlName="description"
-                                                class="form-control"></textarea>
-                                        </div>
+                                    <!-- Description -->
+                                    <div class="form-group">
+                                        <label for="description">Description</label>
+                                        <textarea id="description" formControlName="description"
+                                            class="form-control"></textarea>
+                                    </div>
 
-                                        <!-- Priority -->
-                                        <div class="form-group">
-                                            <label for="priority">Priority</label>
-                                            <select id="priority" formControlName="priority" class="form-control">
-                                                <option value="">Select Priority</option>
-                                                <option value="Low">Low</option>
-                                                <option value="Medium">Medium</option>
-                                                <option value="High">High</option>
-                                            </select>
-                                        </div>
+                                    <!-- Priority -->
+                                    <div class="form-group">
+                                        <label for="priority">Priority</label>
+                                        <select id="priority" formControlName="priority" class="form-control">
+                                            <option value="">Select Priority</option>
+                                            <option value="Low">Low</option>
+                                            <option value="Medium">Medium</option>
+                                            <option value="High">High</option>
+                                        </select>
+                                    </div>
 
-                                        <!-- start Date -->
-                                        <div class="form-group">
-                                            <label for="start_date">Start Date</label>
-                                            <input id="start_date" type="date" formControlName="start_date"
-                                                class="form-control" />
-                                        </div>
+                                    <!-- start Date -->
+                                    <div class="form-group">
+                                        <label for="start_date">Start Date</label>
+                                        <input id="start_date" type="date" formControlName="start_date"
+                                            class="form-control" />
+                                    </div>
 
-                                        <!-- Due Date -->
-                                        <div class="form-group">
-                                            <label for="due_date">Due Date</label>
-                                            <input id="due_date" type="date" formControlName="due_date"
-                                                class="form-control" />
-                                        </div>
+                                    <!-- Due Date -->
+                                    <div class="form-group">
+                                        <label for="due_date">Due Date</label>
+                                        <input id="due_date" type="date" formControlName="due_date"
+                                            class="form-control" />
+                                    </div>
 
-                                        <!-- Time -->
-                                        <div class="form-group">
-                                            <label for="time">Time</label>
-                                            <input id="time" type="time" formControlName="time" class="form-control" />
-                                        </div>
+                                    <!-- Time -->
+                                    <div class="form-group">
+                                        <label for="time">Time</label>
+                                        <input id="time" type="time" formControlName="time" class="form-control" />
+                                    </div>
 
-                                        <!-- Status -->
-                                        <div class="form-group">
-                                            <label for="status">Status</label>
-                                            <select id="status" formControlName="status" class="form-control">
-                                                <option value="">Select Status</option>
-                                                <option value="Pending">Pending</option>
-                                                <option value="In Progress">In Progress</option>
-                                                <option value="Completed">Completed</option>
-                                            </select>
-                                        </div>
+                                    <!-- Status -->
+                                    <div class="form-group">
+                                        <label for="status">Status</label>
+                                        <select id="status" formControlName="status" class="form-control">
+                                            <option value="">Select Status</option>
+                                            <option value="Pending">Pending</option>
+                                            <option value="In Progress">In Progress</option>
+                                            <option value="Completed">Completed</option>
+                                        </select>
+                                    </div>
 
-                                        <!-- Class -->
-                                        <div class="form-group">
-                                            <label for="class">Class</label>
-                                            <input id="class" type="text" formControlName="class"
-                                                class="form-control" />
-                                        </div>
+                                    <!-- Class -->
+                                    <div class="form-group">
+                                        <label for="class">Class</label>
+                                        <input id="class" type="text" formControlName="class" class="form-control" />
+                                    </div>
 
-                                        <!-- Task Message -->
-                                        <div class="form-group">
-                                            <label for="task_message">Task Message</label>
-                                            <textarea id="task_message" formControlName="task_message"
-                                                class="form-control"></textarea>
-                                        </div>
+                                    <!-- Task Message -->
+                                    <div class="form-group">
+                                        <label for="task_message">Task Message</label>
+                                        <textarea id="task_message" formControlName="task_message"
+                                            class="form-control"></textarea>
+                                    </div>
 
-                                        <!-- Submit Button -->
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary"
-                                                data-bs-dismiss="modal">Close</button>
-                                            <button type="submit" class="btn btn-primary">Submit</button>
-                                        </div>
+                                    <!-- Submit Button -->
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-bs-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                    </div>
 
-                                    </form>
-
-                                </div>
+                                </form>
 
                             </div>
+
                         </div>
                     </div>
+                </div>
             </span>
         </div>
 
@@ -178,13 +180,12 @@
                                     </div>
                                 </span>
                                 <span (click)="setCommentFormData(task)" data-bs-toggle="modal"
-                                data-bs-target="#commentModal">
+                                    data-bs-target="#commentModal">
                                     <i (click)="setCommentFormData(task)" data-bs-toggle="modal"
                                         data-bs-target="#commentModal" class="fa-regular fa-comments"></i>
-                                        <span class="top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                                            {{ taskCommentsCount[task.id] || 0 }}
-                                          </span>
-                               
+                                    <span class="top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                        {{ taskCommentsCount[task.id] || 0 }}
+                                    </span>
                                 </span>
 
 
@@ -194,7 +195,8 @@
                                     <div class="modal-dialog modal-lg modal-dialog-centered">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h1 class="modal-title fs-5" id="exampleModalLabel">Comments for {{ selectedTask?.title }}</h1>
+                                                <h1 class="modal-title fs-5" id="exampleModalLabel">Comments for {{
+                                                    selectedTask?.title }}</h1>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                     aria-label="Close"></button>
                                             </div>
@@ -216,15 +218,17 @@
 
                                                 <h5>Comments</h5>
                                                 <ul *ngIf="taskComments[selectedTask?.id]?.length; else noComments">
-                                                  <li *ngFor="let comment of taskComments[selectedTask?.id]">
-                                                    <strong>{{ comment.username }}:</strong> {{ comment.comment }} <br>
-                                                    <small class="text-muted">{{ comment.date_created | date: 'short' }}</small>
-                                                  </li>
+                                                    <li *ngFor="let comment of taskComments[selectedTask?.id]">
+                                                        <strong>{{ comment.username }}:</strong> {{ comment.comment }}
+                                                        <br>
+                                                        <small class="text-muted">{{ comment.date_created | date:
+                                                            'short' }}</small>
+                                                    </li>
                                                 </ul>
                                                 <ng-template #noComments>
-                                                  <p>No comments yet for this task.</p>
+                                                    <p>No comments yet for this task.</p>
                                                 </ng-template>
-                                              
+
                                             </div>
 
                                         </div>

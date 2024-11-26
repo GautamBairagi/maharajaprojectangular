@@ -19,6 +19,7 @@ import { SafetyComponent } from './component/Categories/safety/safety.component'
 import { SelfCareComponent } from './component/Categories/self-care/self-care.component';
 import { TransportationComponent } from './component/Categories/transportation/transportation.component';
 import { WorkCareerEducationComponent } from './component/Categories/work-career-education/work-career-education.component';
+import { LandingPageComponent } from './landing-page/landing-page.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { WorkCareerEducationComponent } from './component/Categories/work-career
     SafetyComponent,
     SelfCareComponent,
     TransportationComponent,
-    WorkCareerEducationComponent
+    WorkCareerEducationComponent,
+    LandingPageComponent
   ],
   imports: [
     BrowserModule,

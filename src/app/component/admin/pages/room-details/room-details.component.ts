@@ -130,6 +130,29 @@ roomDetails(data: any) {
   });
 }
 
+userprofile(){
+  this.router.navigate(['/Admin/Clientdetails'])
+}
+
+client_idss:any;
+userByIdDatas:any=[];
+  ByIds(data: any) {
+    this.id = data
+    console.log("user id", this.id)
+    this.api.getuserById(data).subscribe((res: any) => {
+      this.userByIdDatas = [res[0]];
+      this.client_idss=res[0].id
+      localStorage.setItem('clientdetails', JSON.stringify(this.userByIdDatas));
+      localStorage.setItem('clientid', JSON.stringify(data));
+  // Store the data in the api
+
+      this.userprofile()
+      
+      this.api.setclientData(this.userByIdDatas);
+      console.log("policy by id", this.userByIdDatas)
+    })
+  }
+
 userDetails: { [key: string]: { first_name: string; last_name: string } } = {};
 
 fetchUserDetails(userId: string) {
