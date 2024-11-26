@@ -82,6 +82,8 @@
             role="tab" aria-controls="nav-contact" aria-selected="false">Medes</button>
           <button class="nav-link" id="nav-mildstone-tab" data-bs-toggle="tab" data-bs-target="#nav-mildstone"
             type="button" role="tab" aria-controls="nav-mildstone" aria-selected="false">Mildstone</button>
+            <button class="nav-link" id="nav-Notes-tab" data-bs-toggle="tab" data-bs-target="#nav-Notes"
+            type="button" role="tab" aria-controls="nav-Notes" aria-selected="false">Notes</button>
           <!-- <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact"
                         type="button" role="tab" aria-controls="nav-contact" aria-selected="false">Activity</button> <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact"
                         type="button" role="tab" aria-controls="nav-contact" aria-selected="false">Task</button> -->
@@ -249,6 +251,42 @@
             style="background-color: #F7F7F7; white-space: wrap ; height: 70px; box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px; border-radius: 10px;">
             <h5 class="fs-4 mt-3 text-center p-2" style="color: #777;">Client Mildstone</h5> <span><button type="button"
                 routerLink="/Admin/addmildstone" class="btn text-white mt-3" style="background-color: #868e92;"><span><i
+                    class="fa-sharp fa-solid fa-plus"></i></span> Add</button></span>
+          </div>
+
+          <div class="mt-2"
+            style="overflow-x: scroll; box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; border-radius: 10px;">
+            <table class="table table-bordered table-hover table-striped ">
+              <thead class="" style="font-size: 13px; text-wrap: nowrap; ">
+                <tr>
+                  <th>Id</th>
+                  <th>Title</th>
+                  <th>Description</th>
+                  <th>Status</th>
+                  <th>Date</th>
+                </tr>
+              </thead>
+              <tbody style="text-wrap: nowrap;" class="">
+                <tr *ngFor="let mild of getmildstonedata ;  let i = index">
+                  <td>{{ i+1 }}</td>
+
+                  <td>{{mild.title}}</td>
+                  <td>{{mild.description}}</td>
+                  <td>{{mild.status}}</td>
+                  <td>{{mild.date_created | date:'dd-MM-yyy'}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+
+        <div class="tab-pane fade" id="nav-Notes" role="tabpanel" aria-labelledby="nav-Notes-tab">
+
+          <div class="col-lg-12 col-md-12 d-flex  gap-2  mt-2 "
+            style="background-color: #F7F7F7; white-space: wrap ; height: 70px; box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px; border-radius: 10px;">
+            <h5 class="fs-4 mt-3 text-center p-2" style="color: #777;">Resident Notes</h5> <span><button type="button"
+                routerLink="/Admin/addResidentNote" class="btn text-white mt-3" style="background-color: #868e92;"><span><i
                     class="fa-sharp fa-solid fa-plus"></i></span> Add</button></span>
           </div>
 

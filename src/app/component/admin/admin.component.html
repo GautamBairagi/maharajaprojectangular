@@ -8,7 +8,31 @@
     </div>
     <div class="icons d-flex align-items-center">
         <i class="fas a fa-envelope mx-2"></i>
-        <i class="fas a fa-bell mx-2"></i>
+       <!-- Bell Icon with Count -->
+<i (click)="openPopup()" class="fas fa-bell mx-2">
+  <span *ngIf="unreadCount > 0" class="badge bg-danger">{{ unreadCount }}</span>
+</i>
+
+<!-- Modal -->
+<div class="modal" tabindex="-1" [ngStyle]="{'display': showModal ? 'block' : 'none'}">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Notifications</h1>
+        <button type="button" class="btn-close" aria-label="Close" (click)="closePopup()"></button>
+      </div>
+      <div class="container">
+        <div class="row" *ngFor="let nn of notifys">
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            {{ nn.notification }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 
         <div class="dropdown ml-3" style="color: var(--header-font-color);">
             <span  style="color: var(--header-font-color);"

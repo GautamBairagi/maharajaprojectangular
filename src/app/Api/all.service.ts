@@ -17,23 +17,39 @@ export interface ThemeSettings {
 })
 export class AllService extends HttpService {
   private apiUrl = 'http://192.168.1.231:5000/theme';
+  private apiUrlNoty = 'http://192.168.1.231:5000';
 
+  // Fetch theme settings from API
+  fetchThemeSettings(): Observable<ThemeSettings> {
+    return this.http.get<ThemeSettings>(this.apiUrl);
+  }
 
-  //   getToken() {
-  //   const tokkn = localStorage.getItem("user_token");
-  //   const wspace = localStorage.getItem("workspace_id");
-  //   return { tokkn, wspace }
+  // Update theme settings through the API
+  updateThemeSettings(themeSettings: ThemeSettings): Observable<any> {
+    return this.http.put(this.apiUrl, themeSettings);
+  }
+
+  getNotification(params: any): Observable<any[]> {
+    const userId = localStorage.getItem('userId')
+
+    return this.http.get<any[]>(`${this.apiUrlNoty}/notification_details/` + userId , { params });
+  }
+
+  markAllAsRead(notifications: any[]): Observable<void> {
+    const userId = localStorage.getItem('userId')
+
+    const payload = notifications.map((notify) => ({
+      id: notify.id,
+      user_id: userId,
+      // read: true,
+    }));
+    return this.http.post<void>(`${this.apiUrlNoty}/readnotification`, payload);
+  }
+
+  // getNotification(id: any) {
+  //   const userId = localStorage.getItem('userId')
+  //   return this.get(superAdminEndPoints.getNotification + userId)
   // }
-
-// Fetch theme settings from API
-fetchThemeSettings(): Observable<ThemeSettings> {
-  return this.http.get<ThemeSettings>(this.apiUrl);
-}
-
-// Update theme settings through the API
-updateThemeSettings(themeSettings: ThemeSettings): Observable<any> {
-  return this.http.put(this.apiUrl, themeSettings);
-}
 
   // private socket: Socket;
 
@@ -76,7 +92,7 @@ updateThemeSettings(themeSettings: ThemeSettings): Observable<any> {
   //   return this.sidebarColor;
   // }
 
-  
+
 
   constructor(public override http: HttpClient,
   ) {
@@ -186,10 +202,10 @@ updateThemeSettings(themeSettings: ThemeSettings): Observable<any> {
   gertmilestoness() {
     return this.get(superAdminEndPoints.gertmilestones)
   }
-   
-getmildstonebyclientID(id:any){
-  return this.get(superAdminEndPoints.gertmilestonesBYClientId +id)
-}
+
+  getmildstonebyclientID(id: any) {
+    return this.get(superAdminEndPoints.gertmilestonesBYClientId + id)
+  }
 
 
 
@@ -293,50 +309,41 @@ getmildstonebyclientID(id:any){
     return this.patch(superAdminEndPoints.Userstatusupdate + id, data)
   }
 
-   InstatusStatusupdatess(id:any, data:any){
-    return this.patch(superAdminEndPoints.InstatusStatusupdate + id, data )
-   }
+  InstatusStatusupdatess(id: any, data: any) {
+    return this.patch(superAdminEndPoints.InstatusStatusupdate + id, data)
+  }
 
 
-   userpatchmethod(id:any, data:any){
-    return this.patch(superAdminEndPoints.statusUpdtedput + id, data )
-   }
+  userpatchmethod(id: any, data: any) {
+    return this.patch(superAdminEndPoints.statusUpdtedput + id, data)
+  }
 
 
 
 
 
-   getStatusById(id:any){
-    return this.get(superAdminEndPoints.statusUpdtedGetById + id )
-   }
+  getStatusById(id: any) {
+    return this.get(superAdminEndPoints.statusUpdtedGetById + id)
+  }
 
-   allactiveststuss(){
-    return this.get(superAdminEndPoints.allactiveststus )
-   }
-
-
-   
-   frequencyss(){
-    return this.get(superAdminEndPoints.frequencys )
-   }
+  allactiveststuss() {
+    return this.get(superAdminEndPoints.allactiveststus)
+  }
 
 
-   uinitsdata(){
-    return this.get(superAdminEndPoints.uinitsdatas )
-   }
+
+  frequencyss() {
+    return this.get(superAdminEndPoints.frequencys)
+  }
+
+
+  uinitsdata() {
+    return this.get(superAdminEndPoints.uinitsdatas)
+  }
 
   //  times(){
   //   return this.get(superAdminEndPoints.timesdata )
   //  }
-   
-
-   
-
-   
-
-
-   
-
 
 
 
@@ -361,20 +368,20 @@ getmildstonebyclientID(id:any){
   postComments(data: any) {
     return this.post(superAdminEndPoints.comment, data)
   }
-  postaddstatus(data:any){
-    return this.post(superAdminEndPoints.addstatus, data )
+  postaddstatus(data: any) {
+    return this.post(superAdminEndPoints.addstatus, data)
   }
 
 
 
-  getstatus(){
-    return this.get(superAdminEndPoints.addstatus )
-   }
+  getstatus() {
+    return this.get(superAdminEndPoints.addstatus)
+  }
 
 
-   
 
-  
+
+
 
 
 
@@ -388,7 +395,7 @@ getmildstonebyclientID(id:any){
   }
 
   postLogo(data: any) {
-    return this.put(superAdminEndPoints.logo + 4 , data)
+    return this.put(superAdminEndPoints.logo + 4, data)
   }
 
   getLogo() {
@@ -412,7 +419,7 @@ getmildstonebyclientID(id:any){
   gettaskactivity() {
     return this.get(superAdminEndPoints.taskactivity)
   }
- 
+
   getstatusactivity() {
     return this.get(superAdminEndPoints.statusactivity)
   }
@@ -433,97 +440,97 @@ getmildstonebyclientID(id:any){
     return this.get(superAdminEndPoints.currentProviderGet)
   }
 
-  currentProvider(data:any) {
-    return this.post(superAdminEndPoints.currentProviderAdd,data)
+  currentProvider(data: any) {
+    return this.post(superAdminEndPoints.currentProviderAdd, data)
   }
 
   currentMedicationGet() {
     return this.get(superAdminEndPoints.currentMedicationGet)
   }
 
-  currentMedication(data:any) {
-    return this.post(superAdminEndPoints.currentMedication,data)
+  currentMedication(data: any) {
+    return this.post(superAdminEndPoints.currentMedication, data)
   }
 
   dentalGet() {
     return this.get(superAdminEndPoints.dentalGet)
   }
 
-  dental(data:any) {
-    return this.post(superAdminEndPoints.dental,data)
+  dental(data: any) {
+    return this.post(superAdminEndPoints.dental, data)
   }
 
   epsdtrsGet() {
     return this.get(superAdminEndPoints.epsdtrsGet)
   }
 
-  epsdtrs(data:any) {
-    return this.post(superAdminEndPoints.epsdtr,data)
+  epsdtrs(data: any) {
+    return this.post(superAdminEndPoints.epsdtr, data)
   }
 
   healthMedicalGet() {
     return this.get(superAdminEndPoints.healthmedicalGet)
   }
 
-  healthMedical(data:any) {
-    return this.post(superAdminEndPoints.healthmedical,data)
+  healthMedical(data: any) {
+    return this.post(superAdminEndPoints.healthmedical, data)
   }
 
   safetyGet() {
     return this.get(superAdminEndPoints.safteysGet)
   }
 
-  safety(data:any) {
-    return this.post(superAdminEndPoints.saftey,data)
+  safety(data: any) {
+    return this.post(superAdminEndPoints.saftey, data)
   }
 
   personalGrowthGet() {
     return this.get(superAdminEndPoints.personalGrowthGet)
   }
 
-  personalGrowth(data:any) {
-    return this.post(superAdminEndPoints.personalGrowth,data)
+  personalGrowth(data: any) {
+    return this.post(superAdminEndPoints.personalGrowth, data)
   }
 
 
   getTranportation() {
     return this.get(superAdminEndPoints.tranportationGet)
   }
- 
-  addTranportation(data:any){
-    return this.post(superAdminEndPoints.tranportation,data)
+
+  addTranportation(data: any) {
+    return this.post(superAdminEndPoints.tranportation, data)
   }
 
   getWorkAndCareer() {
     return this.get(superAdminEndPoints.workAndCarrierGet)
   }
- 
-  addWorkAndCareer(data:any){
-    return this.post(superAdminEndPoints.workAndCarrier,data)
+
+  addWorkAndCareer(data: any) {
+    return this.post(superAdminEndPoints.workAndCarrier, data)
   }
 
   getCommunicationAndSocial() {
     return this.get(superAdminEndPoints.communicationAndsocialGet)
   }
- 
-  addCommunicationAndSocial(data:any){
-    return this.post(superAdminEndPoints.addCommunicationAndsocial,data)
+
+  addCommunicationAndSocial(data: any) {
+    return this.post(superAdminEndPoints.addCommunicationAndsocial, data)
   }
 
   getCommunication() {
     return this.get(superAdminEndPoints.communicationGet)
   }
- 
-  addCommunication(data:any){
-    return this.post(superAdminEndPoints.addCommunication,data)
+
+  addCommunication(data: any) {
+    return this.post(superAdminEndPoints.addCommunication, data)
   }
 
   getSelfHomeCare() {
     return this.get(superAdminEndPoints.selfHomeCareGet)
   }
- 
-  addSelfHomeCare(data:any){
-    return this.post(superAdminEndPoints.addSelfHomeCare,data)
+
+  addSelfHomeCare(data: any) {
+    return this.post(superAdminEndPoints.addSelfHomeCare, data)
   }
 
   getGraph() {
@@ -537,5 +544,10 @@ getmildstonebyclientID(id:any){
   getAppointment() {
     return this.get(superAdminEndPoints.getAppointment)
   }
+
+  postResidentNote(data: any) {
+    return this.post(superAdminEndPoints.residentNote, data)
+  }
+
 
 }
