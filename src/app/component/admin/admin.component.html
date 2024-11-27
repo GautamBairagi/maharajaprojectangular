@@ -1,35 +1,39 @@
 
 <div class="header sticky-top">
     <div class="">
-    <img src="../../../assets/maharaja.png" class="img-fluid" style="height: 50px;" alt="">   
+    <img src="../../../assets/maharaja.png" class="img-fluid logo" style="height: 50px;" alt="">   
     <button class="btn"  (click)="toggleNav()">
-        <i class="fas fa-bars"></i>
+        <i class="fas fa-bars ms-4"></i>
       </button>
     </div>
     <div class="icons d-flex align-items-center">
         <i class="fas a fa-envelope mx-2"></i>
         <i class="fas a fa-bell mx-2"></i>
 
-        <div class="dropdown ml-3" style="color: var(--header-font-color);">
-            <span  style="color: var(--header-font-color);"
-                aria-haspopup="true" aria-expanded="false">
-                Hi 👋, Main
-            </span>
-            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="profileDropdown" >
-                <a class="dropdown-item" style="color: white;">
-                    <i style="color: white;" class="fas fa-user mr-2"></i> Profile
-                </a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" (click)="logouts()" style="color: white;">
-                    <i style="color: white;" class="fas fa-sign-out-alt mr-2"></i> Logout
-                </a>
-                <!-- <button (ckick)="handelclick()">button</button> -->
-            </div>
+      
+        <div class="dropdown">
+          <input type="checkbox" class="dropdown-toggle-checkbox" id="dropdown-toggle" />
+        
+          <label class="dropdown-toggle" for="dropdown-toggle">Hi 👋, Main</label>
+        
+          <div class="dropdown-menu">
+            <a href="#" class="dropdown-item">
+              <i class="fas fa-user mr-2"></i> Profile
+            </a>
+            <div class="dropdown-divider"></div>  
+            <a href="#" class="dropdown-item">
+              <i class="fas fa-sign-out-alt mr-2"></i> Logout
+            </a>
+          </div>
         </div>
+     
       
     </div>
 </div>
-                 <div #mySidebar class="sidebar">
+
+
+
+        <div #mySidebar class="sidebar" id="mySidebar" style="overflow: scroll;">
                     <div *ngFor="let side of sideData">
                       <ng-container *ngIf="side.dropdown !== 0; else simpleButton">
                         <button *ngIf="side.visibility === 1  || side.position === 1"
@@ -62,17 +66,19 @@
                         </div>
                       </ng-container>
                     
-                      <!-- Simple button without dropdown, shown when `dropdown` is 0 -->
+                 
                       <ng-template #simpleButton>
                         <button *ngIf="side.visibility === 1 || side.position === 1" 
                                 class="btn  mt-2" 
                                 type="button" [routerLink]="['/Admin', side.side_name_old]"
-                                style="margin-left: 14px !important;color: var(--sidebar-font-color);">
+                                style="margin-left: 14px !important; color: var(--sidebar-font-color);">
                           <i ngClass="{{side.icon}}"></i> 
-                          <span style="margin-left: 14px !important;" >
+                          <span style="margin-left: 14px !important; " >
                             {{ side.side_name }}
                           </span>
                         </button>
+                      
+                  
                       </ng-template>
                     </div>
                     
@@ -88,8 +94,15 @@
       </h2>
       </div>
         
-      </div>
+      </div> 
     
+
+
+   
+
+
+
+
     <div #content class="content" >
                  
         <router-outlet></router-outlet>

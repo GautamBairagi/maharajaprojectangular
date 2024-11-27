@@ -233,14 +233,13 @@
   <!-- Left side content -->
   <div class="d-flex gap-2">
     <h5 class="fs-4 mt-3 text-center me-2" style="color: #777;">User List</h5>
-    <button type="button" (click)="onclick()" class="btn text-white mt-2 me-2" style="background-color: #868e92;">
+    <button type="button" (click)="onclick()" class="btn btn-primary addbutton mt-2 me-2">
       <i class="fa-sharp fa-solid fa-plus"></i> Add
     </button>
   </div>
 
   <!-- Right side search input -->
-  <input type="text" [(ngModel)]="searchQuery" placeholder="Search" (input)="onSearch()" class="form-control mt-3"
-    style="width: 200px;">
+  <input type="text" [(ngModel)]="searchQuery" placeholder="Search" (input)="onSearch()" class="form-control mt-3 w-25">
 </div>
 
 

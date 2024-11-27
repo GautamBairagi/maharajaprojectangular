@@ -1,45 +1,28 @@
 
-<div class="container-fluid">
-    <div class="row">
-    
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 p-1" >
+<div class="container-fluid p-3">
             <h4>Current Medications</h4>
-        </div>
-        
-    </div>
 </div>
 
 <form [formGroup]="thisForm" (ngSubmit)="addMyForm()" >
     
-    <div class="container mt-2">
-        <div class="row justify-content-center">
-            
-            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+    <div class="container-fluid mt-2">
+        <div class="row"> 
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 mb-3">
                 <label for="">Patient Name</label>
                 <select formControlName="patientName" class="form-select" id="">
                     <option value="">Select</option>
                     <option *ngFor="let resi of residentData" [value]="resi.first_name">{{ resi.first_name }} {{ resi.last_name }}</option>
                 </select>
-            </div>
-            
-        </div>
-        <div class="row mt-4">
-            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            </div>  
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 mb-3">
                 <label for="">Medication Name</label>
                 <input type="text"  class="form-control" formControlName="medicationName" >
-            </div>
-            
-            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            </div>     
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 mb-3">
                 <label for="">Dosage</label>
                 <input type="text" class="form-control" formControlName="dosage" >
-            </div>
-           
-            
-        </div>
-      
-        <div class="row mt-4">
-            
-            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            </div>  
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 mb-3">
                 <label for="">Frequency of Administration</label>
                 <select name="" class="form-select" formControlName="frequencyOfAdministration" id="">
                     <option value="" selected hidden>Select</option>
@@ -50,7 +33,7 @@
                     <option value="Other"> Other</option>
                 </select>
             </div>
-            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 mb-3">
                 <label for="">Route of Administration</label>
                 <select name="" class="form-select" formControlName="RouteOfAdministration" id="">
                     <option value="" selected hidden>Select</option>
@@ -60,37 +43,27 @@
                     <option value="Inhalation"> Inhalation</option>
                     <option value="Other"> Other</option>
                 </select>
-            </div>
-            
-        </div>
-        <div class="row mt-4">
-            
-            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            </div>  
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 mb-3">
                 <label for="">Start Date</label>
                 <input type="date" class="form-control" formControlName="startDate" >
             </div>
-            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 mb-3">
                 <label for="">Prescribing Healthcare Provider</label>
                 <input type="text" class="form-control" formControlName="prescribingHealthCareProvider" >
             </div>
-            
-        </div>
-        
-        <div class="row mt-4">
-            
+        </div> 
+        <div class="row mt-4">  
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <button type="submit" class="btn btn-primary " >Submit</button>
-            </div>
-            
+            </div>   
         </div>
-        
-        
     </div>
     
 </form>
 
 
-<div class="container mt-5">
+<div class="container-fluid mt-5">
     
     <div class="row">
         
@@ -106,7 +79,7 @@
             
             <div class="table-responsive">
                 <table class="table table-hover">
-                    <thead style="background-color: #f6daf3; color: #3C3D37;">
+                    <thead style="background-color: #f6daf3; color: #3C3D37;white-space: nowrap;">
                         <tr>
                             <th>Patient Name</th>
                             <th>Medication Name</th>
@@ -117,7 +90,7 @@
                             <th>Prescribing Health Care Provider</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody style="white-space: nowrap;">
                         <tr *ngFor="let data of cmData" >
                             <td> {{ data.patientName }} </td>
                             <td>{{ data.medicationName }}</td>

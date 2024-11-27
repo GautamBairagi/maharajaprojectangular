@@ -283,6 +283,9 @@ export class AdminComponent implements OnInit,AfterViewInit  {
     return lang ? lang.flagCode : 'fr';
   }
 
+
+
+  
 }
 
 

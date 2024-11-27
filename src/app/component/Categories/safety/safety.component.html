@@ -1,35 +1,22 @@
-<div class="container">
-    <div class="row" >
-
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 p-1"
-            >
+<div class="container-fluid p-3">
             <h4>Safety</h4>
-        </div>
-
-    </div>
 </div>
 
 <form [formGroup]="thisForm" (ngSubmit)="addMyForm()">
-
-    <div class="container mt-2">
-        <div class="row justify-content-center">
-
-            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+    <div class="container-fluid p-3 mt-2 ">
+        <div class="row ">
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 mb-3">
                 <label for="">Patient Name</label>
                 <select formControlName="patientName" class="form-select" id="">
                     <option value="">Select</option>
                     <option *ngFor="let resi of residentData" [value]="resi.first_name">{{ resi.first_name }} {{ resi.last_name }}</option>
                 </select>
             </div>
-
-        </div>
-        <div class="row mt-4">
-            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 mb-3">
                 <label for="">Current Safety Concerns</label>
                 <textarea formControlName="currentSafteyConcerns" class="form-control" id=""></textarea>
             </div>
-
-            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 mb-3">
                 <label for="">Home Safety Assessment</label>
                 <select formControlName="homeSafteyAssessment" class="form-select" id="">
                     <option value="" selected hidden>Select</option>
@@ -39,26 +26,15 @@
 
                 </select>
             </div>
-
-
-        </div>
-
-        <div class="row mt-4">
-
-
-            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 mb-3">
                 <label for="">Previous Accidents or Injuries</label>
                 <textarea formControlName="previousAccidentsOrInjuries" class="form-control" id=""></textarea>
             </div>
-            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 mb-3">
                 <label for="">Emergency Contact Information</label>
                 <input type="text" formControlName="emergencyContactInfo" id="" class="form-control">
             </div>
-
-        </div>
-        <div class="row mt-4">
-
-            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 mb-3">
                 <label for="">Safety Plan in Place</label>
                 <select formControlName="safteyPlanInPlace" class="form-select" id="">
                     <option value="" selected hidden>Select</option>
@@ -68,45 +44,45 @@
 
                 </select>
             </div>
-            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 mb-3">
                 <label for="">Safety Equipment in Use</label>
-                <div class="d-flex">
-                    <div class="form-check">
+                <div class="">
+                    <div class="form-check ms-3">
                         <input class="form-check-input" type="radio" formControlName="safteyequipmentInUse"
                             id="exampleRadios1" value="None" checked>
                         <label class="form-check-label" for="exampleRadios1">
                             None
                         </label>
                     </div>
-                    <div class="form-check">
+                    <div class="form-check  ms-3">
                         <input class="form-check-input" type="radio" formControlName="safteyequipmentInUse"
                             id="exampleRadios2" value="Alarm System">
                         <label class="form-check-label" for="exampleRadios2">
                             Alarm System
                         </label>
                     </div>
-                    <div class="form-check">
+                    <div class="form-check  ms-3">
                         <input class="form-check-input" type="radio" formControlName="safteyequipmentInUse"
                             id="exampleRadios3" value="Grab Bars">
                         <label class="form-check-label" for="exampleRadios3">
                             Grab Bars
                         </label>
                     </div>
-                    <div class="form-check">
+                    <div class="form-check  ms-3">
                         <input class="form-check-input" type="radio" formControlName="safteyequipmentInUse"
                             id="exampleRadios3" value="Emergency Button">
                         <label class="form-check-label" for="exampleRadios3">
                             Emergency Button
                         </label>
                     </div>
-                    <div class="form-check">
+                    <div class="form-check  ms-3">
                         <input class="form-check-input" type="radio" formControlName="safteyequipmentInUse"
                             id="exampleRadios3" value="Smoke Detectors">
                         <label class="form-check-label" for="exampleRadios3">
                             Smoke Detectors
                         </label>
                     </div>
-                    <div class="form-check">
+                    <div class="form-check  ms-3">
                         <input class="form-check-input" type="radio" formControlName="safteyequipmentInUse"
                             id="exampleRadios3" value="Other">
                         <label class="form-check-label" for="exampleRadios3">
@@ -114,23 +90,16 @@
                     </div>
                 </div>
             </div>
-
         </div>
-
         <div class="row mt-4">
-
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <button type="submit" class="btn btn-primary">Submit</button>
             </div>
-
         </div>
-
-
-    </div>
-
+</div>
 </form>
 
-<div class="container mt-5">
+<div class="container-fluid mt-5">
     
     <div class="row">
         
@@ -146,7 +115,7 @@
             
             <div class="table-responsive">
                 <table class="table table-hover">
-                    <thead style="background-color: #f6daf3; color: #3C3D37;">
+                    <thead style="background-color: #f6daf3; color: #3C3D37; white-space: nowrap;">
                         <tr>
                             <th>Patient Name</th>
                             <th>Current Saftey Concerns</th>
@@ -157,7 +126,7 @@
                             <th>Saftey equipment In Use</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody style="white-space: nowrap;">
                         <tr *ngFor="let data of safetyData" >
                             <td> {{ data.patientName }} </td>
                             <td>{{ data.currentSafteyConcerns }}</td>

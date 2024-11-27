@@ -1,83 +1,54 @@
 
-<div class="container">
-    <div class="row" >
-    
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 p-1" >
+<div class="container-fluid p-3">
             <h4>EPSDT (Early aur Periodic Screening, Diagnostic, and Treatment)</h4>
-        </div>
-        
-    </div>
 </div>
 
 <form [formGroup]="thisForm" (ngSubmit)="addMyForm()">
     
-    <div class="container mt-2">
-        <div class="row justify-content-center">
-            
-            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+    <div class="container-fluid mt-2">
+        <div class="row">         
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 mb-3">
                 <label for="">Patient Name</label>
                 <select formControlName="patientName" class="form-select" id="">
                     <option value="">Select</option>
                     <option *ngFor="let resi of residentData" [value]="resi.first_name">{{ resi.first_name }} {{ resi.last_name }}</option>
                 </select>
             </div>
-            
-        </div>
-        <div class="row mt-4">
-            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 mb-3">
                 <label for="">Date of Last EPSDT Screening</label>
               <input type="date" formControlName="dateOfLastEPSDTScreening" id="" class="form-control" >
-            </div>
-            
-            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            </div>    
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 mb-3">
                 <label for="">Screening Results</label>
               <textarea formControlName="screeningResult" class="form-control" id=""></textarea>
             </div>
-           
-            
-        </div>
-      
-        <div class="row mt-4">
-            
-           
-            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 mb-3">
                 <label for="">Follow-up Recommendations</label>
                 <textarea formControlName="followUpRecommendations" class="form-control" id=""></textarea>
             </div>
-            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 mb-3">
                 <label for="">Current Health Assessments</label>
                 <textarea formControlName="currentHealthAssessment" class="form-control" id=""></textarea>
             </div>
-            
-        </div>
-        <div class="row mt-4">
-            
-            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 mb-3">
                 <label for="">Immunization Status</label>
                 <textarea formControlName="immunizationStatus" class="form-control" id=""></textarea>
             </div>
-            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 mb-3">
                 <label for="">Care Coordination</label>
                 <textarea formControlName="careCoordination" class="form-control" id=""></textarea>
             </div>
-            
         </div>
-        
-        <div class="row mt-4">
-            
+        <div class="row mt-4">    
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <button type="submit" class="btn btn-primary">Submit</button>
-            </div>
-            
-        </div>
-        
-        
+            </div>    
+        </div>  
     </div>
-    
 </form>
 
 
-<div class="container mt-5">
+<div class="container-fluid mt-5">
     
     <div class="row">
         
@@ -93,7 +64,7 @@
             
             <div class="table-responsive">
                 <table class="table table-hover">
-                    <thead style="background-color: #f6daf3; color: #3C3D37;">
+                    <thead style="background-color: #f6daf3; color: #3C3D37; white-space: nowrap;">
                         <tr>
                             <th>Patient Name</th>
                             <th>Date Of Last EPSDT Screening</th>
@@ -104,7 +75,7 @@
                             <th>Care Coordination</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody style="white-space: nowrap;">
                         <tr *ngFor="let data of epsdtrData" >
                             <td> {{ data.patientName }} </td>
                             <td>{{ data.dateOfLastEPSDTScreening }}</td>

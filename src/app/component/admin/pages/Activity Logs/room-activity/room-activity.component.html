@@ -2,7 +2,6 @@
     <h4>Room Activities
         
     </h4>
-    <!-- Search Bar -->
     <div class="mb-3">
         <input 
         type="text" 
@@ -48,7 +47,7 @@
     </div>
   
     <!-- Pagination -->
-    <nav aria-label="Page navigation">
+    <nav aria-label="Page navigation mt-2">
       <ul class="pagination justify-content-center">
         <li class="page-item" [class.disabled]="currentPage === 1">
           <button class="page-link" (click)="changePage(currentPage - 1)">Previous</button>
