@@ -4,6 +4,8 @@ import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { HttpClient, HttpHeaders } from '@angular/common/http'; // Import HttpClient
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { SweetalertssService } from 'src/app/sweetalertss.service';
+import { ThemeService } from 'src/app/theme.service';
+
 
 
 @Component({
@@ -16,14 +18,15 @@ export class SidebarSettingComponent implements OnInit {
   updateLogo: FormGroup;
   edit: any;
 
-  headerColor: string;
-  sidebarColor: string;
-  headerFontColor: string;
-  sidebarFontColor: string;
+  header_color: string = '#ffffff';
+  sidebar_color: string = '#2f4f4f';
+  header_font_color: string = '#000000';
+  sidebar_font_color: string = '#000000';
+
 
   userId:any
 
-  constructor(private api: AllService, private http: HttpClient, private fb: FormBuilder, private sweet: SweetalertssService) {
+  constructor(private api: AllService, private http: HttpClient, private fb: FormBuilder, private sweet: SweetalertssService,private theme:ThemeService) {
     this.updatesideMenu = this.fb.group({
       // id: new FormControl(''),
       side_name: [''],
@@ -38,27 +41,27 @@ export class SidebarSettingComponent implements OnInit {
       user_id: [this.userId],
     })
 
-    this.headerColor = this.api.getHeaderColor();
-    this.sidebarColor = this.api.getSidebarColor();
-    this.headerFontColor = this.api.getHeaderFontColor();
-    this.sidebarFontColor = this.api.getSidebarFontColor();
+    // this.headerColor = this.api.getHeaderColor();
+    // this.sidebarColor = this.api.getSidebarColor();
+    // this.headerFontColor = this.api.getHeaderFontColor();
+    // this.sidebarFontColor = this.api.getSidebarFontColor();
   }
 
-  updateHeaderColor(color: string) {
-    this.api.setHeaderColor(color);
-  }
+  // updateHeaderColor(color: string) {
+  //   this.theme.setHeaderColor(color);
+  // }
 
-  updateSidebarColor(color: string) {
-    this.api.setSidebarColor(color);
-  }
+  // updateSidebarColor(color: string) {
+  //   this.theme.setSidebarColor(color);
+  // }
 
-  updateHeaderFontColor(color: string) {
-    this.api.setHeaderFontColor(color);
-  }
+  // updateHeaderFontColor(color: string) {
+  //   this.theme.setHeaderFont(color);
+  // }
 
-  updateSidebarFontColor(color: string) {
-    this.api.setSidebarFontColor(color);
-  }
+  // updateSidebarFontColor(color: string) {
+  //   this.theme.setSidebarFont(color);
+  // }
 
   // editMenu(){
   //   this.api.editSideMenuName(this.id, this.ByIdsideMenu).subscribe((res:any)=>{
@@ -114,7 +117,50 @@ export class SidebarSettingComponent implements OnInit {
   ngOnInit(): void {
     this.getSideMenus()
     this.getSubMenus()
+    
+    this.theme.loadThemeSettingsFromApi();
+
+    this.theme.getThemeSettings().subscribe((settings) => {
+      if (settings) {
+        // console.log('Updated Settings:', settings);
+        this.header_color = settings.header_color;
+        this.sidebar_color = settings.sidebar_color;
+        this.header_font_color = settings.header_font;
+        this.sidebar_font_color = settings.sidebar_font;
+      }
+    });
+    
+    // Subscribe to the current theme settings
+    // this.theme.getThemeSettings().subscribe((settings) => {
+    //   console.log('res from BehaviorSubject:', settings);
+    //   this.header_color = settings.header_color;
+    //   this.sidebar_color = settings.sidebar_color;
+    //   this.header_font_color = settings.header_font_color;
+    //   this.sidebar_font_color = settings.sidebar_font_color;
+    // });
+
+
+    
+
+    // this.theme.applyTheme(settings);
   }
+
+  updateHeaderColor(color: string) {
+    this.theme.updateHeaderColor(color);
+  }
+
+  updateSidebarColor(color: string) {
+    this.theme.updateSidebarColor(color);
+  }
+
+  updateHeaderFontColor(color: string) {
+    this.theme.updateHeaderFontColor(color);
+  }
+
+  updateSidebarFontColor(color: string) {
+    this.theme.updateSidebarFontColor(color);
+  }
+
 
   allMenus: any[] = [];
   subMenus: any[] = [];

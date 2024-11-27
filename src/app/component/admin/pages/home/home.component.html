@@ -53,7 +53,144 @@
                 </div>
             </div>
         </div>
-      
+        <div class="row justify-content-center">
+            <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                <canvas id="myChart"></canvas>
+            </div>
+        </div>
+
+        
+        <div class="row">
+            
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-end">
+                
+
+            </div>
+            
+        </div>
+
+        <div class="row mt-5 justify-content-center">
+            <div class=" col-10 d-flex justify-content-between">
+                <h3>Appointments</h3>
+                <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary rounded-pill " data-bs-toggle="modal" data-bs-target="#appointmentModal">
+<i class="fa-solid fa-plus"></i>
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="appointmentModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog">
+<div class="modal-content">
+<div class="modal-header">
+<h1 class="modal-title fs-5" id="exampleModalLabel">Add Appointment</h1>
+<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+</div>
+<div class="modal-body">
+
+  <form [formGroup]="appointmentForm" (ngSubmit)="onSubmit()" class="container mt-5">
+    <div class="row mb-3">
+       
+      <label for="first_name" class="col-sm-2 col-form-label">First Name</label>
+      <div class="col-sm-10">
+        <select formControlName="first_name" class="form-control">
+            <option value="">Select Resident</option>
+            <option *ngFor="let r of residentData" [value]="r.first_name" >  {{ r.first_name }} </option>
+          </select>
+        <div *ngIf="f['first_name'].touched && f['first_name'].invalid" class="text-danger">
+          <small *ngIf="f['first_name'].errors?.['required']">First Name is required.</small>
+          <small *ngIf="f['first_name'].errors?.['maxLength']">First Name cannot be longer than 255 characters.</small>
+        </div>
+      </div>
+    </div>
+  
+    <div class="row mb-3">
+      <label for="title" class="col-sm-2 col-form-label">Title</label>
+      <div class="col-sm-10">
+        <input id="title" formControlName="title" type="text" class="form-control" />
+        <div *ngIf="f['title'].touched && f['title'].invalid" class="text-danger">
+          <small *ngIf="f['title'].errors?.['required']">Title is required.</small>
+          <small *ngIf="f['title'].errors?.['maxLength']">Title cannot be longer than 255 characters.</small>
+        </div>
+      </div>
+    </div>
+  
+    <div class="row mb-3">
+      <label for="description" class="col-sm-2 col-form-label">Description</label>
+      <div class="col-sm-10">
+        <textarea id="description" formControlName="description" class="form-control"></textarea>
+        <div *ngIf="f['description'].touched && f['description'].invalid" class="text-danger">
+          <small *ngIf="f['description'].errors?.['required']">Description is required.</small>
+        </div>
+      </div>
+    </div>
+  
+    <div class="row mb-3">
+      <label for="date" class="col-sm-2 col-form-label">Date</label>
+      <div class="col-sm-10">
+        <input id="date" formControlName="date" type="date" class="form-control" />
+        <div *ngIf="f['date'].touched && f['date'].invalid" class="text-danger">
+          <small *ngIf="f['date'].errors?.['required']">Date is required.</small>
+        </div>
+      </div>
+    </div>
+  
+    <div class="row mb-3">
+      <label for="appointmentTime" class="col-sm-2 col-form-label">Appointment Time</label>
+      <div class="col-sm-10">
+        <input id="appointmentTime" formControlName="appointmentTime" type="time" class="form-control" />
+        <div *ngIf="f['appointmentTime'].touched && f['appointmentTime'].invalid" class="text-danger">
+          <small *ngIf="f['appointmentTime'].errors?.['required']">Appointment Time is required.</small>
+        </div>
+      </div>
+    </div>
+  
+    
+
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="submit" [disabled]="appointmentForm.invalid" class="btn btn-primary">Submit</button>
+      </div>
+  </form>
+  
+  
+</div>
+
+</div>
+</div>
+</div>
+            </div>
+
+            
+            <div class="table-responsive mt-2" >
+                <table class="table table-bordered ">
+                    <thead>
+                      <tr>
+                        
+                        <th scope="col">First Name</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Appointment Time</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <!-- Loop through the appointments data and display each appointment -->
+                      <tr *ngFor="let appointment of AppointmentsData">
+                        
+                        <td>{{ appointment.first_name }}</td>
+                        <td>{{ appointment.title }}</td>
+                        <td>{{ appointment.description }}</td>
+                        <td>{{ appointment.date | date: 'yyyy-MM-dd' }}</td>
+                        <td>{{ appointment.appointmentTime }}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+            </div>
+           
+          </div>
+          
+        
+
         <div class="row mt-4">
             <div class="xl col-md-6 mb-3">
                 <div class="card">

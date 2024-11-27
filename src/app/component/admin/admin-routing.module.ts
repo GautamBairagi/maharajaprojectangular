@@ -40,6 +40,7 @@ import { DentalComponent } from '../Categories/dental/dental.component';
 import { CurrentProvidersComponent } from '../Categories/current-providers/current-providers.component';
 import { CurrentMedicationsComponent } from '../Categories/current-medications/current-medications.component';
 import { CommunityAurSocialInvolvementComponent } from '../Categories/community-aur-social-involvement/community-aur-social-involvement.component';
+import { AddResidentNoteComponent } from './shared/add-resident-note/add-resident-note.component';
 
 const routes: Routes = [
   {
@@ -115,6 +116,10 @@ const routes: Routes = [
       {
         path:'addmildstone',
         component:AddMildstoneComponent
+      },
+      {
+        path:'addResidentNote',
+        component:AddResidentNoteComponent
       },
       {
         path:'Room Activity',

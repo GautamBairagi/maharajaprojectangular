@@ -1,36 +1,36 @@
 :root {
-    --header-color: #C4DFE6;
-    /* --header-color: linear-gradient(red, yellow); */
-    --sidebar-color: #66A5AD;
-    --header-font-color: #ffffff;
-    --sidebar-font-color: #ffffff;
-  }
-  
-  .header {
-    background-color: var(--header-color);
-    color: var(--header-font-color);
-  }
-  
-  .sidebar {
-    background-color: var(--sidebar-color);
-    color: var(--sidebar-font-color);
-  }
-  body{
-    font-family: 'Poppins', sans-serif;;
-   }
-   
-   label{
-    font-weight: 600;
-   }
+  --header-color: #ffffff;
+  --sidebar-color: #2f4f4f;
+  --header-font: 'Arial', sans-serif;
+  --sidebar-font: 'Verdana', sans-serif;
+}
 
-   .form-check-input{
-    border: 1px solid rgb(56, 56, 207) !important;
-   }
+.header {
+  background-color: var(--header-color);
+  font-family: var(--header-font);
+}
 
-   .btn-addbutton,  .addbutton{
-    background-color: var(--sidebar-color);
-    border: none;
-    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+.sidebar {
+  background-color: var(--sidebar-color);
+  font-family: var(--sidebar-font);
 }
 
 
+
+body{
+  font-family: 'Poppins', sans-serif;;
+ }
+ 
+ label{
+  font-weight: 600;
+ }
+
+ .form-check-input{
+  border: 1px solid rgb(56, 56, 207) !important;
+ }
+
+ .btn-addbutton,  .addbutton{
+  background-color: var(--sidebar-color);
+  border: none;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}

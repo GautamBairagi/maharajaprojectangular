@@ -69,8 +69,9 @@ export class LoginComponent implements OnInit {
     //     }
     // }
 
+    apiErrorMessage: string | null = null; // Declare the apiErrorMessage property
 
-    addPatients() {
+    login() {
         if (this.loginForm.invalid) {
             this.ck = true;
             return;
@@ -78,8 +79,9 @@ export class LoginComponent implements OnInit {
             console.log("Patient data", this.loginForm.value);
             this.service.superAdminLogin(this.loginForm.value).subscribe({
                 next: (res) => {
-                    console.log("res",res)
+                    console.log("res", res);
                     if (res.success) {
+                        // Store successful login data in localStorage
                         localStorage.setItem('userId', res.response.userId);
                         localStorage.setItem('group_id', res.response.group_id);
                         localStorage.setItem('group_name', res.response.group_name);
@@ -88,19 +90,28 @@ export class LoginComponent implements OnInit {
                         localStorage.setItem('user_token', res.response.token);
                         localStorage.setItem('username', res.response.username);
                         localStorage.setItem('workspace_id', `1`);
-
-                        
+    
                         this.swet.SucessToast(`${res.response.first_name} ${res.response.last_name} ${res.message}`);
-                        this.router.navigate(['Admin'])
+                        this.router.navigate(['Admin']);
+                    } else {
+                        // If the login fails (incorrect password, etc.)
+                        this.apiErrorMessage = res.message || 'An unknown error occurred';
+                        this.ck = true; // Show the error state
                     }
-                    // window.location.reload()
                 },
                 error: (err) => {
                     console.log(err);
+                    // Handle server or network errors
+                    this.apiErrorMessage = err.error?.message || 'Something went wrong, please try again.';
+                    this.ck = true; // Show the error state
                 }
             });
         }
     }
+    
+    
+    
+    
     
     // handleRoleBasedRedirection(res: any) {
     //     if (res.role === 'superadmin') {

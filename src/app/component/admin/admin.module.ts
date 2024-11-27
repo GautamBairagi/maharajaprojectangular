@@ -33,6 +33,7 @@ import { UnitActivityComponent } from './pages/Activity Logs/unit-activity/unit-
 import { FrequencyActivityComponent } from './pages/Activity Logs/frequency-activity/frequency-activity.component';
 import { StatusComponent } from './pages/status/status.component';
 import { AddstatusComponent } from './shared/addstatus/addstatus.component';
+import { AddResidentNoteComponent } from './shared/add-resident-note/add-resident-note.component';
 
 
 
@@ -66,7 +67,8 @@ import { AddstatusComponent } from './shared/addstatus/addstatus.component';
     UnitActivityComponent,
     FrequencyActivityComponent,
     StatusComponent,
-    AddstatusComponent
+    AddstatusComponent,
+    AddResidentNoteComponent
   ],
   imports: [
     CommonModule,

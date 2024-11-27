@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit,ViewChild, ElementRef } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AllService } from 'src/app/Api/all.service';
@@ -14,6 +14,8 @@ import { SweetalertssService } from 'src/app/sweetalertss.service';
 export class RoomsComponent implements OnInit,AfterViewInit {
 
   createRoomForm:FormGroup;
+
+  @ViewChild('autoClickButton') autoClickButton!: ElementRef;
 
   userid:any;
   constructor(private api:AllService, private fb:FormBuilder,private sweet:SweetalertssService, private router: Router){
@@ -56,7 +58,7 @@ export class RoomsComponent implements OnInit,AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-  
+    this.autoClickButton.nativeElement.click();
   }
 
   ngOnInit(): void {
@@ -69,7 +71,13 @@ export class RoomsComponent implements OnInit,AfterViewInit {
   getRooms(){
     this.api.getRooms().subscribe((res:any)=>{
       this.allRooms = res
-      this.filteredRooms = res; 
+      this.filteredRooms = res;
+      // this.filteredRooms.forEach()
+      // this.fetchUserDetails(userId)
+      this.filteredRooms.forEach((room: any) => {
+        const userId = room.userId;
+        this.fetchUserDetails(userId);
+      });
     })
   }
 
@@ -184,6 +192,20 @@ isClientSelected(client: any): boolean {
 
   userDetails: { [key: string]: { first_name: string; last_name: string } } = {};
 
+  // fetchUserDetails(userId: string) {
+  //   // Check if user details are already fetched
+  //   if (!this.userDetails[userId]) {
+  //     this.api.getUserDtlsRooms(userId).subscribe((data: any[]) => {
+  //       // Assuming the API returns an array with one object
+  //       const user = data[0]; // Access the first object in the array
+  //       this.userDetails[userId] = {
+  //         first_name: user.first_name,
+  //         last_name: user.last_name
+  //       };
+  //     });
+  //   }
+  // }
+
   fetchUserDetails(userId: string) {
     // Check if user details are already fetched
     if (!this.userDetails[userId]) {
@@ -197,6 +219,7 @@ isClientSelected(client: any): boolean {
       });
     }
   }
+  
 
   fetchClientDetails(userId: string) {
     // Check if user details are already fetched
@@ -230,6 +253,28 @@ isClientSelected(client: any): boolean {
 
   closePopover() {
     this.isPopoverVisible = false;
+  }
+
+  userprofile(){
+    this.router.navigate(['/Admin/Clientdetails'])
+  }
+
+  client_idss:any;
+userByIdDatas:any=[];
+  ByIds(data: any) {
+    this.id = data
+    console.log("user id", this.id)
+    this.api.getuserById(data).subscribe((res: any) => {
+      this.userByIdDatas = [res[0]];
+      this.client_idss=res[0].id
+      localStorage.setItem('clientdetails', JSON.stringify(this.userByIdDatas));
+      localStorage.setItem('clientid', JSON.stringify(data));
+ 
+      this.userprofile()
+      
+      this.api.setclientData(this.userByIdDatas);
+      console.log("policy by id", this.userByIdDatas)
+    })
   }
 
 }

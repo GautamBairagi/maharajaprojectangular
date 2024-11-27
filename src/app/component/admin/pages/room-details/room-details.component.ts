@@ -144,8 +144,7 @@ userByIdDatas:any=[];
       this.client_idss=res[0].id
       localStorage.setItem('clientdetails', JSON.stringify(this.userByIdDatas));
       localStorage.setItem('clientid', JSON.stringify(data));
-  // Store the data in the api
-
+ 
       this.userprofile()
       
       this.api.setclientData(this.userByIdDatas);

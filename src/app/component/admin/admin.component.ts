@@ -1,15 +1,29 @@
-import { Component, OnInit,ElementRef, ViewChild,AfterViewInit   } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild, AfterViewInit  } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AllService } from 'src/app/Api/all.service';
 import { SweetalertssService } from 'src/app/sweetalertss.service';
+import { ThemeService } from 'src/app/theme.service';
 
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
   styleUrls: ['./admin.component.css']
 })
-export class AdminComponent implements OnInit,AfterViewInit  {
+export class AdminComponent implements OnInit, AfterViewInit {
+
+  // gengerateChln = "none";
+  // Open popup and mark all notifications as read
+  // openPopup(): void {
+  //   this.showModal = true;
+  //   this.markAsRead();
+  // }
+
+  // // Close popup
+  // closePopup(): void {
+  //   this.showModal = false;
+  // }
+
   @ViewChild('cameraFeed', { static: false }) cameraFeed!: ElementRef<HTMLVideoElement>;
   @ViewChild('mySidebar', { static: false }) mySidebar!: ElementRef<HTMLElement>;
   @ViewChild('content', { static: false }) content!: ElementRef<HTMLElement>;
@@ -65,7 +79,7 @@ export class AdminComponent implements OnInit,AfterViewInit  {
     }
   }
 
-  notifications: any[] = [];
+
 
   loginForm!: FormGroup;
   constructor(
@@ -73,63 +87,77 @@ export class AdminComponent implements OnInit,AfterViewInit  {
     private fb: FormBuilder,
     private service: AllService,
     private swet: SweetalertssService,
+    private themeService: ThemeService
   ) {
 
   }
 
 
   ngOnInit(): void {
+    this.themeService.loadThemeSettingsFromApi();
+
     this.getsidebarsdata();
     this.getSubMenus()
     // this.selectedLanguage = sessionStorage.getItem('language') || 'French';
     this.selectedLanguage = sessionStorage.getItem('language') || 'French';
 
     this.getLogo()
-    // this.service.onNotificationReceived((data) => {
-    //   this.notifications.push(data);
-    // });
-    // this.service.onNotificationReceived((data: { message: string }) => {
-      
-    //   this.notifications.push({ message: data.message, isNew: true });
-    // });
+    this.getNotification()
+  }
 
-    this.service.onNotificationReceived((data: string) => {
-      // Directly push the message to the notifications array
-      this.notifications.push(data);
+
+  notifys: any[] = [];
+  unreadCount: number = 0;
+  showModal: boolean = false;
+  selectedNotification: any = null;
+  // Fetch notifications
+  getNotification(): void {
+    this.service.getNotification(null).subscribe({
+      next: (data) => {
+        this.notifys = data;
+        this.updateUnreadCount();
+      },
+      error: (error) => {
+        console.error('Failed to fetch notifications:', error);
+      },
     });
-    // this.getNotify()
   }
 
-
-  // getNotify(){
-  //   this.service.getNotify().subscribe((data: { message: string })=>{
-  //     // console.log('notify ho jao --',res)
-  //     // this.notifications.push({ message: data.message, isNew: true });
-
-  //   })
-  // }
-
-  // get newNotificationCount(): number {
-  //   return this.notifications.filter(notification => notification.isNew).length;
-  // }
-
-  // // Mark all notifications as read
-  // markNotificationsAsRead() {
-  //   this.notifications.forEach(notification => (notification.isNew = false));
-  // }
-
-  get newNotificationCount(): number {
-    return this.notifications.length; // The total number of notifications
+  // Open modal to show notifications
+  openModal(): void {
+    this.showModal = true;
+    this.selectedNotification = null; // Reset selected notification when modal is opened
   }
 
-  // Mark all notifications as read (clear the array)
-  markNotificationsAsRead() {
-    this.notifications = [];
+  // Close modal
+  closeModal(): void {
+    this.showModal = false;
   }
 
-  sendNotification() {
-    const message = { message: 'New Task Assigned!', timestamp: new Date() };
-    this.service.sendNotification(message);
+  // Select a specific notification
+  selectNotification(notify: any): void {
+    this.selectedNotification = notify;
+
+    if (!notify.read) {
+      this.markAsRead(notify);
+    }
+  }
+
+  // Mark a single notification as read
+  markAsRead(notify: any): void {
+    notify.read = true; // Update local read status
+    this.updateUnreadCount();
+
+    // Optionally, send to backend to update read status
+    this.service.markAsRead(notify.id).subscribe({
+      next: () => console.log(`Notification ${notify.id} marked as read.`),
+      error: (error) => console.error('Error marking notification as read:', error),
+    });
+  }
+
+  // Update unread count
+  updateUnreadCount(): void {
+    this.unreadCount = this.notifys.filter((notify) => !notify.read).length;
   }
 
   logoGet: any;

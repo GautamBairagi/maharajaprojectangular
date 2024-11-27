@@ -8,7 +8,44 @@
     </div>
     <div class="icons d-flex align-items-center">
         <i class="fas a fa-envelope mx-2"></i>
-        <i class="fas a fa-bell mx-2"></i>
+       <!-- Bell Icon with Count -->
+       <!-- Notification Bell with Unread Count -->
+<div>
+  <i (click)="openModal()" class="fas fa-bell mx-2">
+    <span *ngIf="unreadCount > 0" class="badge bg-danger">{{ unreadCount }}</span>
+  </i>
+</div>
+
+<!-- Modal -->
+<div class="modal" tabindex="-1" [ngStyle]="{'display': showModal ? 'block' : 'none'}">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5">Notifications</h1>
+        <button type="button" class="btn-close" aria-label="Close" (click)="closeModal()"></button>
+      </div>
+      <div class="modal-body">
+        <!-- Notification Titles List -->
+        <ul class="notification-titles">
+          <li
+            *ngFor="let notify of notifys"
+            [ngClass]="{'unread': !notify.read}"
+            (click)="selectNotification(notify)"
+          >
+            {{ notify.title }}
+          </li>
+        </ul>
+
+        <!-- Selected Notification Details -->
+        <div *ngIf="selectedNotification" class="notification-details mt-4">
+          <h3>{{ selectedNotification.title }}</h3>
+          <p>{{ selectedNotification.message }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 
       
         <div class="dropdown">
@@ -104,6 +141,7 @@
 
 
     <div #content class="content" >
+
                  
         <router-outlet></router-outlet>
 

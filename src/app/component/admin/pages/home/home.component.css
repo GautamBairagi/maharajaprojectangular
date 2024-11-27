@@ -76,3 +76,9 @@
     min-width: 150px;
     font-size: 0.9rem;
 }
+
+.btn-primary{
+    background-color: var(--sidebar-color);
+    border: none;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
